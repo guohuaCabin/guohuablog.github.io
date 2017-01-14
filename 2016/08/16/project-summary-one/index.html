@@ -160,7 +160,7 @@
     <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p> 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：</p>
 <h3 id="1、自带键盘的next用法"><a href="#1、自带键盘的next用法" class="headerlink" title="1、自带键盘的next用法"></a>1、自带键盘的next用法</h3><p>这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。</p>
 <p>想法也就是：用户在输入用户名后，点击next跳转到下一个输入框。其实也不用想的如此复杂，在登录界面，我们完全可以用一个 if 语句做判断，去实现键盘的响应和注销响应。</p>
-<p>代码如下： <pre>- (BOOL)textFieldShouldReturn:(UITextField <em> )textField {<br>  UITextField </em> passTextFiled = (UITextField *)[self.view viewWithTag:201];<br>  if (textField.tag == 200) {<br>          [passTextFiled becomeFirstResponder];<br>   }else{<br>           [passTextFiled resignFirstResponder];<br>    }<br>   return YES;<br>   }</pre><br>这样就简单的在变成响应和注销响应之间实现了输入框的切换。</p>
+<p>代码如下： <pre>- (BOOL)textFieldShouldReturn:(UITextField <em> )textField {<br>  UITextField </em> passTextFiled = (UITextField *)[self.view viewWithTag:201];<br>  if (textField.tag == 200) {<br>          [passTextFiled becomeFirstResponder];<br>   }else{<br>           [passTextFiled resignFirstResponder];<br>    }<br>   return YES;<br>}</pre><br>这样就简单的在变成响应和注销响应之间实现了输入框的切换。</p>
 <p>但还是存在一个问题，如果我实现注册界面的跳转输入框，并且在输入框很多的情况下，显然如果我仍是这样判断，会显得啰嗦和冗余。</p>
 <p>我曾想过使用计数的方式，记录每一次的点击next后的tag，但实践中失败了，因为当我不通过next而是直接用手去触摸选择输入框时，则无法计数。</p>
 <p> 这里先留个空白，等把手里的项目完成时再研究这个问题</p>
@@ -177,9 +177,7 @@ self.minimumFontSize = 15;
 //设置键盘的样式，本人感觉这个设置对用户体验有影响。比如说我想打电话，Type为UIKeyboardTypeNumberPad,而不是其他     
 self.keyboardType = UIKeyboardTypeNamePhonePad;</pre>
 
-### 3、iOS中图片的几种拉伸方法的使用
-
-以下是apple给出的3种方法:
+<h3 id="3、iOS中图片的几种拉伸方法的使用"><a href="#3、iOS中图片的几种拉伸方法的使用" class="headerlink" title="3、iOS中图片的几种拉伸方法的使用"></a>3、iOS中图片的几种拉伸方法的使用</h3><p>以下是apple给出的3种方法:</p>
 <pre>UIImage *image = [UIImage imageNamed:@"picture"];        
 //iOS5之前     
 // 左端盖宽度        
