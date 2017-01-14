@@ -158,12 +158,7 @@
 
   <section class="post">
     <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><em>我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。</em></p>
-<h3 id="1、Base64加解密"><a href="#1、Base64加解密" class="headerlink" title="1、Base64加解密"></a>1、Base64加解密</h3><p>值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解密。先看一下apple都提供了哪些方法：<br><pre>@interface NSData (NSDataBase64Encoding)</pre></p>
-<p>-(nullable instancetype)initWithBase64EncodedString:(NSString*)base64String options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
-<p>-(NSString *)base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
-<p>-(nullable instancetype)initWithBase64EncodedData:(NSData *)base64Data options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
-<p>-(NSData *)base64EncodedDataWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
-<p>@end </p>
+<h3 id="1、Base64加解密"><a href="#1、Base64加解密" class="headerlink" title="1、Base64加解密"></a>1、Base64加解密</h3><p>值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解密。先看一下apple都提供了哪些方法：<br><pre>@interface NSData (NSDataBase64Encoding)<br>-(nullable instancetype)initWithBase64EncodedString:(NSString <em> )base64String options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>-(NSString </em> )base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>-(nullable instancetype)initWithBase64EncodedData:(NSData <em> )base64Data options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>-(NSData </em> )base64EncodedDataWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>@end</pre> </p>
 <p>我们先创建一个NSData，再去一条一条的分析以上的方法</p>
 <pre>NSData *data = [@"Base64 encoding string" dataUsingEncoding:NSUTF8StringEncoding];</pre>
 
