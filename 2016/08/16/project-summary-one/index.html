@@ -176,24 +176,25 @@ self.clearsOnBeginEditing = YES;
 self.minimumFontSize = 15;        
 //设置键盘的样式，本人感觉这个设置对用户体验有影响。比如说我想打电话，Type为UIKeyboardTypeNumberPad,而不是其他     
 self.keyboardType = UIKeyboardTypeNamePhonePad;</pre>
+
 ### 3、iOS中图片的几种拉伸方法的使用
 
 以下是apple给出的3种方法：     
-<pre>UIImage *image = [UIImage imageNamed:@"picture"];        
-//iOS5之前     
-// 左端盖宽度        
-NSInteger leftCapWidth = image.size.width * 0.5f;       
-NSInteger topCapHeight = image.size.height * 0.8f;        
+                UIImage *image = [UIImage imageNamed:@"picture"];        
+                //iOS5之前     
+                // 左端盖宽度        
+                NSInteger leftCapWidth = image.size.width * 0.5f;       
+                NSInteger topCapHeight = image.size.height * 0.8f;        
 
-image = [image stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];        
+                image = [image stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];        
 
-//iOS5之后       
-UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
+                //iOS5之后       
+                UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
 
-image = [image resizableImageWithCapInsets:insets];      
-//iOS6之后        
-UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
-image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch]; </pre>   
+                image = [image resizableImageWithCapInsets:insets];      
+                //iOS6之后        
+                UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
+                image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];    
 下面是使用的解释：   
 
 <pre>
@@ -212,32 +213,31 @@ image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingMo
 * stretchWidth为中间可拉伸区域的宽度        stretchWidth = width - leftCapWidth - rightCapWidth = 1;       
 * stretchHeight为中间可拉伸区域的高度        stretchHeight = height - topCapHeight - bottomCapHeight = 1;    
 *    
-*因此，使用这个方法只会拉伸图片中间1x1的区域，并不会影响到边缘和角落。    
+* 因此，使用这个方法只会拉伸图片中间1x1的区域，并不会影响到边缘和角落。    
 */
 
 /**   
- * - (UIImage *)resizableImageWithCapInsets:(UIEdgeInsets)capInsets    
+ * - (UIImage * )resizableImageWithCapInsets:(UIEdgeInsets)capInsets    
  *  这个方法只接收一个UIEdgeInsets类型的参数，可以通过设置UIEdgeInsets的left、right、top、bottom来分别指定左端盖宽度、右端盖宽度、顶端盖高度、底端盖高度    
  * */       
 
 /**    
- *- (UIImage *)resizableImageWithCapInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode  
+ *- (UIImage * )resizableImageWithCapInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode  
 
 对比iOS5.0中的方法，只多了一个<code>UIImageResizingMode</code>参数，用来指定拉伸的模式：
     UIImageResizingModeStretch：拉伸模式，通过拉伸
     UIEdgeInsets:指定的矩形区域来填充图片    
     UIImageResizingModeTile：平铺模式，通过重复显示
     UIEdgeInsets指定的矩形区域来填充图片   
-**/</pre> 
-图片拉伸的以上内容参考文章 《iOS图片拉伸技巧》讲的很好，建议大家多看看。
+**/</pre>
 
-### 4、iOS中唤起自带浏览器（safari）的方法
+<p>图片拉伸的以上内容参考文章 《iOS图片拉伸技巧》讲的很好，建议大家多看看。</p>
+<h3 id="4、iOS中唤起自带浏览器（safari）的方法"><a href="#4、iOS中唤起自带浏览器（safari）的方法" class="headerlink" title="4、iOS中唤起自带浏览器（safari）的方法"></a>4、iOS中唤起自带浏览器（safari）的方法</h3><p>也是一个简单的一句代码 ，这种也就是知道了就知道了，不知道就是抓耳挠腮吧 </p>
+<pre>NSURL *url = [NSURL URLWithString:urlStr]; 
 
-也是一个简单的一句代码 ，这种也就是知道了就知道了，不知道就是抓耳挠腮吧 
-<pre>NSURL *url = [NSURL URLWithString:urlStr];    [[UIApplication sharedApplication] openURL:url]; </pre>
+[[UIApplication sharedApplication] openURL:url]; </pre>
 
-<p>5、iOS中唤起电话界面</p>
-<p>app内部唤起电话界面的实现，是找了很多资料才有的一个结论（安全，并且拨打完之后可以返回app）</p>
+<h3 id="5、iOS中唤起电话界面"><a href="#5、iOS中唤起电话界面" class="headerlink" title="5、iOS中唤起电话界面"></a>5、iOS中唤起电话界面</h3><p>app内部唤起电话界面的实现，是找了很多资料才有的一个结论（安全，并且拨打完之后可以返回app）</p>
 <p>实现的方法是使用UIWebView 加载电话，目前这种方法是合法的，App Store也允许通过的。  </p>
 <pre>NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",newPhoneString]];    
  if (_phoneCallWebView) { 
