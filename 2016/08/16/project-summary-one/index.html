@@ -193,8 +193,10 @@ image = [image resizableImageWithCapInsets:insets];
 //iOS6之后        
 UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
 image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch]; </pre>  
-下面是使用的解释：   
+下面是使用的解释：
+
 ![pictureStretch](http://obzx0h1re.bkt.clouddn.com/pictureStretch.png)
+
 <pre>
 /**   
  *  - (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight;    
@@ -270,9 +272,10 @@ error: "This app is not allowed to query for scheme comgooglemaps"。</pre>
  至于下面代码中的<code>URLScheme</code> 和<code>appName </code> 是在<code>Info.plist</code> 的<code>URL types</code>中添加  <code>URL Scheme</code>(URL Schemes是一个数组，允许应用定义多个URL schemes)和<code>URL identifier</code>（建议采用反转域名的方法保证该名字的唯一性，比如 <code>com.yourApp.www</code>）
 
 图片如下：
+
 ![URLTypes](http://obzx0h1re.bkt.clouddn.com/URLTypes.png)
 
- 下面是具体的代码：
+下面是具体的代码：
 
  <pre>__block NSString *urlScheme = urlScheme;   
 
