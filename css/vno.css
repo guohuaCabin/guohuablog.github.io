@@ -6146,7 +6146,7 @@ pre code {
 .content-wrapper {
   z-index: 800;
   width: 70%;
-  margin-left: 26%;
+  margin-left: 27%;
 }
 .content-wrapper__inner {
   margin: 0 7%;
@@ -6234,7 +6234,7 @@ i.fa.fa-spinner.fa-spin {
   display: block;
   width: 30%;
   margin: 2em 0;
-  border-top: 1px solid #ddd;
+  border-top: 10px solid #ddd;
 }
 .panel {
   display: table;
