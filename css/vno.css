@@ -6270,7 +6270,7 @@ i.fa.fa-spinner.fa-spin {
   background-size: cover;
 }
 .panel-cover--collapsed {
-  max-width: 100x;
+  max-width: 500px;
 }
 .panel-cover--overlay {
   display: block;
