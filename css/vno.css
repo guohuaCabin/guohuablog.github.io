@@ -6709,7 +6709,7 @@ input[type="tel"]:-ms-input-placeholder {
   .panel-cover__description {
     display: block;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20auto;
   }
   .panel-cover__divider--secondary {
     display: none;
