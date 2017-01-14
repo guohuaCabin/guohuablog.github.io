@@ -6297,7 +6297,7 @@ i.fa.fa-spinner.fa-spin {
   border-top: 1px solid rgba(255,255,255,0.14);
 }
 .panel-cover__divider--secondary {
-  width: 60%;
+  width: 35%;
 }
 .panel-main {
   display: table;
@@ -6306,7 +6306,7 @@ i.fa.fa-spinner.fa-spin {
 }
 .no-js .panel-main {
   width: 30%;
-  max-width: 620px;
+  max-width: 550px;
 }
 .panel-main__inner {
   display: table-cell;
