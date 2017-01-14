@@ -258,25 +258,16 @@ image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingMo
 <p><strong>原因是：模拟器上没有高德地图。</strong></p>
 <pre>2、canOpenURL: failed for URL:"comgooglemaps://" 
 error: "This app is not allowed to query for scheme comgooglemaps"。</pre> 
-**原因是：LSApplicationQueriesSchemes 我自己马虎设成了字典类型。**
 
-首先说好的是iOS9以后，我们在app内部要跳转到其他软件时，需要在 <code>Info.plist</code> 中添加白名单。
-
-方法为：在<code>Info.plist</code>中添加 <code>key : LSApplicationQueriesSchemes </code> 类型为：<code>Array</code>。
-
-将高德、百度、谷歌的值填进去分别是：**iosamap**｜**baidumap** | **comgooglemaps**
-
-图片：
-![LSApplicationQueriesSchemes](http://obzx0h1re.bkt.clouddn.com/LSApplicationQueriesSchemes.png)
-
- 至于下面代码中的<code>URLScheme</code> 和<code>appName </code> 是在<code>Info.plist</code> 的<code>URL types</code>中添加  <code>URL Scheme</code>(URL Schemes是一个数组，允许应用定义多个URL schemes)和<code>URL identifier</code>（建议采用反转域名的方法保证该名字的唯一性，比如 <code>com.yourApp.www</code>）
-
-图片如下：
-
-![URLTypes](http://obzx0h1re.bkt.clouddn.com/URLTypes.png)
-
-下面是具体的代码：
-
+<p><strong>原因是：LSApplicationQueriesSchemes 我自己马虎设成了字典类型。</strong></p>
+<p>首先说好的是iOS9以后，我们在app内部要跳转到其他软件时，需要在 <code>Info.plist</code> 中添加白名单。</p>
+<p>方法为：在<code>Info.plist</code>中添加 <code>key : LSApplicationQueriesSchemes </code> 类型为：<code>Array</code>。</p>
+<p>将高德、百度、谷歌的值填进去分别是：<code>iosamap</code>、<code>baidumap</code>、 <code>comgooglemaps</code></p>
+<p>图片：<br><img src="http://obzx0h1re.bkt.clouddn.com/LSApplicationQueriesSchemes.png" alt="LSApplicationQueriesSchemes"></p>
+<p> 至于下面代码中的<code>URLScheme</code> 和<code>appName </code> 是在<code>Info.plist</code> 的<code>URL types</code>中添加  <code>URL Scheme</code>(URL Schemes是一个数组，允许应用定义多个URL schemes)和<code>URL identifier</code>（建议采用反转域名的方法保证该名字的唯一性，比如 <code>com.yourApp.www</code>）</p>
+<p>图片如下：</p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/URLTypes.png" alt="URLTypes"></p>
+<p>下面是具体的代码：</p>
  <pre>__block NSString *urlScheme = urlScheme;   
 
  __block NSString *appName = appName;    
