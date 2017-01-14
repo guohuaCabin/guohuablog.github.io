@@ -6270,7 +6270,7 @@ i.fa.fa-spinner.fa-spin {
   background-size: cover;
 }
 .panel-cover--collapsed {
-  width: 25.5%;
+  width: 26%;
   max-width: 520px;
 }
 .panel-cover--overlay {
@@ -6297,7 +6297,7 @@ i.fa.fa-spinner.fa-spin {
   border-top: 1px solid rgba(255,255,255,0.14);
 }
 .panel-cover__divider--secondary {
-  width: 35%;
+  width: 60%;
 }
 .panel-main {
   display: table;
