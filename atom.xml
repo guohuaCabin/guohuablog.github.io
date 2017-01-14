@@ -91,7 +91,7 @@
     <link href="http:guohuaden.com/2016/10/06/DES-encryption/"/>
     <id>http:guohuaden.com/2016/10/06/DES-encryption/</id>
     <published>2016-10-06T14:14:00.000Z</published>
-    <updated>2017-01-14T06:54:07.000Z</updated>
+    <updated>2017-01-14T06:58:35.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><em>我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。</em></p>
 <h3 id="1、Base64加解密"><a href="#1、Base64加解密" class="headerlink" title="1、Base64加解密"></a>1、Base64加解密</h3><p>值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解密。先看一下apple都提供了哪些方法：<br><pre>@interface NSData (NSDataBase64Encoding)</pre></p>
@@ -102,14 +102,11 @@
 </li>
 <li><p>(nullable instancetype)initWithBase64EncodedData:(NSData *)base64Data options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
 </li>
-<li><p>(NSData *)base64EncodedDataWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
-</li>
-</ul>
-<p>@end<br>我们先创建一个NSData，再去一条一条的分析以上的方法</p>
+<li><p>(NSData * )base64EncodedDataWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>@end<br>我们先创建一个NSData，再去一条一条的分析以上的方法</p>
 <pre>NSData *data = [@"Base64 encoding string" dataUsingEncoding:NSUTF8StringEncoding];</pre>
-
-<ul>
-<li>（1）创建一个Data（从一个Base64编码字符串使用给出的设置创建一个Data）<pre>NSData *dataFromBase64String = [[NSData alloc]initWithBase64EncodedString:base64String options:0];</pre>
+</li>
+<li><p>（1）创建一个Data（从一个Base64编码字符串使用给出的设置创建一个Data）</p>
+<pre>NSData *dataFromBase64String = [[NSData alloc]initWithBase64EncodedString:base64String options:0];</pre>
 
 
 </li>
@@ -191,13 +188,12 @@
 
 <p>先说一下代码中的<strong>key和iv</strong> 。<code>key</code>：是DES加密的公钥。而<code>iv</code>：是初始化的矢量。两者都是DES加密的关键参数。这个是必须要和Android、后台有个统一的。</p>
 <p>我们可以看出OC使用的是<code>kCCOptionPKCS7Padding</code>对齐方式。而java中很明确的指出使用的是<code>PKCS5Padding</code>。接下来我们点进去看看OC中给出的对齐选择有哪些，我直接以代码的形式展示出来：</p>
-<p><pre>@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.<br>@constant   kCCOptionECBMode        Electronic Code Book Mode.<br>                                    Default is CBC.</pre></p>
-<p>enum {<br>    /<em> options for block ciphers </em>/<br>    kCCOptionPKCS7Padding   = 0x0001,<br>    kCCOptionECBMode        = 0x0002<br>    /<em> stream ciphers currently have no options </em>/<br>};</p>
+<p><pre>@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.<br>@constant   kCCOptionECBMode        Electronic Code Book Mode.<br>                                    Default is CBC.<br>enum {<br>    /<em> options for block ciphers </em>/<br>    kCCOptionPKCS7Padding   = 0x0001,<br>    kCCOptionECBMode        = 0x0002<br>    /<em> stream ciphers currently have no options </em>/<br>};</pre></p>
 <p> OC中给出的是<code>kCCOptionECBMode</code> 和<code> kCCOptionPKCS7Padding</code>这两种选择。那么，问题现在出现了。java中的DES加密算法有很多种，例如：<code>ECB，CBC，OFB，CFB</code>等。</p>
 <p>java 和 OC的DES加密怎样才能实现一致性呢？（这也是我在项目中遇到的问题）。</p>
 <p>查阅很多资料，再加上自己的很多次测试，得出的结果如下：</p>
 <p><strong>在JAVA中使用这种方式加密：<code>DES/CBC/PKCS5Padding</code> 对应的Object-C的是 <code>kCCOptionPKCS7Padding</code>.<br>而使用<code>DES/ECB/PKCS5Padding</code> 对应的Object-C的是   <code>kCCOptionPKCS7Padding | kCCOptionECBMod</code><br>觉得似乎OC目前只支持这两种方式的加密。当然结果是已经得到验证的。</strong></p>
-<p><strong>注意：md5加密（iOS SDK中自带了CommonCrypto）出现警告⚠️ 。解决方法添加：引入函数定义的头文件</strong> :<br><code>#import &lt;CommonCrypto/CommonDigest.h&gt;</code></p>
+<p><strong>注意：md5加密（iOS SDK中自带了CommonCrypto）出现警告⚠️ 。解决方法添加：引入函数定义的头文件</strong> :<code>#import &lt;CommonCrypto/CommonDigest.h&gt;</code></p>
 <p>其他链接：</p>
 <p>《<a href="http://www.tuicool.com/articles/UJJrAj" target="_blank" rel="external">Objective C与Java之间的DES加解密实现</a>》</p>
 <p>《<a href="http://iosdevelopertips.com/core-services/encode-decode-using-base64.html" target="_blank" rel="external">iOS 7: Base64 Encode and Decode NSData and NSString Objects</a>》</p>
