@@ -190,7 +190,9 @@
 <h3 id="4、事件方法要每个界面区分开"><a href="#4、事件方法要每个界面区分开" class="headerlink" title="4、事件方法要每个界面区分开"></a>4、事件方法要每个界面区分开</h3><p>老项目中会有这种情况：在本界面 command点击一个<code>button</code>执行事件方法或者手势事件方法时，会莫名其妙的跳转到另外一个界面。<br>我们在开发时最好给不同界面<code>button</code>的<code>clicked</code>事件命名是区分开来，例如：界面名 + <code>ButtonClicked</code></p>
 <h3 id="5、对象为空现象"><a href="#5、对象为空现象" class="headerlink" title="5、对象为空现象"></a>5、对象为空现象</h3><p>在开发中如果存在<code>image</code>为空，或者必须显示的<code>String</code>为空现象，<br>记得在代码中作判断，图片可以直接设置默认图片，字符串也可以设置默认字符串<br>这一点可以学一下SDWebImage库中对于网络请求图片不存在的处理方法：</p>
 <p><pre>//给一张默认图片，先使用默认图片，当图片加载完成后再替换<br>[self.image1 sd_setImageWithURL:imagePath1 placeholderImage:[UIImage imageNamed:@”default”]];</pre>例如：</p>
-<p><pre><br>UIImage <em>image = [UIImage imageNamed:@”image”];<br>UIImage </em>defaultImage = [UIImage imageNamed:@”defaultImage”];<br>UIImageView *imageView = [[UIImageView alloc]initWithImage:image==nil ?  image:defaultImage];</pre><br>字符串当然也是类似，其实看似有些费事甚至有的显得多余的写法，会使以后的维护变得更加的如意。</p>
+<p><pre><br>UIImage *image = [UIImage imageNamed:@”image”];</pre></p>
+<p>UIImage *defaultImage = [UIImage imageNamed:@”defaultImage”];</p>
+<p>UIImageView *imageView = [[UIImageView alloc]initWithImage:image==nil ?  image:defaultImage];<br>字符串当然也是类似，其实看似有些费事甚至有的显得多余的写法，会使以后的维护变得更加的如意。</p>
 <h3 id="6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。"><a href="#6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。" class="headerlink" title="6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。"></a>6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。</h3><p>这是一个老的话题了，我之所以重新提及这个话题，原因是我从一些文章中发现了一个从来没使用过的方法，这个下面会提到，现在就让我们列举出来比较常用的方法。就以一个界面两个网络请求为例 A和B.</p>
 <p><strong>（1）两个请求互套)(也是最笨的方法)</strong><br>     具体是这样的，我在A请求成功后，再请求B。当然如果请求多的话，这个肯定是作废的。</p>
 <p><strong>（2）使用GCD中的通知</strong></p>
