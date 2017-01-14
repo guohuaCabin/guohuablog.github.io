@@ -157,8 +157,8 @@
   </header>
 
   <section class="post">
-    <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。</p>
-<h2 id="这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。"><a href="#这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。" class="headerlink" title="这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。"></a>这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。</h2><h3 id="1、关于按钮事件的重复点击问题"><a href="#1、关于按钮事件的重复点击问题" class="headerlink" title="1、关于按钮事件的重复点击问题"></a>1、关于按钮事件的重复点击问题</h3><p>我们开发中大概都经历过这样的事情，我的一个<code>button</code>被重复的快速点击，（我们开发者应该更清楚的知道这意味着什么）。那我们再深入的想一下（给这样的事件安排一个特定的环境）：例如当网络较差的情况下，再例如当<code>button</code>的执行事件较为耗时时。这时就会出现很多的问题：有时是界面出现问题（当<code>button</code>执行事件中出现调节界面<code>frame</code>的时候）；有时则会出现卡顿，更甚至会出现崩溃现象。对于这种问题，我们要提前考虑到，做好防范处理：即点击按钮事件时,添加防止重复点击功能。</p>
+    <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。<br>这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。</p>
+<h3 id="1、关于按钮事件的重复点击问题"><a href="#1、关于按钮事件的重复点击问题" class="headerlink" title="1、关于按钮事件的重复点击问题"></a>1、关于按钮事件的重复点击问题</h3><p>我们开发中大概都经历过这样的事情，我的一个<code>button</code>被重复的快速点击，（我们开发者应该更清楚的知道这意味着什么）。那我们再深入的想一下（给这样的事件安排一个特定的环境）：例如当网络较差的情况下，再例如当<code>button</code>的执行事件较为耗时时。这时就会出现很多的问题：有时是界面出现问题（当<code>button</code>执行事件中出现调节界面<code>frame</code>的时候）；有时则会出现卡顿，更甚至会出现崩溃现象。对于这种问题，我们要提前考虑到，做好防范处理：即点击按钮事件时,添加防止重复点击功能。</p>
 <p><strong>思路是</strong>：防止按钮重复点击<br>比较推荐的解决方法代码：</p>
 <pre> - (void)btnClicked:(id)sender {
     //在这里做按钮的想做的事情。
@@ -170,9 +170,9 @@
 }</pre>
 
 <p><strong>原理是</strong> ：我们每次点击按钮时，先执行取消之前的按钮点击执行事件，然后再去执行一个延迟执行方法（方法中执行的是按钮执行的事件）。</p>
-<h2 id="还有一种方法也是可以实现的：具体的看《iOS之防止用户重复点击Button（按钮）问题-》"><a href="#还有一种方法也是可以实现的：具体的看《iOS之防止用户重复点击Button（按钮）问题-》" class="headerlink" title="还有一种方法也是可以实现的：具体的看《iOS之防止用户重复点击Button（按钮）问题 》"></a>还有一种方法也是可以实现的：具体的看《<a href="http://www.cnblogs.com/LQCQ-Silent/p/6082086.html" target="_blank" rel="external">iOS之防止用户重复点击Button（按钮）问题</a> 》</h2><h3 id="2、很多界面共用一个界面时：使用枚举做类型判断"><a href="#2、很多界面共用一个界面时：使用枚举做类型判断" class="headerlink" title="2、很多界面共用一个界面时：使用枚举做类型判断"></a>2、很多界面共用一个界面时：使用枚举做类型判断</h3><p>老的项目中会出现很多这样的现象：很多界面重复使用一个界面，这样就自然而然的需要在不同的界面跳转到复用的界面时去做判断。而奇怪的地方在于：判断的依据是<code>self.title</code>。那么就会出现这样一种现象：在跳转界面后会有一大段<code>if</code>去判断字符串是否等于<code>self.title</code> 。</p>
+<p>还有一种方法也是可以实现的：具体的看《<a href="http://www.cnblogs.com/LQCQ-Silent/p/6082086.html" target="_blank" rel="external">iOS之防止用户重复点击Button（按钮）问题</a> 》</p>
+<h3 id="2、很多界面共用一个界面时：使用枚举做类型判断"><a href="#2、很多界面共用一个界面时：使用枚举做类型判断" class="headerlink" title="2、很多界面共用一个界面时：使用枚举做类型判断"></a>2、很多界面共用一个界面时：使用枚举做类型判断</h3><p>老的项目中会出现很多这样的现象：很多界面重复使用一个界面，这样就自然而然的需要在不同的界面跳转到复用的界面时去做判断。而奇怪的地方在于：判断的依据是<code>self.title</code>。那么就会出现这样一种现象：在跳转界面后会有一大段<code>if</code>去判断字符串是否等于<code>self.title</code> 。</p>
 <p><strong>如果我们做一些改变：使用枚举来做界面类型的判断，使用<code>switch case</code>语句做判断执行代码。这样会不会更优美，简洁一些。</strong></p>
-<hr>
 <h3 id="3、关于老项目中iOS10以上的情况下，导航栏中按钮不显示问题"><a href="#3、关于老项目中iOS10以上的情况下，导航栏中按钮不显示问题" class="headerlink" title="3、关于老项目中iOS10以上的情况下，导航栏中按钮不显示问题"></a>3、关于老项目中iOS10以上的情况下，导航栏中按钮不显示问题</h3><p>如果你的<code>viewController</code>都继承于基类，那么在基类中添加这样一段代码（这也是目前我发现的最省事的方法）：</p>
 <pre>- (void)viewWillAppear:(BOOL)animated { 
     [super viewWillAppear:animated];
@@ -185,12 +185,13 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }</pre>
 
-<hr>
-<h3 id="4、事件方法要每个界面区分开"><a href="#4、事件方法要每个界面区分开" class="headerlink" title="4、事件方法要每个界面区分开"></a>4、事件方法要每个界面区分开</h3><p>老项目中会有这种情况：在本界面 command点击一个<code>button</code>执行事件方法或者手势事件方法时，会莫名其妙的跳转到另外一个界面。</p>
-<h2 id="我们在开发时最好给不同界面button的clicked事件命名是区分开来，例如：界面名-ButtonClicked"><a href="#我们在开发时最好给不同界面button的clicked事件命名是区分开来，例如：界面名-ButtonClicked" class="headerlink" title="我们在开发时最好给不同界面button的clicked事件命名是区分开来，例如：界面名 + ButtonClicked"></a>我们在开发时最好给不同界面<code>button</code>的<code>clicked</code>事件命名是区分开来，例如：界面名 + <code>ButtonClicked</code></h2><h3 id="5、对象为空现象"><a href="#5、对象为空现象" class="headerlink" title="5、对象为空现象"></a>5、对象为空现象</h3><p>在开发中如果存在<code>image</code>为空，或者必须显示的<code>String</code>为空现象，<br>记得在代码中作判断，图片可以直接设置默认图片，字符串也可以设置默认字符串<br>这一点可以学一下SDWebImage库中对于网络请求图片不存在的处理方法：</p>
+
+
+<h3 id="4、事件方法要每个界面区分开"><a href="#4、事件方法要每个界面区分开" class="headerlink" title="4、事件方法要每个界面区分开"></a>4、事件方法要每个界面区分开</h3><p>老项目中会有这种情况：在本界面 command点击一个<code>button</code>执行事件方法或者手势事件方法时，会莫名其妙的跳转到另外一个界面。<br>我们在开发时最好给不同界面<code>button</code>的<code>clicked</code>事件命名是区分开来，例如：界面名 + <code>ButtonClicked</code></p>
+<h3 id="5、对象为空现象"><a href="#5、对象为空现象" class="headerlink" title="5、对象为空现象"></a>5、对象为空现象</h3><p>在开发中如果存在<code>image</code>为空，或者必须显示的<code>String</code>为空现象，<br>记得在代码中作判断，图片可以直接设置默认图片，字符串也可以设置默认字符串<br>这一点可以学一下SDWebImage库中对于网络请求图片不存在的处理方法：</p>
 <p><pre>//给一张默认图片，先使用默认图片，当图片加载完成后再替换<br>[self.image1 sd_setImageWithURL:imagePath1 placeholderImage:[UIImage imageNamed:@”default”]];</pre>例如：</p>
-<p><pre><br>UIImage <em>image = [UIImage imageNamed:@”image”];<br>UIImage </em>defaultImage = [UIImage imageNamed:@”defaultImage”];<br>UIImageView *imageView = [[UIImageView alloc]initWithImage:image==nil ?  image:defaultImage];</pre></p>
-<h2 id="字符串当然也是类似，其实看似有些费事甚至有的显得多余的写法，会使以后的维护变得更加的如意。"><a href="#字符串当然也是类似，其实看似有些费事甚至有的显得多余的写法，会使以后的维护变得更加的如意。" class="headerlink" title="字符串当然也是类似，其实看似有些费事甚至有的显得多余的写法，会使以后的维护变得更加的如意。"></a>字符串当然也是类似，其实看似有些费事甚至有的显得多余的写法，会使以后的维护变得更加的如意。</h2><p>###6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。<br>这是一个老的话题了，我之所以重新提及这个话题，原因是我从一些文章中发现了一个从来没使用过的方法，这个下面会提到，现在就让我们列举出来比较常用的方法。就以一个界面两个网络请求为例 A和B.</p>
+<p><pre><br>UIImage <em>image = [UIImage imageNamed:@”image”];<br>UIImage </em>defaultImage = [UIImage imageNamed:@”defaultImage”];<br>UIImageView *imageView = [[UIImageView alloc]initWithImage:image==nil ?  image:defaultImage];</pre><br>字符串当然也是类似，其实看似有些费事甚至有的显得多余的写法，会使以后的维护变得更加的如意。</p>
+<p>###6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。<br>这是一个老的话题了，我之所以重新提及这个话题，原因是我从一些文章中发现了一个从来没使用过的方法，这个下面会提到，现在就让我们列举出来比较常用的方法。就以一个界面两个网络请求为例 A和B.</p>
 <p><strong>（1）两个请求互套)(也是最笨的方法)</strong><br>     具体是这样的，我在A请求成功后，再请求B。当然如果请求多的话，这个肯定是作废的。</p>
 <p><strong>（2）使用GCD中的通知</strong></p>
 <p><pre>dispatch_group_t serviceGroup = dispatch_group_create();<br>// 开始第一个网络请求<br>servicedispatch_group_enter(serviceGroup);<br>[self.configService startWithCompletion:^(ConfigResponse <em>results, NSError </em>error) {<br> //请求成功后的操作<br>    configError = error;<br>    dispatch_group_leave(serviceGroup);//完成后离开分组<br>}];<br>// 开始第二个请求<br>dispatch_group_enter(serviceGroup);<br>[self.preferenceService startWithCompletion:^(PreferenceResponse <em>results, NSError </em>error) {<br> //请求成功后的操作<br>    preferenceError = error;<br>    dispatch_group_leave(serviceGroup);//完成后离开分组<br>}];<br>dispatch_group_notify(serviceGroup,dispatch_get_main_queue(),^{<br> // Assess any errors<br>     NSError *overallError = nil;<br>    if (configError || preferenceError)  {<br> // 判断时候请求有失败<br>        overallError = configError ?: preferenceError;<br>     }<br>// 最后完成后执行的block<br>    completion(overallError);<br>});<br></pre></p>
