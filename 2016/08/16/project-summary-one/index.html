@@ -330,7 +330,8 @@ NSString *urlString = [[NSString stringWithFormat:@"iosamap://navi?sourceApplica
 
  UIAlertAction * action = [UIAlertAction actionWithTitle:@"谷歌地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {                       
 
- NSString *urlString = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];                       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];          
+ NSString *urlString = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];                       
+ [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];          
 
 }];                
 
