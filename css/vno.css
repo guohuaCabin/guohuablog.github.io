@@ -6320,7 +6320,7 @@ i.fa.fa-spinner.fa-spin {
   margin: 0 auto;
 }
 .panel-main__content--fixed {
-  width: 480px;
+  width: 550px;
   transition: width 1s;
   -webkit-transition: width 1s;
 /* Safari */
@@ -6335,7 +6335,7 @@ i.fa.fa-spinner.fa-spin {
   color: #fff;
 }
 .cover-navigation {
-  margin-top: 42px;
+  margin-top: 100px;
 }
 .cover-navigation--social {
   margin-left: 30px;
