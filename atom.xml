@@ -91,7 +91,7 @@
     <link href="http:guohuaden.com/2016/08/16/project-summary-one/"/>
     <id>http:guohuaden.com/2016/08/16/project-summary-one/</id>
     <published>2016-08-16T10:28:00.000Z</published>
-    <updated>2017-01-14T03:09:22.000Z</updated>
+    <updated>2017-01-14T03:12:06.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p> 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：</p>
 <h3 id="1、自带键盘的next用法"><a href="#1、自带键盘的next用法" class="headerlink" title="1、自带键盘的next用法"></a>1、自带键盘的next用法</h3><p>这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。</p>
@@ -116,21 +116,21 @@ self.keyboardType = UIKeyboardTypeNamePhonePad;</pre>
 ### 3、iOS中图片的几种拉伸方法的使用
 
 以下是apple给出的3种方法：     
-                UIImage *image = [UIImage imageNamed:@"picture"];        
-                //iOS5之前     
-                // 左端盖宽度        
-                NSInteger leftCapWidth = image.size.width * 0.5f;       
-                NSInteger topCapHeight = image.size.height * 0.8f;        
+<pre>UIImage *image = [UIImage imageNamed:@"picture"];        
+//iOS5之前     
+// 左端盖宽度        
+NSInteger leftCapWidth = image.size.width * 0.5f;       
+NSInteger topCapHeight = image.size.height * 0.8f;        
 
-                image = [image stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];        
+image = [image stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];        
 
-                //iOS5之后       
-                UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
+//iOS5之后       
+UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
 
-                image = [image resizableImageWithCapInsets:insets];      
-                //iOS6之后        
-                UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
-                image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];    
+image = [image resizableImageWithCapInsets:insets];      
+//iOS6之后        
+UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
+image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];  </pre>  
 下面是使用的解释：   
 
 <pre>
@@ -180,18 +180,15 @@ self.keyboardType = UIKeyboardTypeNamePhonePad;</pre>
    [_phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];  
 
  }</pre>
-但如果使用下面的这种方法，则可能不允许通过审核    [
+但如果使用下面的这种方法，则可能不允许通过审核  
+<pre>[[UIApplication sharedApplication] openURL:phoneURL];</pre>
 
-<pre>[UIApplication sharedApplication] openURL:phoneURL];</pre>
-### 6、iOS 调用地图的方法
-
-app内部调用第三方app，这里有一个详细的文章《 IOS实现应用内打开第三方地图app进行导航》
-
-- app内部调用地图，需要先检测用户手机上是否已经安装地图app。
-
-我们常用的地图app有：高德、百度；国外有：谷歌（Google Map ）。当然还有苹果自带的地图，随着iOS10的发布，苹果地图这块也有很大的完善和进步。
-
-我使用Xcode模拟器实现时，会提示:
+<h3 id="6、iOS-调用地图的方法"><a href="#6、iOS-调用地图的方法" class="headerlink" title="6、iOS 调用地图的方法"></a>6、iOS 调用地图的方法</h3><p>app内部调用第三方app，这里有一个详细的文章《 IOS实现应用内打开第三方地图app进行导航》</p>
+<ul>
+<li>app内部调用地图，需要先检测用户手机上是否已经安装地图app。</li>
+</ul>
+<p>我们常用的地图app有：高德、百度；国外有：谷歌（Google Map ）。当然还有苹果自带的地图，随着iOS10的发布，苹果地图这块也有很大的完善和进步。</p>
+<p>我使用Xcode模拟器实现时，会提示:</p>
 <pre>1、canOpenURL: failed for URL: "iosamap://" error: "(null)" 。</pre> 
 
 <p><strong>原因是：模拟器上没有高德地图。</strong></p>
