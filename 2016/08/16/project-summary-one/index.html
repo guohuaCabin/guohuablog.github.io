@@ -193,10 +193,9 @@ image = [image resizableImageWithCapInsets:insets];
 //iOS6之后        
 UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
 image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch]; </pre>  
-下面是使用的解释：
 
-![pictureStretch](http://obzx0h1re.bkt.clouddn.com/pictureStretch.png)
-
+<p>下面是使用的解释：</p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/pictureStretch.png" alt="pictureStretch"></p>
 <pre>
 /**   
  *  - (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight;    
@@ -253,14 +252,14 @@ image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingMo
 </ul>
 <p>我们常用的地图app有：高德、百度；国外有：谷歌（Google Map ）。当然还有苹果自带的地图，随着iOS10的发布，苹果地图这块也有很大的完善和进步。</p>
 <p>我使用Xcode模拟器实现时，会提示:</p>
-<pre>1、canOpenURL: failed for URL: "iosamap://" error: "(null)" 。</pre> 
+<pre>1、canOpenURL: failed for URL: "iosamap://" error: "(null)" 。</pre>
 
-<p><strong>原因是：模拟器上没有高德地图。</strong></p>
-<pre>2、canOpenURL: failed for URL:"comgooglemaps://" 
-error: "This app is not allowed to query for scheme comgooglemaps"。</pre> 
+<p><strong>原因是</strong>：模拟器上没有高德地图。</p>
+<pre>
+2、canOpenURL: failed for URL:"comgooglemaps://" error: "This app is not allowed to query for scheme comgooglemaps"。</pre>
 
-<p><strong>原因是：LSApplicationQueriesSchemes 我自己马虎设成了字典类型。</strong></p>
-<p>首先说好的是iOS9以后，我们在app内部要跳转到其他软件时，需要在 <code>Info.plist</code> 中添加白名单。</p>
+<p><strong>原因是</strong>：<code>LSApplicationQueriesSchemes</code>我自己马虎设成了字典类型。</p>
+<p>首先iOS9以后，我们在app内部要跳转到其他软件时，需要在 <code>Info.plist</code> 中添加白名单。</p>
 <p>方法为：在<code>Info.plist</code>中添加 <code>key : LSApplicationQueriesSchemes </code> 类型为：<code>Array</code>。</p>
 <p>将高德、百度、谷歌的值填进去分别是：<code>iosamap</code>、<code>baidumap</code>、 <code>comgooglemaps</code></p>
 <p>图片：<br><img src="http://obzx0h1re.bkt.clouddn.com/LSApplicationQueriesSchemes.png" alt="LSApplicationQueriesSchemes"></p>
