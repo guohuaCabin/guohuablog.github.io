@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题 | 青卷三部</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题 | 青卷三部">
+    <meta name="twitter:description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题 | 青卷三部">
+    <meta property="og:description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
+
+    
+    <meta name="author" content="青卷三部">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="青卷三部" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http:guohuaden.com/2016/10/06/DES-encryption/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 青卷三部 的主页"><img src="/images/avatar.jpg" width="80" alt="青卷三部 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 青卷三部">青卷三部</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">金戈铁马，写意风流</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">我是一名iOS开发工程师，正在技术的道路上前行。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/project">项目</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Wheat-Qin" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/wheatDen" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-10-06T14:14:00.000Z" class="post-list__meta--date date">2016-10-06</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><em>我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。</em></p>
+<h3 id="1、Base64加解密"><a href="#1、Base64加解密" class="headerlink" title="1、Base64加解密"></a>1、Base64加解密</h3><p>值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解密。先看一下apple都提供了哪些方法：<br><pre>@interface NSData (NSDataBase64Encoding)</pre></p>
+<ul>
+<li><p>(nullable instancetype)initWithBase64EncodedString:(NSString *)base64String options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
+</li>
+<li><p>(NSString *)base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
+</li>
+<li><p>(nullable instancetype)initWithBase64EncodedData:(NSData *)base64Data options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
+</li>
+<li><p>(NSData *)base64EncodedDataWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);</p>
+</li>
+</ul>
+<p>@end<br>我们先创建一个NSData，再去一条一条的分析以上的方法</p>
+<pre>NSData *data = [@"Base64 encoding string" dataUsingEncoding:NSUTF8StringEncoding];</pre>
+
+<ul>
+<li>（1）创建一个Data（从一个Base64编码字符串使用给出的设置创建一个Data）<pre>NSData *dataFromBase64String = [[NSData alloc]initWithBase64EncodedString:base64String options:0];</pre>
+
+
+</li>
+</ul>
+<ul>
+<li>（2）创建一个Base64编码字符串（从接受者内容创建）<pre>NSString *base64String = [data base64EncodedStringWithOptions:0];</pre>
+
+
+</li>
+</ul>
+<ul>
+<li>（3）创建一个Data（从一个Base64、UTF-8编码的Data创建）<pre>NSData *base64AndUTFData = [base64Data initWithBase64EncodedData:base64Data options:0];</pre>
+
+
+</li>
+</ul>
+<ul>
+<li>（4）创建一个Base64、UTF-8编码的Data（从接受者内容创建）<pre>NSData *base64Data = [data base64EncodedDataWithOptions:0];</pre>
+
+
+</li>
+</ul>
+<p><strong>当然，我们最后也可以将Data转化成String类型。</strong></p>
+<pre>NSString *base64Decoded = [[NSString alloc]initWithData:dataFromBase64String encoding:NSUTF8StringEncoding];</pre>
+
+
+
+<p><em>以上是Base64加解密方法。下面我们看看DES的加解密。</em></p>
+<h3 id="2、DES加解密"><a href="#2、DES加解密" class="headerlink" title="2、DES加解密"></a>2、DES加解密</h3><p>我们都知道安卓和后台可以使用统一的代码去解决这个问题，这也是java的优势之一吧。这里我会附一段java的代码。主要是为了下面说明java和iOS端实现中需要注意的地方（也是不同点）。<br>为了使说明更方便一些，我们先看一下java的DES加密方法：</p>
+<pre>// EDS加密
+ public static String Encrypt(String originalStr) {
+   String result = null;
+   byte[] tmpOriginalStr = null;
+   try {
+       if (!Tools.isEmpty(originalStr)) {
+           tmpOriginalStr = originalStr.getBytes("utf-8");
+           SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+           DESKeySpec dks = new DESKeySpec(KEY);
+           SecretKey secretKey = keyFactory.generateSecret(dks);
+           IvParameterSpec param = new IvParameterSpec(IV);
+           Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+           cipher.init(Cipher.ENCRYPT_MODE, secretKey,param);
+           byte[] tmpEncypt = cipher.doFinal(tmpOriginalStr);
+           if (tmpEncypt != null) {
+               result = Base64.encodeToString(tmpEncypt,Base64.NO_WRAP);
+            }
+         }
+      } catch (Exception e) {
+            Log.e("Erro",e.getMessage());
+      }
+     return result;
+  }
+}
+</pre>
+
+<p>我们可以看出Java针对DES加密算法默认使用的是<code>CBC模式</code>，对齐方式采用的是:<code>PKCS5Padding</code>。</p>
+<p>而OC中的加密并不是java中的形式实现加密的，接下来我们看一看OC中实现DES加密的代码：</p>
+<pre>+(NSString *) encryptUseDES:(NSString *)plainText {
+    NSString * ciphertext = nil;
+    NSData * textData = [plainText dataUsingEncoding:NSUTF8StringEncoding];
+    NSUInteger dataLength = [textData length];
+    unsigned char buffer[1024 * 5];
+    memset(buffer, 0, sizeof(char));
+    size_t numBytesEncrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt, kCCAlgorithmDES,
+                                          kCCOptionPKCS7Padding,
+                                          [key UTF8String], kCCKeySizeDES,
+                                          [iv UTF8String],
+                                          [textData bytes], dataLength,
+                                          buffer, 1024,
+                                          &numBytesEncrypted);
+    if (cryptStatus == kCCSuccess) {
+        NSData *data = [NSData dataWithBytes:buffer length:(NSUInteger)numBytesEncrypted];
+        ciphertext = [data base64EncodedStringWithOptions:0];
+    }
+    return ciphertext;
+}
+</pre>
+
+<p>先说一下代码中的<strong>key和iv</strong> 。<code>key</code>：是DES加密的公钥。而<code>iv</code>：是初始化的矢量。两者都是DES加密的关键参数。这个是必须要和Android、后台有个统一的。</p>
+<p>我们可以看出OC使用的是<code>kCCOptionPKCS7Padding</code>对齐方式。而java中很明确的指出使用的是<code>PKCS5Padding</code>。接下来我们点进去看看OC中给出的对齐选择有哪些，我直接以代码的形式展示出来：</p>
+<p><pre>@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.<br>@constant   kCCOptionECBMode        Electronic Code Book Mode.<br>                                    Default is CBC.</pre></p>
+<p>enum {<br>    /<em> options for block ciphers </em>/<br>    kCCOptionPKCS7Padding   = 0x0001,<br>    kCCOptionECBMode        = 0x0002<br>    /<em> stream ciphers currently have no options </em>/<br>};</p>
+<p> OC中给出的是<code>kCCOptionECBMode</code> 和<code> kCCOptionPKCS7Padding</code>这两种选择。那么，问题现在出现了。java中的DES加密算法有很多种，例如：<code>ECB，CBC，OFB，CFB</code>等。</p>
+<p>java 和 OC的DES加密怎样才能实现一致性呢？（这也是我在项目中遇到的问题）。</p>
+<p>查阅很多资料，再加上自己的很多次测试，得出的结果如下：</p>
+<p><strong>在JAVA中使用这种方式加密：<code>DES/CBC/PKCS5Padding</code> 对应的Object-C的是 <code>kCCOptionPKCS7Padding</code>.<br>而使用<code>DES/ECB/PKCS5Padding</code> 对应的Object-C的是   <code>kCCOptionPKCS7Padding | kCCOptionECBMod</code><br>觉得似乎OC目前只支持这两种方式的加密。当然结果是已经得到验证的。</strong></p>
+<p><strong>注意：md5加密（iOS SDK中自带了CommonCrypto）出现警告⚠️ 。解决方法添加：引入函数定义的头文件</strong> :<br><code>#import &lt;CommonCrypto/CommonDigest.h&gt;</code></p>
+<p>其他链接：</p>
+<p>《<a href="http://www.tuicool.com/articles/UJJrAj" target="_blank" rel="external">Objective C与Java之间的DES加解密实现</a>》</p>
+<p>《<a href="http://iosdevelopertips.com/core-services/encode-decode-using-base64.html" target="_blank" rel="external">iOS 7: Base64 Encode and Decode NSData and NSString Objects</a>》</p>
+<p> 这里附上demo：<a href="https://github.com/Wheat-Qin/Base64-DES" target="_blank" rel="external">https://github.com/Wheat-Qin/Base64-DES</a></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/01/11/project-summary-two/" title="iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）">iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</a></h2>
+                <p class="excerpt">
+                
+                前言：最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。
+1、关于按钮事件的重复点击问题我们开发中
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-01-11T15:38:00.000Z" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/01/11/project-summary-two/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/16/project-summary-one/" title="iOS之项目总结－：项目中遇到的各种的问题和解决方法">iOS之项目总结－：项目中遇到的各种的问题和解决方法</a></h2>
+                <p class="excerpt">
+                
+                前言： 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：
+1、自带键盘的next用法这算是比较常用的了吧，只要我们想到登录和注
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-16T10:28:00.000Z" class="post-list__meta--date date">2016-08-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2016/08/16/project-summary-one/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
