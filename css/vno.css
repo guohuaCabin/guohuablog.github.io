@@ -6306,7 +6306,7 @@ i.fa.fa-spinner.fa-spin {
 }
 .no-js .panel-main {
   width: 30%;
-  max-width: 620px;
+  max-width: 550px;
 }
 .panel-main__inner {
   display: table-cell;
@@ -6316,7 +6316,7 @@ i.fa.fa-spinner.fa-spin {
   padding: 0 60px;
 }
 .panel-main__content {
-  max-width: 620px;
+  max-width: 550px;
   margin: 0 auto;
 }
 .panel-main__content--fixed {
