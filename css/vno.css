@@ -6234,7 +6234,7 @@ i.fa.fa-spinner.fa-spin {
   display: block;
   width: 30%;
   margin: 2em 0;
-  border-top: 10px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 .panel {
   display: table;
