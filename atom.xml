@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http:guohuaden.com/"/>
-  <updated>2017-01-14T01:56:03.000Z</updated>
+  <updated>2017-01-14T01:56:55.000Z</updated>
   <id>http:guohuaden.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http:guohuaden.com/2017/01/11/project-summary-two/"/>
     <id>http:guohuaden.com/2017/01/11/project-summary-two/</id>
     <published>2017-01-11T15:38:00.000Z</published>
-    <updated>2017-01-14T01:56:03.000Z</updated>
+    <updated>2017-01-14T01:56:55.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。</p>
 <h2 id="这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。"><a href="#这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。" class="headerlink" title="这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。"></a>这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。</h2><h3 id="1、关于按钮事件的重复点击问题"><a href="#1、关于按钮事件的重复点击问题" class="headerlink" title="1、关于按钮事件的重复点击问题"></a>1、关于按钮事件的重复点击问题</h3><p>我们开发中大概都经历过这样的事情，我的一个<code>button</code>被重复的快速点击，（我们开发者应该更清楚的知道这意味着什么）。那我们再深入的想一下（给这样的事件安排一个特定的环境）：例如当网络较差的情况下，再例如当<code>button</code>的执行事件较为耗时时。这时就会出现很多的问题：有时是界面出现问题（当<code>button</code>执行事件中出现调节界面<code>frame</code>的时候）；有时则会出现卡顿，更甚至会出现崩溃现象。对于这种问题，我们要提前考虑到，做好防范处理：即点击按钮事件时,添加防止重复点击功能。</p>
@@ -65,7 +65,6 @@
 <p><strong>（4）这个也是我上面说的无意中看到的一个方法，仅拿出来作为参考</strong></p>
 <p><pre>dispatch_async(concurrent_queue, ^{<br>     NSLog(@”—并发任务1—“);<br>});<br>dispatch_async(concurrent_queue, ^{<br>     NSLog(@”—并发任务2—“);<br>});<br>dispatch_barrier_async(concurrent_queue, ^{<br>    dispatch_async(dispatch_get_main_queue(), ^{<br>        NSLog(@”—所有并发任务结束后回到主线程刷新—“);<br>    });<br>}); </pre></p>
 <p>以上就是关于一界面多请求的不同解决方案。</p>
-<hr>
 <h3 id="7、代码规范问题"><a href="#7、代码规范问题" class="headerlink" title="7、代码规范问题"></a>7、代码规范问题</h3><ul>
 <li>为什么这个普通的话题放到最后呢，大概是因为我觉得这个很重要的问题吧，毕竟技术水平不高，还是可以提升的。但代码不规范的话，养成习惯后很难改的，我见过太多项目中使用【拼音命名、不注意驼峰命名法、define预处理指令满天飞等等的代码】这些出现在项目中就像时时刻刻在提醒你，看这样的项目是一种煎熬。</li>
 <li>其实代码规范不仅仅是公司对开发者的要求,也是开发者对自己的一个要求。因为如果统一每个人的写作规范，是一件耗时，耗材的事情。小一些的公司是做不来，中型的公司大多是不想做。而大型的公司总是花费近几个月的时间去培养员工的代码规范，这就是财大气粗吧。而且开发者本身对于技术的提升、追求等，都无形中要求自己注意代码规范问题。</li>
