@@ -91,7 +91,7 @@
     <link href="http:guohuaden.com/2016/08/16/project-summary-one/"/>
     <id>http:guohuaden.com/2016/08/16/project-summary-one/</id>
     <published>2016-08-16T10:28:00.000Z</published>
-    <updated>2017-01-14T02:57:03.000Z</updated>
+    <updated>2017-01-14T03:00:23.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p> 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：</p>
 <h3 id="1、自带键盘的next用法"><a href="#1、自带键盘的next用法" class="headerlink" title="1、自带键盘的next用法"></a>1、自带键盘的next用法</h3><p>这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。</p>
@@ -108,7 +108,8 @@ self.clearButtonMode = UITextFieldViewModeWhileEditing;
 self.autocorrectionType = UITextAutocorrectionTypeNo;       
  //再次编辑就清空      
 self.clearsOnBeginEditing = YES;       
- //设置自动缩小显示的最小字体大小      self.minimumFontSize = 15;        
+//设置自动缩小显示的最小字体大小      
+self.minimumFontSize = 15;        
 //设置键盘的样式，本人感觉这个设置对用户体验有影响。比如说我想打电话，Type为UIKeyboardTypeNumberPad,而不是其他     
 self.keyboardType = UIKeyboardTypeNamePhonePad;</pre>
 ### 3、iOS中图片的几种拉伸方法的使用
