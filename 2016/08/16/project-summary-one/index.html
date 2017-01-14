@@ -179,7 +179,7 @@ self.keyboardType = UIKeyboardTypeNamePhonePad;</pre>
 
 ### 3、iOS中图片的几种拉伸方法的使用
 
-以下是apple给出的3种方法：     
+以下是apple给出的3种方法:
 <pre>UIImage *image = [UIImage imageNamed:@"picture"];        
 //iOS5之前     
 // 左端盖宽度        
@@ -194,7 +194,7 @@ UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width
 image = [image resizableImageWithCapInsets:insets];      
 //iOS6之后        
 UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
-image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];  </pre>  
+image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch]; </pre>  
 下面是使用的解释：   
 
 <pre>
