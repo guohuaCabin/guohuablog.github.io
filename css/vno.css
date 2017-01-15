@@ -6274,6 +6274,7 @@ i.fa.fa-spinner.fa-spin {
   max-width: 500px;
 }
 .panel-cover--overlay {
+/* 背景覆盖物 */
   display: block;
   position: absolute;
   z-index: 0;
@@ -6292,12 +6293,14 @@ i.fa.fa-spinner.fa-spin {
   margin: 0 30px;
 }
 .panel-cover__divider {
+/*分割线 */
   width: 50%;
   margin: 20px auto;
   border-top: 1px solid rgba(255,255,255,0.14);
 }
 .panel-cover__divider--secondary {
-  width: 15%;
+/*第二道分割线 */
+  width: 50%;
 }
 .panel-main {
   display: table;
