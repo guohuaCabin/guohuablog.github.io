@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>青卷三部 | 金戈铁马，写意风流</title>
+    <title>SVN提交错误：&quot;XXX&quot; is scheduled for addition, but is missing | 青卷三部</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="青卷三部 | 金戈铁马，写意风流">
+    <meta name="twitter:title" content="SVN提交错误：&quot;XXX&quot; is scheduled for addition, but is missing | 青卷三部">
     <meta name="twitter:description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="青卷三部 | 金戈铁马，写意风流">
+    <meta property="og:title" content="SVN提交错误：&quot;XXX&quot; is scheduled for addition, but is missing | 青卷三部">
     <meta property="og:description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="青卷三部" href="/atom.xml">
     
 
-    <link rel="canonical" href="http:guohuaden.com"/>
+    <link rel="canonical" href="http:guohuaden.com/2016/12/15/SVN-error/"/>
 
     
       
@@ -141,63 +141,72 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/12/15/SVN-error/" title="link to post.title">SVN提交错误：&quot;XXX&quot; is scheduled for addition, but is missing</a></h2>
-      <p class="excerpt">
-    
-      前言：最近在维护老项目，所以出现了很多以前没遇到过的问题。也算见识一番吧。目前所在的公司使用SVN作为版本控制器，所以接下来这个问题也是就关于SVN的。
-正文：今天使用SVN提交项目时，出现了这样的提示：“XXX” is scheduled for addition, but is missing。（无关紧要的东西用XXX代替）。看报错说明是这样的：“XXX”已经被列为添加状态，但我们提交时却缺少
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-12-15T03:18:00.000Z" class="post-list__meta--date date">2016-12-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-12-15T03:18:00.000Z" class="post-list__meta--date date">2016-12-15</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
   <a class="tag-link" href="/tags/SVN/">SVN</a>
-</span><a class="btn-border-small" href="/2016/12/15/SVN-error/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">SVN提交错误：&quot;XXX&quot; is scheduled for addition, but is missing</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近在维护老项目，所以出现了很多以前没遇到过的问题。也算见识一番吧。<br>目前所在的公司使用SVN作为版本控制器，所以接下来这个问题也是就关于SVN的。</p>
+<h3 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h3><p>今天使用SVN提交项目时，出现了这样的提示：<pre><code>“XXX” is scheduled for addition, but is missing。（无关紧要的东西用XXX代替）。</code></pre><br>看报错说明是这样的：<code>“XXX”已经被列为添加状态，但我们提交时却缺少”XXX”这个。</code></p>
+<h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><p>之前用SVN提交过的文件/文件夹，被标记为”addition”状态，等待被加入到仓库。虽然你把这个文件删除了，SVN提交的时候还是会尝试提交这个文件，所以就会提示：<code>“but is missing”。</code><br>当然删除这个东西，就是因为它多余，不然也不会多此一举。现在出现这种错误，我们不可能再去添加上去，所以解决方法只能从SVN上着手了，首先想到的就是更新SVN配置文件。<br>我的”XXX”是这样的：<pre><code> /Users/guohua/Desktop/项目/项目名字XXX/idealservice/idealservice/Classes/External/SDWebImage/FLAnimatedImage </code></pre>缺少的文件夹是：<code>FLAnimatedImage  。</code><br>思路是对的，那就看解决方法吧：<br><code>命令行：svn revert  将”XXX”  revert（恢复） 到它的上级目录</code><br>具体这样：<pre><code><br>svn revert  /Users/guohua/Desktop/项目/项目名字XXX/idealservice/idealservice/Classes/External/SDWebImage –depth infinity</code></pre></p>
+<p>如果你SVN提示缺少<code>XXX.png</code><br>可以直接复原到这个图片位置：<pre><code>svn revert  /Users/guohua/Desktop/项目/项目名字XXX/…/XXX.png </code></pre></p>
+<p>下面我们去提交，就没有这种报错提示了。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/06/DES-encryption/" title="link to post.title">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</a></h2>
-      <p class="excerpt">
-    
-      前言我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。
-1、Base64加解密值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-10-06T14:14:00.000Z" class="post-list__meta--date date">2016-10-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/01/11/project-summary-two/" title="iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）">iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</a></h2>
+                <p class="excerpt">
+                
+                前言：最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。
+1、关于按钮事件的重复点击问题我们开发中
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-01-11T15:38:00.000Z" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/01/11/project-summary-two/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/10/06/DES-encryption/" title="Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</a></h2>
+                <p class="excerpt">
+                
+                前言我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。
+1、Base64加解密值得一提
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-10-06T14:14:00.000Z" class="post-list__meta--date date">2016-10-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
 </span><a class="btn-border-small" href="/2016/10/06/DES-encryption/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/16/project-summary-one/" title="link to post.title">iOS之项目总结－：项目中遇到的各种的问题和解决方法</a></h2>
-      <p class="excerpt">
-    
-      前言： 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：
-1、自带键盘的next用法这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-16T10:28:00.000Z" class="post-list__meta--date date">2016-08-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2016/08/16/project-summary-one/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-
-</div>
-
+</section>
 
             
             <br><footer class="footer">

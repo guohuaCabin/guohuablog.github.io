@@ -87,6 +87,31 @@
   </entry>
   
   <entry>
+    <title>SVN提交错误：&quot;XXX&quot; is scheduled for addition, but is missing</title>
+    <link href="http:guohuaden.com/2016/12/15/SVN-error/"/>
+    <id>http:guohuaden.com/2016/12/15/SVN-error/</id>
+    <published>2016-12-15T03:18:00.000Z</published>
+    <updated>2017-01-15T07:11:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近在维护老项目，所以出现了很多以前没遇到过的问题。也算见识一番吧。<br>目前所在的公司使用SVN作为版本控制器，所以接下来这个问题也是就关于SVN的。</p>
+<h3 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h3><p>今天使用SVN提交项目时，出现了这样的提示：<pre><code>“XXX” is scheduled for addition, but is missing。（无关紧要的东西用XXX代替）。</code></pre><br>看报错说明是这样的：<code>“XXX”已经被列为添加状态，但我们提交时却缺少”XXX”这个。</code></p>
+<h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><p>之前用SVN提交过的文件/文件夹，被标记为”addition”状态，等待被加入到仓库。虽然你把这个文件删除了，SVN提交的时候还是会尝试提交这个文件，所以就会提示：<code>“but is missing”。</code><br>当然删除这个东西，就是因为它多余，不然也不会多此一举。现在出现这种错误，我们不可能再去添加上去，所以解决方法只能从SVN上着手了，首先想到的就是更新SVN配置文件。<br>我的”XXX”是这样的：<pre><code> /Users/guohua/Desktop/项目/项目名字XXX/idealservice/idealservice/Classes/External/SDWebImage/FLAnimatedImage </code></pre>缺少的文件夹是：<code>FLAnimatedImage  。</code><br>思路是对的，那就看解决方法吧：<br><code>命令行：svn revert  将”XXX”  revert（恢复） 到它的上级目录</code><br>具体这样：<pre><code><br>svn revert  /Users/guohua/Desktop/项目/项目名字XXX/idealservice/idealservice/Classes/External/SDWebImage –depth infinity</code></pre></p>
+<p>如果你SVN提示缺少<code>XXX.png</code><br>可以直接复原到这个图片位置：<pre><code>svn revert  /Users/guohua/Desktop/项目/项目名字XXX/…/XXX.png </code></pre></p>
+<p>下面我们去提交，就没有这种报错提示了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言：&quot;&gt;&lt;a href=&quot;#前言：&quot; class=&quot;headerlink&quot; title=&quot;前言：&quot;&gt;&lt;/a&gt;前言：&lt;/h3&gt;&lt;p&gt;最近在维护老项目，所以出现了很多以前没遇到过的问题。也算见识一番吧。&lt;br&gt;目前所在的公司使用SVN作为版本控制器，所以接下来这个问
+    
+    </summary>
+    
+    
+      <category term="SVN" scheme="http:guohuaden.com/tags/SVN/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</title>
     <link href="http:guohuaden.com/2016/10/06/DES-encryption/"/>
     <id>http:guohuaden.com/2016/10/06/DES-encryption/</id>
