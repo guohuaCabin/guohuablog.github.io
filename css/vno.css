@@ -6317,7 +6317,7 @@ i.fa.fa-spinner.fa-spin {
 }
 .panel-main__content {
   max-width: 620px;
-  margin: 10 auto;
+  margin: 0 auto;
 }
 .panel-main__content--fixed {
   width: 480px;
