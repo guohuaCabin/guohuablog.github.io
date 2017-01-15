@@ -6234,7 +6234,7 @@ i.fa.fa-spinner.fa-spin {
   display: block;
   width: 30%;
   margin: 2em 0;
-  border-top: 5px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 .panel {
   display: table;
@@ -6271,7 +6271,7 @@ i.fa.fa-spinner.fa-spin {
 }
 .panel-cover--collapsed {
   width: 26%;
-  max-width: 620px;
+  max-width: 500px;
 }
 .panel-cover--overlay {
   display: block;
@@ -6317,10 +6317,10 @@ i.fa.fa-spinner.fa-spin {
 }
 .panel-main__content {
   max-width: 620px;
-  margin: 30 auto;
+  margin: 0 auto;
 }
 .panel-main__content--fixed {
-  width: 620px;
+  width: 480px;
   transition: width 1s;
   -webkit-transition: width 1s;
 /* Safari */
