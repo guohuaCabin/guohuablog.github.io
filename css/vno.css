@@ -6429,7 +6429,7 @@ i.fa.fa-spinner.fa-spin {
   display: none;
   position: fixed;
   z-index: 9999;
-  top: 0;
+  top: 1110;
   right: 0;
   left: 0;
   width: 100%;
@@ -6441,7 +6441,7 @@ i.fa.fa-spinner.fa-spin {
 .btn-mobile-menu__icon,
 .btn-mobile-close__icon {
   position: relative;
-  top: 1000px;
+  top: 30px;
   color: #fff;
 }
 nav {
