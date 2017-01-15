@@ -6270,8 +6270,8 @@ i.fa.fa-spinner.fa-spin {
   background-size: cover;
 }
 .panel-cover--collapsed {
-  width: 27%;
-  max-width: 550px;
+  width: 25%;
+  max-width: 580px;
 }
 .panel-cover--overlay {
 /* 背景覆盖物 */
