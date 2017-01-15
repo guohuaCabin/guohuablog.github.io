@@ -6234,7 +6234,7 @@ i.fa.fa-spinner.fa-spin {
   display: block;
   width: 30%;
   margin: 2em 0;
-  border-top: 20px solid #ddd;
+  border-top: 5px solid #ddd;
 }
 .panel {
   display: table;
@@ -6271,7 +6271,7 @@ i.fa.fa-spinner.fa-spin {
 }
 .panel-cover--collapsed {
   width: 26%;
-  max-width: 500px;
+  max-width: 620px;
 }
 .panel-cover--overlay {
   display: block;
