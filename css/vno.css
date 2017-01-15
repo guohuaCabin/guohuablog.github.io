@@ -6308,7 +6308,7 @@ i.fa.fa-spinner.fa-spin {
   height: 100%;
 }
 .no-js .panel-main {
-  width: 50%;
+  width: 30%;
   max-width: 500px;
 }
 .panel-main__inner {
@@ -6320,7 +6320,7 @@ i.fa.fa-spinner.fa-spin {
 }
 .panel-main__content {
   max-width: 620px;
-  margin: 0 auto;
+  margin: 40 auto;
 }
 .panel-main__content--fixed {
   width: 480px;
