@@ -6338,7 +6338,8 @@ i.fa.fa-spinner.fa-spin {
   color: #fff;
 }
 .cover-navigation {
-  margin-top: 300px;
+/*大封面按钮*/
+  margin-top: 42px;
 }
 .cover-navigation--social {
   margin-left: 30px;
