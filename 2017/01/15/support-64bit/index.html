@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>青卷三部 | 金戈铁马，写意风流</title>
+    <title>关于app支持64bit | 青卷三部</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="青卷三部 | 金戈铁马，写意风流">
+    <meta name="twitter:title" content="关于app支持64bit | 青卷三部">
     <meta name="twitter:description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="青卷三部 | 金戈铁马，写意风流">
+    <meta property="og:title" content="关于app支持64bit | 青卷三部">
     <meta property="og:description" content="爱好电影、音乐和书籍，尤其喜爱许巍、李健及王小波。擅长Java，JavaScript，喜欢用NodeJs编写一些有趣的应用。关注互联网、科技、敏捷开发以及JavaNIO。">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="青卷三部" href="/atom.xml">
     
 
-    <link rel="canonical" href="http:guohuaden.com"/>
+    <link rel="canonical" href="http:guohuaden.com/2017/01/15/support-64bit/"/>
 
     
       
@@ -141,78 +141,73 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/01/15/support-64bit/" title="link to post.title">关于app支持64bit</a></h2>
-      <p class="excerpt">
-    
-      关于iOS应用，其实苹果很早就就发布消息：2015年的2月开始，提交App Store的应用必须支持64-bit。而Apple在iPhone 5s 就已经搭配64位双核苹果A7处理器。还是在15年6月，苹果App Store中所有应用更新都必须支持64bit。
-但这对于企业级应用来说，并不能限制应用去支持64bit，因为企业级应用不必提交App Store审核。但Apple又有了新的对策：在iOS
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-01-15T07:18:34.000Z" class="post-list__meta--date date">2017-01-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-01-15T07:18:34.000Z" class="post-list__meta--date date">2017-01-15</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/01/15/support-64bit/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">关于app支持64bit</h1>
+  </header>
+
+  <section class="post">
+    <p>关于iOS应用，其实苹果很早就就发布消息：2015年的2月开始，提交App Store的应用必须支持64-bit。而Apple在iPhone 5s 就已经搭配64位双核苹果A7处理器。还是在15年6月，苹果App Store中所有应用更新都必须支持64bit。</p>
+<p>但这对于企业级应用来说，并不能限制应用去支持64bit，因为企业级应用不必提交App Store审核。但Apple又有了新的对策：在iOS 10.1测试版中加入了一项提示，如果用户下载的是一个32位应用，系统会提示<code>“XXX”可能使iPhone变慢，应用开发者需要更新此应用以改进其兼容性。</code></p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/64BitPrompt.jpg" alt="提示效果图"><br>现在看来Apple这种方式，可算是最有效的方式了，因为这样会直接导致用户对一个应用的不同态度。甚至是不止降低用户量。如果是企业级用户，可以直接引起用户的强烈不满。</p>
+<p>不管怎么说，作为一个iOS开发者，既然Apple已经提出，还是要去支持64-bit。</p>
+<p>具体做法：<br><img src="http://obzx0h1re.bkt.clouddn.com/64Bit-Work.png" alt="方法如图"></p>
+<p>关于Xcode <code>“Build Setting”</code>中的<code>Architectures</code>参数问题：</p>
+<ul>
+<li><p><code>Architectures</code>：你想支持的指令集。（支持指令集是通过编译生成对应的二进制数据包实现的，如果支持的指令集数目有多个，就会编译出包含多个指令集代码的数据包，造成最终编译的包很大。）</p>
+</li>
+<li><p><code>Valid architectures</code>：即将编译的指令集。（<code>Valid architectures</code> 和 <code>Architecture</code>两个集合的交集为最终编译生成的版本）</p>
+</li>
+<li><p><code>Build Active Architecture Only</code>：是否只编译当前设备适用的指令集（如果这个参数设为YES，使用iPhone 6调试，那么最终生成的一个支持ARM64指令集的Binary。一般在DEBUG模式下设为YES，RELEASE设为NO）</p>
+</li>
+</ul>
+<p>对于支持64-bit,我们可以设置<code>Architectures</code>为 <code>Standard architectures</code>，它包括 <code>armv7、armv7s 和 arm64</code>。</p>
+<p>而是对于代码中的改变其实也就分为：<strong>数据类型和方法调用</strong> 两个部分。</p>
+<p>比如：<br><code>int -&gt; NSInteger</code></p>
+<p>以及得到数组个数的方法：<code>[dataArray count] -&gt; dataArray.count</code></p>
+<p>这是关于数据类型改变的总结：<br><img src="http://obzx0h1re.bkt.clouddn.com/64bit-Summary.png" alt="64bit-Summary"></p>
+<p>具体可以看：《<a href="https://developer.apple.com/library/content/documentation/General/Conceptual/CocoaTouch64BitGuide/Major64-BitChanges/Major64-BitChanges.html" target="_blank" rel="external">64-Bit Transition Guide for Cocoa Touch</a>》</p>
+<p>关于iOS应用支持64位的一些详情，可以看看这篇不错的文章：<br>《<a href="http://www.codeceo.com/article/ios-64-bit.html" target="_blank" rel="external">iOS应用如何实现64位的支持</a>》</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/01/11/project-summary-two/" title="link to post.title">iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</a></h2>
-      <p class="excerpt">
-    
-      前言：最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。
-1、关于按钮事件的重复点击问题我们开发中大概都经历过这样的事情，我的一个button被重复的快速点击，（我们开发者应该更清楚的知道这意味着什
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-01-11T15:38:00.000Z" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/01/11/project-summary-two/" title="iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）">iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</a></h2>
+                <p class="excerpt">
+                
+                前言：最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。
+1、关于按钮事件的重复点击问题我们开发中
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-01-11T15:38:00.000Z" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
 </span><a class="btn-border-small" href="/2017/01/11/project-summary-two/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/06/DES-encryption/" title="link to post.title">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</a></h2>
-      <p class="excerpt">
-    
-      前言我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。
-1、Base64加解密值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-10-06T14:14:00.000Z" class="post-list__meta--date date">2016-10-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2016/10/06/DES-encryption/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/16/project-summary-one/" title="link to post.title">iOS之项目总结－：项目中遇到的各种的问题和解决方法</a></h2>
-      <p class="excerpt">
-    
-      前言： 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：
-1、自带键盘的next用法这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-16T10:28:00.000Z" class="post-list__meta--date date">2016-08-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2016/08/16/project-summary-one/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-
-</div>
-
+</section>
 
             
             <br><footer class="footer">
