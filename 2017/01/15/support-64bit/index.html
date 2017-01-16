@@ -177,13 +177,13 @@
 <p>以及得到数组个数的方法：<code>[dataArray count] -&gt; dataArray.count</code></p>
 <p>这是关于数据类型改变的总结：<br><img src="http://obzx0h1re.bkt.clouddn.com/64bit-Summary.png" alt="64bit-Summary"><br>上图所说：</p>
 <ul>
-<li>不要将长整型long赋值给整型int (64-bit上会导致数据丢失)</li>
-<li>不要将指针类型pointer赋值给整型int (64-bit导致地址数据丢失)</li>
-<li>留意数值计算(掩码计算,无符号整数和有符号整数同时使用等)</li>
-<li>留意对齐方法带来的变化</li>
-<li>32-bit到64-bit之间数据转化(通过网络传递的用户数据，可能同时存在于32-bit和64-bit的环境下)</li>
-<li>重写汇编代码</li>
-<li>不要在可变参数方法和不可变参数方法之前进行强制转化</li>
+<li>避免将长整型long赋值给整型int (64-bit上会导致数据丢失)</li>
+<li>避免将指针类型pointer赋值给整型int (64-bit导致地址数据丢失)。</li>
+<li>留意数值计算，避免指针和长整型在运算上的截断问题(掩码计算,无符号整数和有符号整数同时使用等)。</li>
+<li>留意对齐方法带来的变化。</li>
+<li>32-bit到64-bit之间数据转化(通过网络传递的用户数据，可能同时存在于32-bit和64-bit的环境下)。</li>
+<li>重写汇编代码，让你的代码使用新的64-bit操作码和运行时。</li>
+<li>不要在可变参数方法和不可变参数方法之前进行强制转化。</li>
 </ul>
 <p>具体可以看：《<a href="https://developer.apple.com/library/content/documentation/General/Conceptual/CocoaTouch64BitGuide/Major64-BitChanges/Major64-BitChanges.html" target="_blank" rel="external">64-Bit Transition Guide for Cocoa Touch</a>》</p>
 <p>关于iOS应用支持64位的一些详情，可以看看这篇不错的文章：<br>《<a href="http://www.codeceo.com/article/ios-64-bit.html" target="_blank" rel="external">iOS应用如何实现64位的支持</a>》</p>
