@@ -4,9 +4,9 @@
   <subtitle>金戈铁马，写意风流</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http:guohuaden.com/"/>
+  <link href="https:guohuaden.com/"/>
   <updated>2017-01-15T09:07:30.000Z</updated>
-  <id>http:guohuaden.com/</id>
+  <id>https:guohuaden.com/</id>
   
   <author>
     <name>青卷三部</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>关于app支持64bit</title>
-    <link href="http:guohuaden.com/2017/01/15/support-64bit/"/>
-    <id>http:guohuaden.com/2017/01/15/support-64bit/</id>
+    <link href="https:guohuaden.com/2017/01/15/support-64bit/"/>
+    <id>https:guohuaden.com/2017/01/15/support-64bit/</id>
     <published>2017-01-15T07:18:34.000Z</published>
     <updated>2017-01-15T09:07:30.000Z</updated>
     
@@ -53,14 +53,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</title>
-    <link href="http:guohuaden.com/2017/01/11/project-summary-two/"/>
-    <id>http:guohuaden.com/2017/01/11/project-summary-two/</id>
+    <link href="https:guohuaden.com/2017/01/11/project-summary-two/"/>
+    <id>https:guohuaden.com/2017/01/11/project-summary-two/</id>
     <published>2017-01-11T15:38:00.000Z</published>
     <updated>2017-01-14T02:11:44.000Z</updated>
     
@@ -124,14 +124,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>SVN提交错误：&quot;XXX&quot; is scheduled for addition, but is missing</title>
-    <link href="http:guohuaden.com/2016/12/15/SVN-error/"/>
-    <id>http:guohuaden.com/2016/12/15/SVN-error/</id>
+    <link href="https:guohuaden.com/2016/12/15/SVN-error/"/>
+    <id>https:guohuaden.com/2016/12/15/SVN-error/</id>
     <published>2016-12-15T03:18:00.000Z</published>
     <updated>2017-01-15T07:14:45.000Z</updated>
     
@@ -149,14 +149,14 @@
     </summary>
     
     
-      <category term="SVN" scheme="http:guohuaden.com/tags/SVN/"/>
+      <category term="SVN" scheme="https:guohuaden.com/tags/SVN/"/>
     
   </entry>
   
   <entry>
     <title>Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</title>
-    <link href="http:guohuaden.com/2016/10/06/DES-encryption/"/>
-    <id>http:guohuaden.com/2016/10/06/DES-encryption/</id>
+    <link href="https:guohuaden.com/2016/10/06/DES-encryption/"/>
+    <id>https:guohuaden.com/2016/10/06/DES-encryption/</id>
     <published>2016-10-06T14:14:00.000Z</published>
     <updated>2017-01-14T13:07:16.000Z</updated>
     
@@ -259,14 +259,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS之项目总结－：项目中遇到的各种的问题和解决方法</title>
-    <link href="http:guohuaden.com/2016/08/16/project-summary-one/"/>
-    <id>http:guohuaden.com/2016/08/16/project-summary-one/</id>
+    <link href="https:guohuaden.com/2016/08/16/project-summary-one/"/>
+    <id>https:guohuaden.com/2016/08/16/project-summary-one/</id>
     <published>2016-08-16T10:28:00.000Z</published>
     <updated>2017-01-14T18:00:46.000Z</updated>
     
@@ -469,7 +469,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertAc
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
     
   </entry>
   
