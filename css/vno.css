@@ -6297,7 +6297,8 @@ i.fa.fa-spinner.fa-spin {
   border-top: 1px solid rgba(255,255,255,0.14);
 }
 .panel-cover__divider--secondary {
-  width: 15%;
+/*第二道分割线 */
+  width: 25%;
 }
 .panel-main {
   display: table;
@@ -6335,7 +6336,7 @@ i.fa.fa-spinner.fa-spin {
   color: #fff;
 }
 .cover-navigation {
-  margin-top: 42px;
+  margin-top: 0px;
 }
 .cover-navigation--social {
   margin-left: 30px;
