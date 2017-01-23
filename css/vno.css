@@ -6549,7 +6549,7 @@ i {
   margin-left: 0.5em;
 }
 .post-list__divider {
-  width: 40%;
+  width: 30%;
   margin: 2.2em 0 2.1em 0;
   border-top: 1px solid #ddd;
 }
@@ -6769,7 +6769,7 @@ input[type="tel"]:-ms-input-placeholder {
     width: 100%;
   }
   .cover-navigation .navigation li {
-    width: 80%;
+    width: 70%;
     margin-bottom: 0.4em;
   }
   .cover-navigation.navigation--social {
