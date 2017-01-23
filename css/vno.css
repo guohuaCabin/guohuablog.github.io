@@ -6769,7 +6769,7 @@ input[type="tel"]:-ms-input-placeholder {
     width: 100%;
   }
   .cover-navigation .navigation li {
-    width: 70%;
+    width: 80%;
     margin-bottom: 0.4em;
   }
   .cover-navigation.navigation--social {
@@ -6780,7 +6780,7 @@ input[type="tel"]:-ms-input-placeholder {
     width: 25.8%;
   }
   .content-wrapper {
-    width: 70%;
+    width: 80%;
     max-width: none;
     margin: 0 auto;
   }
