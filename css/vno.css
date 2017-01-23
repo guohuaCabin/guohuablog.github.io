@@ -6592,7 +6592,7 @@ input[type="search"],
 input[type="tel"] {
   width: 240px;
   padding: 1em 1em;
-  background: #f9f8f4;
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 3px;
   font-size: 0.9em;
