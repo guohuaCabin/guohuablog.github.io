@@ -6135,7 +6135,7 @@ pre code {
   background: #4e97d8;
   border-radius: 3px;
   text-align: center;
-  color: #00e;
+  color: #fff;
 }
 .container {
   position: relative;
@@ -6146,7 +6146,7 @@ pre code {
 .content-wrapper {
   z-index: 800;
   width: 70%;
-  margin-left: 27%;
+  margin-left: 60%;
 }
 .content-wrapper__inner {
   margin: 0 7%;
