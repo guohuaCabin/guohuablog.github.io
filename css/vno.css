@@ -6144,9 +6144,10 @@ pre code {
   margin: 0 auto;
 }
 .content-wrapper {
+/*博客内容距离左侧菜单的空白距离*/
   z-index: 800;
-  width: 70%;
-  margin-left: 60%;
+  width: 60%;
+  margin-left: 27%;
 }
 .content-wrapper__inner {
   margin: 0 7%;
