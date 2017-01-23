@@ -1,7 +1,7 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-	   v2.0 | 20110126
-	   License: none (public domain)
-	*/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 .animated {
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
@@ -6270,10 +6270,11 @@ i.fa.fa-spinner.fa-spin {
   background-size: cover;
 }
 .panel-cover--collapsed {
-  width: 24%;
-  max-width: 500px;
+  width: 25%;
+  max-width: 580px;
 }
 .panel-cover--overlay {
+/* 背景覆盖物 */
   display: block;
   position: absolute;
   z-index: 0;
@@ -6292,6 +6293,7 @@ i.fa.fa-spinner.fa-spin {
   margin: 0 30px;
 }
 .panel-cover__divider {
+/*分割线 */
   width: 50%;
   margin: 20px auto;
   border-top: 1px solid rgba(255,255,255,0.14);
@@ -6340,7 +6342,7 @@ i.fa.fa-spinner.fa-spin {
   margin-top: 0px;
 }
 .cover-navigation--social {
-  margin-left: 30px;
+  margin-left: 50px;
 }
 .cover-blue {
   background-color: rgba(37,104,163,0.1);
@@ -6439,7 +6441,7 @@ i.fa.fa-spinner.fa-spin {
 .btn-mobile-menu__icon,
 .btn-mobile-close__icon {
   position: relative;
-  top: 10px;
+  top: 0px;
   color: #fff;
 }
 nav {
@@ -6769,7 +6771,7 @@ input[type="tel"]:-ms-input-placeholder {
     width: 100%;
   }
   .cover-navigation .navigation li {
-    width: 70%;
+    width: 80%;
     margin-bottom: 0.4em;
   }
   .cover-navigation.navigation--social {
@@ -6780,7 +6782,7 @@ input[type="tel"]:-ms-input-placeholder {
     width: 25.8%;
   }
   .content-wrapper {
-    width: 50%;
+    width: 80%;
     max-width: none;
     margin: 0 auto;
   }
