@@ -6030,7 +6030,7 @@ blockquote {
   font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   font-weight: lighter;
   font-size: 1em;
-  background-color: #f9f8f4;
+  background-color: #f7f7f9;
 /*text-align: center; */
 }
 blockquote p:last-child {
@@ -6059,7 +6059,7 @@ ul {
 }
 code {
   padding: 0.1em 0.4em;
-  background: #f2f8ff;
+  background: #f9f8f4;
   border: 1px solid #edf6fd;
   border-radius: 3px;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
