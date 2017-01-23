@@ -5930,7 +5930,7 @@ table {
   table-layout: fixed;
 }
 table td:first-child {
-  width: 3.5%;
+  width: 50%;
   text-align: center;
   color: #ccc9c9;
 }
