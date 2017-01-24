@@ -6147,7 +6147,7 @@ pre code {
 /*博客内容 的布局*/
   z-index: 800;
   width: 70%;
-  background: #f9f8f4;
+/*background: #f9f8f4;*/
   margin-left: 25%;
 }
 .content-wrapper__inner {
