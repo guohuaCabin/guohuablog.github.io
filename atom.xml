@@ -164,10 +164,10 @@
   
   <entry>
     <title>iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)</title>
-    <link href="https:guohuaden.com/2016/12/14/Xcode-error-Code%20Sign%20Error/"/>
-    <id>https:guohuaden.com/2016/12/14/Xcode-error-Code Sign Error/</id>
-    <published>2016-12-14T12:01:31.000Z</published>
-    <updated>2017-02-08T02:09:41.000Z</updated>
+    <link href="https:guohuaden.com/2016/11/14/Xcode-error-Code%20Sign%20Error/"/>
+    <id>https:guohuaden.com/2016/11/14/Xcode-error-Code Sign Error/</id>
+    <published>2016-11-14T12:01:31.000Z</published>
+    <updated>2017-02-08T02:14:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>很奇怪的问题，使用真机测试没有问题。但使用模拟器测试的时候就会报这样的错误，错误类型为：<code>Code Sign Error</code></p>
 <p>错误提示是这样：<code>resource fork, Finder information, or similar detritus not allowed。</code></p>
