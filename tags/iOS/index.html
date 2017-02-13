@@ -40,12 +40,10 @@
     <link rel="canonical" href="https:guohuaden.com"/>
 
     
-      
 </head>
 
 <body class="home-template no-js">
-    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
+
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -98,18 +96,12 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/Wheat-Qin" title="wheat的GitHub主页" target="_blank">
+    <a href="https://github.com/Wheat-Qin" title="查看我的GitHub主页" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
   </li>
 
-
-<!-- jianshu -->
-  
-
-<!-- cnblogs -->
-  
 
 <!-- Stack Overflow -->
         
@@ -123,9 +115,9 @@
 <!-- Twitter -->
 
   <li class="navigation__item">
-    <a href="https://twitter.com/wheatDen" title="@wheat" target="_blank">
+    <a href="https://twitter.com/wheatDen" title="上Twitter找我" target="_blank">
       <i class='social fa fa-twitter'></i>
-      
+      <span class="label">Twitter</span>
     </a>
   </li>
 
@@ -166,7 +158,8 @@
       <p class="excerpt">
     
       前言由于之前一直在用UIWebView,所以对于WKWebView只是停留在知道，了解的状态，并未深入的去研究。前天一个项目要求支持iOS8以上，要加入一个web界面。在习惯性使用UIWebView写到一半的时候，突然想使用WKWebView去实现，所以专门花费了些时间去研究了一下WKWebView，很是喜欢。
-正文接下来纪录一下使用WKWebView的过程细节。但关于WKWebView与js互交
+正文接下来纪录一下使用WKWebView的过程细节。但关于WKWebView与js互交的部分保留意见，因为并没有深入去研究这一点。
+1、引入WebKit库Apple方面为使用WKWebV
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-02-11T02:33:52.000Z" class="post-list__meta--date date">2017-02-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -181,7 +174,7 @@
       <p class="excerpt">
     
       关于iOS应用，其实苹果很早就就发布消息：2015年的2月开始，提交App Store的应用必须支持64-bit。而Apple在iPhone 5s 就已经搭配64位双核苹果A7处理器。还是在15年6月，苹果App Store中所有应用更新都必须支持64bit。
-但这对于企业级应用来说，并不能限制应用去支持64bit，因为企业级应用不必提交App Store审核。但Apple又有了新的对策：在iOS
+但这对于企业级应用来说，并不能限制应用去支持64bit，因为企业级应用不必提交App Store审核。但Apple又有了新的对策：在iOS 10.1测试版中加入了一项提示，如果用户下载的是一个32位应用，系统会提示“XXX”可能使iPho
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-01-15T07:18:34.000Z" class="post-list__meta--date date">2017-01-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -196,7 +189,7 @@
       <p class="excerpt">
     
       前言：最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。
-1、关于按钮事件的重复点击问题我们开发中大概都经历过这样的事情，我的一个button被重复的快速点击，（我们开发者应该更清楚的知道这意味着什
+1、关于按钮事件的重复点击问题我们开发中大概都经历过这样的事情，我的一个button被重复的快速点击，（我们开发者应该更清楚的知道这意味着什么）。那我们再深入的想一下（给这样的事件安排一个特定的环境）：例如当网络较差的情况下，再例如当but
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-01-11T15:38:00.000Z" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -211,7 +204,7 @@
       <p class="excerpt">
     
       前言我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。
-1、Base64加解密值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解
+1、Base64加解密值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解密。先看一下apple都提供了哪些方法：@interface NSData (NSDataBase6
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-10-06T14:14:00.000Z" class="post-list__meta--date date">2016-10-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -227,7 +220,7 @@
     
       前言： 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：
 1、自带键盘的next用法这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。
-
+想法也就是：用户在输入用户名后，点击next跳转到下一个输入框。其实也不用想的如此复杂，在登录界面，
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-08-16T10:28:00.000Z" class="post-list__meta--date date">2016-08-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -244,18 +237,26 @@
 </div>
 
 
-            
-            <br><footer class="footer">
-    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden_qin@163.com
-    </span>
-   
-</footer>
 
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站由 <a href="/">@Longbo Ma</a> 创建,
+        使用<a href="https://github.com/lenbo-ma/hexo-theme-vno">hexo-theme-vno</a>主题,
+        修改自<a href="http://github.com/onevcat/vno" target="_blank">Vno</a>
+    </span>
+</footer>
 
         </div>
     </div>
 
-    
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
 
      
 <script>
@@ -268,22 +269,5 @@
 	ga('send', 'pageview');
 </script>
 
-    
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?f2295c9d63c754f5c36036080070110b";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-
-
-
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    
-    </script>
-    
 </body>
 </html>
