@@ -6274,7 +6274,7 @@ i.fa.fa-spinner.fa-spin {
 .panel-cover--collapsed {
 /*侧栏大小*/
   width: 26%;
-  max-width: 580px;
+  max-width: 620px;
 }
 .panel-cover--overlay {
 /* 背景覆盖物 */
@@ -6312,7 +6312,7 @@ i.fa.fa-spinner.fa-spin {
 }
 .no-js .panel-main {
   width: 26%;
-  max-width: 580px;
+  max-width: 620px;
 }
 .panel-main__inner {
   display: table-cell;
@@ -6785,7 +6785,7 @@ input[type="tel"]:-ms-input-placeholder {
     width: 26%;
   }
   .content-wrapper {
-    width: 70%;
+    width: 80%;
     max-width: none;
     margin: 0 auto;
   }
