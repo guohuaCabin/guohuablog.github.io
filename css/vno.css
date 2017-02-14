@@ -6273,7 +6273,7 @@ i.fa.fa-spinner.fa-spin {
 }
 .panel-cover--collapsed {
 /*侧栏大小*/
-  width: 26%;
+  width: 25%;
   max-width: 580px;
 }
 .panel-cover--overlay {
