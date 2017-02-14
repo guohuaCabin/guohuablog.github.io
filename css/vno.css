@@ -6274,7 +6274,7 @@ i.fa.fa-spinner.fa-spin {
 .panel-cover--collapsed {
 /*侧栏大小*/
   width: 26%;
-  max-width: 570px;
+  max-width: 500px;
 }
 .panel-cover--overlay {
 /* 背景覆盖物 */
