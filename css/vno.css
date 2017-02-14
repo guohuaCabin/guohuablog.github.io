@@ -6144,12 +6144,14 @@ pre code {
   margin: 0 auto;
 }
 .content-wrapper {
+/*博客内容 的布局*/
   z-index: 800;
   width: 70%;
-  margin-left: 27%;
+/*background: #f9f8f4;*/
+  margin-left: 26%;
 }
 .content-wrapper__inner {
-  margin: 0 7%;
+  margin: 0 2.5%;
   padding: 50px 0;
 }
 .footer {
@@ -6225,7 +6227,6 @@ i.fa.fa-spinner.fa-spin {
   margin: 0 auto;
   border-radius: 3px;
   text-align: center;
-  display: block;
 }
 .post pre {
   width: 95%;
@@ -6271,10 +6272,12 @@ i.fa.fa-spinner.fa-spin {
   background-size: cover;
 }
 .panel-cover--collapsed {
+/*侧栏大小*/
   width: 26%;
-  max-width: 500px;
+  max-width: 620px;
 }
 .panel-cover--overlay {
+/* 背景覆盖物 */
   display: block;
   position: absolute;
   z-index: 0;
@@ -6293,12 +6296,14 @@ i.fa.fa-spinner.fa-spin {
   margin: 0 30px;
 }
 .panel-cover__divider {
+/*分割线 */
   width: 50%;
   margin: 20px auto;
   border-top: 1px solid rgba(255,255,255,0.14);
 }
 .panel-cover__divider--secondary {
-  width: 15%;
+/*第二道分割线 */
+  width: 30%;
 }
 .panel-main {
   display: table;
@@ -6306,8 +6311,8 @@ i.fa.fa-spinner.fa-spin {
   height: 100%;
 }
 .no-js .panel-main {
-  width: 30%;
-  max-width: 500px;
+  width: 26%;
+  max-width: 620px;
 }
 .panel-main__inner {
   display: table-cell;
@@ -6321,7 +6326,7 @@ i.fa.fa-spinner.fa-spin {
   margin: 0 auto;
 }
 .panel-main__content--fixed {
-  width: 480px;
+  width: 500px;
   transition: width 1s;
   -webkit-transition: width 1s;
 /* Safari */
@@ -6336,10 +6341,11 @@ i.fa.fa-spinner.fa-spin {
   color: #fff;
 }
 .cover-navigation {
-  margin-top: 42px;
+/*大封面按钮*/
+  margin-top: 0px;
 }
 .cover-navigation--social {
-  margin-left: 30px;
+  margin-left: 50px;
 }
 .cover-blue {
   background-color: rgba(37,104,163,0.1);
@@ -6438,7 +6444,7 @@ i.fa.fa-spinner.fa-spin {
 .btn-mobile-menu__icon,
 .btn-mobile-close__icon {
   position: relative;
-  top: 10px;
+  top: 0px;
   color: #fff;
 }
 nav {
@@ -6776,7 +6782,7 @@ input[type="tel"]:-ms-input-placeholder {
   }
   .cover-navigation.navigation--social .navigation li {
     display: inline-block;
-    width: 25.8%;
+    width: 26%;
   }
   .content-wrapper {
     width: 80%;
@@ -6794,7 +6800,7 @@ input[type="tel"]:-ms-input-placeholder {
 }
 @media all and (max-width: 340px) {
   .panel-main__inner {
-    padding: 0 5%;
+    padding: 0 7%;
   }
   .panel-title {
     margin-bottom: 0.1em;
