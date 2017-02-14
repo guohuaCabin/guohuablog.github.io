@@ -6311,8 +6311,8 @@ i.fa.fa-spinner.fa-spin {
   height: 100%;
 }
 .no-js .panel-main {
-  width: 26%;
-  max-width: 590px;
+  width: 25%;
+  max-width: 580px;
 }
 .panel-main__inner {
   display: table-cell;
