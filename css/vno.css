@@ -6182,7 +6182,7 @@ hr {
   border: none;
 }
 .section-title__divider {
-  width: 35%;
+  width: 30%;
   margin: 2.2em 0 2.1em 0;
   border-top: 1px solid #ddd;
 }
@@ -6274,7 +6274,7 @@ i.fa.fa-spinner.fa-spin {
 .panel-cover--collapsed {
 /*侧栏大小*/
   width: 26%;
-  max-width: 100px;
+  max-width: 580px;
 }
 .panel-cover--overlay {
 /* 背景覆盖物 */
@@ -6311,8 +6311,8 @@ i.fa.fa-spinner.fa-spin {
   height: 100%;
 }
 .no-js .panel-main {
-  width: 30%;
-  max-width: 500px;
+  width: 26%;
+  max-width: 580px;
 }
 .panel-main__inner {
   display: table-cell;
