@@ -6148,7 +6148,7 @@ pre code {
   z-index: 800;
   width: 70%;
 /*background: #f9f8f4;*/
-  margin-left: 30%;
+  margin-left: 25%;
 }
 .content-wrapper__inner {
   margin: 0 7%;
@@ -6182,7 +6182,7 @@ hr {
   border: none;
 }
 .section-title__divider {
-  width: 30%;
+  width: 35%;
   margin: 2.2em 0 2.1em 0;
   border-top: 1px solid #ddd;
 }
