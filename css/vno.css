@@ -6140,13 +6140,13 @@ pre code {
 .container {
   position: relative;
   z-index: 500;
-  width: 90px;
+  width: 940px;
   margin: 0 auto;
 }
 .content-wrapper {
 /*博客内容 的布局*/
   z-index: 800;
-  width: 70%;
+  width: 90%;
 /*background: #f9f8f4;*/
   margin-left: 30%;
 }
