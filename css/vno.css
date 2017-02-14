@@ -6148,10 +6148,10 @@ pre code {
   z-index: 800;
   width: 70%;
 /*background: #f9f8f4;*/
-  margin-left: 25%;
+  margin-left: 26%;
 }
 .content-wrapper__inner {
-  margin: 0 5%;
+  margin: 0 7%;
   padding: 50px 0;
 }
 .footer {
@@ -6311,7 +6311,7 @@ i.fa.fa-spinner.fa-spin {
   height: 100%;
 }
 .no-js .panel-main {
-  width: 10%;
+  width: 26%;
   max-width: 620px;
 }
 .panel-main__inner {
