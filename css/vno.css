@@ -6182,7 +6182,7 @@ hr {
   border: none;
 }
 .section-title__divider {
-  width: 70%;
+  width: 30%;
   margin: 2.2em 0 2.1em 0;
   border-top: 1px solid #ddd;
 }
@@ -6554,7 +6554,7 @@ i {
   margin-left: 0.5em;
 }
 .post-list__divider {
-  width: 30%;
+  width: 70%;
   margin: 2.2em 0 2.1em 0;
   border-top: 1px solid #ddd;
 }
