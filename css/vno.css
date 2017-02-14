@@ -6069,7 +6069,7 @@ code {
 }
 pre {
   margin-bottom: 1.3em;
-  padding: 1em 4%;
+  padding: 1em 2.5%;
   background: #f2f8ff;
   border: 1px solid #edf6fd;
   border-radius: 3px;
@@ -6148,7 +6148,7 @@ pre code {
   z-index: 800;
   width: 70%;
 /*background: #f9f8f4;*/
-  margin-left: 25%;
+  margin-left: 20%;
 }
 .content-wrapper__inner {
   margin: 0 7%;
