@@ -167,25 +167,22 @@
   <section class="post">
     <p>之前在给项目适配64位时，看到Xcode中有这个设置，因为关系到适配问题，又比较好奇，就了解了一番。发现这个设置也有不小的作用。</p>
 <p><img src="http://obzx0h1re.bkt.clouddn.com/Build%20Active%20Architecture%20Only2.png" alt="Build Active Architecture Only2"></p>
-<p><code>Build Active Architecture Only</code>：指定是否只对当前连接设备所支持的指令集编译</p>
+<font color="#9ACD32"><code>Build Active Architecture Only</code>：指定是否只对当前连接设备所支持的指令集编译</font>
+
 <p>系统默认是：Debug设置为<code>Yes</code>，Release设置为<code>No</code>。</p>
 <p><strong>原因</strong>是：</p>
 <p>当直接把<code>Build Active Architecture Only</code> 设置为<code>Yes</code>时，可以使Debug的时候编译速度更快，因为它只编译当前的Architecture版本。</p>
 <p>而如果设置为<code>No</code>，则编译的事所有的版本。</p>
-<p><strong>注</strong>：其中提到的版本是Architecture的支持版本：<code>arm64</code>、<code>armv7</code>、<code>armv7s</code>、<code>i386</code>、<code>x86_64</code>等。</p>
+<p><strong>注</strong>：<font color="#FF7F50">    其中提到的版本是Architecture的支持版本：<code>arm64</code>、<code>armv7</code>、<code>armv7s</code>、<code>i386</code>、<code>x86_64</code>等。</font></p>
 <p>其中</p>
-<p><code>i386</code>是针对intel通用微处理器32位处理器</p>
-<p><code>x86_64</code>是针对x86架构的64位处理器</p>
-<p>模拟器32位处理器测试需要<code>i386</code>架构</p>
-<p>模拟器64位处理器测试需要<code>x86_64</code>架构</p>
-<p>真机32位处理器需要<code>armv7</code>,或者<code>armv7s</code>架构</p>
-<p>真机64位处理器需要<code>arm64</code>架构</p>
+<font color="#808000"><strong><code>i386</code>是针对intel通用微处理器32位处理器</strong><br><br><strong><code>x86_64</code>是针对x86架构的64位处理器</strong><br><br><strong>模拟器32位处理器测试需要<code>i386</code>架构</strong><br><br><strong>模拟器64位处理器测试需要<code>x86_64</code>架构</strong><br><br><strong>真机32位处理器需要<code>armv7</code>,或者<code>armv7s</code>架构</strong><br><br><strong>真机64位处理器需要<code>arm64</code>架构</strong></font>
+
 <p>所以我们一般默认Debug设置为<code>Yes</code>，Release设置为<code>No</code>。编译出的版本是向下兼容的，连接的设备的指令集匹配是由高到低（<code>arm64</code> &gt; <code>armv7s</code> &gt; <code>armv7</code>）依次匹配的。比如你设置此值为yes，用iphone4编译出来的是<code>armv7</code>版本的，iphone5也可以运行，但是<code>armv6</code>的设备就不能运行。  所以，一般Debug的时候可以选择设置为<code>Yes</code>，Release的时候要改为<code>No</code>，以便于适配不同的版本。<br><img src="http://obzx0h1re.bkt.clouddn.com/Build%20Active%20Architecture%20Only%20Picture.png" alt="    
 Build Active Architecture Only Picture"></p>
-<p>但也有直接将<code>Build Active Architecture Only</code>设置为<code>No</code>的情况<br><img src="http://obzx0h1re.bkt.clouddn.com/Build%20Active%20Architecture%20Only1.png" alt="Build Active Architecture Only1"></p>
-<p>这样做的原因是因为使用默认设置运行项目时出现错误：<code>Module ‘Alamofire’ has no member ‘request’</code><br>解决方法就是直接都设置为No。</p>
-<p><strong>问题</strong>：<br><img src="http://obzx0h1re.bkt.clouddn.com/Module%20%27Alamofire%27%20has%20no%20member%20%27request%27.png" alt="Module &#39;Alamofire&#39; has no member &#39;request&#39;"></p>
-<p><strong>方法</strong>：<br><img src="http://obzx0h1re.bkt.clouddn.com/Module%20%27Alamofire%27%20has%20no%20member%20%27request%27-answer.png" alt="Module &#39;Alamofire&#39; has no member &#39;request&#39;-answer"></p>
+<p><strong>但也有直接将<code>Build Active Architecture Only</code>设置为<code>No</code>的情况</strong><br><img src="http://obzx0h1re.bkt.clouddn.com/Build%20Active%20Architecture%20Only1.png" alt="Build Active Architecture Only1"></p>
+<p>这样做的原因是因为使用默认设置运行项目时出现错误：<font color="#FF6347"><strong><code>Module ‘Alamofire’ has no member ‘request’</code></strong></font><br>解决方法就是直接都设置为<code>No</code>。</p>
+<p><font color="#008000"><strong>问题</strong>：</font><br><img src="http://obzx0h1re.bkt.clouddn.com/Module%20%27Alamofire%27%20has%20no%20member%20%27request%27.png" alt="Module &#39;Alamofire&#39; has no member &#39;request&#39;"></p>
+<p><font color="#008000"><strong>方法</strong>：</font><br><img src="http://obzx0h1re.bkt.clouddn.com/Module%20%27Alamofire%27%20has%20no%20member%20%27request%27-answer.png" alt="Module &#39;Alamofire&#39; has no member &#39;request&#39;-answer"></p>
 <p>一些有益非浅的链接：</p>
 <p><a href="http://blog.csdn.net/lizhongfu2013/article/details/42387311" target="_blank" rel="external">iOS开发～制作同时支持armv7,armv7s,arm64,i386,x86_64的静态库.a</a></p>
 <p><a href="http://www.cnblogs.com/hikoming/p/3708659.html" target="_blank" rel="external">Xcode的Architectures、Valid Architectures和Build Active Architecture Only属性(原创)</a></p>
