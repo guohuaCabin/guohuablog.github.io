@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-02-16T08:18:35.000Z</updated>
+  <updated>2017-02-16T08:21:54.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https:guohuaden.com/2017/02/16/Build-Active-Architecture-Only-Query/"/>
     <id>https:guohuaden.com/2017/02/16/Build-Active-Architecture-Only-Query/</id>
     <published>2017-02-16T07:11:12.000Z</published>
-    <updated>2017-02-16T08:18:35.000Z</updated>
+    <updated>2017-02-16T08:21:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>之前在给项目适配64位时，看到Xcode中有这个设置，因为关系到适配问题，又比较好奇，就了解了一番。发现这个设置也有不小的作用。</p>
 <p><img src="http://obzx0h1re.bkt.clouddn.com/Build%20Active%20Architecture%20Only2.png" alt="Build Active Architecture Only2"></p>
@@ -43,6 +43,9 @@ Build Active Architecture Only Picture"></p>
 <p>这样做的原因是因为使用默认设置运行项目时出现错误：<code>Module ‘Alamofire’ has no member ‘request’</code><br>解决方法就是直接都设置为No。</p>
 <p><strong>问题</strong>：<br><img src="http://obzx0h1re.bkt.clouddn.com/Module%20%27Alamofire%27%20has%20no%20member%20%27request%27.png" alt="Module &#39;Alamofire&#39; has no member &#39;request&#39;"></p>
 <p><strong>方法</strong>：<br><img src="http://obzx0h1re.bkt.clouddn.com/Module%20%27Alamofire%27%20has%20no%20member%20%27request%27-answer.png" alt="Module &#39;Alamofire&#39; has no member &#39;request&#39;-answer"></p>
+<p>一些有益非浅的链接：</p>
+<p><a href="http://blog.csdn.net/lizhongfu2013/article/details/42387311" target="_blank" rel="external">iOS开发～制作同时支持armv7,armv7s,arm64,i386,x86_64的静态库.a</a></p>
+<p><a href="http://www.cnblogs.com/hikoming/p/3708659.html" target="_blank" rel="external">Xcode的Architectures、Valid Architectures和Build Active Architecture Only属性(原创)</a></p>
 ]]></content>
     
     <summary type="html">
