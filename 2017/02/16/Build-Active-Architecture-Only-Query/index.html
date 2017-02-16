@@ -175,7 +175,7 @@
 <p>而如果设置为<code>No</code>，则编译的事所有的版本。</p>
 <p><strong>注</strong>：<font color="#FF7F50">    其中提到的版本是Architecture的支持版本：<code>arm64</code>、<code>armv7</code>、<code>armv7s</code>、<code>i386</code>、<code>x86_64</code>等。</font></p>
 <p>其中</p>
-<font color="#808000"><strong><code>i386</code>是针对intel通用微处理器32位处理器</strong><br><br><strong><code>x86_64</code>是针对x86架构的64位处理器</strong><br><br><strong>模拟器32位处理器测试需要<code>i386</code>架构</strong><br><br><strong>模拟器64位处理器测试需要<code>x86_64</code>架构</strong><br><br><strong>真机32位处理器需要<code>armv7</code>,或者<code>armv7s</code>架构</strong><br><br><strong>真机64位处理器需要<code>arm64</code>架构</strong></font>
+<font color="#808000"><br><strong><code>i386</code>是针对intel通用微处理器32位处理器</strong><br><br><strong><code>x86_64</code>是针对x86架构的64位处理器</strong><br><br><strong>模拟器32位处理器测试需要<code>i386</code>架构</strong><br><br><strong>模拟器64位处理器测试需要<code>x86_64</code>架构</strong><br><br><strong>真机32位处理器需要<code>armv7</code>,或者<code>armv7s</code>架构</strong><br><br><strong>真机64位处理器需要<code>arm64</code>架构</strong><br><br></font>
 
 <p>所以我们一般默认Debug设置为<code>Yes</code>，Release设置为<code>No</code>。编译出的版本是向下兼容的，连接的设备的指令集匹配是由高到低（<code>arm64</code> &gt; <code>armv7s</code> &gt; <code>armv7</code>）依次匹配的。比如你设置此值为yes，用iphone4编译出来的是<code>armv7</code>版本的，iphone5也可以运行，但是<code>armv6</code>的设备就不能运行。  所以，一般Debug的时候可以选择设置为<code>Yes</code>，Release的时候要改为<code>No</code>，以便于适配不同的版本。<br><img src="http://obzx0h1re.bkt.clouddn.com/Build%20Active%20Architecture%20Only%20Picture.png" alt="    
 Build Active Architecture Only Picture"></p>
