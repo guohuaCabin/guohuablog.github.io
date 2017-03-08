@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Wheat | 晨钟一叩，万境皆空</title>
+    <title>WebView 打不开问题 (转码问题) | Wheat</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Wheat | 晨钟一叩，万境皆空">
+    <meta name="twitter:title" content="WebView 打不开问题 (转码问题) | Wheat">
     <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Wheat | 晨钟一叩，万境皆空">
+    <meta property="og:title" content="WebView 打不开问题 (转码问题) | Wheat">
     <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
     
 
-    <link rel="canonical" href="https:guohuaden.com"/>
+    <link rel="canonical" href="https:guohuaden.com/2017/02/27/WebView-ErrorOpen/"/>
 
     
       
@@ -149,98 +149,79 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/02/27/WebView-ErrorOpen/" title="link to post.title">WebView 打不开问题 (转码问题)</a></h2>
-      <p class="excerpt">
-    
-      无意中遇到一个问题，项目中使用UIWebView打不开web界面，检查过URL和代码，发现并没有问题。随考虑到一点：URL中包含汉字。
-处理如下：
-1234567891011NSString *URLString = [NSString stringWithFormat:@&amp;quot;%@id=%@&amp;amp;email=%@&amp;quot;,ProviderOrder,self.orderID,ema
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-02-27T01:56:54.000Z" class="post-list__meta--date date">2017-02-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-02-27T01:56:54.000Z" class="post-list__meta--date date">2017-02-27</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/02/27/WebView-ErrorOpen/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">WebView 打不开问题 (转码问题)</h1>
+  </header>
+
+  <section class="post">
+    <p>无意中遇到一个问题，项目中使用<code>UIWebView</code>打不开<code>web</code>界面，检查过<code>URL</code>和代码，发现并没有问题。随考虑到一点：<strong>URL中包含汉字</strong>。</p>
+<p>处理如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NSString *URLString = [NSString stringWithFormat:@&quot;%@id=%@&amp;email=%@&quot;,ProviderOrder,self.orderID,emailStr];</div><div class="line">//方法是用来进行转码的，即将汉字转码</div><div class="line">NSString *encodedString1 = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];</div><div class="line">//该方法用来进行转码的，即将汉字转码（在Xcode7中，iOS9）</div><div class="line">//NSString *encodedString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</div><div class="line">NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@&quot;%@&quot;,encodedString1]];</div><div class="line">self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];</div><div class="line">self.webView.delegate = self;</div><div class="line">NSURLRequest *request = [NSURLRequest requestWithURL:url ];</div><div class="line">[self.webView loadRequest:request];</div><div class="line">[self.view addSubview:self.webView];</div></pre></td></tr></table></figure>
+<p>上面为什么推荐使用<br><code>(NSString *)stringByAddingPercentEncodingWithAllowedCharacters:(NSCharacterSet *)allowedCharacters</code>,<br>这里是文档中给出的解释：</p>
+<p><strong>其一：</strong></p>
+<pre>
+Use -stringByAddingPercentEncodingWithAllowedCharacters: instead, 
+which always uses the recommended UTF-8 encoding, 
+and which encodes for a specific URL component or subcomponent since each URL component or subcomponent has different rules for what characters are valid.
+</pre>
+
+<p>翻译如下：</p>
+<p>使用<code>-stringByAddingPercentEncodingWithAllowedCharacters：</code>改为，<br>它总是使用推荐的<code>UTF-8</code>编码，<br>并且其对特定的URL组件或子组件进行编码，因为每个URL组件或子组件对于什么字符是有效的具有不同的规则。</p>
+<p><strong>其二：</strong></p>
+<pre>
+Returns a new string made from the receiver by replacing all characters not in the allowedCharacters set with percent encoded characters. 
+UTF-8 encoding is used to determine the correct percent encoded characters. 
+Entire URL strings cannot be percent-encoded. 
+This method is intended to percent-encode an URL component or subcomponent string, NOT the entire URL string. 
+Any characters in allowedCharacters outside of the 7-bit ASCII range are ignored.
+</pre>
+
+<p>翻译如下：</p>
+<p>通过替换不在allowedCharacters中的所有字符，使用百分比编码字符返回从接收器创建的新字符串。 UTF-8编码用于确定正确的百分比编码字符。 整个URL字符串不能进行百分号编码。 此方法旨在对URL组件或子组件字符串（而不是整个URL字符串）进行百分比编码。 将忽略7位ASCII范围之外的allowedCharacters中的任何字符。</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/02/16/Build-Active-Architecture-Only-Query/" title="link to post.title">对于Xcode中 Build Active Architecture Only 的认识</a></h2>
-      <p class="excerpt">
-    
-      之前在给项目适配64位时，看到Xcode中有这个设置，因为关系到适配问题，又比较好奇，就了解了一番。发现这个设置也有不小的作用。
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/02/16/Build-Active-Architecture-Only-Query/" title="对于Xcode中 Build Active Architecture Only 的认识">对于Xcode中 Build Active Architecture Only 的认识</a></h2>
+                <p class="excerpt">
+                
+                之前在给项目适配64位时，看到Xcode中有这个设置，因为关系到适配问题，又比较好奇，就了解了一番。发现这个设置也有不小的作用。
 
 Build Active Architecture Only：指定是否只对当前连接设备所支持的指令集编译
 
-系统默认是：Debug设置为Yes，Release设置为No。
-原因是：
-当直接把Build Active Architecture Only 设置为Yes时，
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-02-16T07:11:12.000Z" class="post-list__meta--date date">2017-02-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+系统默认是：Debug设置为Yes，Release设置为No
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-02-16T07:11:12.000Z" class="post-list__meta--date date">2017-02-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/Xcode/">Xcode</a>
 </span><a class="btn-border-small" href="/2017/02/16/Build-Active-Architecture-Only-Query/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/02/11/WKWebView/" title="link to post.title">聊一聊WKWebView</a></h2>
-      <p class="excerpt">
-    
-      前言由于之前一直在用UIWebView,所以对于WKWebView只是停留在知道，了解的状态，并未深入的去研究。前天一个项目要求支持iOS8以上，要加入一个web界面。在习惯性使用UIWebView写到一半的时候，突然想使用WKWebView去实现，所以专门花费了些时间去研究了一下WKWebView，很是喜欢。
-正文接下来纪录一下使用WKWebView的过程细节。但关于WKWebView与js互交
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-02-11T02:33:52.000Z" class="post-list__meta--date date">2017-02-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/02/11/WKWebView/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/01/15/support-64bit/" title="link to post.title">关于app支持64bit</a></h2>
-      <p class="excerpt">
-    
-      关于iOS应用，其实苹果很早就就发布消息：2015年的2月开始，提交App Store的应用必须支持64-bit。而Apple在iPhone 5s 就已经搭配64位双核苹果A7处理器。还是在15年6月，苹果App Store中所有应用更新都必须支持64bit。
-但这对于企业级应用来说，并不能限制应用去支持64bit，因为企业级应用不必提交App Store审核。但Apple又有了新的对策：在iOS
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-01-15T07:18:34.000Z" class="post-list__meta--date date">2017-01-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/01/15/support-64bit/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/01/11/project-summary-two/" title="link to post.title">iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</a></h2>
-      <p class="excerpt">
-    
-      前言：最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。
-1、关于按钮事件的重复点击问题我们开发中大概都经历过这样的事情，我的一个button被重复的快速点击，（我们开发者应该更清楚的知道这意味着什
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-01-11T15:38:00.000Z" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/01/11/project-summary-two/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-
-</div>
-
+</section>
 
             
             <br><footer class="footer">

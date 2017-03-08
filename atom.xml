@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-02-16T08:57:15.000Z</updated>
+  <updated>2017-03-08T02:23:35.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebView 打不开问题 (转码问题)</title>
+    <link href="https:guohuaden.com/2017/02/27/WebView-ErrorOpen/"/>
+    <id>https:guohuaden.com/2017/02/27/WebView-ErrorOpen/</id>
+    <published>2017-02-27T01:56:54.000Z</published>
+    <updated>2017-03-08T02:23:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>无意中遇到一个问题，项目中使用<code>UIWebView</code>打不开<code>web</code>界面，检查过<code>URL</code>和代码，发现并没有问题。随考虑到一点：<strong>URL中包含汉字</strong>。</p>
+<p>处理如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NSString *URLString = [NSString stringWithFormat:@&quot;%@id=%@&amp;email=%@&quot;,ProviderOrder,self.orderID,emailStr];</div><div class="line">//方法是用来进行转码的，即将汉字转码</div><div class="line">NSString *encodedString1 = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];</div><div class="line">//该方法用来进行转码的，即将汉字转码（在Xcode7中，iOS9）</div><div class="line">//NSString *encodedString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</div><div class="line">NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@&quot;%@&quot;,encodedString1]];</div><div class="line">self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];</div><div class="line">self.webView.delegate = self;</div><div class="line">NSURLRequest *request = [NSURLRequest requestWithURL:url ];</div><div class="line">[self.webView loadRequest:request];</div><div class="line">[self.view addSubview:self.webView];</div></pre></td></tr></table></figure>
+<p>上面为什么推荐使用<br><code>(NSString *)stringByAddingPercentEncodingWithAllowedCharacters:(NSCharacterSet *)allowedCharacters</code>,<br>这里是文档中给出的解释：</p>
+<p><strong>其一：</strong></p>
+<pre>
+Use -stringByAddingPercentEncodingWithAllowedCharacters: instead, 
+which always uses the recommended UTF-8 encoding, 
+and which encodes for a specific URL component or subcomponent since each URL component or subcomponent has different rules for what characters are valid.
+</pre>
+
+<p>翻译如下：</p>
+<p>使用<code>-stringByAddingPercentEncodingWithAllowedCharacters：</code>改为，<br>它总是使用推荐的<code>UTF-8</code>编码，<br>并且其对特定的URL组件或子组件进行编码，因为每个URL组件或子组件对于什么字符是有效的具有不同的规则。</p>
+<p><strong>其二：</strong></p>
+<pre>
+Returns a new string made from the receiver by replacing all characters not in the allowedCharacters set with percent encoded characters. 
+UTF-8 encoding is used to determine the correct percent encoded characters. 
+Entire URL strings cannot be percent-encoded. 
+This method is intended to percent-encode an URL component or subcomponent string, NOT the entire URL string. 
+Any characters in allowedCharacters outside of the 7-bit ASCII range are ignored.
+</pre>
+
+<p>翻译如下：</p>
+<p>通过替换不在allowedCharacters中的所有字符，使用百分比编码字符返回从接收器创建的新字符串。 UTF-8编码用于确定正确的百分比编码字符。 整个URL字符串不能进行百分号编码。 此方法旨在对URL组件或子组件字符串（而不是整个URL字符串）进行百分比编码。 将忽略7位ASCII范围之外的allowedCharacters中的任何字符。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;无意中遇到一个问题，项目中使用&lt;code&gt;UIWebView&lt;/code&gt;打不开&lt;code&gt;web&lt;/code&gt;界面，检查过&lt;code&gt;URL&lt;/code&gt;和代码，发现并没有问题。随考虑到一点：&lt;strong&gt;URL中包含汉字&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;处理如下：&lt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>对于Xcode中 Build Active Architecture Only 的认识</title>
