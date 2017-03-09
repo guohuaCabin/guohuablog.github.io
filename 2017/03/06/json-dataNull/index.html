@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>WebView 打不开问题 (转码问题) | Wheat</title>
+    <title>服务器返回的json数据中含有null的处理方法 | Wheat</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="WebView 打不开问题 (转码问题) | Wheat">
+    <meta name="twitter:title" content="服务器返回的json数据中含有null的处理方法 | Wheat">
     <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="WebView 打不开问题 (转码问题) | Wheat">
+    <meta property="og:title" content="服务器返回的json数据中含有null的处理方法 | Wheat">
     <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
     
 
-    <link rel="canonical" href="https:guohuaden.com/2017/02/27/WebView-ErrorOpen/"/>
+    <link rel="canonical" href="https:guohuaden.com/2017/03/06/json-dataNull/"/>
 
     
       
@@ -153,7 +153,7 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-02-27T01:56:54.000Z" class="post-list__meta--date date">2017-02-27</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+      <time datetime="2017-03-06T05:33:53.000Z" class="post-list__meta--date date">2017-03-06</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
  </span>
       <span class="page-pv">
@@ -161,34 +161,32 @@
       </span> 
    
     </div>
-    <h1 class="post-title">WebView 打不开问题 (转码问题)</h1>
+    <h1 class="post-title">服务器返回的json数据中含有null的处理方法</h1>
   </header>
 
   <section class="post">
-    <p>无意中遇到一个问题，项目中使用<code>UIWebView</code>打不开<code>web</code>界面，检查过<code>URL</code>和代码，发现并没有问题。随考虑到一点：<strong>URL中包含汉字</strong>。</p>
-<p>处理如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NSString *URLString = [NSString stringWithFormat:@&quot;%@id=%@&amp;email=%@&quot;,ProviderOrder,self.orderID,emailStr];</div><div class="line">//方法是用来进行转码的，即将汉字转码</div><div class="line">NSString *encodedString1 = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];</div><div class="line">//该方法用来进行转码的，即将汉字转码（在Xcode7中，iOS9）</div><div class="line">//NSString *encodedString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</div><div class="line">NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@&quot;%@&quot;,encodedString1]];</div><div class="line">self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];</div><div class="line">self.webView.delegate = self;</div><div class="line">NSURLRequest *request = [NSURLRequest requestWithURL:url ];</div><div class="line">[self.webView loadRequest:request];</div><div class="line">[self.view addSubview:self.webView];</div></pre></td></tr></table></figure>
-<p>上面为什么推荐使用<br><code>(NSString *)stringByAddingPercentEncodingWithAllowedCharacters:(NSCharacterSet *)allowedCharacters</code>,<br>这里是文档中给出的解释：</p>
-<p><strong>其一：</strong></p>
-<pre>
-Use -stringByAddingPercentEncodingWithAllowedCharacters: instead, 
-which always uses the recommended UTF-8 encoding, 
-and which encodes for a specific URL component or subcomponent since each URL component or subcomponent has different rules for what characters are valid.
-</pre>
-
-<p>翻译如下：</p>
-<p>使用<code>-stringByAddingPercentEncodingWithAllowedCharacters：</code>改为，<br>它总是使用推荐的<code>UTF-8</code>编码，<br>并且其对特定的URL组件或子组件进行编码，因为每个URL组件或子组件对于什么字符是有效的具有不同的规则。</p>
-<p><strong>其二：</strong></p>
-<pre>
-Returns a new string made from the receiver by replacing all characters not in the allowedCharacters set with percent encoded characters. 
-UTF-8 encoding is used to determine the correct percent encoded characters. 
-Entire URL strings cannot be percent-encoded. 
-This method is intended to percent-encode an URL component or subcomponent string, NOT the entire URL string. 
-Any characters in allowedCharacters outside of the 7-bit ASCII range are ignored.
-</pre>
-
-<p>翻译如下：</p>
-<p>通过替换不在allowedCharacters中的所有字符，使用百分比编码字符返回从接收器创建的新字符串。 UTF-8编码用于确定正确的百分比编码字符。 整个URL字符串不能进行百分号编码。 此方法旨在对URL组件或子组件字符串（而不是整个URL字符串）进行百分比编码。 将忽略7位ASCII范围之外的allowedCharacters中的任何字符。</p>
+    <p>因为有遇到过类似情况，所以就想到了一些解决方法，兵区实践了一下。这里简单的做个记录。</p>
+<p><strong>注：</strong>有看到不少的评价，有说后台责任，也有说怪移动端没有做容错处理。我这里就事论事的说下，移动端从服务器得到的数据中确实是不应该包含null的，因为这本身就是不合理的。（当然，我的就事论事是站在iOS立场上说的，这个无可厚非）。</p>
+<p>下面👇说一下想到的几种方法：</p>
+<ul>
+<li><strong>对于所有使用到的json中的对象做判断（当然这是最笨的方法）</strong></li>
+</ul>
+<pre><code>NSString *msg ;
+if ([str isKindOfClass: [NSNull class]]){
+    NSLog(@&quot;str 为空！&quot;);
+}
+//或者使用[str isEqual:[NSNull null]]
+</code></pre><p>为什么首先说这种方法呢，大抵是因为这个方法的工作量比较大吧。但有时候你是完全不能避免这种情况的，尤其是在老旧的项目中，当你看到项目中所有的解析都是KVO模式时，你就知道一个个去判断是多么让人纠结的事情了。</p>
+<ul>
+<li><strong>使用JSONModel等第三方json解析库</strong></li>
+</ul>
+<p>JSONModel有专门针对对象为null的处理，使其返回”<null>“。iOS移动端赋值为nil。</null></p>
+<ul>
+<li><strong>有一个专门针对数据为null的处理库，<code>NullSafe</code></strong></li>
+</ul>
+<p>这个库是专门处理对象为null的。只有一个<code>.m</code>文件。使用也简单，因为你只需要添加到项目中就可以了，不再需要引入头文件等其他任意操作。</p>
+<p>这里放一个我测试是使用的简单demo</p>
+<p><a href="https://github.com/Wheat-Qin/Data_null_test" target="_blank" rel="external">github:data_nullDemo</a></p>
 
   </section>
 
@@ -196,39 +194,22 @@ Any characters in allowedCharacters outside of the 7-bit ASCII range are ignored
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/03/06/json-dataNull/" title="服务器返回的json数据中含有null的处理方法">服务器返回的json数据中含有null的处理方法</a></h2>
-                <p class="excerpt">
-                
-                因为有遇到过类似情况，所以就想到了一些解决方法，兵区实践了一下。这里简单的做个记录。
-注：有看到不少的评价，有说后台责任，也有说怪移动端没有做容错处理。我这里就事论事的说下，移动端从服务器得到的数据中确实是不应该包含null的，因为这本身就是不合理的。（当然，我的就事论事是站在iOS立场上说的，这个
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-03-06T05:33:53.000Z" class="post-list__meta--date date">2017-03-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/03/06/json-dataNull/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/02/16/Build-Active-Architecture-Only-Query/" title="对于Xcode中 Build Active Architecture Only 的认识">对于Xcode中 Build Active Architecture Only 的认识</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/02/27/WebView-ErrorOpen/" title="WebView 打不开问题 (转码问题)">WebView 打不开问题 (转码问题)</a></h2>
                 <p class="excerpt">
                 
-                之前在给项目适配64位时，看到Xcode中有这个设置，因为关系到适配问题，又比较好奇，就了解了一番。发现这个设置也有不小的作用。
-
-Build Active Architecture Only：指定是否只对当前连接设备所支持的指令集编译
-
-系统默认是：Debug设置为Yes，Release设置为No
+                无意中遇到一个问题，项目中使用UIWebView打不开web界面，检查过URL和代码，发现并没有问题。随考虑到一点：URL中包含汉字。
+处理如下：
+1234567891011NSString *URLString = [NSString stringWithFormat:@&amp;quot;%@id=%@
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-02-16T07:11:12.000Z" class="post-list__meta--date date">2017-02-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
-</span><a class="btn-border-small" href="/2017/02/16/Build-Active-Architecture-Only-Query/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2017-02-27T01:56:54.000Z" class="post-list__meta--date date">2017-02-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/02/27/WebView-ErrorOpen/">继续阅读</a></div>
                        
             </div>
         
