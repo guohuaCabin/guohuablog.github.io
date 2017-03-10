@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>WebView 打不开问题 (转码问题) | Wheat</title>
+    <title>iOS之退出app(项目)的几种方法 | Wheat</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="WebView 打不开问题 (转码问题) | Wheat">
+    <meta name="twitter:title" content="iOS之退出app(项目)的几种方法 | Wheat">
     <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="WebView 打不开问题 (转码问题) | Wheat">
+    <meta property="og:title" content="iOS之退出app(项目)的几种方法 | Wheat">
     <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
     
 
-    <link rel="canonical" href="https:guohuaden.com/2017/02/27/WebView-ErrorOpen/"/>
+    <link rel="canonical" href="https:guohuaden.com/2017/03/10/Project-Logout/"/>
 
     
       
@@ -153,42 +153,94 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-02-27T01:56:54.000Z" class="post-list__meta--date date">2017-02-27</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
- </span>
+      <time datetime="2017-03-10T03:01:32.000Z" class="post-list__meta--date date">2017-03-10</time> &#8226; <span class="post-meta__tags tags">于&nbsp; </span>
       <span class="page-pv">
       &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">WebView 打不开问题 (转码问题)</h1>
+    <h1 class="post-title">iOS之退出app(项目)的几种方法</h1>
   </header>
 
   <section class="post">
-    <p>无意中遇到一个问题，项目中使用<code>UIWebView</code>打不开<code>web</code>界面，检查过<code>URL</code>和代码，发现并没有问题。随考虑到一点：<strong>URL中包含汉字</strong>。</p>
-<p>处理如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">NSString *URLString = [NSString stringWithFormat:@&quot;%@id=%@&amp;email=%@&quot;,ProviderOrder,self.orderID,emailStr];</div><div class="line">//方法是用来进行转码的，即将汉字转码</div><div class="line">NSString *encodedString1 = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];</div><div class="line">//该方法用来进行转码的，即将汉字转码（在Xcode7中，iOS9）</div><div class="line">//NSString *encodedString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</div><div class="line">NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:@&quot;%@&quot;,encodedString1]];</div><div class="line">self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];</div><div class="line">self.webView.delegate = self;</div><div class="line">NSURLRequest *request = [NSURLRequest requestWithURL:url ];</div><div class="line">[self.webView loadRequest:request];</div><div class="line">[self.view addSubview:self.webView];</div></pre></td></tr></table></figure>
-<p>上面为什么推荐使用<br><code>(NSString *)stringByAddingPercentEncodingWithAllowedCharacters:(NSCharacterSet *)allowedCharacters</code>,<br>这里是文档中给出的解释：</p>
-<p><strong>其一：</strong></p>
-<pre>
-Use -stringByAddingPercentEncodingWithAllowedCharacters: instead, 
-which always uses the recommended UTF-8 encoding, 
-and which encodes for a specific URL component or subcomponent since each URL component or subcomponent has different rules for what characters are valid.
-</pre>
+    <p>路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。</p>
+<p>今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。</p>
+<p>这里是我们在项目的AppDelegate中普遍写到的一句代码（至于扩展和丰富，我们暂不去深究）：</p>
+<ul>
+<li><p>(BOOL)application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions { </p>
+<p>  LoginViewController *loginVC = [[LoginViewController alloc] init];</p>
+</li>
+</ul>
+<p>//    UINavigationController *homeNavigationView = [[UINavigationController alloc] initWithRootViewController:loginVC];</p>
+<p>//    self.window.rootViewController = homeNavigationView;</p>
+<pre><code>self.window.rootViewController = loginVC;
 
-<p>翻译如下：</p>
-<p>使用<code>-stringByAddingPercentEncodingWithAllowedCharacters：</code>改为，<br>它总是使用推荐的<code>UTF-8</code>编码，<br>并且其对特定的URL组件或子组件进行编码，因为每个URL组件或子组件对于什么字符是有效的具有不同的规则。</p>
-<p><strong>其二：</strong></p>
-<pre>
-Returns a new string made from the receiver by replacing all characters not in the allowedCharacters set with percent encoded characters. 
-UTF-8 encoding is used to determine the correct percent encoded characters. 
-Entire URL strings cannot be percent-encoded. 
-This method is intended to percent-encode an URL component or subcomponent string, NOT the entire URL string. 
-Any characters in allowedCharacters outside of the 7-bit ASCII range are ignored.
-</pre>
 
-<p>翻译如下：</p>
-<p>通过替换不在allowedCharacters中的所有字符，使用百分比编码字符返回从接收器创建的新字符串。 UTF-8编码用于确定正确的百分比编码字符。 整个URL字符串不能进行百分号编码。 此方法旨在对URL组件或子组件字符串（而不是整个URL字符串）进行百分比编码。 将忽略7位ASCII范围之外的allowedCharacters中的任何字符。</p>
+
+return YES;
+</code></pre><p>}</p>
+<p>下面我们就围绕LoginViewController这个登录界面展开我们的讨论。我们都知道，登录的方式不同，才会导致退出的方式差异，有登录才有退出，这是因果关系。</p>
+<p>而我们的登录方式无外乎这几种：利用 Modal 形式展示控制器 ；利用导航控制器UINavigationController跳转；当然也可以更改 UIWindow 的 rootViewController。下面我们就介绍一下这几种登录方式吧。<br>1、登录退出a</p>
+<ul>
+<li>(void)login</li>
+</ul>
+<p>{</p>
+<pre><code>HomeViewController *homeVC = [[HomeViewController alloc]init];  
+
+[self presentViewController:homeVC animated:YES completion:nil];
+</code></pre><p>} </p>
+<ul>
+<li>(void)exit</li>
+</ul>
+<p>{</p>
+<pre><code>[self dismissViewControllerAnimated:YES completion:nil];
+</code></pre><p>}</p>
+<p>这是利用model形式登录和退出app的。当然登录的动画形式是多选的，你可以挑选一种喜欢的方式，你也可以自定义转场动画，这是你的自由。</p>
+<p>/<em>*<br>     UIModalTransitionStyleCoverVertical = 0,<br>     UIModalTransitionStyleFlipHorizontal <strong>TVOS_PROHIBITED,<br>     UIModalTransitionStyleCrossDissolve,<br>     UIModalTransitionStylePartialCurl NS_ENUM_AVAILABLE_IOS(3_2) </strong>TVOS_PROHIBITED,
+     </em>/</p>
+<p>这里我做了个gif动画，是关于系统自带的，可以看下：<br><img src="http://obzx0h1re.bkt.clouddn.com/%E8%BD%AC%E5%9C%BA%E5%8A%A8%E7%94%BB.gif" alt="logout_gif"></p>
+<p>2、登录退出b</p>
+<ul>
+<li>(void)login</li>
+</ul>
+<p>{</p>
+<pre><code>HomeViewController *homeVC = [[HomeViewController alloc]init];
+
+[self.navigationController pushViewController:homeVC animated:YES];
+</code></pre><p>}</p>
+<ul>
+<li>(void)exit</li>
+</ul>
+<p>{</p>
+<pre><code>[self.navigationController popViewControllerAnimated:YES];
+</code></pre><p>}</p>
+<p>这是利用导航控制器UINavigationController跳转。也是我们在项目中经常用到的一种方式，当然，登录退出也是常用这种方式的。这里就不过多去述。<br>3、更改 UIWindow 的 rootViewController</p>
+<ul>
+<li><p>(void)login{</p>
+<p>  HomeViewController *homeVC = [[HomeViewController alloc]init];</p>
+<p>  self.window.rootViewController = homeVC;</p>
+</li>
+</ul>
+<p>}</p>
+<p>这个是写在AppDelegate中的，退出时再调用该方法。<br>4、退出app程序（不推荐使用，这种方式会让用户觉得app闪退）</p>
+<ul>
+<li><p>(void)exitApplication {</p>
+<p>  UIWindow *window =  [UIApplication sharedApplication].keyWindow;</p>
+</li>
+</ul>
+<pre><code>[UIView animateWithDuration:1.0f animations:^{
+
+    window.alpha = 0;
+
+    window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+
+} completion:^(BOOL finished) {
+
+    exit(0);
+
+}];  
+</code></pre><p>}</p>
+<p> 警告：不要使用exit函数，调用exit会让用户感觉程序崩溃了，不会有按Home键返回时的平滑过渡和动画效果；另外，使用exit可能会丢失数据，因为调用exit并不会调用-applicationWillTerminate:方法和UIApplicationDelegate方法； </p>
 
   </section>
 
@@ -196,9 +248,11 @@ Any characters in allowedCharacters outside of the 7-bit ASCII range are ignored
 <section class="read-more">
            
     
+        
+        
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">更早的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2017/03/06/json-dataNull/" title="服务器返回的json数据中含有null的处理方法">服务器返回的json数据中含有null的处理方法</a></h2>
                 <p class="excerpt">
                 
@@ -209,26 +263,6 @@ Any characters in allowedCharacters outside of the 7-bit ASCII range are ignored
                 <div class="post-list__meta"><time datetime="2017-03-06T05:33:53.000Z" class="post-list__meta--date date">2017-03-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
 </span><a class="btn-border-small" href="/2017/03/06/json-dataNull/">继续阅读</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/02/16/Build-Active-Architecture-Only-Query/" title="对于Xcode中 Build Active Architecture Only 的认识">对于Xcode中 Build Active Architecture Only 的认识</a></h2>
-                <p class="excerpt">
-                
-                之前在给项目适配64位时，看到Xcode中有这个设置，因为关系到适配问题，又比较好奇，就了解了一番。发现这个设置也有不小的作用。
-
-Build Active Architecture Only：指定是否只对当前连接设备所支持的指令集编译
-
-系统默认是：Debug设置为Yes，Release设置为No
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-02-16T07:11:12.000Z" class="post-list__meta--date date">2017-02-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
-</span><a class="btn-border-small" href="/2017/02/16/Build-Active-Architecture-Only-Query/">继续阅读</a></div>
                        
             </div>
         
