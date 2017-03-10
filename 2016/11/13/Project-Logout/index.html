@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>iOS之退出app(项目)的几种方法 | Wheat</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="iOS之退出app(项目)的几种方法 | Wheat">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="iOS之退出app(项目)的几种方法 | Wheat">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    
+    <meta name="author" content="青卷三部">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https:guohuaden.com/2016/11/13/Project-Logout/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Wheat 的主页"><img src="/images/avatar.jpg" width="80" alt="Wheat logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Wheat">Wheat</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">晨钟一叩，万境皆空</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">我是一名iOS开发工程师，正在技术的道路上前行，也希望好好的走下去。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/project">项目</a></li>
+            
+              <li class="navigation__item"><a href="/lift">生活</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Wheat-Qin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/wheatDen" title="@wheat" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-11-13T03:01:32.000Z" class="post-list__meta--date date">2016-11-13</time> &#8226; <span class="post-meta__tags tags">于&nbsp; </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">iOS之退出app(项目)的几种方法</h1>
+  </header>
+
+  <section class="post">
+    <p>路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。</p>
+<p>今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。</p>
+<p>这里是我们在项目的<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>(BOOL)application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions {<br>  LoginViewController <em>loginVC = [[LoginViewController alloc] init];<br>//    UINavigationController </em>homeNavigationView = [[UINavigationController alloc] initWithRootViewController:loginVC];<br>//    self.window.rootViewController =     homeNavigationView;<br>  self.window.rootViewController = loginVC;<br>  return YES;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">下面我们就围绕`LoginViewController`这个登录界面展开我们的讨论。我们都知道，登录的方式不同，才会导致退出的方式差异，有登录才有退出，这是因果关系。</div><div class="line"></div><div class="line">而我们的登录方式无外乎这几种：利用 `Modal` 形式展示控制器 ；利用导航控制器`UINavigationController`跳转；当然也可以更改 `UIWindow` 的 `rootViewController`。下面我们就介绍一下这几种登录方式吧。</div><div class="line"></div><div class="line">&lt;font color=#228B22&gt;**1、登录退出A**&lt;/font&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>(void)login<br>{<br>  HomeViewController *homeVC = [[HomeViewController alloc]init];<br>  [self presentViewController:homeVC animated:YES completion:nil];<br>} </p>
+</li>
+<li>(void)exit<br>{<br>  [self dismissViewControllerAnimated:YES completion:nil];<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">这是利用`model`形式登录和退出app的。当然登录的动画形式是多选的，你可以挑选一种喜欢的方式，你也可以自定义转场动画，这是你的自由。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>/<em>*<br>     UIModalTransitionStyleCoverVertical = 0,<br>     UIModalTransitionStyleFlipHorizontal <strong>TVOS_PROHIBITED,<br>     UIModalTransitionStyleCrossDissolve,<br>     UIModalTransitionStylePartialCurl NS_ENUM_AVAILABLE_IOS(3_2) </strong>TVOS_PROHIBITED,
+     </em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">这里我做了个gif动画，是关于系统自带的，可以看下：</div><div class="line">![logout_gif](http://obzx0h1re.bkt.clouddn.com/%E8%BD%AC%E5%9C%BA%E5%8A%A8%E7%94%BB.gif)</div><div class="line"> </div><div class="line">&lt;font color=#228B22&gt;**2、登录退出B**&lt;/font&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>(void)login<br>{<br>  HomeViewController *homeVC = [[HomeViewController alloc]init];<br>  [self.navigationController pushViewController:homeVC animated:YES];<br>}</li>
+<li><p>(void)exit<br>{<br>  [self.navigationController popViewControllerAnimated:YES];<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">这是利用导航控制器`UINavigationController`跳转。也是我们在项目中经常用到的一种方式，当然，登录退出也是常用这种方式的。这里就不过多去述。</div><div class="line"></div><div class="line">&lt;font color=#228B22&gt;**3、更改 `UIWindow` 的 `rootViewController`**&lt;/font&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>(void)login{<br>  HomeViewController *homeVC = [[HomeViewController alloc]init];<br>  self.window.rootViewController = homeVC;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">这个是写在AppDelegate中的，退出时再调用该方法。</div><div class="line"></div><div class="line">&lt;font color=#228B22&gt;**4、退出app程序（不推荐使用，这种方式会让用户觉得app闪退）**&lt;/font&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>(void)exitApplication {<br>  UIWindow *window =  [UIApplication sharedApplication].keyWindow;<br>  [UIView animateWithDuration:1.0f animations:^{</p>
+<pre><code>window.alpha = 0;
+window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+</code></pre><p>  } completion:^(BOOL finished) {</p>
+<pre><code>exit(0);
+</code></pre><p>  }];<br>}<br><code>``
+&lt;font color=#E3170D&gt;**警告：**&lt;/font&gt;不要使用</code>exit<code>函数，调用</code>exit<code>会让用户感觉程序崩溃了，不会有按</code>Home`键返回时的平滑过渡和动画效果。</p>
+<p>另外，使用<code>exit</code>可能会丢失数据，因为调用<code>exit</code>并不会调用<code>-applicationWillTerminate:</code>方法和<code>UIApplicationDelegate</code>方法； </p>
+</li>
+</ul>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/11/14/Xcode-error-Code Sign Error/" title="iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)">iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)</a></h2>
+                <p class="excerpt">
+                
+                很奇怪的问题，使用真机测试没有问题。但使用模拟器测试的时候就会报这样的错误，错误类型为：Code Sign Error
+错误提示是这样：resource fork, Finder information, or similar detritus not allowed。
+找了很多资料，说的都是一半一
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-11-14T12:01:31.000Z" class="post-list__meta--date date">2016-11-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
+</span><a class="btn-border-small" href="/2016/11/14/Xcode-error-Code Sign Error/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/10/06/DES-encryption/" title="Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</a></h2>
+                <p class="excerpt">
+                
+                前言我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。
+1、Base64加解密值得一提
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-10-06T14:14:00.000Z" class="post-list__meta--date date">2016-10-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2016/10/06/DES-encryption/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f2295c9d63c754f5c36036080070110b";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

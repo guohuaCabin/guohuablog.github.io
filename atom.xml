@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-03-10T03:03:20.000Z</updated>
+  <updated>2017-03-10T05:49:44.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -14,104 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>iOS之退出app(项目)的几种方法</title>
-    <link href="https:guohuaden.com/2017/03/10/Project-Logout/"/>
-    <id>https:guohuaden.com/2017/03/10/Project-Logout/</id>
-    <published>2017-03-10T03:01:32.000Z</published>
-    <updated>2017-03-10T03:03:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。</p>
-<p>今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。</p>
-<p>这里是我们在项目的AppDelegate中普遍写到的一句代码（至于扩展和丰富，我们暂不去深究）：</p>
-<ul>
-<li><p>(BOOL)application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions { </p>
-<p>  LoginViewController *loginVC = [[LoginViewController alloc] init];</p>
-</li>
-</ul>
-<p>//    UINavigationController *homeNavigationView = [[UINavigationController alloc] initWithRootViewController:loginVC];</p>
-<p>//    self.window.rootViewController = homeNavigationView;</p>
-<pre><code>self.window.rootViewController = loginVC;
-
-
-
-return YES;
-</code></pre><p>}</p>
-<p>下面我们就围绕LoginViewController这个登录界面展开我们的讨论。我们都知道，登录的方式不同，才会导致退出的方式差异，有登录才有退出，这是因果关系。</p>
-<p>而我们的登录方式无外乎这几种：利用 Modal 形式展示控制器 ；利用导航控制器UINavigationController跳转；当然也可以更改 UIWindow 的 rootViewController。下面我们就介绍一下这几种登录方式吧。<br>1、登录退出a</p>
-<ul>
-<li>(void)login</li>
-</ul>
-<p>{</p>
-<pre><code>HomeViewController *homeVC = [[HomeViewController alloc]init];  
-
-[self presentViewController:homeVC animated:YES completion:nil];
-</code></pre><p>} </p>
-<ul>
-<li>(void)exit</li>
-</ul>
-<p>{</p>
-<pre><code>[self dismissViewControllerAnimated:YES completion:nil];
-</code></pre><p>}</p>
-<p>这是利用model形式登录和退出app的。当然登录的动画形式是多选的，你可以挑选一种喜欢的方式，你也可以自定义转场动画，这是你的自由。</p>
-<p>/<em>*<br>     UIModalTransitionStyleCoverVertical = 0,<br>     UIModalTransitionStyleFlipHorizontal <strong>TVOS_PROHIBITED,<br>     UIModalTransitionStyleCrossDissolve,<br>     UIModalTransitionStylePartialCurl NS_ENUM_AVAILABLE_IOS(3_2) </strong>TVOS_PROHIBITED,
-     </em>/</p>
-<p>这里我做了个gif动画，是关于系统自带的，可以看下：<br><img src="http://obzx0h1re.bkt.clouddn.com/%E8%BD%AC%E5%9C%BA%E5%8A%A8%E7%94%BB.gif" alt="logout_gif"></p>
-<p>2、登录退出b</p>
-<ul>
-<li>(void)login</li>
-</ul>
-<p>{</p>
-<pre><code>HomeViewController *homeVC = [[HomeViewController alloc]init];
-
-[self.navigationController pushViewController:homeVC animated:YES];
-</code></pre><p>}</p>
-<ul>
-<li>(void)exit</li>
-</ul>
-<p>{</p>
-<pre><code>[self.navigationController popViewControllerAnimated:YES];
-</code></pre><p>}</p>
-<p>这是利用导航控制器UINavigationController跳转。也是我们在项目中经常用到的一种方式，当然，登录退出也是常用这种方式的。这里就不过多去述。<br>3、更改 UIWindow 的 rootViewController</p>
-<ul>
-<li><p>(void)login{</p>
-<p>  HomeViewController *homeVC = [[HomeViewController alloc]init];</p>
-<p>  self.window.rootViewController = homeVC;</p>
-</li>
-</ul>
-<p>}</p>
-<p>这个是写在AppDelegate中的，退出时再调用该方法。<br>4、退出app程序（不推荐使用，这种方式会让用户觉得app闪退）</p>
-<ul>
-<li><p>(void)exitApplication {</p>
-<p>  UIWindow *window =  [UIApplication sharedApplication].keyWindow;</p>
-</li>
-</ul>
-<pre><code>[UIView animateWithDuration:1.0f animations:^{
-
-    window.alpha = 0;
-
-    window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
-
-} completion:^(BOOL finished) {
-
-    exit(0);
-
-}];  
-</code></pre><p>}</p>
-<p> 警告：不要使用exit函数，调用exit会让用户感觉程序崩溃了，不会有按Home键返回时的平滑过渡和动画效果；另外，使用exit可能会丢失数据，因为调用exit并不会调用-applicationWillTerminate:方法和UIApplicationDelegate方法； </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。&lt;/p&gt;
-&lt;p&gt;今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。&lt;/p&gt;
-&lt;p
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>服务器返回的json数据中含有null的处理方法</title>
@@ -493,6 +395,58 @@ Build Active Architecture Only Picture"></p>
     
     
       <category term="Xcode" scheme="https:guohuaden.com/tags/Xcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS之退出app(项目)的几种方法</title>
+    <link href="https:guohuaden.com/2016/11/13/Project-Logout/"/>
+    <id>https:guohuaden.com/2016/11/13/Project-Logout/</id>
+    <published>2016-11-13T03:01:32.000Z</published>
+    <updated>2017-03-10T06:03:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。</p>
+<p>今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。</p>
+<p>这里是我们在项目的<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>(BOOL)application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions {<br>  LoginViewController <em>loginVC = [[LoginViewController alloc] init];<br>//    UINavigationController </em>homeNavigationView = [[UINavigationController alloc] initWithRootViewController:loginVC];<br>//    self.window.rootViewController =     homeNavigationView;<br>  self.window.rootViewController = loginVC;<br>  return YES;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">下面我们就围绕`LoginViewController`这个登录界面展开我们的讨论。我们都知道，登录的方式不同，才会导致退出的方式差异，有登录才有退出，这是因果关系。</div><div class="line"></div><div class="line">而我们的登录方式无外乎这几种：利用 `Modal` 形式展示控制器 ；利用导航控制器`UINavigationController`跳转；当然也可以更改 `UIWindow` 的 `rootViewController`。下面我们就介绍一下这几种登录方式吧。</div><div class="line"></div><div class="line">&lt;font color=#228B22&gt;**1、登录退出A**&lt;/font&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>(void)login<br>{<br>  HomeViewController *homeVC = [[HomeViewController alloc]init];<br>  [self presentViewController:homeVC animated:YES completion:nil];<br>} </p>
+</li>
+<li>(void)exit<br>{<br>  [self dismissViewControllerAnimated:YES completion:nil];<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">这是利用`model`形式登录和退出app的。当然登录的动画形式是多选的，你可以挑选一种喜欢的方式，你也可以自定义转场动画，这是你的自由。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>/<em>*<br>     UIModalTransitionStyleCoverVertical = 0,<br>     UIModalTransitionStyleFlipHorizontal <strong>TVOS_PROHIBITED,<br>     UIModalTransitionStyleCrossDissolve,<br>     UIModalTransitionStylePartialCurl NS_ENUM_AVAILABLE_IOS(3_2) </strong>TVOS_PROHIBITED,
+     </em>/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">这里我做了个gif动画，是关于系统自带的，可以看下：</div><div class="line">![logout_gif](http://obzx0h1re.bkt.clouddn.com/%E8%BD%AC%E5%9C%BA%E5%8A%A8%E7%94%BB.gif)</div><div class="line"> </div><div class="line">&lt;font color=#228B22&gt;**2、登录退出B**&lt;/font&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>(void)login<br>{<br>  HomeViewController *homeVC = [[HomeViewController alloc]init];<br>  [self.navigationController pushViewController:homeVC animated:YES];<br>}</li>
+<li><p>(void)exit<br>{<br>  [self.navigationController popViewControllerAnimated:YES];<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">这是利用导航控制器`UINavigationController`跳转。也是我们在项目中经常用到的一种方式，当然，登录退出也是常用这种方式的。这里就不过多去述。</div><div class="line"></div><div class="line">&lt;font color=#228B22&gt;**3、更改 `UIWindow` 的 `rootViewController`**&lt;/font&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>(void)login{<br>  HomeViewController *homeVC = [[HomeViewController alloc]init];<br>  self.window.rootViewController = homeVC;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">这个是写在AppDelegate中的，退出时再调用该方法。</div><div class="line"></div><div class="line">&lt;font color=#228B22&gt;**4、退出app程序（不推荐使用，这种方式会让用户觉得app闪退）**&lt;/font&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>(void)exitApplication {<br>  UIWindow *window =  [UIApplication sharedApplication].keyWindow;<br>  [UIView animateWithDuration:1.0f animations:^{</p>
+<pre><code>window.alpha = 0;
+window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+</code></pre><p>  } completion:^(BOOL finished) {</p>
+<pre><code>exit(0);
+</code></pre><p>  }];<br>}<br><code>``
+&lt;font color=#E3170D&gt;**警告：**&lt;/font&gt;不要使用</code>exit<code>函数，调用</code>exit<code>会让用户感觉程序崩溃了，不会有按</code>Home`键返回时的平滑过渡和动画效果。</p>
+<p>另外，使用<code>exit</code>可能会丢失数据，因为调用<code>exit</code>并不会调用<code>-applicationWillTerminate:</code>方法和<code>UIApplicationDelegate</code>方法； </p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。&lt;/p&gt;
+&lt;p&gt;今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。&lt;/p&gt;
+&lt;p
+    
+    </summary>
+    
     
   </entry>
   
