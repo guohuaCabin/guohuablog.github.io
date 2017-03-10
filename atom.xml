@@ -746,7 +746,7 @@ Build Active Architecture Only Picture"></p>
     <link href="https:guohuaden.com/2016/09/23/BlurEffect/"/>
     <id>https:guohuaden.com/2016/09/23/BlurEffect/</id>
     <published>2016-09-23T02:42:42.000Z</published>
-    <updated>2017-03-10T02:59:10.000Z</updated>
+    <updated>2017-03-10T06:57:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>　前一段时间项目中用到毛玻璃效果，那时对<code>UIBlurEffect</code>类和 <code>UIVisualEffectView</code>这两个类做了一部分了解。但当时并没有去特别的深入研究，直到项目做完后，才静下心来好好研究了一番。记录一下。</p>
 <p>　　iOS8之后，Apple新添加<code>UIBlurEffect</code>类、<code>UIVibrancyEffect</code>类 和 <code>UIVisualEffectView</code>类这三种类，用途就是对背景色进行模糊化，也就是我们称的 “毛玻璃效果”。接下来就对具体的使用做一下分析吧。</p>
@@ -795,6 +795,8 @@ Build Active Architecture Only Picture"></p>
     
     </summary>
     
+    
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
     
   </entry>
   
