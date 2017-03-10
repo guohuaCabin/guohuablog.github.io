@@ -509,6 +509,100 @@ Build Active Architecture Only Picture"></p>
   </entry>
   
   <entry>
+    <title>__block和__weak的认识</title>
+    <link href="https:guohuaden.com/2016/09/27/block-and-weak/"/>
+    <id>https:guohuaden.com/2016/09/27/block-and-weak/</id>
+    <published>2016-09-27T01:45:07.000Z</published>
+    <updated>2017-03-10T02:31:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：<strong>block和</strong>weak 。也是做一下温习吧。</p>
+<p><strong>一、先说<code>weak</code>，&lt;弱引用&gt;</strong></p>
+<p>我们知道<code>weak</code>的使用，比如声明一个控件属性，就会用到<code>weak</code>。</p>
+<p>看代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic,weak)UILabel *label;</div></pre></td></tr></table></figure>
+<p>当然这并不是说声明控件就一定使用<code>weak</code>，相反的我在手动创建控件是大多数会使用<code>strong</code>。但如果你比较细心的话，你会发现我们使用xib时，使用的却是<code>weak</code>这一属性。那问题来了，我们使用<code>strong</code> 和 <code>weak</code> 的时机是何时呢？咱们接着往下看。<br>从<code>storyboard</code> 或者 <code>xib</code>上创建控件 </p>
+<p>在控件放在view<code>上的时候，已经形成了如下的引用关系,以<code>UILabel</code>为例：<code>UIViewController-&gt;UIView-&gt;subView-&gt; UILabel</code> ，然后你为这个<code>UILabel</code>声明一个<code>weak</code>属性。</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic,weak) IBOOutlet UILabel * label;</div></pre></td></tr></table></figure>
+<p>相当于<code>xib</code>对这个<code>label</code>是强引用，你声明的属性对它是弱引用。<br>手动创建控件 </p>
+<ul>
+<li><strong>a). 将控件声明成<code>strong</code></strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic,strong) UIlabel * label;</div></pre></td></tr></table></figure>
+<p>那么你在实现这个控件时只需这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_label = [[UIlabel alloc]init];</div><div class="line"></div><div class="line">[self.view addSubview:_label];</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>b). 将控件声明成weak</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic,weak) UIlabel * label;</div></pre></td></tr></table></figure>
+<p>那么你在实现这个控件时需要这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">UIlabel *label = [[UIlabel alloc]init];</div><div class="line"></div><div class="line">_label = label;</div><div class="line"></div><div class="line">[self.view addSubview:_btn];</div></pre></td></tr></table></figure>
+<p>关于<code>block</code>循环引用的问题</p>
+<p>由于<code>block</code>会复制外部的变量，所以如果不注意，就会造成循环引用。对于这种情况，需要将引用的一方变成<code>weak</code>，从而避免循环引用。</p>
+<p>看代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">BlocksViewController *blockVC  = [[BlocksViewController alloc]init];</div><div class="line"></div><div class="line">__weak ViewController *weekSelf = self;</div><div class="line"></div><div class="line">/**</div><div class="line"></div><div class="line">*  1、使用弱引用来解决block循环引用问题</div><div class="line"></div><div class="line">*</div><div class="line"></div><div class="line">*  2、block能截取自动变量，并且是不能在block块中进行修改的（除非用 __block修饰符）这里的 weekSelf.textField.text 的值是被修改了，并且没有使用 __block修饰符。原因是因为textField是全局变量，如果定义一个局部变量，比如：定义个 “text”是不能被修改的，编译器会报错，</div><div class="line"></div><div class="line">*/</div><div class="line"></div><div class="line">//block回调传值</div><div class="line"></div><div class="line">[blockVC returnValue:^(NSString *content) &#123;</div><div class="line"></div><div class="line">weekSelf.textField.text = content;</div><div class="line"></div><div class="line">// text = content;//这里会提示错失__block;</div><div class="line"></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p><strong>二、<code>strong</code>和<code>weak</code>的区别</strong></p>
+<ul>
+<li><p><strong>strong</strong>：强引用，也是我们通常说的引用，其存亡直接决定了所指向对象的存亡。如果不存在指向一个对象的引用，并且此对象不再显示在列表中，则此对象会被从内存中释放。</p>
+</li>
+<li><p><strong>weak</strong>：弱引用，不决定对象的存亡。即使一个对象被持有无数个弱引用，只要没有强引用指向它，那么还是会被清除。</p>
+</li>
+<li><p><strong>strong</strong>和<strong>copy</strong>是用来修饰强引用的属性，weak 用来修饰弱引用的属性；</p>
+</li>
+<li><p><strong>strong</strong>、<strong>weak</strong> 需要ARC支持才能使用，<strong>copy</strong>不需要ARC支持</p>
+</li>
+<li><p><strong>strong</strong>与<strong>retain</strong>功能相似；<strong>weak</strong>与<strong>assign</strong>相似，只是当对象消失后weak会自动把指针变为nil;</p>
+</li>
+</ul>
+<p><strong>三、关于<code>__block</code></strong></p>
+<p>先看一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@autoreleasepool &#123;</div><div class="line"></div><div class="line">__block NSInteger value = 0;</div><div class="line"></div><div class="line">void (^block)(void) = ^&#123;</div><div class="line"></div><div class="line">value = 1;</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line">block();</div><div class="line"></div><div class="line">NSLog(@&quot;val = %ld&quot;, value);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们现在看着可能得不出什么结论，那么，我们再看下面的代码，为了直观，我以图片的形式呈现：</p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/__blocktest.png" alt="block_picture1"></p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/__blocktest1.png" alt="block_picture2"></p>
+<p>现在对比就明显了。</p>
+<p>下面总结一下：</p>
+<ol>
+<li><p>a) __block对象在<code>block</code>中是可以被修改、重新赋值的。</p>
+</li>
+<li><p>b)__block对象在<code>block</code>中不会被<code>block</code>强引用一次，从而不会出现循环引用问题。</p>
+</li>
+<li><p>c) <code>block</code>可以访问局部变量，但是不能修改。如果修改局部变量，需要加<strong>block ,所以</strong>block 是让修改外部变量的值.</p>
+</li>
+</ol>
+<p>对于 block 外的变量引用，<code>block</code> 默认是将其复制到其数据结构中来实现访问的</p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/const-non-local-variables.png" alt="const-non-local-variables"></p>
+<p>对于用 <code>__block</code> 修饰的外部变量引用，<code>block</code> 是复制其引用地址来实现访问的</p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/mutable-non-local-variables.png" alt="mutable-non-local-variables"></p>
+<p><strong>四、<strong>block 和 </strong>weak修饰符的区别</strong></p>
+<ol>
+<li><p>__block不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。</p>
+</li>
+<li><p>__weak只能在ARC模式下使用，也只能修饰对象（NSString），不能修饰基本数据类型<code>（int）</code>。</p>
+</li>
+<li><p><strong>block对象可以在<code>block</code>中被重新赋值，</strong>weak不可以。</p>
+</li>
+</ol>
+<hr>
+<p> <strong>链接：</strong></p>
+<p><a href="http://blog.devtang.com/2013/07/28/a-look-inside-blocks/" target="_blank" rel="external">谈Objective-C block的实现</a></p>
+<p><a href="http://rypress.com/tutorials/objective-c/blocks" target="_blank" rel="external">Blocks are Objective-C`s</a></p>
+<p><a href="http://www.cnblogs.com/luoxiaofu/p/5445327.html" target="_blank" rel="external">iOS开发-由浅至深学习block</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：&lt;strong&gt;block和&lt;/strong&gt;weak 。也是做一下温习吧。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、先说&lt;code&gt;weak&lt;/code&gt;，&amp;lt;弱引用&amp;gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS之项目总结－：项目中遇到的各种的问题和解决方法</title>
     <link href="https:guohuaden.com/2016/08/16/project-summary-one/"/>
     <id>https:guohuaden.com/2016/08/16/project-summary-one/</id>
