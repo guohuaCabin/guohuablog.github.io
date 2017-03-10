@@ -175,8 +175,10 @@ if ([str isKindOfClass: [NSNull class]]){
 }
 //或者使用[str isEqual:[NSNull null]]
 </code></pre><p>为什么首先说这种方法呢，大抵是因为这个方法的工作量比较大吧。但有时候你是完全不能避免这种情况的，尤其是在老旧的项目中，当你看到项目中所有的解析都是KVO模式时，你就知道一个个去判断是多么让人纠结的事情了。</p>
+<hr>
 <p><strong>二、使用JSONModel等第三方json解析库</strong>  </p>
 <p>JSONModel有专门针对对象为null的处理，使其返回”<null>“。iOS移动端赋值为nil。</null></p>
+<hr>
 <p><strong>三、有一个专门针对数据为null的处理库，<code>NullSafe</code></strong></p>
 <p>这个库是专门处理对象为null的。只有一个<code>.m</code>文件。使用也简单，因为你只需要添加到项目中就可以了，不再需要引入头文件等其他任意操作。</p>
 <p>这里放一个我测试是使用的简单demo</p>
