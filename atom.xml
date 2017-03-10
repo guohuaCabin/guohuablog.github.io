@@ -369,6 +369,62 @@ Build Active Architecture Only Picture"></p>
   </entry>
   
   <entry>
+    <title>Swift之模糊效果（毛玻璃效果，虚化效果）的实现</title>
+    <link href="https:guohuaden.com/2016/11/29/Swift-BlurEffect/"/>
+    <id>https:guohuaden.com/2016/11/29/Swift-BlurEffect/</id>
+    <published>2016-11-29T06:19:25.000Z</published>
+    <updated>2017-03-10T06:43:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<font color="#FF8000"><strong>前言：</strong></font>
+
+<p>之前项目中有用到过<code>Objective-C</code>的的模糊效果，感觉很是不错，而且iOS8之后官方SDK也直接提供了可以实现毛玻璃效果的三个类：<code>UIBlurEffect</code>、<code>UIVibrancyEffect</code> 和 <code>UIVisualEffectView</code>。通过这三个类可以很容易的去实现毛玻璃效果。</p>
+<p>最近在熟悉<code>Swift</code>，所以今天说的是使用Swift去实现这种效果。<br>前提：</p>
+<p>我们去实现的模糊效果有个前提，就是需要背景有一个色调，这样才能使毛玻璃有一个明显的效果，这里我直接在底部添加一个背景图片吧</p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/Swift-BlurImage.png" alt="背景图片"></p>
+<p>我们就在这张背景图片上去实现模糊效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//MARK: ******* 创建背景图片 *************</div><div class="line">func createBackgroundImageView() &#123;</div><div class="line">    self.imageView1 = UIImageView(frame: self.view.bounds)</div><div class="line">    imageView1.layer.borderColor     = UIColor.black.cgColor</div><div class="line">    imageView1.layer.borderWidth     = 2 </div><div class="line">    imageView1.layer.cornerRadius    = 5</div><div class="line">    imageView1.clipsToBounds         = true</div><div class="line">    imageView1.image = UIImage(named: &quot;05&quot;)</div><div class="line">    self.view.addSubview(imageView1)  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<font color="#0B1746"><strong>1、<code>UIBlurEffect</code>类（用作创建一个模糊效果）</strong></font>
+
+<p>SDK中提供的模糊效果有5种，其中两种是iOS10之后添加的，我们来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     public enum UIBlurEffectStyle : Int &#123;</div><div class="line">     </div><div class="line">     </div><div class="line">     case extraLight</div><div class="line">     </div><div class="line">     case light</div><div class="line">     </div><div class="line">     case dark</div><div class="line">     </div><div class="line">     </div><div class="line">     @available(iOS 10.0, *)</div><div class="line">     case regular // Adapts to user interface style</div><div class="line">     </div><div class="line">     @available(iOS 10.0, *)</div><div class="line">     case prominent // Adapts to user interface style</div><div class="line">     &#125;</div><div class="line">     */</div></pre></td></tr></table></figure>
+<p>我们就直接创建好了，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//创建一个模糊效果</div><div class="line">  let blurEffect = UIBlurEffect(style: .light)</div></pre></td></tr></table></figure>
+<p>上面使用的是普通的亮色。</p>
+<font color="#0B1746"><strong>2、<code>UIVibrancyEffect</code>类</strong></font>
+
+<p><code>UIVibrancyEffect</code> 主要用于放大和调整 <code>UIVisualEffectView</code> 视图下面的内容的颜色，同时让 <code>UIVisualEffectView</code> 的 <code>contentView</code> 中的内容看起来更加生动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//创建并添加vibrancy&lt;/code&gt;视图</div><div class="line">let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)</div></pre></td></tr></table></figure>
+<font color="#0B1746"><strong>3、<code>UIVisualEffectView</code>类</strong></font>
+
+<p><code>UIVisualEffectView</code>：模糊视图。将前面创建的 <code>UIBlurEffect</code> 类的实例应用到这个模糊视图上。将 <code>UIVisualEffectView</code> 类的实例（模糊视图）置于待毛玻璃化的视图之上即可。在其下方的所有视图都会有模糊效果。值得一提的是：不要直接添加子视图去<code>UIVisualEffectView</code>，而是要添加到<code>contentView</code>上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//创建一个承载模糊效果的视图</div><div class="line">let blurView = UIVisualEffectView(effect: blurEffect)</div></pre></td></tr></table></figure>
+<font color="#0B1746"><strong>4、整体的代码实现</strong></font>
+
+<p>下面我们直接看整体的代码实现：</p>
+<p>这部分分为两种，效果也是不一样的：</p>
+<p>先看一下效果图：<br><img src="http://obzx0h1re.bkt.clouddn.com/Swift-blurEffec.png" alt="Swift-blurEffec"><br>毛玻璃效果图</p>
+<font color="##87CEEB"><strong>4.1 <code>UIBlurEffect</code> 和 <code>UIVisualEffectView</code>两者配合使用</strong></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">func showBlurEffect() &#123;   </div><div class="line">//创建一个模糊效果</div><div class="line">let blurEffect = UIBlurEffect(style: .light)</div><div class="line">//创建一个承载模糊效果的视图</div><div class="line">let blurView = UIVisualEffectView(effect: blurEffect)   </div><div class="line">blurView.frame = CGRect(x: 0, y: 64, width: viewWidth+2*space, height: Double(viewHeight))</div><div class="line">let label = UILabel(frame: CGRect(x: 10, y: 100, width: viewWidth - 20, height: 100))   </div><div class="line">label.text = &quot;bfjnecsjdkcmslc,samosacmsacdfvneaui&quot;  </div><div class="line">label.font = UIFont.boldSystemFont(ofSize: 30)</div><div class="line">label.numberOfLines = 0</div><div class="line">label.textAlignment = .center</div><div class="line">label.textColor = UIColor.white    </div><div class="line">blurView.contentView.addSubview(label)   </div><div class="line">self.view.addSubview(blurView)   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<font color="##87CEEB"><strong>4.2 <code>UIBlurEffect</code>、<code>UIVibrancyEffect</code> 和 <code>UIVisualEffectView</code></strong></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">func showBlurEffectWithUIVibrancyEffect() &#123;</div><div class="line">//创建一个模糊效果</div><div class="line">let blurEffect = UIBlurEffect(style: .light)</div><div class="line">//创建一个承载模糊效果的视图</div><div class="line">let blurView = UIVisualEffectView(effect: blurEffect)    </div><div class="line">blurView.frame = CGRect(x: 0, y: Double(viewHeight+64), width: viewWidth+2*space, height: Double(viewHeight))    </div><div class="line">self.view.addSubview(blurView)    </div><div class="line">//创建并添加vibrancy视图</div><div class="line">let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)    </div><div class="line">let vibrancyView = UIVisualEffectView(effect:vibrancyEffect)</div><div class="line">vibrancyView.frame = self.view.bounds       </div><div class="line">let label = UILabel(frame: CGRect(x: 10, y: viewY, width: viewWidth - 20, height: 100))    </div><div class="line">label.text = &quot;bfjnecsjdkcmslc,samosacmsacdfvneaui&quot;    </div><div class="line">label.font = UIFont.boldSystemFont(ofSize: 30)</div><div class="line">label.numberOfLines = 0</div><div class="line">label.textAlignment = .center</div><div class="line">label.textColor = UIColor.white    </div><div class="line">vibrancyView.contentView.addSubview(label)    </div><div class="line">blurView.contentView.addSubview(vibrancyView)   </div><div class="line">self.view.addSubview(blurView)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> <font color="#6B8E23"><strong>图片的前者是：</strong></font><code>UIBlurEffect</code> 和 <code>UIVisualEffectView</code>两者配合使用</p>
+<p><font color="#6B8E23"><strong>后者：</strong></font><code>UIBlurEffect</code>、<code>UIVibrancyEffect</code> 和 <code>UIVisualEffectView</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;font color=&quot;#FF8000&quot;&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/font&gt;
+
+&lt;p&gt;之前项目中有用到过&lt;code&gt;Objective-C&lt;/code&gt;的的模糊效果，感觉很是不错，而且iOS8之后官方SDK也直接提供了可以实现毛玻璃效果的三个类：&lt;code&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)</title>
     <link href="https:guohuaden.com/2016/11/14/Xcode-error-Code%20Sign%20Error/"/>
     <id>https:guohuaden.com/2016/11/14/Xcode-error-Code Sign Error/</id>
