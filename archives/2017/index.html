@@ -158,11 +158,10 @@
       <h2 class="post-list__post-title post-title"><a href="/2017/03/06/json-dataNull/" title="link to post.title">服务器返回的json数据中含有null的处理方法</a></h2>
       <p class="excerpt">
     
-      因为有遇到过类似情况，所以就想到了一些解决方法，兵区实践了一下。这里简单的做个记录。
+      因为有遇到过类似情况，所以就想到了一些解决方法，并且实践了一下，这里简单的做个记录。
 注：有看到不少的评价，有说后台责任，也有说怪移动端没有做容错处理。我这里就事论事的说下，移动端从服务器得到的数据中确实是不应该包含null的，因为这本身就是不合理的。（当然，我的就事论事是站在iOS立场上说的，这个无可厚非）。
 下面👇说一下想到的几种方法：
-
-对于所有使用到的json中的对象做判断（当然这是最笨
+一、 对于所有使用到的json中的对象做判断（当然这是
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-03-06T05:33:53.000Z" class="post-list__meta--date date">2017-03-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
