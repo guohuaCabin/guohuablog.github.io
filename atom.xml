@@ -513,9 +513,9 @@ Build Active Architecture Only Picture"></p>
     <link href="https:guohuaden.com/2016/09/27/block-and-weak/"/>
     <id>https:guohuaden.com/2016/09/27/block-and-weak/</id>
     <published>2016-09-27T01:45:07.000Z</published>
-    <updated>2017-03-10T02:34:39.000Z</updated>
+    <updated>2017-03-10T02:35:37.000Z</updated>
     
-    <content type="html"><![CDATA[<p>果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：<strong>block和</strong>weak 。也是做一下温习吧。</p>
+    <content type="html"><![CDATA[<p>果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：<code>__block</code>和<code>__weak</code> 。也是做一下温习吧。</p>
 <p><strong>一、先说<code>weak</code>，&lt;弱引用&gt;</strong></p>
 <p>我们知道<code>weak</code>的使用，比如声明一个控件属性，就会用到<code>weak</code>。</p>
 <p>看代码：</p>
@@ -591,9 +591,8 @@ Build Active Architecture Only Picture"></p>
     
     <summary type="html">
     
-      &lt;p&gt;果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：&lt;strong&gt;block和&lt;/strong&gt;weak 。也是做一下温习吧。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;一、先说&lt;code&gt;weak&lt;/code&gt;，&amp;lt;弱引用&amp;gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;
+      &lt;p&gt;果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：&lt;code&gt;__block&lt;/code&gt;和&lt;code&gt;__weak&lt;/code&gt; 。也是做一下温习吧。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、先说&lt;code&gt;weak&lt;/code&gt;，&amp;lt;弱引用&amp;gt;&lt;/st
     
     </summary>
     
