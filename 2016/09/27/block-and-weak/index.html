@@ -225,9 +225,9 @@
 <p><img src="http://obzx0h1re.bkt.clouddn.com/mutable-non-local-variables.png" alt="mutable-non-local-variables"></p>
 <p><strong>四、<strong>block 和 </strong>weak修饰符的区别</strong></p>
 <ol>
-<li><p>__block不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。</p>
+<li><p><code>__block</code>不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。</p>
 </li>
-<li><p>__weak只能在ARC模式下使用，也只能修饰对象（NSString），不能修饰基本数据类型<code>（int）</code>。</p>
+<li><p><code>__weak</code>只能在ARC模式下使用，也只能修饰对象（NSString），不能修饰基本数据类型<code>（int）</code>。</p>
 </li>
 <li><p><code>__block</code>对象可以在<code>block</code>中被重新赋值，<code>__weak</code>不可以。</p>
 </li>
