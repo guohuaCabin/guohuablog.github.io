@@ -408,7 +408,7 @@ Build Active Architecture Only Picture"></p>
     <link href="https:guohuaden.com/2016/11/29/Swift-BlurEffect/"/>
     <id>https:guohuaden.com/2016/11/29/Swift-BlurEffect/</id>
     <published>2016-11-29T06:19:25.000Z</published>
-    <updated>2017-03-10T06:43:48.000Z</updated>
+    <updated>2017-03-10T06:55:31.000Z</updated>
     
     <content type="html"><![CDATA[<font color="#FF8000"><strong>前言：</strong></font>
 
@@ -457,6 +457,8 @@ Build Active Architecture Only Picture"></p>
     </summary>
     
     
+      <category term="Swift" scheme="https:guohuaden.com/tags/Swift/"/>
+    
   </entry>
   
   <entry>
@@ -494,7 +496,7 @@ Build Active Architecture Only Picture"></p>
     <link href="https:guohuaden.com/2016/11/13/Project-Logout/"/>
     <id>https:guohuaden.com/2016/11/13/Project-Logout/</id>
     <published>2016-11-13T03:01:32.000Z</published>
-    <updated>2017-03-10T06:13:18.000Z</updated>
+    <updated>2017-03-10T06:55:09.000Z</updated>
     
     <content type="html"><![CDATA[<p>路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。</p>
 <p>今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。</p>
@@ -531,6 +533,8 @@ Build Active Architecture Only Picture"></p>
     
     </summary>
     
+    
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
     
   </entry>
   
