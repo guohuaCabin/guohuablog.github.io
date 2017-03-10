@@ -212,9 +212,9 @@
 <p>现在对比就明显了。</p>
 <p>下面总结一下：</p>
 <ol>
-<li><p>a) __block对象在<code>block</code>中是可以被修改、重新赋值的。</p>
+<li><p>a) <code>__block</code>对象在<code>block</code>中是可以被修改、重新赋值的。</p>
 </li>
-<li><p>b)__block对象在<code>block</code>中不会被<code>block</code>强引用一次，从而不会出现循环引用问题。</p>
+<li><p>b)<code>__block</code>对象在<code>block</code>中不会被<code>block</code>强引用一次，从而不会出现循环引用问题。</p>
 </li>
 <li><p>c) <code>block</code>可以访问局部变量，但是不能修改。如果修改局部变量，需要加<code>__block</code> ,所以<code>__block</code>是让修改外部变量的值.</p>
 </li>
