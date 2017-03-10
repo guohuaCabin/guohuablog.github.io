@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>服务器返回的json数据中含有null的处理方法 | Wheat</title>
+    <title>服务器返回的json数据中含有&lt;code&gt;null&lt;/code&gt;的处理方法 | Wheat</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="服务器返回的json数据中含有null的处理方法 | Wheat">
+    <meta name="twitter:title" content="服务器返回的json数据中含有&lt;code&gt;null&lt;/code&gt;的处理方法 | Wheat">
     <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="服务器返回的json数据中含有null的处理方法 | Wheat">
+    <meta property="og:title" content="服务器返回的json数据中含有&lt;code&gt;null&lt;/code&gt;的处理方法 | Wheat">
     <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     
@@ -161,12 +161,12 @@
       </span> 
    
     </div>
-    <h1 class="post-title">服务器返回的json数据中含有null的处理方法</h1>
+    <h1 class="post-title">服务器返回的json数据中含有&lt;code&gt;null&lt;/code&gt;的处理方法</h1>
   </header>
 
   <section class="post">
     <p>因为有遇到过类似情况，所以就想到了一些解决方法，并且实践了一下，这里简单的做个记录。</p>
-<p><strong>注：</strong>有看到不少的评价，有说后台责任，也有说怪移动端没有做容错处理。我这里就事论事的说下，移动端从服务器得到的数据中确实是不应该包含null的，因为这本身就是不合理的。（当然，我的就事论事是站在iOS立场上说的，这个无可厚非）。</p>
+<p><strong>注：</strong>有看到不少的评价，有说后台责任，也有说怪移动端没有做容错处理。我这里就事论事的说下，移动端从服务器得到的数据中确实是不应该包含<code>null</code>的，因为这本身就是不合理的。（当然，我的就事论事是站在iOS立场上说的，这个无可厚非）。</p>
 <p>下面👇说一下想到的几种方法：</p>
 <p><strong>一、 对于所有使用到的json中的对象做判断（当然这是最笨的方法）</strong></p>
 <pre><code>NSString *msg ;
@@ -174,12 +174,12 @@ if ([str isKindOfClass: [NSNull class]]){
     NSLog(@&quot;str 为空！&quot;);
 }
 //或者使用[str isEqual:[NSNull null]]
-</code></pre><p>为什么首先说这种方法呢，大抵是因为这个方法的工作量比较大吧。但有时候你是完全不能避免这种情况的，尤其是在老旧的项目中，当你看到项目中所有的解析都是KVO模式时，你就知道一个个去判断是多么让人纠结的事情了。</p>
+</code></pre><p>为什么首先说这种方法呢，大抵是因为这个方法的工作量比较大吧。但有时候你是完全不能避免这种情况的，尤其是在老旧的项目中，当你看到项目中所有的解析都是<code>KVO</code>模式时，你就知道一个个去判断是多么让人纠结的事情了。</p>
 <hr>
-<p><strong>二、使用JSONModel等第三方json解析库</strong>  </p>
-<p>JSONModel有专门针对对象为null的处理，使其返回”<null>“。iOS移动端赋值为nil。</null></p>
+<p><strong>二、使用<code>JSONModel</code>等第三方json解析库</strong>  </p>
+<p><code>JSONModel</code>有专门针对对象为<code>null</code>的处理，使其返回<code>“<null>“</null></code>。iOS移动端赋值为<code>nil</code>。</p>
 <hr>
-<p><strong>三、有一个专门针对数据为null的处理库，<code>NullSafe</code></strong></p>
+<p><strong>三、有一个专门针对数据为<code>null</code>的处理库，<code>NullSafe</code></strong></p>
 <p>这个库是专门处理对象为null的。只有一个<code>.m</code>文件。使用也简单，因为你只需要添加到项目中就可以了，不再需要引入头文件等其他任意操作。</p>
 <p>这里放一个我测试是使用的简单demo</p>
 <p><a href="https://github.com/Wheat-Qin/Data_null_test" target="_blank" rel="external">github:data_nullDemo</a></p>
