@@ -6800,7 +6800,7 @@ input[type="tel"]:-ms-input-placeholder {
 }
 @media all and (max-width: 340px) {
   .panel-main__inner {
-    padding: 0 7%;
+    padding: 0 5%;
   }
   .panel-title {
     margin-bottom: 0.1em;
