@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-03-13T02:18:33.000Z</updated>
+  <updated>2017-03-15T03:15:25.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>__bridge 和 Core Foundation</title>
+    <link href="https:guohuaden.com/2017/03/14/bridge-understand/"/>
+    <id>https:guohuaden.com/2017/03/14/bridge-understand/</id>
+    <published>2017-03-14T02:25:36.000Z</published>
+    <updated>2017-03-15T03:15:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>一：__birdge</strong></p>
+<p>由于<code>__bridge</code>很少接触，所以专门去查找了一下。其实它的作用很简单，就是：实现<code>id</code>类型与<code>void*</code> 类型的相互转换。</p>
+<p>看下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id obj = [[NSObject alloc]init];</div><div class="line">void *c = (__bridge void *)(obj); </div><div class="line">id d = (__bridge id)(c);</div><div class="line">NSLog(@&quot;\n obj=%@,\n c=%@,\n d=%@\n&quot;,obj,c,d);</div></pre></td></tr></table></figure>
+<p>这里我们就用到了<code><strong>bridge</strong></code>。<br>打印结果如下：<br>![bridgePrint](<a href="http://obzx0h1re.bkt.clouddn.com/__bridgePrint.png" target="_blank" rel="external">http://obzx0h1re.bkt.clouddn.com/__bridgePrint.png</a>)</p>
+<p>下面看下使用和不使用<code><strong>bridge</strong></code>的对比<br>![bridgeError](<a href="http://obzx0h1re.bkt.clouddn.com/__bridgeError.png" target="_blank" rel="external">http://obzx0h1re.bkt.clouddn.com/__bridgeError.png</a>)<br><img src="http://obzx0h1re.bkt.clouddn.com/__bridge.png" alt="__bridge"></p>
+<p>   <br></p>
+<p><strong>二：Core Foundation</strong></p>
+<p><strong>1、什么是Core Foundation</strong></p>
+<p>Core Foundation框架 (CoreFoundation.framework) 是一组C语言接口，它们为iOS应用程序提供基本数据管理和服务功能。</p>
+<p><strong>注：</strong>Core Foundation是底层框架，它的对象并不在ARC管理下，所以需要开发者自己去维护这些对象的引用计数。</p>
+<p><strong>2、Core Foundaton 的作用</strong><br>至于它的作用，这里有一段英文解释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">The programming interfaces of Core Foundation objects have been designed for ease of use and reuse. At a general level, Core Foundation:</div><div class="line"></div><div class="line">    Enables sharing of code and data among various frameworks and libraries</div><div class="line"></div><div class="line">    Makes some degree of operating-system independence possible </div><div class="line"></div><div class="line">    Supports internationalization with Unicode strings</div><div class="line"></div><div class="line">    Provides common API and other useful capabilities, including a plug-in architecture, XML property lists, and preferences</div><div class="line"></div><div class="line">Core Foundation makes it possible for the different frameworks and libraries on OS X to share code and data. Applications, libraries, and frameworks can define C routines that incorporate Core Foundation types in their external interfaces; they can thus communicate data—as Core Foundation objects—to each other through these interfaces.</div></pre></td></tr></table></figure>
+<p>翻译后，大致意思是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Core Foundation对象的编程接口已设计为易于使用和重用。 在一般的意义，Core Foundation：</div><div class="line"></div><div class="line">     支持在各种框架和库之间共享代码和数据</div><div class="line"></div><div class="line">     使某种程度的操作系统独立性成为可能</div><div class="line"></div><div class="line">     支持使用Unicode字符串进行国际化</div><div class="line"></div><div class="line">     提供通用API和其他有用的功能，包括插件架构，XML属性列表和首选项</div><div class="line"></div><div class="line">Core Foundation使得OS X上的不同框架和库可以共享代码和数据。 应用程序，库和框架可以定义在其外部接口中并入Core Foundation类型的C例程; 它们因此可以通过这些接口将数据作为Core Foundation对象传递到彼此。</div></pre></td></tr></table></figure>
+<p><strong>三、Objective-C 和 Core Foundation 对象之间转换</strong></p>
+<p>iOS允许Objective-C 和 Core Foundation 对象之间可以轻松的转换。</p>
+<p>在《iOS开发进阶》一书中，唐巧提到：在ARC下，有时候需要将一个Core Foundation对象转换成一个Object-C对象，这个时候我们需要告诉编译器，转换过程中引用计数需要如何调整，这时也会用到bridge这个关键字。</p>
+<ul>
+<li>__bridge: 只做类型转换，不修改相关对象的引用计数，原来的Core Foundation对象在不用时，需要调用CFRelease方法。</li>
+<li>__bridge_retained: 类型转换后将相关对象的引用计数加1，原来的Core Foundation对象在不用时，需要调用CFRelease方法。</li>
+<li>__bridge_transfer: 类型转换后，将该对象的引用计数交给ARC管理，Core Foundation对象在不用时，不再需要调用CFRelease方法。</li>
+</ul>
+<hr>
+<p>**<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">___</div></pre></td></tr></table></figure></p>
+<pre><code>id obj = [[NSObject alloc]init];
+</code></pre><p>//    void <em>a = obj;<br>//    id b = a;<br>    void </em>c = (__bridge void *)(obj);//只做类型转换，不修改相关对象的引用计数<br>    NSLog(@”obj-c count is %ld”, CFGetRetainCount(c));//输出结果： obj-c count is 1</p>
+<pre><code>id d = (__bridge id)(c);
+
+NSLog(@&quot;obj-d retainCount %ld&quot;,CFGetRetainCount((__bridge CFTypeRef)(d)));//输出结果：obj-d retainCount 2
+
+NSLog(@&quot;\n obj=%@,\n c=%@,\n d=%@\n&quot;,obj,c,d);
+
+
+//__bridge
+CFStringRef CFString = CFStringCreateWithCString(kCFAllocatorDefault, &quot;hello Core Foundation&quot;, kCFStringEncodingASCII);
+
+NSLog(@&quot;CFString retainCount= %ld&quot;,CFGetRetainCount(CFString));//CFString retainCount= 1
+
+NSString *string = (__bridge NSString *)CFString;
+
+NSLog(@&quot;CFstring==%@,\nstring==%@\n&quot;,CFString,string);
+
+
+NSString *qStr = @&quot;qgh&quot;;
+CFStringRef qCFStr = (__bridge CFStringRef)qStr;
+
+NSLog(@&quot;qStr==%@,qCFStr==%@\n&quot;,qStr,qCFStr);
+
+
+NSArray *array = @[@&quot;a&quot;,@&quot;b&quot;,@&quot;c&quot;,@&quot;d&quot;,@&quot;e&quot;,@&quot;f&quot;,@&quot;g&quot;,@&quot;h&quot;];
+CFArrayRef CFArray = (__bridge CFArrayRef)(array);
+
+NSLog(@&quot;CFArray retainCount= %ld&quot;,CFGetRetainCount(CFArray));//CFArray retainCount= 1
+
+NSLog(@&quot;array==%@&quot;,CFArray);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">___</div><div class="line"></div><div class="line">**```__bridge_transfer```**</div><div class="line"></div><div class="line">___</div></pre></td></tr></table></figure>
+<pre><code>//__bridge_transfer:类型转换后，将该对象的引用计数交给ARC管理.
+NSString *transferString = [[NSString alloc]initWithFormat:@&quot;test:::__bridge_transfer&quot;];
+CFStringRef CFTransferString = (__bridge_retained CFStringRef)(transferString);
+NSLog(@&quot;CFTransferString count is %ld&quot;, CFGetRetainCount(CFTransferString));//CFTransferString count is 2
+transferString = (__bridge_transfer NSString *)(CFTransferString);
+NSLog(@&quot;transferString count is %ld&quot;, CFGetRetainCount((__bridge CFTypeRef)(transferString)));//transferString count is 1
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">___</div><div class="line"></div><div class="line">**```__bridge_retained ```**</div><div class="line">___</div></pre></td></tr></table></figure>
+<pre><code>//__bridge_retained: 类型被转换时，其对象的所有权也将被变换后变量所持有
+void *y = 0;
+id object = [[NSObject alloc]init];
+y = (__bridge_retained void*)(object);//类型转换后将相关对象的引用计数加1
+NSLog(@&quot;object-y count is %ld&quot;, CFGetRetainCount(y));//object-y count is 2
+NSLog(@&quot;class=%@&quot;,[(__bridge id)(y) class]);
+</code></pre><p>```</p>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;一：__birdge&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由于&lt;code&gt;__bridge&lt;/code&gt;很少接触，所以专门去查找了一下。其实它的作用很简单，就是：实现&lt;code&gt;id&lt;/code&gt;类型与&lt;code&gt;void*&lt;/code&gt; 类型的相互转换。&lt;/p
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>借我</title>
