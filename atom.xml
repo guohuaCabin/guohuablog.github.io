@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-03-17T02:15:41.000Z</updated>
+  <updated>2017-03-15T06:30:41.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -14,28 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Xcode 创建项目失败:(In file included from XXX.m)</title>
-    <link href="https:guohuaden.com/2017/03/17/XcodeBulidFaild-InFileIncluded-From/"/>
-    <id>https:guohuaden.com/2017/03/17/XcodeBulidFaild-InFileIncluded-From/</id>
-    <published>2017-03-17T02:12:38.000Z</published>
-    <updated>2017-03-17T02:15:41.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Xcode运行失败，没有报错提示，</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Xcode运行失败，没有报错提示，&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="Xcode" scheme="https:guohuaden.com/tags/Xcode/"/>
-    
-  </entry>
   
   <entry>
     <title>__bridge 和 Core Foundation</title>
