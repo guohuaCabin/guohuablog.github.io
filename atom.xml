@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-04-21T06:48:50.000Z</updated>
+  <updated>2017-04-21T06:51:42.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -20,33 +20,27 @@
     <link href="https:guohuaden.com/2017/04/22/MARK-TODO-FIXME/"/>
     <id>https:guohuaden.com/2017/04/22/MARK-TODO-FIXME/</id>
     <published>2017-04-22T05:55:39.000Z</published>
-    <updated>2017-04-21T06:48:50.000Z</updated>
+    <updated>2017-04-21T06:51:42.000Z</updated>
     
-    <content type="html"><![CDATA[<p>在项目中以<figure class="highlight plain"><figcaption><span>mark --``` 以及 打断点引起注意的方式都可以达到我们想要的效果。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">但细心的开发者会注意到，苹果提供了三个标记(MARK、TODO、FIXME)来给我们提供便利。至于用法也是很简单，和```#pragma mark --```类似。下面👇做解释：</div><div class="line"></div><div class="line">**MARK:标注**</div></pre></td></tr></table></figure></p>
-<p>//MARK:视图将要消失（viewWillDisappear）</p>
-<ul>
-<li>(void)viewWillDisappear:(BOOL)animated{<br>  [super viewWillDisappear:animated];<br>  [[NSNotificationCenter defaultCenter] removeObserver:self];<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">**TODO:备忘录**</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>//TODO: back super ViewController(返回上级视图)</p>
-<ul>
-<li>(void)goback:(id)sender{<br>  if (self.myBlock) {<pre><code>self.myBlock(NO);
-</code></pre>  }<br>  [super goback:sender];<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">**FIXME:通常在bug的位置做该标记**</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>//FIXME:如果使用点击空白处，取消键盘响应事件，打开下面👇代码<br>//- (void)tapGestures:(UIGestureRecognizer *)gesture{<br>//    [self.view endEditing:YES];<br>//}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">**#pragma mark:**</div></pre></td></tr></table></figure></p>
-<p>#pragma mark UIImagePickerControllerDelegate图片选择代理方法</p>
-<ul>
-<li>(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker<br>{<br>  [self.IPCView disappear];<br>  [picker dismissViewControllerAnimated:YES completion:Nil];<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">看下效果：</div><div class="line">![MARK-TODO-FIXME](http://obzx0h1re.bkt.clouddn.com/TODO_sign.png)</div><div class="line">下面是关于写警告的方法，这个警告是我们在项目中自己制造的，旨在引起注意</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>#pragma message “warn one”</p>
-<p>#warning “warn two”<br>```<br>警告效果：<br><img src="http://obzx0h1re.bkt.clouddn.com/warn_sign.png" alt="warning"></p>
+    <content type="html"><![CDATA[<p>在项目中以<code>ViewController</code>界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：<code>#pragma mark</code>以及 打断点引起注意的方式都可以达到我们想要的效果。</p>
+<p>但细心的开发者会注意到，苹果提供了三个标记(<code>MARK、TODO、FIXME</code>)来给我们提供便利。至于用法也是很简单，和<code>#pragma mark</code>类似。下面👇做解释：</p>
+<p><strong>MARK:标注</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//MARK:视图将要消失（viewWillDisappear）</div><div class="line">- (void)viewWillDisappear:(BOOL)animated&#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>TODO:备忘录</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//TODO: back super ViewController(返回上级视图)</div><div class="line">- (void)goback:(id)sender&#123;</div><div class="line">    if (self.myBlock) &#123;</div><div class="line">        self.myBlock(NO);</div><div class="line">    &#125;</div><div class="line">    [super goback:sender];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>FIXME:通常在bug的位置做该标记</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//FIXME:如果使用点击空白处，取消键盘响应事件，打开下面👇代码</div><div class="line">//- (void)tapGestures:(UIGestureRecognizer *)gesture&#123;</div><div class="line">//    [self.view endEditing:YES];</div><div class="line">//&#125;</div></pre></td></tr></table></figure>
+<p><strong>#pragma mark:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#pragma mark UIImagePickerControllerDelegate图片选择代理方法</div><div class="line">- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker</div><div class="line">&#123;</div><div class="line">    [self.IPCView disappear];</div><div class="line">    [picker dismissViewControllerAnimated:YES completion:Nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看下效果：<br><img src="http://obzx0h1re.bkt.clouddn.com/TODO_sign.png" alt="MARK-TODO-FIXME"><br>下面是关于写警告的方法，这个警告是我们在项目中自己制造的，旨在引起注意</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#pragma message &quot;warn one&quot;</div><div class="line">#warning &quot;warn two&quot;</div></pre></td></tr></table></figure>
+<p>警告效果：<br><img src="http://obzx0h1re.bkt.clouddn.com/warn_sign.png" alt="warning"></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;在项目中以&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;mark --``` 以及 打断点引起注意的方式都可以达到我们想要的效果。&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gut
+      &lt;p&gt;在项目中以&lt;code&gt;ViewController&lt;/code&gt;界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：&lt;code&gt;#pragma mark&lt;/code&gt;以及 打断点引起注意的方式都可以达到我们想要的效果。&lt;/p&gt;
+
     
     </summary>
     
