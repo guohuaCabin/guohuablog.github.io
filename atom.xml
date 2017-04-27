@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-04-27T07:07:33.000Z</updated>
+  <updated>2017-04-27T07:13:05.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -20,17 +20,18 @@
     <link href="https:guohuaden.com/2017/04/27/fileEncryptionAndDecryption/"/>
     <id>https:guohuaden.com/2017/04/27/fileEncryptionAndDecryption/</id>
     <published>2017-04-27T03:20:25.000Z</published>
-    <updated>2017-04-27T07:07:33.000Z</updated>
+    <updated>2017-04-27T07:13:05.000Z</updated>
     
-    <content type="html"><![CDATA[<p>这里加密使用的是三方库：<code>RNCryptor</code>,它是一个跨语言AES加密／解密库。</p>
-<p>主要目标是Swift和Objective-C，但C，C ++，C＃，Erlang，Go，Haskell，Java，PHP，Python，Javascript和Ruby中都有实现。</p>
+    <content type="html"><![CDATA[<p>这里加密使用的是三方库：<code>RNCryptor</code>,它是一个跨语言AES加密/解密库。</p>
+<p>主要目标是<code>Swift</code>和<code>Objective-C</code>，但<code> C </code>,<code>C ++</code>,<code>C＃</code>,<code> Erlang </code>,<code> Go </code>,<code> Haskell </code>,<code> Java </code>,<code> PHP </code>,<code> Python </code>,<code> Javascript </code>和<code> Ruby </code>中都有实现。</p>
+<p>RNCryptor地址：</p>
 <p><a href="https://github.com/RNCryptor/RNCryptor" target="_blank" rel="external">RNCryptor ：https://github.com/RNCryptor/RNCryptor</a></p>
 <p>以及OC专用的地址:</p>
 <p><a href="https://github.com/RNCryptor/RNCryptor-objc" target="_blank" rel="external">RNCryptor-objc ：https://github.com/RNCryptor/RNCryptor-objc</a></p>
 <p>下面就用到的图片和PDF文件加密做一下简单的介绍。</p>
-<p>####1、图片加解密<br>这个没有什么思想可言，直接看下代码</p>
+<h4 id="1、图片加解密"><a href="#1、图片加解密" class="headerlink" title="1、图片加解密"></a>1、图片加解密</h4><p>这个没有什么思想可言，直接看下代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#pragma  mark --Image加解密</div><div class="line">-(void)imageEncryptionAndDecryption</div><div class="line">&#123;</div><div class="line">    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@&quot;default.jpg&quot; ofType:nil]];</div><div class="line">    NSError *error;</div><div class="line">    //加密</div><div class="line">    NSData *encryptedData = [RNEncryptor encryptData:data withSettings:kRNCryptorAES256Settings password:aPassword error:&amp;error ];</div><div class="line">    if (!error) &#123;</div><div class="line">        NSLog(@&quot;^_^ 加密成功 ……——(^_^)\n&quot;);</div><div class="line">//        NSLog(@&quot;encryptedData==%@&quot;,encryptedData);</div><div class="line">    &#125;</div><div class="line">    //解密</div><div class="line">    NSData *decryptedData = [RNDecryptor decryptData:encryptedData withPassword:aPassword error:&amp;error];</div><div class="line">    if (!error) &#123;</div><div class="line">        NSLog(@&quot;^_^ 解密成功 ……——(^_^)\n&quot;);</div><div class="line">//        NSLog(@&quot;decryptedData==%@&quot;,decryptedData);</div><div class="line">        self.imageView.image = [UIImage imageWithData:decryptedData];</div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>####2、PDF加解密<br>考虑到PDF文件可能较大的原因，这里在加解密时使用了子线程，以避免加解密过程耗时。</p>
+<h4 id="2、PDF加解密"><a href="#2、PDF加解密" class="headerlink" title="2、PDF加解密"></a>2、PDF加解密</h4><p>考虑到PDF文件可能较大的原因，这里在加解密时使用了子线程，以避免加解密过程耗时。</p>
 <p>另：PDF查看需要提供路径，而这也是关键。</p>
 <p>思路：</p>
 <ol>
@@ -41,7 +42,45 @@
 </ol>
 <p>查看代码：</p>
 <p><strong>加密</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#pragma mark --PDF加密</div><div class="line">-(void)PDFEncryption</div><div class="line">&#123;</div><div class="line">    __block NSData *encryptedData;</div><div class="line">    __block NSError *error;</div><div class="line">    NSString *filePath = [[NSBundle mainBundle]pathForResource:@&quot;11.pdf&quot; ofType:nil];</div><div class="line">    NSString *fileEncryPath = [NSHomeDirectory()stringByAppendingPathComponent:@&quot;/Documents/TKAMC.qgh&quot;];</div><div class="line">    NSFileManager *fileManager = [NSFileManager defaultManager];</div><div class="line">    //判断是否已存在加密文件，若存在直接执行解密过程。</div><div class="line">    if ([fileManager fileExistsAtPath:fileEncryPath]) &#123;</div><div class="line">        </div><div class="line">        [self PDFDecryptedData:[NSData dataWithContentsOfFile:fileEncryPath]];</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    //异步去加密，防止占用太多内存</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        NSData *data = [NSData dataWithContentsOfFile:filePath];</div><div class="line">        //加密</div><div class="line">        encryptedData = [RNEncryptor encryptData:data withSettings:kRNCryptorAES256Settings password:aPassword error:&amp;error ];</div><div class="line">        if (!error) &#123;</div><div class="line">            NSLog(@&quot;^_^ PDF加密成功 ……——(^_^)\n&quot;);</div><div class="line">//            NSLog(@&quot;encryptedData==%@&quot;,encryptedData);</div><div class="line">        &#125;</div><div class="line">        //在主线程上写入文件</div><div class="line">        dispatch_sync(dispatch_get_main_queue(), ^&#123;</div><div class="line">            BOOL yes = [encryptedData writeToFile:fileEncryPath atomically:NO];</div><div class="line">            if (yes) &#123;</div><div class="line">                NSLog(@&quot;加密文件写入成功&quot;);</div><div class="line">            &#125;else&#123;</div><div class="line">                NSLog(@&quot;加密文件写入失败&quot;);</div><div class="line">            &#125;</div><div class="line">            NSLog(@&quot;写入PDF路径：%@&quot;,fileEncryPath);</div><div class="line">            [self PDFDecryptedData:encryptedData];</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre>
+#pragma mark --PDF加密
+-(void)PDFEncryption
+{
+    __block NSData *encryptedData;
+    __block NSError *error;
+    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"11.pdf" ofType:nil];
+    NSString *fileEncryPath = [NSHomeDirectory()stringByAppendingPathComponent:@"/Documents/TKAMC.qgh"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //判断是否已存在加密文件，若存在直接执行解密过程。
+    if ([fileManager fileExistsAtPath:fileEncryPath]) {
+
+        [self PDFDecryptedData:[NSData dataWithContentsOfFile:fileEncryPath]];
+        return;
+    }
+    //异步去加密，防止占用太多内存
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        //加密
+        encryptedData = [RNEncryptor encryptData:data withSettings:kRNCryptorAES256Settings password:aPassword error:&error ];
+        if (!error) {
+            NSLog(@"^_^ PDF加密成功 ……——(^_^)\n");
+//            NSLog(@"encryptedData==%@",encryptedData);
+        }
+        //在主线程上写入文件
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            BOOL yes = [encryptedData writeToFile:fileEncryPath atomically:NO];
+            if (yes) {
+                NSLog(@"加密文件写入成功");
+            }else{
+                NSLog(@"加密文件写入失败");
+            }
+            NSLog(@"写入PDF路径：%@",fileEncryPath);
+            [self PDFDecryptedData:encryptedData];
+        });
+    });
+}
+</pre>
+
 <p><strong>解密</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">#pragma mark ---PDF解密</div><div class="line">-(void)PDFDecryptedData:(NSData *)encryptedData&#123;</div><div class="line"></div><div class="line">    NSString *fileDecryPath = [NSHomeDirectory()stringByAppendingPathComponent:@&quot;/Documents/TKAMC&quot;];</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        //    解密</div><div class="line">        NSError *error;</div><div class="line">        </div><div class="line">        if (encryptedData != nil || aPassword != nil) &#123;</div><div class="line">            NSData *decryptedData = [RNDecryptor decryptData:encryptedData</div><div class="line">                                                withPassword:aPassword</div><div class="line">                                                       error:&amp;error];</div><div class="line">            </div><div class="line">            dispatch_sync(dispatch_get_main_queue(), ^&#123;</div><div class="line">                 BOOL yes = [decryptedData writeToFile:fileDecryPath atomically:NO];</div><div class="line">                if (yes) &#123;</div><div class="line">                    NSLog(@&quot;解密文件写入成功&quot;);</div><div class="line">                    NSLog(@&quot;写入解密PDF路径：%@&quot;,fileDecryPath);</div><div class="line">                    self.filepath = fileDecryPath;</div><div class="line">                    [self pushVC];</div><div class="line">                &#125;else&#123;</div><div class="line">                    NSLog(@&quot;解密文件写入失败&quot;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;else&#123;</div><div class="line">            NSLog(@&quot;加密数据为空&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><font color="#FF6347"><strong>注：</strong></font>这里加解密时并没有具体实现网络请求模块，只是简单的对本地文件进行了实践，但大体实现过程已经实现。</p>
@@ -68,8 +107,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;这里加密使用的是三方库：&lt;code&gt;RNCryptor&lt;/code&gt;,它是一个跨语言AES加密／解密库。&lt;/p&gt;
-&lt;p&gt;主要目标是Swift和Objective-C，但C，C ++，C＃，Erlang，Go，Haskell，Java，PHP，Python，Javascrip
+      &lt;p&gt;这里加密使用的是三方库：&lt;code&gt;RNCryptor&lt;/code&gt;,它是一个跨语言AES加密/解密库。&lt;/p&gt;
+&lt;p&gt;主要目标是&lt;code&gt;Swift&lt;/code&gt;和&lt;code&gt;Objective-C&lt;/code&gt;，但&lt;code&gt; C &lt;/code&gt;,&lt;code&gt;C ++
     
     </summary>
     
