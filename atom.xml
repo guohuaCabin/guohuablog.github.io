@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-04-27T07:14:52.000Z</updated>
+  <updated>2017-04-27T07:16:02.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https:guohuaden.com/2017/04/27/fileEncryptionAndDecryption/"/>
     <id>https:guohuaden.com/2017/04/27/fileEncryptionAndDecryption/</id>
     <published>2017-04-27T03:20:25.000Z</published>
-    <updated>2017-04-27T07:14:52.000Z</updated>
+    <updated>2017-04-27T07:16:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>这里加密使用的是三方库：<code>RNCryptor</code>,它是一个跨语言AES加密/解密库。</p>
 <p>主要目标是<code>Swift</code>和<code>Objective-C</code>，但<code> C </code>,<code>C ++</code>,<code>C＃</code>,<code> Erlang </code>,<code> Go </code>,<code> Haskell </code>,<code> Java </code>,<code> PHP </code>,<code> Python </code>,<code> Javascript </code>和<code> Ruby </code>中都有实现。</p>
@@ -112,7 +112,38 @@
 </pre>
 
 <p><strong>解密</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">#pragma mark ---PDF解密</div><div class="line">-(void)PDFDecryptedData:(NSData *)encryptedData&#123;</div><div class="line"></div><div class="line">    NSString *fileDecryPath = [NSHomeDirectory()stringByAppendingPathComponent:@&quot;/Documents/TKAMC&quot;];</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        //    解密</div><div class="line">        NSError *error;</div><div class="line">        </div><div class="line">        if (encryptedData != nil || aPassword != nil) &#123;</div><div class="line">            NSData *decryptedData = [RNDecryptor decryptData:encryptedData</div><div class="line">                                                withPassword:aPassword</div><div class="line">                                                       error:&amp;error];</div><div class="line">            </div><div class="line">            dispatch_sync(dispatch_get_main_queue(), ^&#123;</div><div class="line">                 BOOL yes = [decryptedData writeToFile:fileDecryPath atomically:NO];</div><div class="line">                if (yes) &#123;</div><div class="line">                    NSLog(@&quot;解密文件写入成功&quot;);</div><div class="line">                    NSLog(@&quot;写入解密PDF路径：%@&quot;,fileDecryPath);</div><div class="line">                    self.filepath = fileDecryPath;</div><div class="line">                    [self pushVC];</div><div class="line">                &#125;else&#123;</div><div class="line">                    NSLog(@&quot;解密文件写入失败&quot;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;else&#123;</div><div class="line">            NSLog(@&quot;加密数据为空&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre>
+#pragma mark ---PDF解密
+-(void)PDFDecryptedData:(NSData *)encryptedData{
+
+    NSString *fileDecryPath = [NSHomeDirectory()stringByAppendingPathComponent:@"/Documents/TKAMC"];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //    解密
+        NSError *error;
+
+        if (encryptedData != nil || aPassword != nil) {
+            NSData *decryptedData = [RNDecryptor decryptData:encryptedData
+                                                withPassword:aPassword
+                                                       error:&error];
+
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                 BOOL yes = [decryptedData writeToFile:fileDecryPath atomically:NO];
+                if (yes) {
+                    NSLog(@"解密文件写入成功");
+                    NSLog(@"写入解密PDF路径：%@",fileDecryPath);
+                    self.filepath = fileDecryPath;
+                    [self pushVC];
+                }else{
+                    NSLog(@"解密文件写入失败");
+                }
+            });
+        }else{
+            NSLog(@"加密数据为空");
+        }
+    });
+}
+</pre>
+
 <p><font color="#FF6347"><strong>注：</strong></font>这里加解密时并没有具体实现网络请求模块，只是简单的对本地文件进行了实践，但大体实现过程已经实现。</p>
 <p><strong>退出PDF时，删除解密的PDF文件</strong></p>
 <pre>
