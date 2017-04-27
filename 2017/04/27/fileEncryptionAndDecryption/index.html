@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>iOS中关于图片、PDF等文件加密 | Wheat</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="iOS中关于图片、PDF等文件加密 | Wheat">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="iOS中关于图片、PDF等文件加密 | Wheat">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    
+    <meta name="author" content="青卷三部">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https:guohuaden.com/2017/04/27/fileEncryptionAndDecryption/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Wheat 的主页"><img src="/images/avatar.jpg" width="80" alt="Wheat logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Wheat">Wheat</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">晨钟一叩，万境皆空</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">我是一名iOS开发工程师，正在技术的道路上前行，也希望好好的走下去。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/project">项目</a></li>
+            
+              <li class="navigation__item"><a href="/lift">生活</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Wheat-Qin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/wheatDen" title="@wheat" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-27T03:20:25.000Z" class="post-list__meta--date date">2017-04-27</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">iOS中关于图片、PDF等文件加密</h1>
+  </header>
+
+  <section class="post">
+    <p>这里加密使用的是三方库：<code>RNCryptor</code>,它是一个跨语言AES加密／解密库。</p>
+<p>主要目标是Swift和Objective-C，但C，C ++，C＃，Erlang，Go，Haskell，Java，PHP，Python，Javascript和Ruby中都有实现。</p>
+<p><a href="https://github.com/RNCryptor/RNCryptor" target="_blank" rel="external">RNCryptor ：https://github.com/RNCryptor/RNCryptor</a></p>
+<p>以及OC专用的地址:</p>
+<p><a href="https://github.com/RNCryptor/RNCryptor-objc" target="_blank" rel="external">RNCryptor-objc ：https://github.com/RNCryptor/RNCryptor-objc</a></p>
+<p>下面就用到的图片和PDF文件加密做一下简单的介绍。</p>
+<p>####1、图片加解密<br>这个没有什么思想可言，直接看下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#pragma  mark --Image加解密</div><div class="line">-(void)imageEncryptionAndDecryption</div><div class="line">&#123;</div><div class="line">    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@&quot;default.jpg&quot; ofType:nil]];</div><div class="line">    NSError *error;</div><div class="line">    //加密</div><div class="line">    NSData *encryptedData = [RNEncryptor encryptData:data withSettings:kRNCryptorAES256Settings password:aPassword error:&amp;error ];</div><div class="line">    if (!error) &#123;</div><div class="line">        NSLog(@&quot;^_^ 加密成功 ……——(^_^)\n&quot;);</div><div class="line">//        NSLog(@&quot;encryptedData==%@&quot;,encryptedData);</div><div class="line">    &#125;</div><div class="line">    //解密</div><div class="line">    NSData *decryptedData = [RNDecryptor decryptData:encryptedData withPassword:aPassword error:&amp;error];</div><div class="line">    if (!error) &#123;</div><div class="line">        NSLog(@&quot;^_^ 解密成功 ……——(^_^)\n&quot;);</div><div class="line">//        NSLog(@&quot;decryptedData==%@&quot;,decryptedData);</div><div class="line">        self.imageView.image = [UIImage imageWithData:decryptedData];</div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####2、PDF加解密<br>考虑到PDF文件可能较大的原因，这里在加解密时使用了子线程，以避免加解密过程耗时。</p>
+<p>另：PDF查看需要提供路径，而这也是关键。</p>
+<p>思路：</p>
+<ol>
+<li>将网络请求下来的数据流（NSData）直接进行加密，加密成功后存入沙盒目录中。</li>
+<li>在查看PDF时,先对加密的PDF进行解密，再将解密的PDF存入沙盒目录中（区分加解密PDF文件）。</li>
+<li>获取解密的PDF文件路径，查看PDF文件。</li>
+<li>退出查看当前的PDF文件时，删除解密后的PDF文件缓存，保留加密的PDF缓存。</li>
+</ol>
+<p>查看代码：</p>
+<p><strong>加密</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#pragma mark --PDF加密</div><div class="line">-(void)PDFEncryption</div><div class="line">&#123;</div><div class="line">    __block NSData *encryptedData;</div><div class="line">    __block NSError *error;</div><div class="line">    NSString *filePath = [[NSBundle mainBundle]pathForResource:@&quot;11.pdf&quot; ofType:nil];</div><div class="line">    NSString *fileEncryPath = [NSHomeDirectory()stringByAppendingPathComponent:@&quot;/Documents/TKAMC.qgh&quot;];</div><div class="line">    NSFileManager *fileManager = [NSFileManager defaultManager];</div><div class="line">    //判断是否已存在加密文件，若存在直接执行解密过程。</div><div class="line">    if ([fileManager fileExistsAtPath:fileEncryPath]) &#123;</div><div class="line">        </div><div class="line">        [self PDFDecryptedData:[NSData dataWithContentsOfFile:fileEncryPath]];</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    //异步去加密，防止占用太多内存</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        NSData *data = [NSData dataWithContentsOfFile:filePath];</div><div class="line">        //加密</div><div class="line">        encryptedData = [RNEncryptor encryptData:data withSettings:kRNCryptorAES256Settings password:aPassword error:&amp;error ];</div><div class="line">        if (!error) &#123;</div><div class="line">            NSLog(@&quot;^_^ PDF加密成功 ……——(^_^)\n&quot;);</div><div class="line">//            NSLog(@&quot;encryptedData==%@&quot;,encryptedData);</div><div class="line">        &#125;</div><div class="line">        //在主线程上写入文件</div><div class="line">        dispatch_sync(dispatch_get_main_queue(), ^&#123;</div><div class="line">            BOOL yes = [encryptedData writeToFile:fileEncryPath atomically:NO];</div><div class="line">            if (yes) &#123;</div><div class="line">                NSLog(@&quot;加密文件写入成功&quot;);</div><div class="line">            &#125;else&#123;</div><div class="line">                NSLog(@&quot;加密文件写入失败&quot;);</div><div class="line">            &#125;</div><div class="line">            NSLog(@&quot;写入PDF路径：%@&quot;,fileEncryPath);</div><div class="line">            [self PDFDecryptedData:encryptedData];</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>解密</strong></p>
+<pre>
+#pragma mark ---PDF解密
+-(void)PDFDecryptedData:(NSData *)encryptedData{
+
+    NSString *fileDecryPath = [NSHomeDirectory()stringByAppendingPathComponent:@"/Documents/TKAMC"];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //    解密
+        NSError *error;
+
+        if (encryptedData != nil || aPassword != nil) {
+            NSData *decryptedData = [RNDecryptor decryptData:encryptedData
+                                                withPassword:aPassword
+                                                       error:&error];
+
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                 BOOL yes = [decryptedData writeToFile:fileDecryPath atomically:NO];
+                if (yes) {
+                    NSLog(@"解密文件写入成功");
+                    NSLog(@"写入解密PDF路径：%@",fileDecryPath);
+                    self.filepath = fileDecryPath;
+                    [self pushVC];
+                }else{
+                    NSLog(@"解密文件写入失败");
+                }
+            });
+        }else{
+            NSLog(@"加密数据为空");
+        }
+    });
+}
+</pre>
+
+<p><font color="#FF6347"><strong>注：</strong></font>这里加解密时并没有具体实现网络请求模块，只是简单的对本地文件进行了实践，但大体实现过程已经实现。</p>
+<p><strong>退出PDF时，删除解密的PDF文件</strong></p>
+<pre>
+#pragma mark - ReaderViewControllerDelegate methods
+- (void)dismissReaderViewController:(ReaderViewController *)viewController
+{
+
+    //MARK:退出查看PDF时删除解密存储文件。
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    [fileManager removeItemAtPath:self.filepath error:nil];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+</pre>
+
+<hr>
+<p>这里提供一个个人测试使用的一个Demo，仅供参考</p>
+<p><a href="https://github.com/Wheat-Qin/FileEncryption_Demo" target="_blank" rel="external">FileEncryption_Demo ：https://github.com/Wheat-Qin/FileEncryption_Demo</a></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/04/22/MARK-TODO-FIXME/" title="Xcode中常用的标记(MARK、TODO、FIXME)">Xcode中常用的标记(MARK、TODO、FIXME)</a></h2>
+                <p class="excerpt">
+                
+                在项目中以ViewController界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：#pragma mark以及 打断点引起注意的方式都可以达到我们想要的效果。
+但细心的开发者会注意到，苹果提供了三个标记(MARK、TODO、FIXME)来给我们提
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-04-22T05:55:39.000Z" class="post-list__meta--date date">2017-04-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/04/22/MARK-TODO-FIXME/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f2295c9d63c754f5c36036080070110b";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
