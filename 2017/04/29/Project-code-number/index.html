@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Wheat | 晨钟一叩，万境皆空</title>
+    <title>统计项目代码量 | Wheat</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Wheat | 晨钟一叩，万境皆空">
+    <meta name="twitter:title" content="统计项目代码量 | Wheat">
     <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Wheat | 晨钟一叩，万境皆空">
+    <meta property="og:title" content="统计项目代码量 | Wheat">
     <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
     
 
-    <link rel="canonical" href="https:guohuaden.com"/>
+    <link rel="canonical" href="https:guohuaden.com/2017/04/29/Project-code-number/"/>
 
     
       
@@ -149,93 +149,63 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/04/29/Project-code-number/" title="link to post.title">统计项目代码量</a></h2>
-      <p class="excerpt">
-    
-      有遇到过这样的情况，项目经理在写文档时会要求开发人员提供项目的代码量。下面就说一下代码量的统计问题。
-1、统计总的代码量（代码的行数）在终端中，cd 到项目文件夹；输入下面的指令。
-1find . -name &amp;quot;*.m&amp;quot; -or -name &amp;quot;*.h&amp;quot; -or -name &amp;quot;*.xib&amp;quot; -or -name &amp;quot;*.c&amp;quot;
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-04-29T01:48:46.000Z" class="post-list__meta--date date">2017-04-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-29T01:48:46.000Z" class="post-list__meta--date date">2017-04-29</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS-and-Swift/">iOS and Swift</a>
-</span><a class="btn-border-small" href="/2017/04/29/Project-code-number/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">统计项目代码量</h1>
+  </header>
+
+  <section class="post">
+    <p>有遇到过这样的情况，项目经理在写文档时会要求开发人员提供项目的代码量。下面就说一下代码量的统计问题。</p>
+<h4 id="1、统计总的代码量（代码的行数）"><a href="#1、统计总的代码量（代码的行数）" class="headerlink" title="1、统计总的代码量（代码的行数）"></a>1、统计总的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs grep -v &quot;^$&quot;|wc -l</div></pre></td></tr></table></figure>
+<p>该指令是统计总共的代码量，并不统计具体的文件代码<br>其中<code>grep -v “^$”</code>：去除空行</p>
+<p>注释是包含在代码量中的，这一点要注意。</p>
+<p>统计效果图：<br><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeTotal.png" alt="统计总的代码量"></p>
+<h4 id="2、统计每个文件的代码量（代码的行数）"><a href="#2、统计每个文件的代码量（代码的行数）" class="headerlink" title="2、统计每个文件的代码量（代码的行数）"></a>2、统计每个文件的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs wc -l</div></pre></td></tr></table></figure></p>
+<p>该指令会统计具体的文件代码行数。</p>
+<p>统计效果图：<br><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeNumber1.png" alt="统计每个文件的代码量1"></p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeNumber2.png" alt="统计每个文件的代码量2"></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/04/27/fileEncryptionAndDecryption/" title="link to post.title">iOS中关于图片、PDF等文件加密</a></h2>
-      <p class="excerpt">
-    
-      这里加密使用的是三方库：RNCryptor,它是一个跨语言AES加密/解密库。
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/04/27/fileEncryptionAndDecryption/" title="iOS中关于图片、PDF等文件加密">iOS中关于图片、PDF等文件加密</a></h2>
+                <p class="excerpt">
+                
+                这里加密使用的是三方库：RNCryptor,它是一个跨语言AES加密/解密库。
 主要目标是Swift和Objective-C，但 C ,C ++,C＃, Erlang , Go , Haskell , Java , PHP , Python , Javascript 和 Ruby 中都有实现。
-RNCryptor地址：
-RNCryptor ：https://github.com/RNCryptor
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-04-27T03:20:25.000Z" class="post-list__meta--date date">2017-04-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+RN
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-04-27T03:20:25.000Z" class="post-list__meta--date date">2017-04-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
 </span><a class="btn-border-small" href="/2017/04/27/fileEncryptionAndDecryption/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/04/22/MARK-TODO-FIXME/" title="link to post.title">Xcode中常用的标记(MARK、TODO、FIXME)</a></h2>
-      <p class="excerpt">
-    
-      在项目中以ViewController界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：#pragma mark以及 打断点引起注意的方式都可以达到我们想要的效果。
-但细心的开发者会注意到，苹果提供了三个标记(MARK、TODO、FIXME)来给我们提供便利。至于用法也是很简单，和#pragma mark类似。下面👇做解释：
-MARK:标注
-123
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-04-22T05:55:39.000Z" class="post-list__meta--date date">2017-04-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/04/22/MARK-TODO-FIXME/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/04/21/borrow-me/" title="link to post.title">借我</a></h2>
-      <p class="excerpt">
-    
-      借我一个暮年，
-借我碎片，
-借我瞻前与顾后，
-借我执拗如少年。
-借我后天长成的先天，
-借我变如不曾改变。
-借我素淡的世故和明白的愚，
-借我可预知的险。
-借我悲怆的磊落，
-借我温软的鲁莽和玩笑的庄严。
-借我最初与最终的不敢，借我不言而喻的不见。
-借我一场秋啊，可你说这已是冬天。 
-注：这首诗感觉很特别，初次读到时是在一个好朋友发表的说说中，那时的感觉很是欢喜，也有一些自责。欢喜是因为很喜欢，而且最终
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-04-21T01:44:16.000Z" class="post-list__meta--date date">2017-04-21</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/欠下的时光/">欠下的时光</a>
-</span><a class="btn-border-small" href="/2017/04/21/borrow-me/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-
-</div>
-
+</section>
 
             
             <br><footer class="footer">
