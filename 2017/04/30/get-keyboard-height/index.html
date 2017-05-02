@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>统计项目代码量 | Wheat</title>
+    <title>利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项 | Wheat</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="统计项目代码量 | Wheat">
+    <meta name="twitter:title" content="利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项 | Wheat">
     <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="统计项目代码量 | Wheat">
+    <meta property="og:title" content="利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项 | Wheat">
     <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
     
 
-    <link rel="canonical" href="https:guohuaden.com/2017/04/29/Project-code-number/"/>
+    <link rel="canonical" href="https:guohuaden.com/2017/04/30/get-keyboard-height/"/>
 
     
       
@@ -153,72 +153,148 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-04-29T01:48:46.000Z" class="post-list__meta--date date">2017-04-29</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS-and-Swift/">iOS and Swift</a>
+      <time datetime="2017-04-30T02:42:19.000Z" class="post-list__meta--date date">2017-04-30</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
  </span>
       <span class="page-pv">
       &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">统计项目代码量</h1>
+    <h1 class="post-title">利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</h1>
   </header>
 
   <section class="post">
-    <p>有遇到过这样的情况，项目经理在写文档时会要求开发人员提供项目的代码量。下面就说一下代码量的统计问题。</p>
-<h4 id="1、统计总的代码量（代码的行数）"><a href="#1、统计总的代码量（代码的行数）" class="headerlink" title="1、统计总的代码量（代码的行数）"></a>1、统计总的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs grep -v &quot;^$&quot;|wc -l</div></pre></td></tr></table></figure>
-<p>该指令是统计总共的代码量，并不统计具体的文件代码<br>其中<code>grep -v “^$”</code>：去除空行</p>
-<p>注释是包含在代码量中的，这一点要注意。</p>
-<p>统计效果图：<br><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeTotal.png" alt="统计总的代码量"></p>
-<h4 id="2、统计每个文件的代码量（代码的行数）"><a href="#2、统计每个文件的代码量（代码的行数）" class="headerlink" title="2、统计每个文件的代码量（代码的行数）"></a>2、统计每个文件的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs wc -l</div></pre></td></tr></table></figure></p>
-<p>该指令会统计具体的文件代码行数。</p>
-<p>统计效果图：<br><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeNumber1.png" alt="统计每个文件的代码量1"></p>
-<p><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeNumber2.png" alt="统计每个文件的代码量2"></p>
+    <p>我们在开发中会遇到这样的情况：调用键盘时需要界面有一个调整，避免键盘遮掩输入框。</p>
+<p>但实现时你会发现，在不同的手机上键盘的高度是不同的。这里列举一下：</p>
+<pre>
+//获取键盘的高度
+/*
+ iphone 6:
+ 中文
+ 2014-12-31 11:16:23.643 Demo[686:41289] 键盘高度是  258
+ 2014-12-31 11:16:23.644 Demo[686:41289] 键盘宽度是  375
+ 英文
+ 2014-12-31 11:55:21.417 Demo[1102:58972] 键盘高度是  216
+ 2014-12-31 11:55:21.417 Demo[1102:58972] 键盘宽度是  375
 
+ iphone  6 plus：
+ 英文：
+ 2014-12-31 11:31:14.669 Demo[928:50593] 键盘高度是  226
+ 2014-12-31 11:31:14.669 Demo[928:50593] 键盘宽度是  414
+ 中文：
+ 2015-01-07 09:22:49.438 Demo[622:14908] 键盘高度是  271
+ 2015-01-07 09:22:49.439 Demo[622:14908] 键盘宽度是  414
+
+ iPhone 7
+ 2016-11-13 17:44:48.315 LoginDemo[2431:120937] 键盘高度是  258
+ 2016-11-13 17:44:48.316 LoginDemo[2431:120937] 键盘宽度是  375
+
+ iPhone 7 Plus
+ 2016-11-13 17:43:20.683 LoginDemo[2322:119257] 键盘高度是  271
+ 2016-11-13 17:43:20.683 LoginDemo[2322:119257] 键盘宽度是  414
+
+ iphone 5 :
+ 2014-12-31 11:19:36.452 Demo[755:43233] 键盘高度是  216
+ 2014-12-31 11:19:36.452 Demo[755:43233] 键盘宽度是  320
+
+ ipad Air：
+ 2014-12-31 11:28:32.178 Demo[851:48085] 键盘高度是  264
+ 2014-12-31 11:28:32.178 Demo[851:48085] 键盘宽度是  768
+
+ ipad2 ：
+ 2014-12-31 11:33:57.258 Demo[1014:53043] 键盘高度是  264
+ 2014-12-31 11:33:57.258 Demo[1014:53043] 键盘宽度是  768
+ */
+</pre>
+ 我们看出不同的手机设备键盘的高度是不同的，而且英文和中文键盘的高度也是不一样的。
+
+ 下面我们说一下利用通知来获取键盘的高度：
+<pre>
+//增加监听，当键盘出现或改变时收出消息
+[[NSNotificationCenter defaultCenter] addObserver:self
+                                      selector:@selector(keyboardWillShow:)
+                                      name:UIKeyboardWillShowNotification
+                                      object:nil];
+
+//增加监听，当键退出时收出消息
+[[NSNotificationCenter defaultCenter] addObserver:self
+                                      selector:@selector(keyboardWillHide:)
+                                      name:UIKeyboardWillHideNotification
+                                      object:nil];
+
+</pre>
+ 显示键盘的代码：
+ <pre>
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    //获取键盘的高度
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    int width = keyboardRect.size.width;
+    NSLog(@"键盘高度是  %d",height);
+    NSLog(@"键盘宽度是  %d",width);
+}
+</pre>
+
+<p>隐藏键盘的高度：</p>
+<pre>
+//当键盘隐藏的时候
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+     //do something
+}
+</pre>
+
+<p> 当然在注册通知(NSNotificationCenter)后，记得最后的注销通知：</p>
+<pre>
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+</pre>
+
+
+
+<p>注意⚠️：切换键盘时也会产生UIKeyboardWillShowNotification，所以很可能方法被调用多次。最好在keyboardWillShow中不要写与调用次数有关的代码。在键盘第一次产生时，如果不是默认的英文键盘也会调用多次方法。</p>
+<p> 比如：</p>
+<pre>
+#pragma mark -  ******************打开键盘********
+- (void) keyboardWillShowOfFeedBackVC:(NSNotification *)notify {
+
+    //这样写是不正确的：因为切换中英文键盘时都会调用该方法。
+//    CGRect frame = self.view.frame;
+//    frame.origin.y = self.view.frame.origin.y - 64;
+//    self.view.frame = frame;
+
+    self.view.frame = CGRectMake(0, -40, IPHONE_WIDTH, IPHONE_HEIGHT);
+
+}
+</pre>
   </section>
 
 </article>
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/04/30/get-keyboard-height/" title="利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项">利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</a></h2>
-                <p class="excerpt">
-                
-                我们在开发中会遇到这样的情况：调用键盘时需要界面有一个调整，避免键盘遮掩输入框。
-但实现时你会发现，在不同的手机上键盘的高度是不同的。这里列举一下：
-
-//获取键盘的高度
-/*
- iphone 6:
- 中文
- 2014-12-31 11:16:23.643 Demo[686:41289] 键盘高度是
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-04-30T02:42:19.000Z" class="post-list__meta--date date">2017-04-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/04/30/get-keyboard-height/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/04/27/fileEncryptionAndDecryption/" title="iOS中关于图片、PDF等文件加密">iOS中关于图片、PDF等文件加密</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/04/29/Project-code-number/" title="统计项目代码量">统计项目代码量</a></h2>
                 <p class="excerpt">
                 
-                这里加密使用的是三方库：RNCryptor,它是一个跨语言AES加密/解密库。
-主要目标是Swift和Objective-C，但 C ,C ++,C＃, Erlang , Go , Haskell , Java , PHP , Python , Javascript 和 Ruby 中都有实现。
-RN
+                有遇到过这样的情况，项目经理在写文档时会要求开发人员提供项目的代码量。下面就说一下代码量的统计问题。
+1、统计总的代码量（代码的行数）在终端中，cd 到项目文件夹；输入下面的指令。
+1find . -name &amp;quot;*.m&amp;quot; -or -name &amp;quot;*.h&amp;quot; -or
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-04-27T03:20:25.000Z" class="post-list__meta--date date">2017-04-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/04/27/fileEncryptionAndDecryption/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2017-04-29T01:48:46.000Z" class="post-list__meta--date date">2017-04-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS-and-Swift/">iOS and Swift</a>
+</span><a class="btn-border-small" href="/2017/04/29/Project-code-number/">继续阅读</a></div>
                        
             </div>
         

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-04-28T02:21:35.000Z</updated>
+  <updated>2017-05-02T03:27:47.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -14,6 +14,140 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</title>
+    <link href="https:guohuaden.com/2017/04/30/get-keyboard-height/"/>
+    <id>https:guohuaden.com/2017/04/30/get-keyboard-height/</id>
+    <published>2017-04-30T02:42:19.000Z</published>
+    <updated>2017-05-02T03:27:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们在开发中会遇到这样的情况：调用键盘时需要界面有一个调整，避免键盘遮掩输入框。</p>
+<p>但实现时你会发现，在不同的手机上键盘的高度是不同的。这里列举一下：</p>
+<pre>
+//获取键盘的高度
+/*
+ iphone 6:
+ 中文
+ 2014-12-31 11:16:23.643 Demo[686:41289] 键盘高度是  258
+ 2014-12-31 11:16:23.644 Demo[686:41289] 键盘宽度是  375
+ 英文
+ 2014-12-31 11:55:21.417 Demo[1102:58972] 键盘高度是  216
+ 2014-12-31 11:55:21.417 Demo[1102:58972] 键盘宽度是  375
+
+ iphone  6 plus：
+ 英文：
+ 2014-12-31 11:31:14.669 Demo[928:50593] 键盘高度是  226
+ 2014-12-31 11:31:14.669 Demo[928:50593] 键盘宽度是  414
+ 中文：
+ 2015-01-07 09:22:49.438 Demo[622:14908] 键盘高度是  271
+ 2015-01-07 09:22:49.439 Demo[622:14908] 键盘宽度是  414
+
+ iPhone 7
+ 2016-11-13 17:44:48.315 LoginDemo[2431:120937] 键盘高度是  258
+ 2016-11-13 17:44:48.316 LoginDemo[2431:120937] 键盘宽度是  375
+
+ iPhone 7 Plus
+ 2016-11-13 17:43:20.683 LoginDemo[2322:119257] 键盘高度是  271
+ 2016-11-13 17:43:20.683 LoginDemo[2322:119257] 键盘宽度是  414
+
+ iphone 5 :
+ 2014-12-31 11:19:36.452 Demo[755:43233] 键盘高度是  216
+ 2014-12-31 11:19:36.452 Demo[755:43233] 键盘宽度是  320
+
+ ipad Air：
+ 2014-12-31 11:28:32.178 Demo[851:48085] 键盘高度是  264
+ 2014-12-31 11:28:32.178 Demo[851:48085] 键盘宽度是  768
+
+ ipad2 ：
+ 2014-12-31 11:33:57.258 Demo[1014:53043] 键盘高度是  264
+ 2014-12-31 11:33:57.258 Demo[1014:53043] 键盘宽度是  768
+ */
+</pre>
+ 我们看出不同的手机设备键盘的高度是不同的，而且英文和中文键盘的高度也是不一样的。
+
+ 下面我们说一下利用通知来获取键盘的高度：
+<pre>
+//增加监听，当键盘出现或改变时收出消息
+[[NSNotificationCenter defaultCenter] addObserver:self
+                                      selector:@selector(keyboardWillShow:)
+                                      name:UIKeyboardWillShowNotification
+                                      object:nil];
+
+//增加监听，当键退出时收出消息
+[[NSNotificationCenter defaultCenter] addObserver:self
+                                      selector:@selector(keyboardWillHide:)
+                                      name:UIKeyboardWillHideNotification
+                                      object:nil];
+
+</pre>
+ 显示键盘的代码：
+ <pre>
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    //获取键盘的高度
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    int width = keyboardRect.size.width;
+    NSLog(@"键盘高度是  %d",height);
+    NSLog(@"键盘宽度是  %d",width);
+}
+</pre>
+
+<p>隐藏键盘的高度：</p>
+<pre>
+//当键盘隐藏的时候
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+     //do something
+}
+</pre>
+
+<p> 当然在注册通知(NSNotificationCenter)后，记得最后的注销通知：</p>
+<pre>
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+</pre>
+
+
+
+<p>注意⚠️：切换键盘时也会产生UIKeyboardWillShowNotification，所以很可能方法被调用多次。最好在keyboardWillShow中不要写与调用次数有关的代码。在键盘第一次产生时，如果不是默认的英文键盘也会调用多次方法。</p>
+<p> 比如：</p>
+<pre>
+#pragma mark -  ******************打开键盘********
+- (void) keyboardWillShowOfFeedBackVC:(NSNotification *)notify {
+
+    //这样写是不正确的：因为切换中英文键盘时都会调用该方法。
+//    CGRect frame = self.view.frame;
+//    frame.origin.y = self.view.frame.origin.y - 64;
+//    self.view.frame = frame;
+
+    self.view.frame = CGRectMake(0, -40, IPHONE_WIDTH, IPHONE_HEIGHT);
+
+}
+</pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们在开发中会遇到这样的情况：调用键盘时需要界面有一个调整，避免键盘遮掩输入框。&lt;/p&gt;
+&lt;p&gt;但实现时你会发现，在不同的手机上键盘的高度是不同的。这里列举一下：&lt;/p&gt;
+&lt;pre&gt;
+//获取键盘的高度
+/*
+ iphone 6:
+ 中文
+ 2014-12-31 11:16
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>统计项目代码量</title>
@@ -682,7 +816,7 @@ Build Active Architecture Only Picture"></p>
     <link href="https:guohuaden.com/2017/01/11/project-summary-two/"/>
     <id>https:guohuaden.com/2017/01/11/project-summary-two/</id>
     <published>2017-01-11T15:38:00.000Z</published>
-    <updated>2017-05-02T01:34:53.000Z</updated>
+    <updated>2017-05-02T01:35:09.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。<br>这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。</p>
 <h3 id="1、关于按钮事件的重复点击问题"><a href="#1、关于按钮事件的重复点击问题" class="headerlink" title="1、关于按钮事件的重复点击问题"></a>1、关于按钮事件的重复点击问题</h3><p>我们开发中大概都经历过这样的事情，我的一个<code>button</code>被重复的快速点击，（我们开发者应该更清楚的知道这意味着什么）。那我们再深入的想一下（给这样的事件安排一个特定的环境）：例如当网络较差的情况下，再例如当<code>button</code>的执行事件较为耗时时。这时就会出现很多的问题：有时是界面出现问题（当<code>button</code>执行事件中出现调节界面<code>frame</code>的时候）；有时则会出现卡顿，更甚至会出现崩溃现象。对于这种问题，我们要提前考虑到，做好防范处理：即点击按钮事件时,添加防止重复点击功能。</p>
@@ -1105,65 +1239,6 @@ Build Active Architecture Only Picture"></p>
     
       &lt;p&gt;果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：&lt;code&gt;__block&lt;/code&gt;和&lt;code&gt;__weak&lt;/code&gt; 。也是做一下温习吧。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;一、先说&lt;code&gt;weak&lt;/code&gt;，&amp;lt;弱引用&amp;gt;&lt;/st
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS模糊效果(毛玻璃效果)的实现</title>
-    <link href="https:guohuaden.com/2016/09/23/BlurEffect/"/>
-    <id>https:guohuaden.com/2016/09/23/BlurEffect/</id>
-    <published>2016-09-23T02:42:42.000Z</published>
-    <updated>2017-03-10T06:57:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>　前一段时间项目中用到毛玻璃效果，那时对<code>UIBlurEffect</code>类和 <code>UIVisualEffectView</code>这两个类做了一部分了解。但当时并没有去特别的深入研究，直到项目做完后，才静下心来好好研究了一番。记录一下。</p>
-<p>　　iOS8之后，Apple新添加<code>UIBlurEffect</code>类、<code>UIVibrancyEffect</code>类 和 <code>UIVisualEffectView</code>类这三种类，用途就是对背景色进行模糊化，也就是我们称的 “毛玻璃效果”。接下来就对具体的使用做一下分析吧。</p>
-<p>　　其实细看下来，Apple对这种特效封装的很好，所以我们使用起来的并不需要什么步骤。不得不佩服Apple的强大啊。</p>
-<p>1、关于<code>UIBlurEffect</code>类</p>
-<p>我们首先看UIBlurEffect类，Apple文档中只给出了一个方法：</p>
-<p>`</p>
-<ul>
-<li>(UIBlurEffect *)effectWithStyle:(UIBlurEffectStyle)style;<br>`<br>我们实现也是这样：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *   模糊效果的三种风格</div><div class="line"> *</div><div class="line"> *  @param UIBlurEffectStyle</div><div class="line">   UIBlurEffectStyleExtraLight,//额外亮度，（高亮风格）</div><div class="line">   UIBlurEffectStyleLight,//亮风格</div><div class="line">   UIBlurEffectStyleDark//暗风格</div><div class="line"> *</div><div class="line"> */</div><div class="line">//实现模糊效果</div><div class="line">UIBlurEffect *blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];</div></pre></td></tr></table></figure>
-<p> 2、关于<code>UIVibrancyEffect</code>类</p>
-<p>文档中给出的也是一个方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (UIVibrancyEffect *)effectForBlurEffect:(UIBlurEffect *)blurEffect;</div></pre></td></tr></table></figure>
-<p>官方给出的解释是这样的</p>
-<p><pre><br>UIVibrancyEffect amplifies and adjusts the color of content layered behind the view, allowing content placed inside the contentView to become more vivid.</pre></p>
-<p>It is intended to be placed over, or as a subview of, a UIVisualEffectView that has been configured with a UIBlurEffect.</p>
-<p>This effect only affects content added to the contentView. Because the vibrancy effect is color dependent, subviews added to the contentView need to be tintColorDidChange aware and must be prepared to update themselves accordingly. </p>
-<p>UIImageView will need its image to have a rendering mode of UIImageRenderingModeAlwaysTemplate to receive the proper effect.</p>
-<p><br>翻译如下：</p>
-<p><code>UIVibrancyEffect</code>的作用是放大和调整<code>UIVisualEffectView</code>内容视图的内容的颜色,让<code>UIVisualEffectView</code>的<code>contentView</code>中的内容看起来更加生动。它作为一个子视图被放置在<code>UIVisualEffectView</code>上面，去连接<code>UIBlurEffect</code>。这种效果只会影响添加到<code>UIVisualEffectView</code>的<code>contentView</code>上的内容。因为活力影响是受颜色依赖的…..</p>
-<p><font color="#FF8000"><strong>我们可以看出</strong></font>：通常<code>UIVibrancyEffect</code>对象是与<code>UIBlurEffect</code>一起使用，主要用于处理在<code>UIBlurEffect</code>特效上的一些显示效果。</p>
-<p>下面看看实现代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//实现模糊效果</div><div class="line">UIBlurEffect *blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];   </div><div class="line">UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffrct];  </div><div class="line">UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc]initWithEffect:vibrancyEffect];</div><div class="line">// visualEffectView.backgroundColor = [ UIColor grayColor ];</div><div class="line">visualEffectView.contentView.frame = CGRectMake(10, 100, 300, 500);</div><div class="line">[self.view addSubview:visualEffectView];</div></pre></td></tr></table></figure>
-<p>下面我们往 <figure class="highlight plain"><figcaption><span>的`contentView`上添加个`view`看看效果</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
-<p>UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 300, 280, 90)];<br>label.text = @”曾经撒次考试了hhhhhhhhhhhhhhh”;<br>label.textAlignment = NSTextAlignmentLeft;<br>label.font = [UIFont systemFontOfSize:30];<br>label.tintColor = [UIColor yellowColor];<br>label.numberOfLines = 0;<br>[visualEffectView.contentView addSubview:label];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"></div><div class="line">上面代码中可以看到， 我改变`Label`中`text`的颜色是使用的：`tintColor` ，这也是特别要注意的地方，文档中也有专门提出，并给出了解释：</div><div class="line">`Because the vibrancy effect is color dependent, subviews added to the contentView need to be tintColorDidChange aware and must be prepared to update themselves accordingly`</div><div class="line">所以我们使用 `label.textColor`去改变颜色是完全不起作用的。</div><div class="line"></div><div class="line">运行效果图如下：(只剪切出效果部分)</div><div class="line">![VisualEffect](http://obzx0h1re.bkt.clouddn.com/VisualEffect.png)</div><div class="line">至于颜色不是设置的`yellowColor`，我想不需要多说了吧，这就是`UIVibrancyEffect`的功能。</div><div class="line"></div><div class="line">**三、`UIVisualEffectView`类**</div><div class="line"></div><div class="line">老规矩先看文档：也是寥寥的四种，其中值得一提的是：`contentView`。这里明确告诉我们：不要直接添加子视图去`UIVisualEffectView`，而是要添加到`contentView`上。</div></pre></td></tr></table></figure></p>
-<p>@property (nonatomic, strong, readonly) UIView <em>contentView; // Do not add subviews directly to UIVisualEffectView, use this view instead.<br>@property (nonatomic, copy, nullable) UIVisualEffect </em>effect;</p>
-<ul>
-<li>(instancetype)initWithEffect:(nullable UIVisualEffect *)effect NS_DESIGNATED_INITIALIZER;</li>
-<li>(nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">这里我就给出一个比较完整的代码（我们看一看`UIBlurEffect`类 和 `UIVisualEffectView`类 的效果）：</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@”6.jpg”]];<br>/**</p>
-<ul>
-<li>模糊效果的三种风格<br>*</li>
-<li>@param UIBlurEffectStyle<br>UIBlurEffectStyleExtraLight,//额外亮度，（高亮风格）<br>UIBlurEffectStyleLight,//亮风格<br>UIBlurEffectStyleDark//暗风格<br><em>
-</em>/<br>//实现模糊效果<br>UIBlurEffect <em>blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];<br>//毛玻璃视图<br>UIVisualEffectView </em>visualEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffrct];<br>visualEffectView.frame = CGRectMake(60, 100, 300, 500);<br>visualEffectView.alpha = 0.9;<br>[self.view addSubview:visualEffectView];<br>```</li>
-</ul>
-<p>看看效果图是不是你想要的：<br><img src="http://obzx0h1re.bkt.clouddn.com/BlurEffect.png" alt="BlurEffect"><br>关于iOS8之前的实现，可以去github上看看一些封装库。有很多不错的三方库不错，这里就不列出了。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;　前一段时间项目中用到毛玻璃效果，那时对&lt;code&gt;UIBlurEffect&lt;/code&gt;类和 &lt;code&gt;UIVisualEffectView&lt;/code&gt;这两个类做了一部分了解。但当时并没有去特别的深入研究，直到项目做完后，才静下心来好好研究了一番。记录一下。&lt;/p&gt;
-
     
     </summary>
     
