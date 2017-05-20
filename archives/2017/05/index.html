@@ -155,96 +155,23 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/02/27/WebView-ErrorOpen/" title="link to post.title">WebView 打不开问题 (转码问题)</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/05/20/GH-SearchView/" title="link to post.title">一个自定义的搜索框：GH_SearchView</a></h2>
       <p class="excerpt">
     
-      无意中遇到一个问题，项目中使用UIWebView打不开web界面，检查过URL和代码，发现并没有问题。随考虑到一点：URL中包含汉字。
-处理如下：
-1234567891011NSString *URLString = [NSString stringWithFormat:@&amp;quot;%@id=%@&amp;amp;email=%@&amp;quot;,ProviderOrder,self.orderID,ema
+      对于iOS自带的搜索框，其实我用着也挺好的，但低版本的使用：  高版本的使用:UISearchController，两个难有个统一。很多项目中都是将着两套代码都写入项目中去，这样做难免显得代码冗余。所以就简单的自定义个搜索框。
+使用时实现起来也很简单，一句代码创建：
+123456789101112GH_SearchView *searchView_1 = [[GH_SearchView alloc
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-02-27T01:56:54.000Z" class="post-list__meta--date date">2017-02-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+      <div class="post-list__meta"><time datetime="2017-05-20T05:46:13.000Z" class="post-list__meta--date date">2017-05-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/02/27/WebView-ErrorOpen/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/02/16/Build-Active-Architecture-Only-Query/" title="link to post.title">对于Xcode中 Build Active Architecture Only 的认识</a></h2>
-      <p class="excerpt">
-    
-      之前在给项目适配64位时，看到Xcode中有这个设置，因为关系到适配问题，又比较好奇，就了解了一番。发现这个设置也有不小的作用。
-
-Build Active Architecture Only：指定是否只对当前连接设备所支持的指令集编译
-
-系统默认是：Debug设置为Yes，Release设置为No。
-原因是：
-当直接把Build Active Architecture Only 设置为Yes时，
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-02-16T07:11:12.000Z" class="post-list__meta--date date">2017-02-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
-</span><a class="btn-border-small" href="/2017/02/16/Build-Active-Architecture-Only-Query/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/02/11/WKWebView/" title="link to post.title">聊一聊WKWebView</a></h2>
-      <p class="excerpt">
-    
-      前言由于之前一直在用UIWebView,所以对于WKWebView只是停留在知道，了解的状态，并未深入的去研究。前天一个项目要求支持iOS8以上，要加入一个web界面。在习惯性使用UIWebView写到一半的时候，突然想使用WKWebView去实现，所以专门花费了些时间去研究了一下WKWebView，很是喜欢。
-正文接下来纪录一下使用WKWebView的过程细节。但关于WKWebView与js互交
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-02-11T02:33:52.000Z" class="post-list__meta--date date">2017-02-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/02/11/WKWebView/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/01/15/support-64bit/" title="link to post.title">关于app支持64bit</a></h2>
-      <p class="excerpt">
-    
-      关于iOS应用，其实苹果很早就就发布消息：2015年的2月开始，提交App Store的应用必须支持64-bit。而Apple在iPhone 5s 就已经搭配64位双核苹果A7处理器。还是在15年6月，苹果App Store中所有应用更新都必须支持64bit。
-但这对于企业级应用来说，并不能限制应用去支持64bit，因为企业级应用不必提交App Store审核。但Apple又有了新的对策：在iOS
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-01-15T07:18:34.000Z" class="post-list__meta--date date">2017-01-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/01/15/support-64bit/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/01/11/project-summary-two/" title="link to post.title">iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</a></h2>
-      <p class="excerpt">
-    
-      前言：最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。
-1、关于按钮事件的重复点击问题我们开发中大概都经历过这样的事情，我的一个button被重复的快速点击，（我们开发者应该更清楚的知道这意味着什
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-01-11T15:38:00.000Z" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/01/11/project-summary-two/">继续阅读</a></div>
+</span><a class="btn-border-small" href="/2017/05/20/GH-SearchView/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
-
-  <nav class="pagination" role="navigation">
-    
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">← 最近</a>
-    
-    <span class="pagination__page-number" > 2 / 2 </span>
-    
-  </nav>
 
 
 </div>
