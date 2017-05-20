@@ -171,12 +171,8 @@
 <p>使用时需遵守<code>GH_searchDelegate</code>协议。<br>其中必需实现的协议方法有一种:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> 搜索按钮</div><div class="line"></div><div class="line"> @param content 搜索的内容</div><div class="line"> */</div><div class="line">-(void)searchClickedWithContent:(NSString *)content;</div></pre></td></tr></table></figure>
 <p>可选的协议方法有三种:</p>
-<p><pre><br>/**<br> 实时搜索协议方法</pre></p>
-<p> @param content 搜索的内容<br> <em>/<br>-(void)searchBoxContentDidChange:(NSString </em>)content;</p>
-<p>/**<br> 搜索框开始输入</p>
-<p> @param content 搜索的内容<br> <em>/<br>-(void)searchDidBeginEditing:(NSString </em>)content;</p>
-<p>/**<br> 搜索框输入结束</p>
-<p> @param content 搜索的内容<br> <em>/<br>-(void)searchDidEndEditing:(NSString </em>)content;<br><br>效果图如下：<br>无tableView情况下：<br><img src="http://obzx0h1re.bkt.clouddn.com/GH_searchView_1.png" alt="GH_searchView_1"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> 实时搜索协议方法</div><div class="line"> @param content 搜索的内容</div><div class="line"> */</div><div class="line">-(void)searchBoxContentDidChange:(NSString *)content;</div><div class="line"></div><div class="line">/**</div><div class="line"> 搜索框开始输入</div><div class="line"> @param content 搜索的内容</div><div class="line"> */</div><div class="line">-(void)searchDidBeginEditing:(NSString *)content;</div><div class="line"></div><div class="line">/**</div><div class="line"> 搜索框输入结束</div><div class="line"> @param content 搜索的内容</div><div class="line"> */</div><div class="line">-(void)searchDidEndEditing:(NSString *)content;</div></pre></td></tr></table></figure>
+<p>效果图如下：<br>无tableView情况下：<br><img src="http://obzx0h1re.bkt.clouddn.com/GH_searchView_1.png" alt="GH_searchView_1"></p>
 <p>有tableView情况下：<br><img src="http://obzx0h1re.bkt.clouddn.com/GH_searchView_2.png" alt="GH_searchView_2"></p>
 
   </section>
