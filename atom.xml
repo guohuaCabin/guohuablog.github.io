@@ -81,6 +81,39 @@ enum {
   </entry>
   
   <entry>
+    <title>WKWebView使用遇到的问题</title>
+    <link href="https:guohuaden.com/2017/10/03/WKWebView-issue/"/>
+    <id>https:guohuaden.com/2017/10/03/WKWebView-issue/</id>
+    <published>2017-10-03T02:30:40.000Z</published>
+    <updated>2017-10-08T06:00:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><code>WKWebView</code>在iOS8之后正式替代<code>UIWebView</code>，速度方面确实提升了不少。关于<code>WKWebView</code>的简单使用，在《<a href="http://guohuaden.com/2017/02/11/WKWebView/" target="_blank" rel="external">聊一聊WKWebView</a>》中我已经介绍过了，这里就不再絮叨，本篇主要记录s三个开发中遇到的问题。</p>
+<h4 id="1、去缓存问题"><a href="#1、去缓存问题" class="headerlink" title="1、去缓存问题"></a>1、去缓存问题</h4><p>我们在第一次打开webView后，移动端为了使用的便捷，会在本地做一个缓存，服务器端也有类似的缓存。但有时服务器端更改信息或者web端更改界面信息。我们往往打开移动端的webView界面，仍然是原来的界面状态，这就是缓存机制造成的现象。<br>解决方法：如果不考虑流量，则需要在请求时忽略本地和远程的缓存即可,使用<code>NSURLRequestReloadIgnoringLocalAndRemoteCacheData</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSURLRequest *request = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:20];</div><div class="line">[self.webView loadRequest:request];</div></pre></td></tr></table></figure>
+<p>这里附上iOS提供的请求缓存类型:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)</div><div class="line">&#123;</div><div class="line">    NSURLRequestUseProtocolCachePolicy = 0,</div><div class="line">    NSURLRequestReloadIgnoringLocalCacheData = 1,</div><div class="line">    NSURLRequestReloadIgnoringLocalAndRemoteCacheData = 4, // Unimplemented</div><div class="line">    NSURLRequestReloadIgnoringCacheData = NSURLRequestReloadIgnoringLocalCacheData,</div><div class="line">    NSURLRequestReturnCacheDataElseLoad = 2,</div><div class="line">    NSURLRequestReturnCacheDataDontLoad = 3,</div><div class="line">    NSURLRequestReloadRevalidatingCacheData = 5, // Unimplemented</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>也可以看看这篇文章：《<a href="http://www.cnblogs.com/lolDragon/p/6774509.html" target="_blank" rel="external">iOS webview加载时序和缓存问题总结</a>》</p>
+<h4 id="2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）"><a href="#2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）" class="headerlink" title="2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）"></a>2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）</h4><p>如果在<code>webView</code>界面中有跳转<code>appstore</code>、支付宝等调手机中app的点击按钮时，如果iOS端不做处理的话，是调不起来手机中的app的。<br>我们需要做的就是在代理方法中截取<code>webView</code>的<code>url</code>，再使用iOS的代码进行跳转。<br>例如打开<code>appstore</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler</div><div class="line">&#123;</div><div class="line">    NSURL *url = navigationAction.request.URL;</div><div class="line">    UIApplication *app = [UIApplication sharedApplication];</div><div class="line">    // 打开appstore</div><div class="line">    if ([url.absoluteString containsString:@&quot;https://itunes.apple.com/&quot;])&#123;</div><div class="line">        if ([app canOpenURL:url])&#123;</div><div class="line">            [[UIApplication sharedApplication] openURL:url];</div><div class="line">            decisionHandler(WKNavigationActionPolicyCancel);</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    decisionHandler(WKNavigationActionPolicyAllow);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题"><a href="#4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题" class="headerlink" title="4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题"></a>4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题</h4><p>开发中发现，在WKWebView中点击获取验证码等失败（抓包工具查看，发现需要和请求一块上传cookie中的数据，实际并没有上传或者数据丢失一部分）</p>
+<p>在WKWebView中，cookie的是需要我们自己去设置的，这一点和UIWebView不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(void)setUIWebviewcookie&#123;</div><div class="line">    NSHTTPCookieStorage *cs = [NSHTTPCookieStorage sharedHTTPCookieStorage];</div><div class="line">    [cs setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在webView响应请求的代理方法中，查看cookie</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler&#123;</div><div class="line">    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;</div><div class="line">    NSArray *cookies =[NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];</div><div class="line">    //读取wkwebview中的cookie 方法1</div><div class="line">    for (NSHTTPCookie *cookie in cookies) &#123;</div><div class="line">        //[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];</div><div class="line">        NSLog(@&quot;wkwebview中的cookie:%@&quot;, cookie);</div><div class="line">    &#125;</div><div class="line">    //读取wkwebview中的cookie 方法2 读取Set-Cookie字段</div><div class="line">    NSString *cookieString = [[response allHeaderFields] valueForKey:@&quot;Set-Cookie&quot;];</div><div class="line">    NSLog(@&quot;wkwebview中的cookie:%@&quot;, cookieString);</div><div class="line">    //看看存入到了NSHTTPCookieStorage了没有</div><div class="line">    NSHTTPCookieStorage *cookieJar2 = [NSHTTPCookieStorage sharedHTTPCookieStorage];</div><div class="line">    for (NSHTTPCookie *cookie in cookieJar2.cookies) &#123;</div><div class="line">        NSLog(@&quot;NSHTTPCookieStorage中的cookie%@&quot;, cookie);</div><div class="line">    &#125;</div><div class="line">    decisionHandler(WKNavigationResponsePolicyAllow);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言：&quot;&gt;&lt;a href=&quot;#前言：&quot; class=&quot;headerlink&quot; title=&quot;前言：&quot;&gt;&lt;/a&gt;前言：&lt;/h3&gt;&lt;p&gt;&lt;code&gt;WKWebView&lt;/code&gt;在iOS8之后正式替代&lt;code&gt;UIWebView&lt;/code&gt;，速度方面确实提升了不
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一个自定义的搜索框：GH_SearchView</title>
     <link href="https:guohuaden.com/2017/05/20/GH-SearchView/"/>
     <id>https:guohuaden.com/2017/05/20/GH-SearchView/</id>
@@ -1094,53 +1127,6 @@ Build Active Architecture Only Picture"></p>
     
     
       <category term="Xcode" scheme="https:guohuaden.com/tags/Xcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS之退出app(项目)的几种方法</title>
-    <link href="https:guohuaden.com/2016/11/13/Project-Logout/"/>
-    <id>https:guohuaden.com/2016/11/13/Project-Logout/</id>
-    <published>2016-11-13T03:01:32.000Z</published>
-    <updated>2017-03-10T06:55:09.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。</p>
-<p>今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。</p>
-<p>这里是我们在项目的<code>AppDelegate</code>中普遍写到的一句代码（至于扩展和丰富，我们暂不去深究）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123; </div><div class="line">	LoginViewController *loginVC = [[LoginViewController alloc] init];</div><div class="line">//    UINavigationController *homeNavigationView = [[UINavigationController alloc] initWithRootViewController:loginVC];</div><div class="line">//    self.window.rootViewController = 	homeNavigationView;</div><div class="line">	self.window.rootViewController = loginVC;</div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面我们就围绕<code>LoginViewController</code>这个登录界面展开我们的讨论。我们都知道，登录的方式不同，才会导致退出的方式差异，有登录才有退出，这是因果关系。</p>
-<p>而我们的登录方式无外乎这几种：利用 <code>Modal</code> 形式展示控制器 ；利用导航控制器<code>UINavigationController</code>跳转；当然也可以更改 <code>UIWindow</code> 的 <code>rootViewController</code>。下面我们就介绍一下这几种登录方式吧。</p>
-<font color="#228B22"><strong>1、登录退出A</strong></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)login</div><div class="line">&#123;</div><div class="line">	HomeViewController *homeVC = [[HomeViewController alloc]init];  </div><div class="line">	[self presentViewController:homeVC animated:YES completion:nil];</div><div class="line">&#125; </div><div class="line">- (void)exit</div><div class="line">&#123;</div><div class="line">	[self dismissViewControllerAnimated:YES completion:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这是利用<code>model</code>形式登录和退出app的。当然登录的动画形式是多选的，你可以挑选一种喜欢的方式，你也可以自定义转场动画，这是你的自由。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     UIModalTransitionStyleCoverVertical = 0,</div><div class="line">     UIModalTransitionStyleFlipHorizontal __TVOS_PROHIBITED,</div><div class="line">     UIModalTransitionStyleCrossDissolve,</div><div class="line">     UIModalTransitionStylePartialCurl NS_ENUM_AVAILABLE_IOS(3_2) __TVOS_PROHIBITED,</div><div class="line">     */</div></pre></td></tr></table></figure>
-<p>这里我做了个gif动画，是关于系统自带的，可以看下：<br><img src="http://obzx0h1re.bkt.clouddn.com/%E8%BD%AC%E5%9C%BA%E5%8A%A8%E7%94%BB.gif" alt="logout_gif"></p>
-<font color="#228B22"><strong>2、登录退出B</strong></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)login</div><div class="line">&#123;</div><div class="line">	HomeViewController *homeVC = [[HomeViewController alloc]init];</div><div class="line">	[self.navigationController pushViewController:homeVC animated:YES];</div><div class="line">&#125;</div><div class="line">- (void)exit</div><div class="line">&#123;</div><div class="line">	[self.navigationController popViewControllerAnimated:YES];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这是利用导航控制器<code>UINavigationController</code>跳转。也是我们在项目中经常用到的一种方式，当然，登录退出也是常用这种方式的。这里就不过多去述。</p>
-<font color="#228B22"><strong>3、更改 <code>UIWindow</code> 的 <code>rootViewController</code></strong></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (void)login&#123;</div><div class="line">    HomeViewController *homeVC = [[HomeViewController alloc]init];</div><div class="line">    self.window.rootViewController = homeVC;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个是写在AppDelegate中的，退出时再调用该方法。</p>
-<font color="#228B22"><strong>4、退出app程序（不推荐使用，这种方式会让用户觉得app闪退）</strong></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (void)exitApplication &#123;</div><div class="line">    UIWindow *window =  [UIApplication sharedApplication].keyWindow;</div><div class="line">    [UIView animateWithDuration:1.0f animations:^&#123;</div><div class="line">        window.alpha = 0;</div><div class="line">        window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);</div><div class="line">    &#125; completion:^(BOOL finished) &#123;</div><div class="line">        exit(0);</div><div class="line">    &#125;];  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> <font color="#E3170D"><strong>警告：</strong></font>不要使用<code>exit</code>函数，调用<code>exit</code>会让用户感觉程序崩溃了，不会有按<code>Home</code>键返回时的平滑过渡和动画效果。</p>
-<p> 另外，使用<code>exit</code>可能会丢失数据，因为调用<code>exit</code>并不会调用<code>-applicationWillTerminate:</code>方法和<code>UIApplicationDelegate</code>方法； </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。&lt;/p&gt;
-&lt;p&gt;今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。&lt;/p&gt;
-&lt;p
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
     
   </entry>
   
