@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>iOS之项目总结三：项目开发中遇到的一些问题及解决方案 | Wheat</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="iOS之项目总结三：项目开发中遇到的一些问题及解决方案 | Wheat">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="iOS之项目总结三：项目开发中遇到的一些问题及解决方案 | Wheat">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    
+    <meta name="author" content="青卷三部">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https:guohuaden.com/2017/10/05/project-summary-Three/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Wheat 的主页"><img src="/images/avatar.jpg" width="80" alt="Wheat logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Wheat">Wheat</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">晨钟一叩，万境皆空</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">我是一名iOS开发工程师，正在技术的道路上前行，也希望好好的走下去。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/project">项目</a></li>
+            
+              <li class="navigation__item"><a href="/lift">生活</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Wheat-Qin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/wheatDen" title="@wheat" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-10-05T03:19:10.000Z" class="post-list__meta--date date">2017-10-05</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">iOS之项目总结三：项目开发中遇到的一些问题及解决方案</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>两年多以来，基本上都是独立开发或者维护项目，不得不自嘲的说挺锻炼人的。最近的一家公司是涉足金融行列的，算是第一次踏足金融吧，过程怎样不说，确实学到了不少东西。</p>
+<p><strong><em>下面就开发第一款金融类项目遇到的问题做一下总结：</em></strong></p>
+<h4 id="1、中文显示标题之类"><a href="#1、中文显示标题之类" class="headerlink" title="1、中文显示标题之类"></a>1、中文显示标题之类</h4><p>我们在项目中调用相册、相机等往往默认的是显示英文，但有时候开发的项目是针对国内的，所以需要中文配合显示，这就需要我们做一下配置。<br>其实很简单：就是在info.plist中允许应用程序获取框架内语言即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Localizedresources can be mixed  YES</div><div class="line"></div><div class="line">Localization native development region  China //en</div></pre></td></tr></table></figure>
+<p>图片显示：</p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/project_summary_lauguageSet.png" alt="允许应用程序获取框架内语言图片"></p>
+<h4 id="2、运行报错问题"><a href="#2、运行报错问题" class="headerlink" title="2、运行报错问题"></a>2、运行报错问题</h4><p>报错信息：</p>
+<figure class="highlight plain"><figcaption><span>4 duplicate symbols for architecture arm64 clang: error: linker command failed with exit```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这个是粗心大意而差生的报错，最可能的情况是：引入【.h】文件重复。</div><div class="line">我们知道iOS不允许在A类中重复引入相同的B类的，使用```improt```关键字引入头文件时，它会判断是否已经引入，如果引入了一次就不在引入。但并不能直接提示报错，所以在运行时会提示上面的报错信息。所以首先要做的是排查是否重复引入【.h】文件。</div><div class="line"> </div><div class="line">#### 3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况</div><div class="line"></div><div class="line">这个问题是没有技术含量的，遇到了解决就行，方法如下：</div><div class="line">在【.m】文件中添加下面的方法即可</div></pre></td></tr></table></figure>
+<p>+(BOOL)propertyIsOptional:(NSString*)propertyName<br>{<br>  return YES;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#### 4、AES加密遇到的和*android*统一加密模式问题</div><div class="line">这种情况我以前在《[Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题](http://guohuaden.com/2016/10/06/DES-encryption/)》这篇文章中有提到多，主要是iOS这边SDK中只提供了两种模式：</div></pre></td></tr></table></figure></p>
+<p>@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.<br>@constant   kCCOptionECBMode        Electronic Code Book Mode.<br>                                    Default is CBC.<br>enum {<br>    / options for block ciphers /<br>    kCCOptionPKCS7Padding   = 0x0001,<br>    kCCOptionECBMode        = 0x0002<br>    / stream ciphers currently have no options /<br>};<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">但安卓的不一样，有十几种左右，所以在开发中一定要和安卓、服务器端做好统一。</div><div class="line"></div><div class="line">1. 如果使用CBC模式，那直接用：```kCCOptionPKCS7Padding ```即可。</div><div class="line">2. 但如果是ECB模式，就需要做下转变 ```kCCOptionECBMode | kCCOptionPKCS7Padding</div></pre></td></tr></table></figure></p>
+<h4 id="5、服务器端小数显示问题（如：1e-05）"><a href="#5、服务器端小数显示问题（如：1e-05）" class="headerlink" title="5、服务器端小数显示问题（如：1e-05）"></a>5、服务器端小数显示问题（如：1e-05）</h4><p>这个做下处理即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:leastWaveStr];</div><div class="line">NSString *numberStr = [decNumber stringValue];</div></pre></td></tr></table></figure>
+<p>金融类项目中常用到这个<figure class="highlight plain"><figcaption><span>``` ,用于货币处理 。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">通过```NSDecimalNumber ```提供的计算方式，可以很好的计算出准确的精度的数据，同时不需要使用格式化输出等。</div><div class="line"></div><div class="line">#### 6、自定义导航栏按钮不靠左／右问题</div><div class="line">很简单，解决方法，添加一个空的按钮进去</div></pre></td></tr></table></figure></p>
+<p>UIButton <em>leftButton = [[UIButton alloc]init];<br>leftButton.frame = CGRectMake(0, 0, 20, 20);<br>[leftButton setBackgroundImage:[UIImage imageNamed:@”back.png”] forState:UIControlStateNormal];<br>    [leftButton addTarget:self action:@selector(popToLastVC:) forControlEvents:UIControlEventTouchUpInside];<br>UIBarButtonItem </em>leftBarButtonItems = [[UIBarButtonItem alloc]initWithCustomView:leftButton];</p>
+<p>//解决按钮不靠左 靠右的问题.<br>UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItemalloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace<br>target:nil action:nil];<br>nagetiveSpacer.width = -15;//这个值可以根据自己需要自己调整<br>  self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 7、不同屏幕尺寸字体显示字体大小问题</div><div class="line">我们应该清楚，UI设计图大多数是以iPhone6 为模版设计的，但开发中腰考虑不同的屏幕尺寸显示字体大小不同的情况。</div><div class="line">网上给出的大多数是针对```Xib```和```storyboard```做的处理，下面我说一下针对纯代码开发的处理方法。</div><div class="line">其实很简单，在pch文件中设置宏定义，针对不同的机型做一下简单判断，在开发中使用宏定义字体大小就可以了。</div><div class="line">例如：</div></pre></td></tr></table></figure></p>
+<p>#define kDevice_Is_iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)</p>
+<p>#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)</p>
+<p>#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)</p>
+<p>#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)</p>
+<p>//字体大小（以6s为基准,以6p为判断）</p>
+<p>#define kFontSize10  kDevice_Is_iPhone6Plus ? 12:10</p>
+<p>#define kFontSize11  kDevice_Is_iPhone6Plus ? 13:11</p>
+<p>#define kFontSize12  kDevice_Is_iPhone6Plus ? 14:12</p>
+<p>#define kFontSize13  kDevice_Is_iPhone6Plus ? 15:13</p>
+<p>#define kFontSize14  kDevice_Is_iPhone6Plus ? 16:14</p>
+<p>#define kFontSize15  kDevice_Is_iPhone6Plus ? 17:15</p>
+<p>#define kFontSize16  kDevice_Is_iPhone6Plus ? 18:16</p>
+<p>#define kFontSize17  kDevice_Is_iPhone6Plus ? 19:17</p>
+<p>#define kFontSize18  kDevice_Is_iPhone6Plus ? 20:18</p>
+<p>#define kFontSize19  kDevice_Is_iPhone6Plus ? 21:19</p>
+<p>#define kFontSize20  kDevice_Is_iPhone6Plus ? 22:20</p>
+<p>#define kFontSize21  kDevice_Is_iPhone6Plus ? 23:21</p>
+<p>#define kFontSize22  kDevice_Is_iPhone6Plus ? 24:22</p>
+<p>#define kFontSize23  kDevice_Is_iPhone6Plus ? 25:23</p>
+<p>#define kFontSize24  kDevice_Is_iPhone6Plus ? 26:24</p>
+<p>#define kFontSize25  kDevice_Is_iPhone6Plus ? 27:25</p>
+<p>#define kFontSize34  kDevice_Is_iPhone6Plus ? 35:34</p>
+<p>#define kFontSize36  kDevice_Is_iPhone6Plus ? 38:36<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">使用：</div></pre></td></tr></table></figure></p>
+<p>UILabel *label = [UILabel new];<br>label.text = @””;<br>label.textColor = [UIColor darkGrayColor];<br>label.textAlignment = NSTextAlignmentCenter;<br>label.font = [UIFont systemFontOfSize:kFontSize16];<br>[self addSubview:label];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这样就不需要每次使用字体都判断不同屏幕尺寸了。</div><div class="line"></div><div class="line">#### 8、view上有tableView，view添加手势后与tableView手势冲突问题</div><div class="line"></div><div class="line"> 解决这个问题，我们需要利用系统的方法做个判断：如果点击了tableView，就不接收Touch点击事件。</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>(BOOL)gestureRecognizer:(UIGestureRecognizer <em>)gestureRecognizer shouldReceiveTouch:(UITouch </em>)touch {<br> // 点击的view的类名<br> NSLog(@”%@”, NSStringFromClass([touch.view class]));</p>
+<p> // 点击了tableViewCell，view的类名为UITableViewCellContentView，则不接收Touch点击事件<br> if ([NSStringFromClass([touch.view class]) isEqualToString:@”UITableViewCellContentView”]) {</p>
+<pre><code>return NO;
+</code></pre><p> }<br> return  YES;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这种方法用来执行点击View的操作：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#pragma mark - UIGestureRecognizerDelegate methods<br>-(void)viewtapClicked:(UITapGestureRecognizer *)tap<br>{<br>    CGPoint point = [tap locationInView:self];</p>
+<pre><code>BOOL isTouch = CGRectContainsPoint(self.baseView.frame, point);
+if (isTouch) {
+    NSLog(@&quot;点击tableView&quot;);
+}else{
+    [UIView animateWithDuration:1.0 animations:^{
+        [self removeFromSuperview];
+    }];
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 9、断网重连后更新界面</div><div class="line">我们在开发项目中，网络状态的监听基本设置在appDelegate中。所以需要在这里针对网络状态做一个广播通知，在需要网络重连后更新界面的地方注册该广播进行界面的刷新</div></pre></td></tr></table></figure></p>
+<p>//注册网络监控通知<br>[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:kIsNetWork object:nil];</p>
+<ul>
+<li>(void)notificationHandler:(NSNotification *) notification<br>{<br>dispatch_async(dispatch_get_global_queue(0, 0), ^{<br>  [self requestHomeInfoData];<br>});<br>}<br>```</li>
+</ul>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/05/20/GH-SearchView/" title="一个自定义的搜索框：GH_SearchView">一个自定义的搜索框：GH_SearchView</a></h2>
+                <p class="excerpt">
+                
+                对于iOS自带的搜索框，其实我用着也挺好的，但低版本的使用：  高版本的使用:UISearchController，两个难有个统一。很多项目中都是将着两套代码都写入项目中去，这样做难免显得代码冗余。所以就简单的自定义个搜索框。
+下载地址：https://github.com/Wheat-Qin/GH
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-05-20T05:46:13.000Z" class="post-list__meta--date date">2017-05-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/05/20/GH-SearchView/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f2295c9d63c754f5c36036080070110b";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https:guohuaden.com/"/>
-  <updated>2017-05-20T06:48:28.000Z</updated>
+  <updated>2017-10-08T05:12:22.000Z</updated>
   <id>https:guohuaden.com/</id>
   
   <author>
@@ -14,6 +14,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS之项目总结三：项目开发中遇到的一些问题及解决方案</title>
+    <link href="https:guohuaden.com/2017/10/05/project-summary-Three/"/>
+    <id>https:guohuaden.com/2017/10/05/project-summary-Three/</id>
+    <published>2017-10-05T03:19:10.000Z</published>
+    <updated>2017-10-08T05:12:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>两年多以来，基本上都是独立开发或者维护项目，不得不自嘲的说挺锻炼人的。最近的一家公司是涉足金融行列的，算是第一次踏足金融吧，过程怎样不说，确实学到了不少东西。</p>
+<p><strong><em>下面就开发第一款金融类项目遇到的问题做一下总结：</em></strong></p>
+<h4 id="1、中文显示标题之类"><a href="#1、中文显示标题之类" class="headerlink" title="1、中文显示标题之类"></a>1、中文显示标题之类</h4><p>我们在项目中调用相册、相机等往往默认的是显示英文，但有时候开发的项目是针对国内的，所以需要中文配合显示，这就需要我们做一下配置。<br>其实很简单：就是在info.plist中允许应用程序获取框架内语言即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Localizedresources can be mixed  YES</div><div class="line"></div><div class="line">Localization native development region  China //en</div></pre></td></tr></table></figure>
+<p>图片显示：</p>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/project_summary_lauguageSet.png" alt="允许应用程序获取框架内语言图片"></p>
+<h4 id="2、运行报错问题"><a href="#2、运行报错问题" class="headerlink" title="2、运行报错问题"></a>2、运行报错问题</h4><p>报错信息：</p>
+<figure class="highlight plain"><figcaption><span>4 duplicate symbols for architecture arm64 clang: error: linker command failed with exit```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这个是粗心大意而差生的报错，最可能的情况是：引入【.h】文件重复。</div><div class="line">我们知道iOS不允许在A类中重复引入相同的B类的，使用```improt```关键字引入头文件时，它会判断是否已经引入，如果引入了一次就不在引入。但并不能直接提示报错，所以在运行时会提示上面的报错信息。所以首先要做的是排查是否重复引入【.h】文件。</div><div class="line"> </div><div class="line">#### 3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况</div><div class="line"></div><div class="line">这个问题是没有技术含量的，遇到了解决就行，方法如下：</div><div class="line">在【.m】文件中添加下面的方法即可</div></pre></td></tr></table></figure>
+<p>+(BOOL)propertyIsOptional:(NSString*)propertyName<br>{<br>  return YES;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#### 4、AES加密遇到的和*android*统一加密模式问题</div><div class="line">这种情况我以前在《[Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题](http://guohuaden.com/2016/10/06/DES-encryption/)》这篇文章中有提到多，主要是iOS这边SDK中只提供了两种模式：</div></pre></td></tr></table></figure></p>
+<p>@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.<br>@constant   kCCOptionECBMode        Electronic Code Book Mode.<br>                                    Default is CBC.<br>enum {<br>    / options for block ciphers /<br>    kCCOptionPKCS7Padding   = 0x0001,<br>    kCCOptionECBMode        = 0x0002<br>    / stream ciphers currently have no options /<br>};<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">但安卓的不一样，有十几种左右，所以在开发中一定要和安卓、服务器端做好统一。</div><div class="line"></div><div class="line">1. 如果使用CBC模式，那直接用：```kCCOptionPKCS7Padding ```即可。</div><div class="line">2. 但如果是ECB模式，就需要做下转变 ```kCCOptionECBMode | kCCOptionPKCS7Padding</div></pre></td></tr></table></figure></p>
+<h4 id="5、服务器端小数显示问题（如：1e-05）"><a href="#5、服务器端小数显示问题（如：1e-05）" class="headerlink" title="5、服务器端小数显示问题（如：1e-05）"></a>5、服务器端小数显示问题（如：1e-05）</h4><p>这个做下处理即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:leastWaveStr];</div><div class="line">NSString *numberStr = [decNumber stringValue];</div></pre></td></tr></table></figure>
+<p>金融类项目中常用到这个<figure class="highlight plain"><figcaption><span>``` ,用于货币处理 。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">通过```NSDecimalNumber ```提供的计算方式，可以很好的计算出准确的精度的数据，同时不需要使用格式化输出等。</div><div class="line"></div><div class="line">#### 6、自定义导航栏按钮不靠左／右问题</div><div class="line">很简单，解决方法，添加一个空的按钮进去</div></pre></td></tr></table></figure></p>
+<p>UIButton <em>leftButton = [[UIButton alloc]init];<br>leftButton.frame = CGRectMake(0, 0, 20, 20);<br>[leftButton setBackgroundImage:[UIImage imageNamed:@”back.png”] forState:UIControlStateNormal];<br>    [leftButton addTarget:self action:@selector(popToLastVC:) forControlEvents:UIControlEventTouchUpInside];<br>UIBarButtonItem </em>leftBarButtonItems = [[UIBarButtonItem alloc]initWithCustomView:leftButton];</p>
+<p>//解决按钮不靠左 靠右的问题.<br>UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItemalloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace<br>target:nil action:nil];<br>nagetiveSpacer.width = -15;//这个值可以根据自己需要自己调整<br>  self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 7、不同屏幕尺寸字体显示字体大小问题</div><div class="line">我们应该清楚，UI设计图大多数是以iPhone6 为模版设计的，但开发中腰考虑不同的屏幕尺寸显示字体大小不同的情况。</div><div class="line">网上给出的大多数是针对```Xib```和```storyboard```做的处理，下面我说一下针对纯代码开发的处理方法。</div><div class="line">其实很简单，在pch文件中设置宏定义，针对不同的机型做一下简单判断，在开发中使用宏定义字体大小就可以了。</div><div class="line">例如：</div></pre></td></tr></table></figure></p>
+<p>#define kDevice_Is_iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)</p>
+<p>#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)</p>
+<p>#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)</p>
+<p>#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)</p>
+<p>//字体大小（以6s为基准,以6p为判断）</p>
+<p>#define kFontSize10  kDevice_Is_iPhone6Plus ? 12:10</p>
+<p>#define kFontSize11  kDevice_Is_iPhone6Plus ? 13:11</p>
+<p>#define kFontSize12  kDevice_Is_iPhone6Plus ? 14:12</p>
+<p>#define kFontSize13  kDevice_Is_iPhone6Plus ? 15:13</p>
+<p>#define kFontSize14  kDevice_Is_iPhone6Plus ? 16:14</p>
+<p>#define kFontSize15  kDevice_Is_iPhone6Plus ? 17:15</p>
+<p>#define kFontSize16  kDevice_Is_iPhone6Plus ? 18:16</p>
+<p>#define kFontSize17  kDevice_Is_iPhone6Plus ? 19:17</p>
+<p>#define kFontSize18  kDevice_Is_iPhone6Plus ? 20:18</p>
+<p>#define kFontSize19  kDevice_Is_iPhone6Plus ? 21:19</p>
+<p>#define kFontSize20  kDevice_Is_iPhone6Plus ? 22:20</p>
+<p>#define kFontSize21  kDevice_Is_iPhone6Plus ? 23:21</p>
+<p>#define kFontSize22  kDevice_Is_iPhone6Plus ? 24:22</p>
+<p>#define kFontSize23  kDevice_Is_iPhone6Plus ? 25:23</p>
+<p>#define kFontSize24  kDevice_Is_iPhone6Plus ? 26:24</p>
+<p>#define kFontSize25  kDevice_Is_iPhone6Plus ? 27:25</p>
+<p>#define kFontSize34  kDevice_Is_iPhone6Plus ? 35:34</p>
+<p>#define kFontSize36  kDevice_Is_iPhone6Plus ? 38:36<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">使用：</div></pre></td></tr></table></figure></p>
+<p>UILabel *label = [UILabel new];<br>label.text = @””;<br>label.textColor = [UIColor darkGrayColor];<br>label.textAlignment = NSTextAlignmentCenter;<br>label.font = [UIFont systemFontOfSize:kFontSize16];<br>[self addSubview:label];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">这样就不需要每次使用字体都判断不同屏幕尺寸了。</div><div class="line"></div><div class="line">#### 8、view上有tableView，view添加手势后与tableView手势冲突问题</div><div class="line"></div><div class="line"> 解决这个问题，我们需要利用系统的方法做个判断：如果点击了tableView，就不接收Touch点击事件。</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>(BOOL)gestureRecognizer:(UIGestureRecognizer <em>)gestureRecognizer shouldReceiveTouch:(UITouch </em>)touch {<br> // 点击的view的类名<br> NSLog(@”%@”, NSStringFromClass([touch.view class]));</p>
+<p> // 点击了tableViewCell，view的类名为UITableViewCellContentView，则不接收Touch点击事件<br> if ([NSStringFromClass([touch.view class]) isEqualToString:@”UITableViewCellContentView”]) {</p>
+<pre><code>return NO;
+</code></pre><p> }<br> return  YES;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这种方法用来执行点击View的操作：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#pragma mark - UIGestureRecognizerDelegate methods<br>-(void)viewtapClicked:(UITapGestureRecognizer *)tap<br>{<br>    CGPoint point = [tap locationInView:self];</p>
+<pre><code>BOOL isTouch = CGRectContainsPoint(self.baseView.frame, point);
+if (isTouch) {
+    NSLog(@&quot;点击tableView&quot;);
+}else{
+    [UIView animateWithDuration:1.0 animations:^{
+        [self removeFromSuperview];
+    }];
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 9、断网重连后更新界面</div><div class="line">我们在开发项目中，网络状态的监听基本设置在appDelegate中。所以需要在这里针对网络状态做一个广播通知，在需要网络重连后更新界面的地方注册该广播进行界面的刷新</div></pre></td></tr></table></figure></p>
+<p>//注册网络监控通知<br>[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:kIsNetWork object:nil];</p>
+<ul>
+<li>(void)notificationHandler:(NSNotification *) notification<br>{<br>dispatch_async(dispatch_get_global_queue(0, 0), ^{<br>  [self requestHomeInfoData];<br>});<br>}<br>```</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言：&quot;&gt;&lt;a href=&quot;#前言：&quot; class=&quot;headerlink&quot; title=&quot;前言：&quot;&gt;&lt;/a&gt;前言：&lt;/h3&gt;&lt;p&gt;两年多以来，基本上都是独立开发或者维护项目，不得不自嘲的说挺锻炼人的。最近的一家公司是涉足金融行列的，算是第一次踏足金融吧，过程怎样
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>一个自定义的搜索框：GH_SearchView</title>
@@ -1071,116 +1152,6 @@ Build Active Architecture Only Picture"></p>
       &lt;p&gt;路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。&lt;/p&gt;
 &lt;p&gt;今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。&lt;/p&gt;
 &lt;p
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="https:guohuaden.com/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</title>
-    <link href="https:guohuaden.com/2016/10/06/DES-encryption/"/>
-    <id>https:guohuaden.com/2016/10/06/DES-encryption/</id>
-    <published>2016-10-06T14:14:00.000Z</published>
-    <updated>2017-01-14T13:07:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><em>我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。</em></p>
-<h3 id="1、Base64加解密"><a href="#1、Base64加解密" class="headerlink" title="1、Base64加解密"></a>1、Base64加解密</h3><p>值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解密。先看一下apple都提供了哪些方法：<br><pre>@interface NSData (NSDataBase64Encoding)<br>-(nullable instancetype)initWithBase64EncodedString:(NSString <em> )base64String options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>-(NSString </em> )base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>-(nullable instancetype)initWithBase64EncodedData:(NSData <em> )base64Data options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>-(NSData </em> )base64EncodedDataWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);<br>@end</pre> </p>
-<p>我们先创建一个NSData，再去一条一条的分析以上的方法</p>
-<pre>NSData *data = [@"Base64 encoding string" dataUsingEncoding:NSUTF8StringEncoding];</pre>
-
-<ul>
-<li><p>（1）创建一个Data（从一个Base64编码字符串使用给出的设置创建一个Data）</p>
-<pre>NSData *dataFromBase64String = [[NSData alloc]initWithBase64EncodedString:base64String options:0];</pre>
-</li>
-<li><p>(2)创建一个Base64编码字符串（从接受者内容创建）</p>
-<pre>NSString *base64String = [data base64EncodedStringWithOptions:0];</pre>
-</li>
-<li><p>(3)创建一个Data（从一个Base64、UTF-8编码的Data创建）</p>
-<pre>NSData *base64AndUTFData = [base64Data initWithBase64EncodedData:base64Data options:0];</pre>
-</li>
-<li><p>(4)创建一个Base64、UTF-8编码的Data（从接受者内容创建）</p>
-<pre>NSData *base64Data = [data base64EncodedDataWithOptions:0];</pre>
-
-
-</li>
-</ul>
-<p><strong>当然，我们最后也可以将Data转化成String类型。</strong></p>
-<pre>NSString *base64Decoded = [[NSString alloc]initWithData:dataFromBase64String encoding:NSUTF8StringEncoding];</pre>
-
-
-
-<p><em>以上是Base64加解密方法。下面我们看看DES的加解密。</em></p>
-<h3 id="2、DES加解密"><a href="#2、DES加解密" class="headerlink" title="2、DES加解密"></a>2、DES加解密</h3><p>我们都知道安卓和后台可以使用统一的代码去解决这个问题，这也是java的优势之一吧。这里我会附一段java的代码。主要是为了下面说明java和iOS端实现中需要注意的地方（也是不同点）。<br>为了使说明更方便一些，我们先看一下java的DES加密方法：</p>
-<pre>// EDS加密
- public static String Encrypt(String originalStr) {
-   String result = null;
-   byte[] tmpOriginalStr = null;
-   try {
-       if (!Tools.isEmpty(originalStr)) {
-           tmpOriginalStr = originalStr.getBytes("utf-8");
-           SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-           DESKeySpec dks = new DESKeySpec(KEY);
-           SecretKey secretKey = keyFactory.generateSecret(dks);
-           IvParameterSpec param = new IvParameterSpec(IV);
-           Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
-           cipher.init(Cipher.ENCRYPT_MODE, secretKey,param);
-           byte[] tmpEncypt = cipher.doFinal(tmpOriginalStr);
-           if (tmpEncypt != null) {
-               result = Base64.encodeToString(tmpEncypt,Base64.NO_WRAP);
-            }
-         }
-      } catch (Exception e) {
-            Log.e("Erro",e.getMessage());
-      }
-     return result;
-  }
-}
-</pre>
-
-<p>我们可以看出Java针对DES加密算法默认使用的是<code>CBC模式</code>，对齐方式采用的是:<code>PKCS5Padding</code>。</p>
-<p>而OC中的加密并不是java中的形式实现加密的，接下来我们看一看OC中实现DES加密的代码：</p>
-<pre>+(NSString *) encryptUseDES:(NSString *)plainText {
-    NSString * ciphertext = nil;
-    NSData * textData = [plainText dataUsingEncoding:NSUTF8StringEncoding];
-    NSUInteger dataLength = [textData length];
-    unsigned char buffer[1024 * 5];
-    memset(buffer, 0, sizeof(char));
-    size_t numBytesEncrypted = 0;
-    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt, kCCAlgorithmDES,
-                                          kCCOptionPKCS7Padding,
-                                          [key UTF8String], kCCKeySizeDES,
-                                          [iv UTF8String],
-                                          [textData bytes], dataLength,
-                                          buffer, 1024,
-                                          &numBytesEncrypted);
-    if (cryptStatus == kCCSuccess) {
-        NSData *data = [NSData dataWithBytes:buffer length:(NSUInteger)numBytesEncrypted];
-        ciphertext = [data base64EncodedStringWithOptions:0];
-    }
-    return ciphertext;
-}
-</pre>
-
-<p>先说一下代码中的<strong>key和iv</strong> 。<code>key</code>：是DES加密的公钥。而<code>iv</code>：是初始化的矢量。两者都是DES加密的关键参数。这个是必须要和Android、后台有个统一的。</p>
-<p>我们可以看出OC使用的是<code>kCCOptionPKCS7Padding</code>对齐方式。而java中很明确的指出使用的是<code>PKCS5Padding</code>。接下来我们点进去看看OC中给出的对齐选择有哪些，我直接以代码的形式展示出来：</p>
-<p><pre>@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.<br>@constant   kCCOptionECBMode        Electronic Code Book Mode.<br>                                    Default is CBC.<br>enum {<br>    /<em> options for block ciphers </em>/<br>    kCCOptionPKCS7Padding   = 0x0001,<br>    kCCOptionECBMode        = 0x0002<br>    /<em> stream ciphers currently have no options </em>/<br>};</pre></p>
-<p> OC中给出的是<code>kCCOptionECBMode</code> 和<code> kCCOptionPKCS7Padding</code>这两种选择。那么，问题现在出现了。java中的DES加密算法有很多种，例如：<code>ECB，CBC，OFB，CFB</code>等。</p>
-<p>java 和 OC的DES加密怎样才能实现一致性呢？（这也是我在项目中遇到的问题）。</p>
-<p>查阅很多资料，再加上自己的很多次测试，得出的结果如下：</p>
-<p><strong>在JAVA中使用这种方式加密：<code>DES/CBC/PKCS5Padding</code> 对应的Object-C的是 <code>kCCOptionPKCS7Padding</code>.<br>而使用<code>DES/ECB/PKCS5Padding</code> 对应的Object-C的是   <code>kCCOptionPKCS7Padding | kCCOptionECBMod</code><br>觉得似乎OC目前只支持这两种方式的加密。当然结果是已经得到验证的。</strong></p>
-<p><strong>注意：md5加密（iOS SDK中自带了CommonCrypto）出现警告⚠️ 。解决方法添加：引入函数定义的头文件</strong> :<code>#import &lt;CommonCrypto/CommonDigest.h&gt;</code></p>
-<p>其他链接：</p>
-<p>《<a href="http://www.tuicool.com/articles/UJJrAj" target="_blank" rel="external">Objective C与Java之间的DES加解密实现</a>》</p>
-<p>《<a href="http://iosdevelopertips.com/core-services/encode-decode-using-base64.html" target="_blank" rel="external">iOS 7: Base64 Encode and Decode NSData and NSString Objects</a>》</p>
-<p> 这里附上demo：<a href="https://github.com/Wheat-Qin/Base64-DES" target="_blank" rel="external">https://github.com/Wheat-Qin/Base64-DES</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;&lt;em&gt;我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加
     
     </summary>
     
