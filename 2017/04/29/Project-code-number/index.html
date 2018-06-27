@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
     
 
-    <link rel="canonical" href="http:www.guohuaden.com/2017/04/29/Project-code-number/"/>
+    <link rel="canonical" href="http:guohuaden.com/2017/04/29/Project-code-number/"/>
 
     
       
@@ -167,11 +167,11 @@
   <section class="post">
     <p>有遇到过这样的情况，项目经理在写文档时会要求开发人员提供项目的代码量。下面就说一下代码量的统计问题。</p>
 <h4 id="1、统计总的代码量（代码的行数）"><a href="#1、统计总的代码量（代码的行数）" class="headerlink" title="1、统计总的代码量（代码的行数）"></a>1、统计总的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs grep -v &quot;^$&quot;|wc -l</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs grep -v &quot;^$&quot;|wc -l</span><br></pre></td></tr></table></figure>
 <p>该指令是统计总共的代码量，并不统计具体的文件代码<br>其中<code>grep -v “^$”</code>：去除空行</p>
 <p>注释是包含在代码量中的，这一点要注意。</p>
 <p>统计效果图：<br><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeTotal.png" alt="统计总的代码量"></p>
-<h4 id="2、统计每个文件的代码量（代码的行数）"><a href="#2、统计每个文件的代码量（代码的行数）" class="headerlink" title="2、统计每个文件的代码量（代码的行数）"></a>2、统计每个文件的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs wc -l</div></pre></td></tr></table></figure></p>
+<h4 id="2、统计每个文件的代码量（代码的行数）"><a href="#2、统计每个文件的代码量（代码的行数）" class="headerlink" title="2、统计每个文件的代码量（代码的行数）"></a>2、统计每个文件的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs wc -l</span><br></pre></td></tr></table></figure></p>
 <p>该指令会统计具体的文件代码行数。</p>
 <p>统计效果图：<br><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeNumber1.png" alt="统计每个文件的代码量1"></p>
 <p><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeNumber2.png" alt="统计每个文件的代码量2"></p>
