@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>copy 和 mutableCopy | Wheat</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="copy 和 mutableCopy | Wheat">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="copy 和 mutableCopy | Wheat">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    
+    <meta name="author" content="青卷三部">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Wheat" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http:guohuaden.com/2018/06/30/copyAndMutableCopy/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Wheat 的主页"><img src="/images/avatar.jpg" width="80" alt="Wheat logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Wheat">Wheat</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">以梦为马，不负韶华</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">我是一名iOS开发工程师，正在技术的道路上前行，也希望好好的走下去。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/project">项目</a></li>
+            
+              <li class="navigation__item"><a href="/lift">生活</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Wheat-Qin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/wheatDen" title="@wheat" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-slate"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-06-30T06:16:37.000Z" class="post-list__meta--date date">2018-06-30</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">copy 和 mutableCopy</h1>
+  </header>
+
+  <section class="post">
+    <p>今天来谈下深浅拷贝【copy 和 mutableCopy】</p>
+<p>想写这篇文章，是因为看到了一个有意思的文章，对于其中的一些观点不太认同，所以想简单分析一下深浅拷贝</p>
+<p>先看一段代码，稍后会对代码进行分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-(void)testOne</span><br><span class="line">&#123;</span><br><span class="line">    NSArray *test = @[@1,@2,@3];</span><br><span class="line">    NSLog(@&quot;test-&gt;%p\n&quot;,test);</span><br><span class="line">    NSArray *testCopy = [test copy];</span><br><span class="line">    NSLog(@&quot;testCopy-&gt;%p\n&quot;,testCopy);</span><br><span class="line">    NSArray *testMutableCopy = [test mutableCopy];</span><br><span class="line">    NSLog(@&quot;testMutableCopy-&gt;%p\n&quot;,testMutableCopy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析：</p>
+<p>很简单的创建一个数组，对其进行copy和mutableCopy操作，打印其内存地址。结果看图会知道：<br>test和testCopy 内存地址是一样的，而testMutableCopy的内存地址是和test不同的。</p>
+<ol>
+<li><code>copy</code> 只是拷贝指向对象的指针，并没有出现新的内存地址，我们称之为<strong>浅拷贝</strong>：</li>
+<li><code>mutableCopy</code> 拷贝整个对象内存到另一块内存中，是产生了新的内存地址。</li>
+</ol>
+<p><img src="http://obzx0h1re.bkt.clouddn.com/copyAndMutableCopy_one.png" alt="copy和mutableCopy操作1"></p>
+<p>再看下面的一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-(void)testTwo</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;\n&quot;);</span><br><span class="line">    NSMutableArray *test2 = [NSMutableArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;, nil];</span><br><span class="line">    NSLog(@&quot;test2-&gt;%p\n&quot;,test2);</span><br><span class="line">    NSMutableArray *testCopy2 = [test2 copy];</span><br><span class="line">    NSLog(@&quot;testCopy2-&gt;%p\n&quot;,testCopy2);</span><br><span class="line">    </span><br><span class="line">    NSMutableArray *testMutableCopy2 = [test2 mutableCopy];</span><br><span class="line">    NSLog(@&quot;testMutableCopy2-&gt;%p\n&quot;,testMutableCopy2);</span><br><span class="line">    </span><br><span class="line">    [test2 addObject:@&quot;A&quot;];</span><br><span class="line">    </span><br><span class="line">    //这里不能对数组做操作， 可变数组的copy属于深拷贝，和mutableCopy一样都是将数组拷贝一份存入新的内存中，但通过mutableCopy得到的可变数组可以再操作，而copy出来的是不可变数组。</span><br><span class="line">//    [testCopy2 removeObject:@&quot;1&quot;];</span><br><span class="line">//    [testCopy2 addObject:@&quot;B&quot;]; </span><br><span class="line">    </span><br><span class="line">    [testMutableCopy2 addObject:@&quot;C&quot;];</span><br><span class="line">    [testMutableCopy2 removeObject:@&quot;3&quot;];</span><br><span class="line">    NSLog(@&quot;test2 = %@, testCopy2 =%@,testMutableCopy2 = %@&quot;,test2,testCopy2,testMutableCopy2);</span><br><span class="line">    </span><br><span class="line">    //打印结果： test2 = @[1,2,3,A]   testCopy2 = @[1,2,3]   testMutableCopy2 = @[1,2,3,C]</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>分析：</strong><br>上面这段代码会和之前的不一样，我们这里创建的是一个可变数组，然后对可变数组进行<code>copy</code>和<code>mutableCopy</code>操作。发现打印其内存地址都不一样，<br>这说明对齐可变数组进行<code>copy</code>和<code>mutableCopy</code>都是深拷贝。<br>但你会发现<code>copy</code>得到的数组不能添加删除操作，这是因为<code>copy</code>得到的是不可变数组。</p>
+<p>可变数组的<code>copy</code>和<code>mutableCopy</code>都是深拷贝<br><img src="http://obzx0h1re.bkt.clouddn.com/copyAndMutableCopy_two.png" alt="copy和mutableCopy操作1"></p>
+<p>最后一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-(void)testThree</span><br><span class="line">&#123;</span><br><span class="line">    NSMutableArray *test4 = [NSMutableArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;, nil];</span><br><span class="line">    NSMutableArray *newTest = [NSMutableArray arrayWithObject:test4];</span><br><span class="line">    NSMutableArray *testMutableCopy4 = [newTest mutableCopy];//拷贝出来的是NSMutableArray类型数组</span><br><span class="line">    NSLog(@&quot;newTest-&gt;%p,testMutableCopy4-&gt;%p\n&quot;,newTest,testMutableCopy4);</span><br><span class="line">    </span><br><span class="line">    //copy的先不说， 我们看下mutableCopy得到的数组，你会发现通过mutableCopy得到的数组中的元素地址是不变的</span><br><span class="line">    NSLog(@&quot;newTest.first-&gt;%p,testMutableCopy4first-&gt;%p\n&quot;,newTest.firstObject,testMutableCopy4.firstObject);</span><br><span class="line">    </span><br><span class="line">    //test</span><br><span class="line">    [testMutableCopy4.firstObject addObject:@6];</span><br><span class="line">    [newTest.firstObject addObject:@&quot;12&quot;];</span><br><span class="line">    </span><br><span class="line">    //打印出来这里两个数组，会发现结果是一样的，原因就是mutableCopy的深拷贝是容器和其中的元素，但元素的地址并没有改变，修改其中的元素中的内容，结果必然都改变</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot;newTest = %@,testMutableCopy2 = %@&quot;,newTest,testMutableCopy4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析：</p>
+<p>通过<code>mutableCopy</code>得到的数组，你会发现通过<code>mutableCopy</code>得到的数组中的元素地址是不变的。如果你往数组的元素中添加或删除，会发现newTest和testMutableCopy4中的元素都改变了。<br><img src="http://obzx0h1re.bkt.clouddn.com/copyAndMutableCopy_four.png" alt="copy和mutableCopy操作1"></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/06/03/Project-summary-Four/" title="项目总结四">项目总结四</a></h2>
+                <p class="excerpt">
+                
+                前言：最近都一直在忙新项目的事，真是倍感身心疲别啊。目前项目终于成型，也算时间宽松渐缓吧，就把项目中遇到的一些问题做个总结。
+1、textField限制输入的位数以及小数点的位数123456789101112131415161718192021222324252627282930313233- (B
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-06-03T04:01:57.000Z" class="post-list__meta--date date">2018-06-03</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2018/06/03/Project-summary-Four/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
