@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http:guohuaden.com/about/index.html</loc>
+    
+    <lastmod>2018-08-11T12:41:28.782Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http:guohuaden.com/2018/06/30/copyAndMutableCopy/</loc>
     
     <lastmod>2018-07-01T10:02:59.358Z</lastmod>
@@ -201,13 +208,6 @@
     <loc>http:guohuaden.com/2016/10/06/DES-encryption/</loc>
     
     <lastmod>2017-01-14T13:07:16.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http:guohuaden.com/about/index.html</loc>
-    
-    <lastmod>2017-01-13T17:59:00.000Z</lastmod>
     
   </url>
   
