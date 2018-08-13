@@ -5,9 +5,9 @@
   <subtitle>以梦为马，不负韶华</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http:guohuaden.com/"/>
+  <link href="http://guohuaden.com/"/>
   <updated>2018-07-01T10:02:59.358Z</updated>
-  <id>http:guohuaden.com/</id>
+  <id>http://guohuaden.com/</id>
   
   <author>
     <name>Wheat</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>copy 和 mutableCopy</title>
-    <link href="http:guohuaden.com/2018/06/30/copyAndMutableCopy/"/>
-    <id>http:guohuaden.com/2018/06/30/copyAndMutableCopy/</id>
+    <link href="http://guohuaden.com/2018/06/30/copyAndMutableCopy/"/>
+    <id>http://guohuaden.com/2018/06/30/copyAndMutableCopy/</id>
     <published>2018-06-30T06:16:37.000Z</published>
     <updated>2018-07-01T10:02:59.358Z</updated>
     
@@ -38,14 +38,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>项目总结四</title>
-    <link href="http:guohuaden.com/2018/06/03/Project-summary-Four/"/>
-    <id>http:guohuaden.com/2018/06/03/Project-summary-Four/</id>
+    <link href="http://guohuaden.com/2018/06/03/Project-summary-Four/"/>
+    <id>http://guohuaden.com/2018/06/03/Project-summary-Four/</id>
     <published>2018-06-03T04:01:57.000Z</published>
     <updated>2018-07-01T10:02:48.737Z</updated>
     
@@ -62,18 +62,18 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS之项目总结三：项目开发中遇到的一些问题及解决方案</title>
-    <link href="http:guohuaden.com/2017/10/05/project-summary-Three/"/>
-    <id>http:guohuaden.com/2017/10/05/project-summary-Three/</id>
+    <link href="http://guohuaden.com/2017/10/05/project-summary-Three/"/>
+    <id>http://guohuaden.com/2017/10/05/project-summary-Three/</id>
     <published>2017-10-05T03:19:10.000Z</published>
     <updated>2017-10-08T05:27:42.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>两年多以来，基本上都是独立开发或者维护项目，不得不自嘲的说挺锻炼人的。最近的一家公司是涉足金融行列的，算是第一次踏足金融吧，过程怎样不说，确实学到了不少东西。</p><p><strong><em>下面就开发第一款金融类项目遇到的问题做一下总结：</em></strong></p><h4 id="1、中文显示标题之类"><a href="#1、中文显示标题之类" class="headerlink" title="1、中文显示标题之类"></a>1、中文显示标题之类</h4><p>我们在项目中调用相册、相机等往往默认的是显示英文，但有时候开发的项目是针对国内的，所以需要中文配合显示，这就需要我们做一下配置。<br>其实很简单：就是在<code>info.plist</code>中允许应用程序获取框架内语言即可。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Localizedresources can be mixed  YES</span><br><span class="line">Localization native development region  China //en</span><br></pre></td></tr></table></figure><p>图片显示：</p><p><img src="http://obzx0h1re.bkt.clouddn.com/project_summary_lauguageSet.png" alt="允许应用程序获取框架内语言图片"></p><h4 id="2、运行报错问题"><a href="#2、运行报错问题" class="headerlink" title="2、运行报错问题"></a>2、运行报错问题</h4><p>报错信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld: 4 duplicate symbols for architecture arm64 clang: error: linker command failed with exit</span><br></pre></td></tr></table></figure><p>这个是粗心大意而差生的报错，最可能的情况是：引入【.h】文件重复。<br>我们知道iOS不允许在A类中重复引入相同的B类的，使用<code>improt</code>关键字引入头文件时，它会判断是否已经引入，如果引入了一次就不在引入。但并不能直接提示报错，所以在运行时会提示上面的报错信息。所以首先要做的是排查是否重复引入【.h】文件。</p><h4 id="3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况"><a href="#3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况" class="headerlink" title="3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况"></a>3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况</h4><p>这个问题是没有技术含量的，遇到了解决就行，方法如下：<br>在【.m】文件中添加下面的方法即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+(BOOL)propertyIsOptional:(NSString*)propertyName</span><br><span class="line">&#123;</span><br><span class="line">  return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="4、AES加密遇到的和android统一加密模式问题"><a href="#4、AES加密遇到的和android统一加密模式问题" class="headerlink" title="4、AES加密遇到的和android统一加密模式问题"></a>4、AES加密遇到的和<em>android</em>统一加密模式问题</h4><p>这种情况我以前在《<a href="http://guohuaden.com/2016/10/06/DES-encryption/" target="_blank" rel="noopener">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</a>》这篇文章中有提到多，主要是iOS这边SDK中只提供了两种模式：</p><pre>@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.@constant   kCCOptionECBMode        Electronic Code Book Mode.                                    Default is CBC.enum {    / options for block ciphers /    kCCOptionPKCS7Padding   = 0x0001,    kCCOptionECBMode        = 0x0002    / stream ciphers currently have no options /};</pre><p>但安卓的不一样，有十几种左右，所以在开发中一定要和安卓、服务器端做好统一。</p><ol><li>如果使用CBC模式，那直接用：<code>kCCOptionPKCS7Padding</code>即可。</li><li>但如果是ECB模式，就需要做下转变 <code>kCCOptionECBMode | kCCOptionPKCS7Padding</code></li></ol><h4 id="5、服务器端小数显示问题（如：1e-05）"><a href="#5、服务器端小数显示问题（如：1e-05）" class="headerlink" title="5、服务器端小数显示问题（如：1e-05）"></a>5、服务器端小数显示问题（如：1e-05）</h4><p>这个做下处理即可：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:leastWaveStr];</span><br><span class="line">NSString *numberStr = [decNumber stringValue];</span><br></pre></td></tr></table></figure><p>金融类项目中常用到这个<code>NSDecimalNumber</code> ,用于货币处理 。<br>通过<code>NSDecimalNumber</code>提供的计算方式，可以很好的计算出准确的精度的数据，同时不需要使用格式化输出等。</p><h4 id="6、自定义导航栏按钮不靠左／右问题"><a href="#6、自定义导航栏按钮不靠左／右问题" class="headerlink" title="6、自定义导航栏按钮不靠左／右问题"></a>6、自定义导航栏按钮不靠左／右问题</h4><p>很简单，解决方法，添加一个空的按钮进去</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">UIButton *leftButton = [[UIButton alloc]init];</span><br><span class="line">leftButton.frame = CGRectMake(0, 0, 20, 20);</span><br><span class="line">[leftButton setBackgroundImage:[UIImage imageNamed:@&quot;back.png&quot;] forState:UIControlStateNormal];</span><br><span class="line">[leftButton addTarget:self action:@selector(popToLastVC:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">UIBarButtonItem *leftBarButtonItems = [[UIBarButtonItem alloc]initWithCustomView:leftButton];</span><br><span class="line">//解决按钮不靠左 靠右的问题.</span><br><span class="line">UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItemalloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace</span><br><span class="line">target:nil action:nil];</span><br><span class="line">nagetiveSpacer.width = -15;//这个值可以根据自己需要自己调整</span><br><span class="line">self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];</span><br></pre></td></tr></table></figure><h4 id="7、不同屏幕尺寸字体显示字体大小问题"><a href="#7、不同屏幕尺寸字体显示字体大小问题" class="headerlink" title="7、不同屏幕尺寸字体显示字体大小问题"></a>7、不同屏幕尺寸字体显示字体大小问题</h4><p>我们应该清楚，UI设计图大多数是以iPhone6 为模版设计的，但开发中腰考虑不同的屏幕尺寸显示字体大小不同的情况。<br>网上给出的大多数是针对<code>Xib</code>和<code>storyboard</code>做的处理，下面我说一下针对纯代码开发的处理方法。<br>其实很简单，在pch文件中设置宏定义，针对不同的机型做一下简单判断，在开发中使用宏定义字体大小就可以了。<br>例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#define kDevice_Is_iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">//字体大小（以6s为基准,以6p为判断）</span><br><span class="line">#define kFontSize10  kDevice_Is_iPhone6Plus ? 12:10</span><br><span class="line">#define kFontSize11  kDevice_Is_iPhone6Plus ? 13:11</span><br><span class="line">#define kFontSize12  kDevice_Is_iPhone6Plus ? 14:12</span><br><span class="line">#define kFontSize13  kDevice_Is_iPhone6Plus ? 15:13</span><br><span class="line">#define kFontSize14  kDevice_Is_iPhone6Plus ? 16:14</span><br><span class="line">#define kFontSize15  kDevice_Is_iPhone6Plus ? 17:15</span><br><span class="line">#define kFontSize16  kDevice_Is_iPhone6Plus ? 18:16</span><br><span class="line">#define kFontSize17  kDevice_Is_iPhone6Plus ? 19:17</span><br><span class="line">#define kFontSize18  kDevice_Is_iPhone6Plus ? 20:18</span><br><span class="line">#define kFontSize19  kDevice_Is_iPhone6Plus ? 21:19</span><br><span class="line">#define kFontSize20  kDevice_Is_iPhone6Plus ? 22:20</span><br><span class="line">#define kFontSize21  kDevice_Is_iPhone6Plus ? 23:21</span><br><span class="line">#define kFontSize22  kDevice_Is_iPhone6Plus ? 24:22</span><br><span class="line">#define kFontSize23  kDevice_Is_iPhone6Plus ? 25:23</span><br><span class="line">#define kFontSize24  kDevice_Is_iPhone6Plus ? 26:24</span><br><span class="line">#define kFontSize25  kDevice_Is_iPhone6Plus ? 27:25</span><br><span class="line">#define kFontSize34  kDevice_Is_iPhone6Plus ? 35:34</span><br><span class="line">#define kFontSize36  kDevice_Is_iPhone6Plus ? 38:36</span><br></pre></td></tr></table></figure><p>使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UILabel *label = [UILabel new];</span><br><span class="line">label.text = @&quot;&quot;;</span><br><span class="line">label.textColor = [UIColor darkGrayColor];</span><br><span class="line">label.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">label.font = [UIFont systemFontOfSize:kFontSize16];</span><br><span class="line">[self addSubview:label];</span><br></pre></td></tr></table></figure><p>这样就不需要每次使用字体都判断不同屏幕尺寸了。</p><h4 id="8、view上有tableView，view添加手势后与tableView手势冲突问题"><a href="#8、view上有tableView，view添加手势后与tableView手势冲突问题" class="headerlink" title="8、view上有tableView，view添加手势后与tableView手势冲突问题"></a>8、view上有tableView，view添加手势后与tableView手势冲突问题</h4><p> 解决这个问题，我们需要利用系统的方法做个判断：如果点击了tableView，就不接收Touch点击事件。</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch &#123;</span><br><span class="line">    // 点击的view的类名</span><br><span class="line">    NSLog(@&quot;%@&quot;, NSStringFromClass([touch.view class]));</span><br><span class="line">    // 点击了tableViewCell，view的类名为UITableViewCellContentView，则不接收Touch点击事件</span><br><span class="line">    if ([NSStringFromClass([touch.view class]) isEqualToString:@&quot;UITableViewCellContentView&quot;]) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return  YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这种方法用来执行点击View的操作：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - UIGestureRecognizerDelegate methods</span><br><span class="line">-(void)viewtapClicked:(UITapGestureRecognizer *)tap</span><br><span class="line">&#123;</span><br><span class="line">    CGPoint point = [tap locationInView:self];</span><br><span class="line">    BOOL isTouch = CGRectContainsPoint(self.baseView.frame, point);</span><br><span class="line">    if (isTouch) &#123;</span><br><span class="line">        NSLog(@&quot;点击tableView&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        [UIView animateWithDuration:1.0 animations:^&#123;</span><br><span class="line">            [self removeFromSuperview];</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="9、断网重连后更新界面"><a href="#9、断网重连后更新界面" class="headerlink" title="9、断网重连后更新界面"></a>9、断网重连后更新界面</h4><p>我们在开发项目中，网络状态的监听基本设置在<code>appDelegate</code>中。所以需要在这里针对网络状态做一个广播通知，在需要网络重连后更新界面的地方注册该广播进行界面的刷新</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//注册网络监控通知</span><br><span class="line">[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:kIsNetWork object:nil];</span><br><span class="line">- (void)notificationHandler:(NSNotification *) notification</span><br><span class="line">&#123;</span><br><span class="line">dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">    [self requestHomeInfoData];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>两年多以来，基本上都是独立开发或者维护项目，不得不自嘲的说挺锻炼人的。最近的一家公司是涉足金融行列的，算是第一次踏足金融吧，过程怎样不说，确实学到了不少东西。</p><p><strong><em>下面就开发第一款金融类项目遇到的问题做一下总结：</em></strong></p><h4 id="1、中文显示标题之类"><a href="#1、中文显示标题之类" class="headerlink" title="1、中文显示标题之类"></a>1、中文显示标题之类</h4><p>我们在项目中调用相册、相机等往往默认的是显示英文，但有时候开发的项目是针对国内的，所以需要中文配合显示，这就需要我们做一下配置。<br>其实很简单：就是在<code>info.plist</code>中允许应用程序获取框架内语言即可。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Localizedresources can be mixed  YES</span><br><span class="line">Localization native development region  China //en</span><br></pre></td></tr></table></figure><p>图片显示：</p><p><img src="http://obzx0h1re.bkt.clouddn.com/project_summary_lauguageSet.png" alt="允许应用程序获取框架内语言图片"></p><h4 id="2、运行报错问题"><a href="#2、运行报错问题" class="headerlink" title="2、运行报错问题"></a>2、运行报错问题</h4><p>报错信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld: 4 duplicate symbols for architecture arm64 clang: error: linker command failed with exit</span><br></pre></td></tr></table></figure><p>这个是粗心大意而差生的报错，最可能的情况是：引入【.h】文件重复。<br>我们知道iOS不允许在A类中重复引入相同的B类的，使用<code>improt</code>关键字引入头文件时，它会判断是否已经引入，如果引入了一次就不在引入。但并不能直接提示报错，所以在运行时会提示上面的报错信息。所以首先要做的是排查是否重复引入【.h】文件。</p><h4 id="3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况"><a href="#3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况" class="headerlink" title="3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况"></a>3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况</h4><p>这个问题是没有技术含量的，遇到了解决就行，方法如下：<br>在【.m】文件中添加下面的方法即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+(BOOL)propertyIsOptional:(NSString*)propertyName</span><br><span class="line">&#123;</span><br><span class="line">  return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="4、AES加密遇到的和android统一加密模式问题"><a href="#4、AES加密遇到的和android统一加密模式问题" class="headerlink" title="4、AES加密遇到的和android统一加密模式问题"></a>4、AES加密遇到的和<em>android</em>统一加密模式问题</h4><p>这种情况我以前在《<a href="http://guohuaden.com/2016/10/06/DES-encryption/">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</a>》这篇文章中有提到多，主要是iOS这边SDK中只提供了两种模式：</p><pre>@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.@constant   kCCOptionECBMode        Electronic Code Book Mode.                                    Default is CBC.enum {    / options for block ciphers /    kCCOptionPKCS7Padding   = 0x0001,    kCCOptionECBMode        = 0x0002    / stream ciphers currently have no options /};</pre><p>但安卓的不一样，有十几种左右，所以在开发中一定要和安卓、服务器端做好统一。</p><ol><li>如果使用CBC模式，那直接用：<code>kCCOptionPKCS7Padding</code>即可。</li><li>但如果是ECB模式，就需要做下转变 <code>kCCOptionECBMode | kCCOptionPKCS7Padding</code></li></ol><h4 id="5、服务器端小数显示问题（如：1e-05）"><a href="#5、服务器端小数显示问题（如：1e-05）" class="headerlink" title="5、服务器端小数显示问题（如：1e-05）"></a>5、服务器端小数显示问题（如：1e-05）</h4><p>这个做下处理即可：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:leastWaveStr];</span><br><span class="line">NSString *numberStr = [decNumber stringValue];</span><br></pre></td></tr></table></figure><p>金融类项目中常用到这个<code>NSDecimalNumber</code> ,用于货币处理 。<br>通过<code>NSDecimalNumber</code>提供的计算方式，可以很好的计算出准确的精度的数据，同时不需要使用格式化输出等。</p><h4 id="6、自定义导航栏按钮不靠左／右问题"><a href="#6、自定义导航栏按钮不靠左／右问题" class="headerlink" title="6、自定义导航栏按钮不靠左／右问题"></a>6、自定义导航栏按钮不靠左／右问题</h4><p>很简单，解决方法，添加一个空的按钮进去</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">UIButton *leftButton = [[UIButton alloc]init];</span><br><span class="line">leftButton.frame = CGRectMake(0, 0, 20, 20);</span><br><span class="line">[leftButton setBackgroundImage:[UIImage imageNamed:@&quot;back.png&quot;] forState:UIControlStateNormal];</span><br><span class="line">[leftButton addTarget:self action:@selector(popToLastVC:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">UIBarButtonItem *leftBarButtonItems = [[UIBarButtonItem alloc]initWithCustomView:leftButton];</span><br><span class="line">//解决按钮不靠左 靠右的问题.</span><br><span class="line">UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItemalloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace</span><br><span class="line">target:nil action:nil];</span><br><span class="line">nagetiveSpacer.width = -15;//这个值可以根据自己需要自己调整</span><br><span class="line">self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];</span><br></pre></td></tr></table></figure><h4 id="7、不同屏幕尺寸字体显示字体大小问题"><a href="#7、不同屏幕尺寸字体显示字体大小问题" class="headerlink" title="7、不同屏幕尺寸字体显示字体大小问题"></a>7、不同屏幕尺寸字体显示字体大小问题</h4><p>我们应该清楚，UI设计图大多数是以iPhone6 为模版设计的，但开发中腰考虑不同的屏幕尺寸显示字体大小不同的情况。<br>网上给出的大多数是针对<code>Xib</code>和<code>storyboard</code>做的处理，下面我说一下针对纯代码开发的处理方法。<br>其实很简单，在pch文件中设置宏定义，针对不同的机型做一下简单判断，在开发中使用宏定义字体大小就可以了。<br>例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#define kDevice_Is_iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">//字体大小（以6s为基准,以6p为判断）</span><br><span class="line">#define kFontSize10  kDevice_Is_iPhone6Plus ? 12:10</span><br><span class="line">#define kFontSize11  kDevice_Is_iPhone6Plus ? 13:11</span><br><span class="line">#define kFontSize12  kDevice_Is_iPhone6Plus ? 14:12</span><br><span class="line">#define kFontSize13  kDevice_Is_iPhone6Plus ? 15:13</span><br><span class="line">#define kFontSize14  kDevice_Is_iPhone6Plus ? 16:14</span><br><span class="line">#define kFontSize15  kDevice_Is_iPhone6Plus ? 17:15</span><br><span class="line">#define kFontSize16  kDevice_Is_iPhone6Plus ? 18:16</span><br><span class="line">#define kFontSize17  kDevice_Is_iPhone6Plus ? 19:17</span><br><span class="line">#define kFontSize18  kDevice_Is_iPhone6Plus ? 20:18</span><br><span class="line">#define kFontSize19  kDevice_Is_iPhone6Plus ? 21:19</span><br><span class="line">#define kFontSize20  kDevice_Is_iPhone6Plus ? 22:20</span><br><span class="line">#define kFontSize21  kDevice_Is_iPhone6Plus ? 23:21</span><br><span class="line">#define kFontSize22  kDevice_Is_iPhone6Plus ? 24:22</span><br><span class="line">#define kFontSize23  kDevice_Is_iPhone6Plus ? 25:23</span><br><span class="line">#define kFontSize24  kDevice_Is_iPhone6Plus ? 26:24</span><br><span class="line">#define kFontSize25  kDevice_Is_iPhone6Plus ? 27:25</span><br><span class="line">#define kFontSize34  kDevice_Is_iPhone6Plus ? 35:34</span><br><span class="line">#define kFontSize36  kDevice_Is_iPhone6Plus ? 38:36</span><br></pre></td></tr></table></figure><p>使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UILabel *label = [UILabel new];</span><br><span class="line">label.text = @&quot;&quot;;</span><br><span class="line">label.textColor = [UIColor darkGrayColor];</span><br><span class="line">label.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">label.font = [UIFont systemFontOfSize:kFontSize16];</span><br><span class="line">[self addSubview:label];</span><br></pre></td></tr></table></figure><p>这样就不需要每次使用字体都判断不同屏幕尺寸了。</p><h4 id="8、view上有tableView，view添加手势后与tableView手势冲突问题"><a href="#8、view上有tableView，view添加手势后与tableView手势冲突问题" class="headerlink" title="8、view上有tableView，view添加手势后与tableView手势冲突问题"></a>8、view上有tableView，view添加手势后与tableView手势冲突问题</h4><p> 解决这个问题，我们需要利用系统的方法做个判断：如果点击了tableView，就不接收Touch点击事件。</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch &#123;</span><br><span class="line">    // 点击的view的类名</span><br><span class="line">    NSLog(@&quot;%@&quot;, NSStringFromClass([touch.view class]));</span><br><span class="line">    // 点击了tableViewCell，view的类名为UITableViewCellContentView，则不接收Touch点击事件</span><br><span class="line">    if ([NSStringFromClass([touch.view class]) isEqualToString:@&quot;UITableViewCellContentView&quot;]) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return  YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这种方法用来执行点击View的操作：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - UIGestureRecognizerDelegate methods</span><br><span class="line">-(void)viewtapClicked:(UITapGestureRecognizer *)tap</span><br><span class="line">&#123;</span><br><span class="line">    CGPoint point = [tap locationInView:self];</span><br><span class="line">    BOOL isTouch = CGRectContainsPoint(self.baseView.frame, point);</span><br><span class="line">    if (isTouch) &#123;</span><br><span class="line">        NSLog(@&quot;点击tableView&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        [UIView animateWithDuration:1.0 animations:^&#123;</span><br><span class="line">            [self removeFromSuperview];</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="9、断网重连后更新界面"><a href="#9、断网重连后更新界面" class="headerlink" title="9、断网重连后更新界面"></a>9、断网重连后更新界面</h4><p>我们在开发项目中，网络状态的监听基本设置在<code>appDelegate</code>中。所以需要在这里针对网络状态做一个广播通知，在需要网络重连后更新界面的地方注册该广播进行界面的刷新</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//注册网络监控通知</span><br><span class="line">[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:kIsNetWork object:nil];</span><br><span class="line">- (void)notificationHandler:(NSNotification *) notification</span><br><span class="line">&#123;</span><br><span class="line">dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">    [self requestHomeInfoData];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -85,18 +85,18 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>WKWebView使用遇到的问题</title>
-    <link href="http:guohuaden.com/2017/10/03/WKWebView-issue/"/>
-    <id>http:guohuaden.com/2017/10/03/WKWebView-issue/</id>
+    <link href="http://guohuaden.com/2017/10/03/WKWebView-issue/"/>
+    <id>http://guohuaden.com/2017/10/03/WKWebView-issue/</id>
     <published>2017-10-03T02:30:40.000Z</published>
     <updated>2017-10-08T06:00:22.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><code>WKWebView</code>在iOS8之后正式替代<code>UIWebView</code>，速度方面确实提升了不少。关于<code>WKWebView</code>的简单使用，在《<a href="http://guohuaden.com/2017/02/11/WKWebView/" target="_blank" rel="noopener">聊一聊WKWebView</a>》中我已经介绍过了，这里就不再絮叨，本篇主要记录s三个开发中遇到的问题。</p><h4 id="1、去缓存问题"><a href="#1、去缓存问题" class="headerlink" title="1、去缓存问题"></a>1、去缓存问题</h4><p>我们在第一次打开webView后，移动端为了使用的便捷，会在本地做一个缓存，服务器端也有类似的缓存。但有时服务器端更改信息或者web端更改界面信息。我们往往打开移动端的webView界面，仍然是原来的界面状态，这就是缓存机制造成的现象。<br>解决方法：如果不考虑流量，则需要在请求时忽略本地和远程的缓存即可,使用<code>NSURLRequestReloadIgnoringLocalAndRemoteCacheData</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURLRequest *request = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:20];</span><br><span class="line">[self.webView loadRequest:request];</span><br></pre></td></tr></table></figure><p>这里附上iOS提供的请求缓存类型:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)</span><br><span class="line">&#123;</span><br><span class="line">    NSURLRequestUseProtocolCachePolicy = 0,</span><br><span class="line">    NSURLRequestReloadIgnoringLocalCacheData = 1,</span><br><span class="line">    NSURLRequestReloadIgnoringLocalAndRemoteCacheData = 4, // Unimplemented</span><br><span class="line">    NSURLRequestReloadIgnoringCacheData = NSURLRequestReloadIgnoringLocalCacheData,</span><br><span class="line">    NSURLRequestReturnCacheDataElseLoad = 2,</span><br><span class="line">    NSURLRequestReturnCacheDataDontLoad = 3,</span><br><span class="line">    NSURLRequestReloadRevalidatingCacheData = 5, // Unimplemented</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>也可以看看这篇文章：《<a href="http://www.cnblogs.com/lolDragon/p/6774509.html" target="_blank" rel="noopener">iOS webview加载时序和缓存问题总结</a>》</p><h4 id="2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）"><a href="#2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）" class="headerlink" title="2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）"></a>2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）</h4><p>如果在<code>webView</code>界面中有跳转<code>appstore</code>、支付宝等调手机中app的点击按钮时，如果iOS端不做处理的话，是调不起来手机中的app的。<br>我们需要做的就是在代理方法中截取<code>webView</code>的<code>url</code>，再使用iOS的代码进行跳转。<br>例如打开<code>appstore</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler</span><br><span class="line">&#123;</span><br><span class="line">    NSURL *url = navigationAction.request.URL;</span><br><span class="line">    UIApplication *app = [UIApplication sharedApplication];</span><br><span class="line">    // 打开appstore</span><br><span class="line">    if ([url.absoluteString containsString:@&quot;https://itunes.apple.com/&quot;])&#123;</span><br><span class="line">        if ([app canOpenURL:url])&#123;</span><br><span class="line">            [[UIApplication sharedApplication] openURL:url];</span><br><span class="line">            decisionHandler(WKNavigationActionPolicyCancel);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    decisionHandler(WKNavigationActionPolicyAllow);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题"><a href="#4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题" class="headerlink" title="4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题"></a>4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题</h4><p>开发中发现，在WKWebView中点击获取验证码等失败（抓包工具查看，发现需要和请求一块上传cookie中的数据，实际并没有上传或者数据丢失一部分）</p><p>在WKWebView中，cookie的是需要我们自己去设置的，这一点和UIWebView不同。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-(void)setUIWebviewcookie&#123;</span><br><span class="line">    NSHTTPCookieStorage *cs = [NSHTTPCookieStorage sharedHTTPCookieStorage];</span><br><span class="line">    [cs setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在webView响应请求的代理方法中，查看cookie</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler&#123;</span><br><span class="line">    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;</span><br><span class="line">    NSArray *cookies =[NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];</span><br><span class="line">    //读取wkwebview中的cookie 方法1</span><br><span class="line">    for (NSHTTPCookie *cookie in cookies) &#123;</span><br><span class="line">        //[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];</span><br><span class="line">        NSLog(@&quot;wkwebview中的cookie:%@&quot;, cookie);</span><br><span class="line">    &#125;</span><br><span class="line">    //读取wkwebview中的cookie 方法2 读取Set-Cookie字段</span><br><span class="line">    NSString *cookieString = [[response allHeaderFields] valueForKey:@&quot;Set-Cookie&quot;];</span><br><span class="line">    NSLog(@&quot;wkwebview中的cookie:%@&quot;, cookieString);</span><br><span class="line">    //看看存入到了NSHTTPCookieStorage了没有</span><br><span class="line">    NSHTTPCookieStorage *cookieJar2 = [NSHTTPCookieStorage sharedHTTPCookieStorage];</span><br><span class="line">    for (NSHTTPCookie *cookie in cookieJar2.cookies) &#123;</span><br><span class="line">        NSLog(@&quot;NSHTTPCookieStorage中的cookie%@&quot;, cookie);</span><br><span class="line">    &#125;</span><br><span class="line">    decisionHandler(WKNavigationResponsePolicyAllow);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><code>WKWebView</code>在iOS8之后正式替代<code>UIWebView</code>，速度方面确实提升了不少。关于<code>WKWebView</code>的简单使用，在《<a href="http://guohuaden.com/2017/02/11/WKWebView/">聊一聊WKWebView</a>》中我已经介绍过了，这里就不再絮叨，本篇主要记录s三个开发中遇到的问题。</p><h4 id="1、去缓存问题"><a href="#1、去缓存问题" class="headerlink" title="1、去缓存问题"></a>1、去缓存问题</h4><p>我们在第一次打开webView后，移动端为了使用的便捷，会在本地做一个缓存，服务器端也有类似的缓存。但有时服务器端更改信息或者web端更改界面信息。我们往往打开移动端的webView界面，仍然是原来的界面状态，这就是缓存机制造成的现象。<br>解决方法：如果不考虑流量，则需要在请求时忽略本地和远程的缓存即可,使用<code>NSURLRequestReloadIgnoringLocalAndRemoteCacheData</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURLRequest *request = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:20];</span><br><span class="line">[self.webView loadRequest:request];</span><br></pre></td></tr></table></figure><p>这里附上iOS提供的请求缓存类型:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)</span><br><span class="line">&#123;</span><br><span class="line">    NSURLRequestUseProtocolCachePolicy = 0,</span><br><span class="line">    NSURLRequestReloadIgnoringLocalCacheData = 1,</span><br><span class="line">    NSURLRequestReloadIgnoringLocalAndRemoteCacheData = 4, // Unimplemented</span><br><span class="line">    NSURLRequestReloadIgnoringCacheData = NSURLRequestReloadIgnoringLocalCacheData,</span><br><span class="line">    NSURLRequestReturnCacheDataElseLoad = 2,</span><br><span class="line">    NSURLRequestReturnCacheDataDontLoad = 3,</span><br><span class="line">    NSURLRequestReloadRevalidatingCacheData = 5, // Unimplemented</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>也可以看看这篇文章：《<a href="http://www.cnblogs.com/lolDragon/p/6774509.html" target="_blank" rel="noopener">iOS webview加载时序和缓存问题总结</a>》</p><h4 id="2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）"><a href="#2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）" class="headerlink" title="2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）"></a>2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）</h4><p>如果在<code>webView</code>界面中有跳转<code>appstore</code>、支付宝等调手机中app的点击按钮时，如果iOS端不做处理的话，是调不起来手机中的app的。<br>我们需要做的就是在代理方法中截取<code>webView</code>的<code>url</code>，再使用iOS的代码进行跳转。<br>例如打开<code>appstore</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler</span><br><span class="line">&#123;</span><br><span class="line">    NSURL *url = navigationAction.request.URL;</span><br><span class="line">    UIApplication *app = [UIApplication sharedApplication];</span><br><span class="line">    // 打开appstore</span><br><span class="line">    if ([url.absoluteString containsString:@&quot;https://itunes.apple.com/&quot;])&#123;</span><br><span class="line">        if ([app canOpenURL:url])&#123;</span><br><span class="line">            [[UIApplication sharedApplication] openURL:url];</span><br><span class="line">            decisionHandler(WKNavigationActionPolicyCancel);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    decisionHandler(WKNavigationActionPolicyAllow);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题"><a href="#4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题" class="headerlink" title="4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题"></a>4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题</h4><p>开发中发现，在WKWebView中点击获取验证码等失败（抓包工具查看，发现需要和请求一块上传cookie中的数据，实际并没有上传或者数据丢失一部分）</p><p>在WKWebView中，cookie的是需要我们自己去设置的，这一点和UIWebView不同。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-(void)setUIWebviewcookie&#123;</span><br><span class="line">    NSHTTPCookieStorage *cs = [NSHTTPCookieStorage sharedHTTPCookieStorage];</span><br><span class="line">    [cs setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在webView响应请求的代理方法中，查看cookie</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler&#123;</span><br><span class="line">    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;</span><br><span class="line">    NSArray *cookies =[NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];</span><br><span class="line">    //读取wkwebview中的cookie 方法1</span><br><span class="line">    for (NSHTTPCookie *cookie in cookies) &#123;</span><br><span class="line">        //[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];</span><br><span class="line">        NSLog(@&quot;wkwebview中的cookie:%@&quot;, cookie);</span><br><span class="line">    &#125;</span><br><span class="line">    //读取wkwebview中的cookie 方法2 读取Set-Cookie字段</span><br><span class="line">    NSString *cookieString = [[response allHeaderFields] valueForKey:@&quot;Set-Cookie&quot;];</span><br><span class="line">    NSLog(@&quot;wkwebview中的cookie:%@&quot;, cookieString);</span><br><span class="line">    //看看存入到了NSHTTPCookieStorage了没有</span><br><span class="line">    NSHTTPCookieStorage *cookieJar2 = [NSHTTPCookieStorage sharedHTTPCookieStorage];</span><br><span class="line">    for (NSHTTPCookie *cookie in cookieJar2.cookies) &#123;</span><br><span class="line">        NSLog(@&quot;NSHTTPCookieStorage中的cookie%@&quot;, cookie);</span><br><span class="line">    &#125;</span><br><span class="line">    decisionHandler(WKNavigationResponsePolicyAllow);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -108,14 +108,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>一个自定义的搜索框：GH_SearchView</title>
-    <link href="http:guohuaden.com/2017/05/20/GH-SearchView/"/>
-    <id>http:guohuaden.com/2017/05/20/GH-SearchView/</id>
+    <link href="http://guohuaden.com/2017/05/20/GH-SearchView/"/>
+    <id>http://guohuaden.com/2017/05/20/GH-SearchView/</id>
     <published>2017-05-20T05:46:13.000Z</published>
     <updated>2017-05-20T06:48:28.000Z</updated>
     
@@ -132,14 +132,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</title>
-    <link href="http:guohuaden.com/2017/04/30/get-keyboard-height/"/>
-    <id>http:guohuaden.com/2017/04/30/get-keyboard-height/</id>
+    <link href="http://guohuaden.com/2017/04/30/get-keyboard-height/"/>
+    <id>http://guohuaden.com/2017/04/30/get-keyboard-height/</id>
     <published>2017-04-30T02:42:19.000Z</published>
     <updated>2017-05-02T03:27:47.000Z</updated>
     
@@ -162,14 +162,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>统计项目代码量</title>
-    <link href="http:guohuaden.com/2017/04/29/Project-code-number/"/>
-    <id>http:guohuaden.com/2017/04/29/Project-code-number/</id>
+    <link href="http://guohuaden.com/2017/04/29/Project-code-number/"/>
+    <id>http://guohuaden.com/2017/04/29/Project-code-number/</id>
     <published>2017-04-29T01:48:46.000Z</published>
     <updated>2017-04-28T02:21:35.000Z</updated>
     
@@ -186,14 +186,14 @@
     </summary>
     
     
-      <category term="iOS and Swift" scheme="http:guohuaden.com/tags/iOS-and-Swift/"/>
+      <category term="iOS and Swift" scheme="http://guohuaden.com/tags/iOS-and-Swift/"/>
     
   </entry>
   
   <entry>
     <title>iOS中关于图片、PDF等文件加密</title>
-    <link href="http:guohuaden.com/2017/04/27/fileEncryptionAndDecryption/"/>
-    <id>http:guohuaden.com/2017/04/27/fileEncryptionAndDecryption/</id>
+    <link href="http://guohuaden.com/2017/04/27/fileEncryptionAndDecryption/"/>
+    <id>http://guohuaden.com/2017/04/27/fileEncryptionAndDecryption/</id>
     <published>2017-04-27T03:20:25.000Z</published>
     <updated>2017-04-27T07:18:22.000Z</updated>
     
@@ -210,14 +210,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>Xcode中常用的标记(MARK、TODO、FIXME)</title>
-    <link href="http:guohuaden.com/2017/04/22/MARK-TODO-FIXME/"/>
-    <id>http:guohuaden.com/2017/04/22/MARK-TODO-FIXME/</id>
+    <link href="http://guohuaden.com/2017/04/22/MARK-TODO-FIXME/"/>
+    <id>http://guohuaden.com/2017/04/22/MARK-TODO-FIXME/</id>
     <published>2017-04-22T05:55:39.000Z</published>
     <updated>2017-04-21T06:51:42.000Z</updated>
     
@@ -234,14 +234,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>借我</title>
-    <link href="http:guohuaden.com/2017/04/21/borrow-me/"/>
-    <id>http:guohuaden.com/2017/04/21/borrow-me/</id>
+    <link href="http://guohuaden.com/2017/04/21/borrow-me/"/>
+    <id>http://guohuaden.com/2017/04/21/borrow-me/</id>
     <published>2017-04-21T01:44:16.000Z</published>
     <updated>2017-04-28T01:45:10.000Z</updated>
     
@@ -261,14 +261,14 @@
     </summary>
     
     
-      <category term="欠下的时光" scheme="http:guohuaden.com/tags/%E6%AC%A0%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/"/>
+      <category term="欠下的时光" scheme="http://guohuaden.com/tags/%E6%AC%A0%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/"/>
     
   </entry>
   
   <entry>
     <title>__bridge 和 Core Foundation</title>
-    <link href="http:guohuaden.com/2017/03/14/bridge-understand/"/>
-    <id>http:guohuaden.com/2017/03/14/bridge-understand/</id>
+    <link href="http://guohuaden.com/2017/03/14/bridge-understand/"/>
+    <id>http://guohuaden.com/2017/03/14/bridge-understand/</id>
     <published>2017-03-14T02:25:36.000Z</published>
     <updated>2017-03-15T06:30:41.000Z</updated>
     
@@ -286,14 +286,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>我和这个世界不熟 --北岛</title>
-    <link href="http:guohuaden.com/2017/03/12/I-am-not-familiar-with-this-world/"/>
-    <id>http:guohuaden.com/2017/03/12/I-am-not-familiar-with-this-world/</id>
+    <link href="http://guohuaden.com/2017/03/12/I-am-not-familiar-with-this-world/"/>
+    <id>http://guohuaden.com/2017/03/12/I-am-not-familiar-with-this-world/</id>
     <published>2017-03-12T01:04:32.000Z</published>
     <updated>2017-04-28T01:41:38.000Z</updated>
     
@@ -316,14 +316,14 @@
     </summary>
     
     
-      <category term="欠下的时光" scheme="http:guohuaden.com/tags/%E6%AC%A0%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/"/>
+      <category term="欠下的时光" scheme="http://guohuaden.com/tags/%E6%AC%A0%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/"/>
     
   </entry>
   
   <entry>
     <title>iOS之防止用户重复点击Button（按钮）问题</title>
-    <link href="http:guohuaden.com/2017/03/10/Repeat-ButtonClick/"/>
-    <id>http:guohuaden.com/2017/03/10/Repeat-ButtonClick/</id>
+    <link href="http://guohuaden.com/2017/03/10/Repeat-ButtonClick/"/>
+    <id>http://guohuaden.com/2017/03/10/Repeat-ButtonClick/</id>
     <published>2017-03-10T06:46:31.000Z</published>
     <updated>2017-03-10T06:59:02.000Z</updated>
     
@@ -339,14 +339,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>服务器返回的json数据中含有null的处理方法</title>
-    <link href="http:guohuaden.com/2017/03/06/json-dataNull/"/>
-    <id>http:guohuaden.com/2017/03/06/json-dataNull/</id>
+    <link href="http://guohuaden.com/2017/03/06/json-dataNull/"/>
+    <id>http://guohuaden.com/2017/03/06/json-dataNull/</id>
     <published>2017-03-06T05:33:53.000Z</published>
     <updated>2017-03-10T05:49:44.000Z</updated>
     
@@ -363,14 +363,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>WebView 打不开问题 (转码问题)</title>
-    <link href="http:guohuaden.com/2017/02/27/WebView-ErrorOpen/"/>
-    <id>http:guohuaden.com/2017/02/27/WebView-ErrorOpen/</id>
+    <link href="http://guohuaden.com/2017/02/27/WebView-ErrorOpen/"/>
+    <id>http://guohuaden.com/2017/02/27/WebView-ErrorOpen/</id>
     <published>2017-02-27T01:56:54.000Z</published>
     <updated>2017-03-08T02:23:35.000Z</updated>
     
@@ -387,14 +387,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>对于Xcode中 Build Active Architecture Only 的认识</title>
-    <link href="http:guohuaden.com/2017/02/16/Build-Active-Architecture-Only-Query/"/>
-    <id>http:guohuaden.com/2017/02/16/Build-Active-Architecture-Only-Query/</id>
+    <link href="http://guohuaden.com/2017/02/16/Build-Active-Architecture-Only-Query/"/>
+    <id>http://guohuaden.com/2017/02/16/Build-Active-Architecture-Only-Query/</id>
     <published>2017-02-16T07:11:12.000Z</published>
     <updated>2017-02-16T08:57:15.000Z</updated>
     
@@ -411,14 +411,14 @@
     </summary>
     
     
-      <category term="Xcode" scheme="http:guohuaden.com/tags/Xcode/"/>
+      <category term="Xcode" scheme="http://guohuaden.com/tags/Xcode/"/>
     
   </entry>
   
   <entry>
     <title>聊一聊WKWebView</title>
-    <link href="http:guohuaden.com/2017/02/11/WKWebView/"/>
-    <id>http:guohuaden.com/2017/02/11/WKWebView/</id>
+    <link href="http://guohuaden.com/2017/02/11/WKWebView/"/>
+    <id>http://guohuaden.com/2017/02/11/WKWebView/</id>
     <published>2017-02-11T02:33:52.000Z</published>
     <updated>2017-02-14T00:57:40.000Z</updated>
     
@@ -434,14 +434,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>关于app支持64bit</title>
-    <link href="http:guohuaden.com/2017/01/15/support-64bit/"/>
-    <id>http:guohuaden.com/2017/01/15/support-64bit/</id>
+    <link href="http://guohuaden.com/2017/01/15/support-64bit/"/>
+    <id>http://guohuaden.com/2017/01/15/support-64bit/</id>
     <published>2017-01-15T07:18:34.000Z</published>
     <updated>2017-01-16T02:13:35.000Z</updated>
     
@@ -458,14 +458,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</title>
-    <link href="http:guohuaden.com/2017/01/11/project-summary-two/"/>
-    <id>http:guohuaden.com/2017/01/11/project-summary-two/</id>
+    <link href="http://guohuaden.com/2017/01/11/project-summary-two/"/>
+    <id>http://guohuaden.com/2017/01/11/project-summary-two/</id>
     <published>2017-01-11T15:38:00.000Z</published>
     <updated>2017-05-02T01:35:09.000Z</updated>
     
@@ -481,14 +481,14 @@
     </summary>
     
     
-      <category term="iOS" scheme="http:guohuaden.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://guohuaden.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>SVN提交错误：&quot;XXX&quot; is scheduled for addition, but is missing</title>
-    <link href="http:guohuaden.com/2016/12/15/SVN-error/"/>
-    <id>http:guohuaden.com/2016/12/15/SVN-error/</id>
+    <link href="http://guohuaden.com/2016/12/15/SVN-error/"/>
+    <id>http://guohuaden.com/2016/12/15/SVN-error/</id>
     <published>2016-12-15T03:18:00.000Z</published>
     <updated>2017-01-15T07:14:45.000Z</updated>
     
@@ -504,7 +504,7 @@
     </summary>
     
     
-      <category term="SVN" scheme="http:guohuaden.com/tags/SVN/"/>
+      <category term="SVN" scheme="http://guohuaden.com/tags/SVN/"/>
     
   </entry>
   
