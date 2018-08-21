@@ -155,24 +155,187 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/09/27/block-and-weak/" title="link to post.title">block 和 weak的了解</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2018/06/30/copyAndMutableCopy/" title="link to post.title">copy 和 mutableCopy</a></h2>
       <p class="excerpt">
     
-      果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：__block和__weak 。也是做一下温习吧。
-一、先说weak，&amp;lt;弱引用&amp;gt;
-我们知道weak的使用，比如声明一个控件属性，就会用到weak。
-看代码：
-1@property(nonatomic,weak)UILabel *label;
-当然这并不是说声明控件就一定使用weak，相反的我在手动创建控件是大多数会使用s
+      今天来谈下深浅拷贝【copy 和 mutableCopy】
+想写这篇文章，是因为看到了一个有意思的文章，对于其中的一些观点不太认同，所以想简单分析一下深浅拷贝
+先看一段代码，稍后会对代码进行分析
+123456789-(void)testOne&amp;#123;    NSArray *test = @[@1,@2,@3];    NSLog(@&amp;quot;test-&amp;gt;%p\n&amp;quot;,test
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-09-27T01:45:07.000Z" class="post-list__meta--date date">2016-09-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/09/27/block-and-weak/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2018-06-30T06:16:37.000Z" class="post-list__meta--date date">2018-06-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2018/06/30/copyAndMutableCopy/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/06/03/Project-summary-Four/" title="link to post.title">项目总结四</a></h2>
+      <p class="excerpt">
+    
+      前言：最近都一直在忙新项目的事，真是倍感身心疲别啊。目前项目终于成型，也算时间宽松渐缓吧，就把项目中遇到的一些问题做个总结。
+1、textField限制输入的位数以及小数点的位数123456789101112131415161718192021222324252627282930313233- (BOOL)textField:(UITextField *)textField shouldChang
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-06-03T04:01:57.000Z" class="post-list__meta--date date">2018-06-03</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2018/06/03/Project-summary-Four/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/10/05/project-summary-Three/" title="link to post.title">iOS之项目总结三：项目开发中遇到的一些问题及解决方案</a></h2>
+      <p class="excerpt">
+    
+      前言：两年多以来，基本上都是独立开发或者维护项目，不得不自嘲的说挺锻炼人的。最近的一家公司是涉足金融行列的，算是第一次踏足金融吧，过程怎样不说，确实学到了不少东西。
+下面就开发第一款金融类项目遇到的问题做一下总结：
+1、中文显示标题之类我们在项目中调用相册、相机等往往默认的是显示英文，但有时候开发的项目是针对国内的，所以需要中文配合显示，这就需要我们做一下配置。其实很简单：就是在info.plis
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-10-05T03:19:10.000Z" class="post-list__meta--date date">2017-10-05</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/10/05/project-summary-Three/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/10/03/WKWebView-issue/" title="link to post.title">WKWebView使用遇到的问题</a></h2>
+      <p class="excerpt">
+    
+      前言：WKWebView在iOS8之后正式替代UIWebView，速度方面确实提升了不少。关于WKWebView的简单使用，在《聊一聊WKWebView》中我已经介绍过了，这里就不再絮叨，本篇主要记录s三个开发中遇到的问题。
+1、去缓存问题我们在第一次打开webView后，移动端为了使用的便捷，会在本地做一个缓存，服务器端也有类似的缓存。但有时服务器端更改信息或者web端更改界面信息。我们往往打开
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-10-03T02:30:40.000Z" class="post-list__meta--date date">2017-10-03</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/10/03/WKWebView-issue/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/05/20/GH-SearchView/" title="link to post.title">一个自定义的搜索框：GH_SearchView</a></h2>
+      <p class="excerpt">
+    
+      对于iOS自带的搜索框，其实我用着也挺好的，但低版本的使用：  高版本的使用:UISearchController，两个难有个统一。很多项目中都是将着两套代码都写入项目中去，这样做难免显得代码冗余。所以就简单的自定义个搜索框。
+下载地址：https://github.com/Wheat-Qin/GH_SearchView  【支持pods】
+怎样使用‘GH_SearchView’:
+安装Cocoa
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-05-20T05:46:13.000Z" class="post-list__meta--date date">2017-05-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/05/20/GH-SearchView/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/04/30/get-keyboard-height/" title="link to post.title">利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</a></h2>
+      <p class="excerpt">
+    
+      我们在开发中会遇到这样的情况：调用键盘时需要界面有一个调整，避免键盘遮掩输入框。
+但实现时你会发现，在不同的手机上键盘的高度是不同的。这里列举一下：
+
+//获取键盘的高度
+/*
+ iphone 6:
+ 中文
+ 2014-12-31 11:16:23.643 Demo[686:41289] 键盘高度是  258
+ 2014-12-31 11:16:23.644 Demo[686:41289] 键盘宽
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-04-30T02:42:19.000Z" class="post-list__meta--date date">2017-04-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/04/30/get-keyboard-height/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/04/27/fileEncryptionAndDecryption/" title="link to post.title">iOS中关于图片、PDF等文件加密</a></h2>
+      <p class="excerpt">
+    
+      这里加密使用的是三方库：RNCryptor,它是一个跨语言AES加密/解密库。
+主要目标是Swift和Objective-C，但 C ,C ++,C＃, Erlang , Go , Haskell , Java , PHP , Python , Javascript 和 Ruby 中都有实现。
+RNCryptor地址：
+RNCryptor ：https://github.com/RNCryptor
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-04-27T03:20:25.000Z" class="post-list__meta--date date">2017-04-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/04/27/fileEncryptionAndDecryption/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/04/22/MARK-TODO-FIXME/" title="link to post.title">Xcode中常用的标记(MARK、TODO、FIXME)</a></h2>
+      <p class="excerpt">
+    
+      在项目中以ViewController界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：#pragma mark以及 打断点引起注意的方式都可以达到我们想要的效果。
+但细心的开发者会注意到，苹果提供了三个标记(MARK、TODO、FIXME)来给我们提供便利。至于用法也是很简单，和#pragma mark类似。下面👇做解释：
+MARK:标注
+123
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-04-22T05:55:39.000Z" class="post-list__meta--date date">2017-04-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/04/22/MARK-TODO-FIXME/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/03/14/bridge-understand/" title="link to post.title">__bridge 和 Core Foundation</a></h2>
+      <p class="excerpt">
+    
+      这篇知识比较偏，是偏低层一些的。
+一：__birdge
+由于__bridge很少接触，所以专门去查找了一下。其实它的作用很简单，就是：实现id类型与void* 类型的相互转换。
+看下代码：
+1234id obj = [[NSObject alloc]init];void *c = (__bridge void *)(obj); id d = (__bridge id)(c);NSLog(@&amp;quo
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-03-14T02:25:36.000Z" class="post-list__meta--date date">2017-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/03/14/bridge-understand/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/03/10/Repeat-ButtonClick/" title="link to post.title">iOS之防止用户重复点击Button（按钮）问题</a></h2>
+      <p class="excerpt">
+    
+      在项目中，我们往往会遇到这样的问题：因为网络较慢的原因，用户会不耐烦的一直去点击按钮，这样导致的结果时：相关代码一遍一遍的被重复执行，如果按钮的事件是网络请求的话，这样又导致一种网络请求的循环。所以我们解决的方法是在执行按钮点击事件时，为Button加上防止重复点击的方法。
+具体的有以下几种方法：
+1、使用performSelector方法
+
+1- (void)performSelector:(S
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-03-10T06:46:31.000Z" class="post-list__meta--date date">2017-03-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/03/10/Repeat-ButtonClick/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
+
+  <nav class="pagination" role="navigation">
+    
+    <span class="pagination__page-number" > 1 / 3 </span>
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/categories/iOS/page/2/">更早 →</a>
+    
+  </nav>
 
 
 </div>
