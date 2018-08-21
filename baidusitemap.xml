@@ -3,6 +3,25 @@
 
 
     
+  <url>
+    <loc>http://guohuaden.com/2016/09/27/block-and-weak/</loc>
+    <lastmod>2018-08-21T04:08:36.994Z</lastmod>
+    <data>
+        <display>
+        <title>block 和 weak的了解</title>
+        <pubTime>2016-09-27T01:45:07.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
     
     
   <url>
@@ -301,23 +320,6 @@
         <display>
         <title>服务器返回的json数据中含有null的处理方法</title>
         <pubTime>2017-03-06T05:33:53.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2016/09/27/block-and-weak/</loc>
-    <lastmod>2017-03-10T02:40:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>block 和 weak的了解</title>
-        <pubTime>2016-09-27T01:45:07.000Z</pubTime>
         
         <tag>iOS</tag>
          
