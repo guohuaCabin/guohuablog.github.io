@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://guohuaden.com/categories/index.html</loc>
+    
+    <lastmod>2018-08-21T05:06:57.285Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://guohuaden.com/tags/index.html</loc>
     
     <lastmod>2018-08-21T05:01:09.509Z</lastmod>
@@ -187,13 +194,6 @@
     <loc>http://guohuaden.com/2018/06/03/Project-summary-Four/</loc>
     
     <lastmod>2018-08-21T04:57:25.387Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://guohuaden.com/categories/index.html</loc>
-    
-    <lastmod>2018-08-21T04:38:11.964Z</lastmod>
     
   </url>
   
