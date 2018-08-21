@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://guohuaden.com/2018/06/30/copyAndMutableCopy/</loc>
+    
+    <lastmod>2018-08-21T07:38:18.470Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://guohuaden.com/tags/index.html</loc>
     
     <lastmod>2018-08-21T06:15:30.167Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>http://guohuaden.com/2017/02/16/Build-Active-Architecture-Only-Query/</loc>
     
     <lastmod>2018-08-21T04:57:57.582Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://guohuaden.com/2018/06/30/copyAndMutableCopy/</loc>
-    
-    <lastmod>2018-08-21T04:57:55.825Z</lastmod>
     
   </url>
   
