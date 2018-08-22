@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://guohuaden.com/books/index.html</loc>
+    
+    <lastmod>2018-08-22T02:14:35.095Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://guohuaden.com/2018/06/30/copyAndMutableCopy/</loc>
     
     <lastmod>2018-08-21T07:38:18.470Z</lastmod>
