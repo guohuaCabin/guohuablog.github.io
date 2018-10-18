@@ -4,6 +4,74 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
+    <lastmod>2018-10-18T11:45:57.892Z</lastmod>
+    <data>
+        <display>
+        <title>读SDWebImage二 - SDWebImageManager</title>
+        <pubTime>2018-10-01T01:38:06.000Z</pubTime>
+        
+        <tag>Objective-C, iOS, SDWebImage,SDWebImageManager</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/10/02/Read-SDWebImage-SDImageCache/</loc>
+    <lastmod>2018-10-18T11:45:41.277Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 二 - SDImageCache</title>
+        <pubTime>2018-10-02T02:38:36.000Z</pubTime>
+        
+        <tag>Objective-C, iOS, SDWebImage,SDImageCache</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/10/18/Read-SDWebImage-SDWebImageDownloader/</loc>
+    <lastmod>2018-10-18T11:44:20.334Z</lastmod>
+    <data>
+        <display>
+        <title>Read-SDWebImage-SDWebImageDownloader</title>
+        <pubTime>2018-10-18T11:38:50.000Z</pubTime>
+        
+        <tag>Objective-C, iOS, SDWebImage,SDWebImageDownloader</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/09/29/Read-SDWebImage-note1/</loc>
+    <lastmod>2018-10-18T11:40:13.827Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 一 使用</title>
+        <pubTime>2018-09-29T06:32:04.000Z</pubTime>
+        
+        <tag>iOS,Objective-C,SDWebImage</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2016/09/23/BlurEffect/</loc>
     <lastmod>2018-09-29T07:05:31.053Z</lastmod>
     <data>
@@ -13,6 +81,24 @@
         
         <tag>iOS</tag>
          
+         
+           
+             
+              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2016/09/27/block-and-weak/</loc>
+    <lastmod>2018-09-29T07:05:26.241Z</lastmod>
+    <data>
+        <display>
+        <title>block 和 weak的了解</title>
+        <pubTime>2016-09-27T01:45:07.000Z</pubTime>
+        
          
            
              
@@ -38,23 +124,6 @@
              
               <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/09/29/Read-SDWebImage-note1/</loc>
-    <lastmod>2018-09-29T07:02:03.329Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage (一)</title>
-        <pubTime>2018-09-29T06:32:04.000Z</pubTime>
-        
-        <tag>iOS,Objective-C</tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -532,24 +601,6 @@
         
         <tag>iOS</tag>
          
-         
-           
-             
-              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2016/09/27/block-and-weak/</loc>
-    <lastmod>2018-08-21T04:32:01.397Z</lastmod>
-    <data>
-        <display>
-        <title>block 和 weak的了解</title>
-        <pubTime>2016-09-27T01:45:07.000Z</pubTime>
-        
          
            
              

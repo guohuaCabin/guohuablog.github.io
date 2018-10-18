@@ -155,6 +155,56 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/04/29/Project-code-number/" title="link to post.title">统计项目代码量</a></h2>
+      <p class="excerpt">
+    
+      有遇到过这样的情况，项目经理在写文档时会要求开发人员提供项目的代码量。下面就说一下代码量的统计问题。
+1、统计总的代码量（代码的行数）在终端中，cd 到项目文件夹；输入下面的指令。
+1find . -name &amp;quot;*.m&amp;quot; -or -name &amp;quot;*.h&amp;quot; -or -name &amp;quot;*.xib&amp;quot; -or -name &amp;quot;*.c&amp;quot;
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-04-29T01:48:46.000Z" class="post-list__meta--date date">2017-04-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS-and-Swift/">iOS and Swift</a>
+</span><a class="btn-border-small" href="/2017/04/29/Project-code-number/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/04/27/fileEncryptionAndDecryption/" title="link to post.title">iOS中关于图片、PDF等文件加密</a></h2>
+      <p class="excerpt">
+    
+      这里加密使用的是三方库：RNCryptor,它是一个跨语言AES加密/解密库。
+主要目标是Swift和Objective-C，但 C ,C ++,C＃, Erlang , Go , Haskell , Java , PHP , Python , Javascript 和 Ruby 中都有实现。
+RNCryptor地址：
+RNCryptor ：https://github.com/RNCryptor
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-04-27T03:20:25.000Z" class="post-list__meta--date date">2017-04-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/04/27/fileEncryptionAndDecryption/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/04/22/MARK-TODO-FIXME/" title="link to post.title">Xcode中常用的标记(MARK、TODO、FIXME)</a></h2>
+      <p class="excerpt">
+    
+      在项目中以ViewController界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：#pragma mark以及 打断点引起注意的方式都可以达到我们想要的效果。
+但细心的开发者会注意到，苹果提供了三个标记(MARK、TODO、FIXME)来给我们提供便利。至于用法也是很简单，和#pragma mark类似。下面👇做解释：
+MARK:标注
+123
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-04-22T05:55:39.000Z" class="post-list__meta--date date">2017-04-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/04/22/MARK-TODO-FIXME/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2017/04/21/borrow-me/" title="link to post.title">借我</a></h2>
       <p class="excerpt">
     
@@ -298,51 +348,6 @@ Build Active Architecture Only：指定是否只对当前连接设备所支持�
     </li>
   
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/02/11/WKWebView/" title="link to post.title">聊一聊WKWebView</a></h2>
-      <p class="excerpt">
-    
-      前言由于之前一直在用UIWebView,所以对于WKWebView只是停留在知道，了解的状态，并未深入的去研究。前天一个项目要求支持iOS8以上，要加入一个web界面。在习惯性使用UIWebView写到一半的时候，突然想使用WKWebView去实现，所以专门花费了些时间去研究了一下WKWebView，很是喜欢。
-正文接下来纪录一下使用WKWebView的过程细节。但关于WKWebView与js互交
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-02-11T02:33:52.000Z" class="post-list__meta--date date">2017-02-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/02/11/WKWebView/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/01/15/support-64bit/" title="link to post.title">关于app支持64bit</a></h2>
-      <p class="excerpt">
-    
-      关于iOS应用，其实苹果很早就就发布消息：2015年的2月开始，提交App Store的应用必须支持64-bit。而Apple在iPhone 5s 就已经搭配64位双核苹果A7处理器。还是在15年6月，苹果App Store中所有应用更新都必须支持64bit。
-但这对于企业级应用来说，并不能限制应用去支持64bit，因为企业级应用不必提交App Store审核。但Apple又有了新的对策：在iOS
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-01-15T07:18:34.000Z" class="post-list__meta--date date">2017-01-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/01/15/support-64bit/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/01/11/project-summary-two/" title="link to post.title">iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</a></h2>
-      <p class="excerpt">
-    
-      前言：最近一直在维护老的项目，遇到的问题也千奇百怪，需要修补的，需要优化的，需要特殊处理的，感觉总是那么的无语。也许这时候也应该感叹一句：路漫漫其修远兮，吾将上下而求索吧。这篇文章就只是讲讲老项目中遇到的种种不敢苟同的代码写法，以及遇到一些问题时的处理方法。
-1、关于按钮事件的重复点击问题我们开发中大概都经历过这样的事情，我的一个button被重复的快速点击，（我们开发者应该更清楚的知道这意味着什
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-01-11T15:38:00.000Z" class="post-list__meta--date date">2017-01-11</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/01/11/project-summary-two/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
   </ol>
 
 
@@ -350,7 +355,7 @@ Build Active Architecture Only：指定是否只对当前连接设备所支持�
     
       <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">← 最近</a>
     
-    <span class="pagination__page-number" > 2 / 3 </span>
+    <span class="pagination__page-number" > 2 / 4 </span>
     
       <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/3/">更早 →</a>
     

@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
+    
+    <lastmod>2018-10-18T11:45:57.892Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://guohuaden.com/2018/10/02/Read-SDWebImage-SDImageCache/</loc>
+    
+    <lastmod>2018-10-18T11:45:41.277Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://guohuaden.com/2018/10/18/Read-SDWebImage-SDWebImageDownloader/</loc>
+    
+    <lastmod>2018-10-18T11:44:20.334Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://guohuaden.com/2018/09/29/Read-SDWebImage-note1/</loc>
+    
+    <lastmod>2018-10-18T11:40:13.827Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://guohuaden.com/2016/09/23/BlurEffect/</loc>
     
     <lastmod>2018-09-29T07:05:31.053Z</lastmod>
@@ -9,16 +37,16 @@
   </url>
   
   <url>
-    <loc>http://guohuaden.com/2017/10/05/project-summary-Three/</loc>
+    <loc>http://guohuaden.com/2016/09/27/block-and-weak/</loc>
     
-    <lastmod>2018-09-29T07:05:23.552Z</lastmod>
+    <lastmod>2018-09-29T07:05:26.241Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://guohuaden.com/2018/09/29/Read-SDWebImage-note1/</loc>
+    <loc>http://guohuaden.com/2017/10/05/project-summary-Three/</loc>
     
-    <lastmod>2018-09-29T07:02:03.329Z</lastmod>
+    <lastmod>2018-09-29T07:05:23.552Z</lastmod>
     
   </url>
   
@@ -201,13 +229,6 @@
     <loc>http://guohuaden.com/2016/08/16/project-summary-one/</loc>
     
     <lastmod>2018-08-21T04:57:35.639Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://guohuaden.com/2016/09/27/block-and-weak/</loc>
-    
-    <lastmod>2018-08-21T04:32:01.397Z</lastmod>
     
   </url>
   
