@@ -155,6 +155,52 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/10/18/Read-SDWebImage-SDWebImageDownloader/" title="link to post.title">Read-SDWebImage (SDWebImageDownloader)</a></h2>
+      <p class="excerpt">
+    
+      
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-10-18T11:38:50.000Z" class="post-list__meta--date date">2018-10-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Objective-C-iOS-SDWebImage-SDWebImageDownloader/">Objective-C, iOS, SDWebImage,SDWebImageDownloader</a>
+</span><a class="btn-border-small" href="/2018/10/18/Read-SDWebImage-SDWebImageDownloader/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/10/02/Read-SDWebImage-SDImageCache/" title="link to post.title">读 SDWebImage 二 (SDImageCache)</a></h2>
+      <p class="excerpt">
+    
+      1、介绍SDImageCache 是 SDWebImage 处理图片缓存的类。图片的存储是针对内存和磁盘有一点区别：内存中直接存储图片，磁盘中存中 imagedata在 SDWebImageManager 中使用的存储图片、判断图片是否已存储在磁盘/内存等方法均是调用该类中的方法。SDWebImage 设计时做了很好的分工，以至于去分析代码都带有一种享受感。
+
+简单做个思考，如果自己实现一个缓存类
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-10-02T02:38:36.000Z" class="post-list__meta--date date">2018-10-02</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Objective-C-iOS-SDWebImage-SDImageCache/">Objective-C, iOS, SDWebImage,SDImageCache</a>
+</span><a class="btn-border-small" href="/2018/10/02/Read-SDWebImage-SDImageCache/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/10/01/Read-SDWebImage-SDWebImageManager/" title="link to post.title">读SDWebImage二 (SDWebImageManager)</a></h2>
+      <p class="excerpt">
+    
+      1、整体框架看下整体的框架图：
+从图中可以更清晰的看出，SDWebImage库是围绕SDWebImageManager、SDWebImageCache、SDWebImageDownloader三个类展开的，而这三个类又是以SDWebImageManager作为核心类。
+下面就重点分析SDWebImageManager：SDWebImageManager是 SDWebImage 的管理以及操作类。也
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2018-10-01T01:38:06.000Z" class="post-list__meta--date date">2018-10-01</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Objective-C-iOS-SDWebImage-SDWebImageManager/">Objective-C, iOS, SDWebImage,SDWebImageManager</a>
+</span><a class="btn-border-small" href="/2018/10/01/Read-SDWebImage-SDWebImageManager/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/06/30/copyAndMutableCopy/" title="link to post.title">copy 和 mutableCopy</a></h2>
       <p class="excerpt">
     
@@ -269,59 +315,6 @@ RNCryptor ：https://github.com/RNCryptor
       <div class="post-list__meta"><time datetime="2017-04-27T03:20:25.000Z" class="post-list__meta--date date">2017-04-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/iOS/">iOS</a>
 </span><a class="btn-border-small" href="/2017/04/27/fileEncryptionAndDecryption/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/04/22/MARK-TODO-FIXME/" title="link to post.title">Xcode中常用的标记(MARK、TODO、FIXME)</a></h2>
-      <p class="excerpt">
-    
-      在项目中以ViewController界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：#pragma mark以及 打断点引起注意的方式都可以达到我们想要的效果。
-但细心的开发者会注意到，苹果提供了三个标记(MARK、TODO、FIXME)来给我们提供便利。至于用法也是很简单，和#pragma mark类似。下面👇做解释：
-MARK:标注
-123
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-04-22T05:55:39.000Z" class="post-list__meta--date date">2017-04-22</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/04/22/MARK-TODO-FIXME/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/03/14/bridge-understand/" title="link to post.title">__bridge 和 Core Foundation</a></h2>
-      <p class="excerpt">
-    
-      这篇知识比较偏，是偏低层一些的。
-一：__birdge
-由于__bridge很少接触，所以专门去查找了一下。其实它的作用很简单，就是：实现id类型与void* 类型的相互转换。
-看下代码：
-1234id obj = [[NSObject alloc]init];void *c = (__bridge void *)(obj); id d = (__bridge id)(c);NSLog(@&amp;quo
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-03-14T02:25:36.000Z" class="post-list__meta--date date">2017-03-14</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/03/14/bridge-understand/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/03/10/Repeat-ButtonClick/" title="link to post.title">iOS之防止用户重复点击Button（按钮）问题</a></h2>
-      <p class="excerpt">
-    
-      在项目中，我们往往会遇到这样的问题：因为网络较慢的原因，用户会不耐烦的一直去点击按钮，这样导致的结果时：相关代码一遍一遍的被重复执行，如果按钮的事件是网络请求的话，这样又导致一种网络请求的循环。所以我们解决的方法是在执行按钮点击事件时，为Button加上防止重复点击的方法。
-具体的有以下几种方法：
-1、使用performSelector方法
-
-1- (void)performSelector:(S
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-03-10T06:46:31.000Z" class="post-list__meta--date date">2017-03-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/03/10/Repeat-ButtonClick/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
