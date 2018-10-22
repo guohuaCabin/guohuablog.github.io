@@ -5,13 +5,33 @@
     
   <url>
     <loc>http://guohuaden.com/2018/09/29/Read-SDWebImage-note1/</loc>
-    <lastmod>2018-10-19T01:35:52.790Z</lastmod>
+    <lastmod>2018-10-19T01:37:27.706Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage (使用分析)</title>
         <pubTime>2018-09-29T06:32:04.000Z</pubTime>
         
         <tag>iOS,Objective-C,SDWebImage</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/10/18/Read-SDWebImage-SDWebImageDownloader/</loc>
+    <lastmod>2018-10-19T01:37:12.594Z</lastmod>
+    <data>
+        <display>
+        <title>读SDWebImage (SDWebImageDownloader)</title>
+        <pubTime>2018-10-18T11:38:50.000Z</pubTime>
+        
+        <tag>Objective-C, iOS, SDWebImage,SDWebImageDownloader</tag>
          
          
            
@@ -32,26 +52,6 @@
         <pubTime>2018-10-01T01:38:06.000Z</pubTime>
         
         <tag>Objective-C, iOS, SDWebImage,SDWebImageManager</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/10/18/Read-SDWebImage-SDWebImageDownloader/</loc>
-    <lastmod>2018-10-19T01:34:07.173Z</lastmod>
-    <data>
-        <display>
-        <title>Read-SDWebImage (SDWebImageDownloader)</title>
-        <pubTime>2018-10-18T11:38:50.000Z</pubTime>
-        
-        <tag>Objective-C, iOS, SDWebImage,SDWebImageDownloader</tag>
          
          
            
