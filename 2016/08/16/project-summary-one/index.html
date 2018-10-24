@@ -1,193 +1,99 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。"><title>iOS之项目总结－：项目中遇到的各种的问题和解决方法 | 喂、三二一</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">iOS之项目总结－：项目中遇到的各种的问题和解决方法</h1><a id="logo" href="/.">喂、三二一</a><p class="description">低调、踏实、前行。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">iOS之项目总结－：项目中遇到的各种的问题和解决方法</h1><div class="post-meta">Aug 16, 2016<span> | </span><span class="category"><a href="/categories/iOS/">iOS</a></span></div><div class="post-content"><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p> 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：</p>
 <h3 id="1、自带键盘的next用法"><a href="#1、自带键盘的next用法" class="headerlink" title="1、自带键盘的next用法"></a>1、自带键盘的next用法</h3><p>这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。</p>
 <p>想法也就是：用户在输入用户名后，点击next跳转到下一个输入框。其实也不用想的如此复杂，在登录界面，我们完全可以用一个 if 语句做判断，去实现键盘的响应和注销响应。</p>
-<p>代码如下： <pre>- (BOOL)textFieldShouldReturn:(UITextField <em> )textField {<br>  UITextField </em> passTextFiled = (UITextField *)[self.view viewWithTag:201];<br>  if (textField.tag == 200) {<br>          [passTextFiled becomeFirstResponder];<br>   }else{<br>           [passTextFiled resignFirstResponder];<br>    }<br>   return YES;<br>}</pre></p>
+<p>代码如下： </p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)textFieldShouldReturn:(<span class="built_in">UITextField</span> * )textField &#123; 	</span><br><span class="line">  <span class="built_in">UITextField</span> * passTextFiled = (<span class="built_in">UITextField</span> *)[<span class="keyword">self</span>.view viewWithTag:<span class="number">201</span>];   </span><br><span class="line">  <span class="keyword">if</span> (textField.tag == <span class="number">200</span>) &#123;</span><br><span class="line">  		[passTextFiled becomeFirstResponder];   </span><br><span class="line">   &#125;<span class="keyword">else</span>&#123;     </span><br><span class="line">  	 	[passTextFiled resignFirstResponder];  </span><br><span class="line">	&#125;   </span><br><span class="line">   <span class="keyword">return</span> <span class="literal">YES</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样就简单的在变成响应和注销响应之间实现了输入框的切换。</p>
 <p>但还是存在一个问题，如果我实现注册界面的跳转输入框，并且在输入框很多的情况下，显然如果我仍是这样判断，会显得啰嗦和冗余。</p>
 <p>我曾想过使用计数的方式，记录每一次的点击next后的tag，但实践中失败了，因为当我不通过next而是直接用手去触摸选择输入框时，则无法计数。</p>
 <p> 这里先留个空白，等把手里的项目完成时再研究这个问题</p>
 <h3 id="2、UITextField的纠错和首字母大小写问题"><a href="#2、UITextField的纠错和首字母大小写问题" class="headerlink" title="2、UITextField的纠错和首字母大小写问题"></a>2、UITextField的纠错和首字母大小写问题</h3><p>这个问题只是简单的属性问题，在开发时如果忘记，建议多点进去看看，（如：command + UITextField）   </p>
-<pre>
- //输入框中是否有个叉号，在什么时候显示，用于一次性删除输入框中的内容    
-self.clearButtonMode = UITextFieldViewModeWhileEditing;    
-//是否纠错,本人感觉纠错是一个很反感的东西，但UITextField默认是 YES,这里我改成了NO      
-self.autocorrectionType = UITextAutocorrectionTypeNo;       
- //再次编辑就清空      
-self.clearsOnBeginEditing = YES;       
-//设置自动缩小显示的最小字体大小      
-self.minimumFontSize = 15;        
-//设置键盘的样式，本人感觉这个设置对用户体验有影响。比如说我想打电话，Type为UIKeyboardTypeNumberPad,而不是其他     
-self.keyboardType = UIKeyboardTypeNamePhonePad;</pre>
-
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//输入框中是否有个叉号，在什么时候显示，用于一次性删除输入框中的内容    </span></span><br><span class="line"><span class="keyword">self</span>.clearButtonMode = <span class="built_in">UITextFieldViewModeWhileEditing</span>;    </span><br><span class="line"><span class="comment">//是否纠错,本人感觉纠错是一个很反感的东西，但UITextField默认是 YES,这里我改成了NO      </span></span><br><span class="line"><span class="keyword">self</span>.autocorrectionType = <span class="built_in">UITextAutocorrectionTypeNo</span>;       </span><br><span class="line"> <span class="comment">//再次编辑就清空      </span></span><br><span class="line"><span class="keyword">self</span>.clearsOnBeginEditing = <span class="literal">YES</span>;       </span><br><span class="line"><span class="comment">//设置自动缩小显示的最小字体大小      </span></span><br><span class="line"><span class="keyword">self</span>.minimumFontSize = <span class="number">15</span>;        </span><br><span class="line"><span class="comment">//设置键盘的样式，本人感觉这个设置对用户体验有影响。比如说我想打电话，Type为UIKeyboardTypeNumberPad,而不是其他     </span></span><br><span class="line"><span class="keyword">self</span>.keyboardType = <span class="built_in">UIKeyboardTypeNamePhonePad</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="3、iOS中图片的几种拉伸方法的使用"><a href="#3、iOS中图片的几种拉伸方法的使用" class="headerlink" title="3、iOS中图片的几种拉伸方法的使用"></a>3、iOS中图片的几种拉伸方法的使用</h3><p>以下是Apple SDK给出的3种方法:</p>
-<pre>UIImage *image = [UIImage imageNamed:@"picture"];        
-//iOS5之前     
-// 左端盖宽度        
-NSInteger leftCapWidth = image.size.width * 0.5f;       
-NSInteger topCapHeight = image.size.height * 0.8f;        
-
-image = [image stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];        
-
-//iOS5之后       
-UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
-
-image = [image resizableImageWithCapInsets:insets];      
-//iOS6之后        
-UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       
-image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch]; </pre>  
-
-<p>下面是使用的解释：<br><img src="http://obzx0h1re.bkt.clouddn.com/pictureStretch.png" alt="pictureStretch"></p>
-<pre>
-/**   
- *  - (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight;    
- *  
- *  leftCapWidth代表左端盖宽度，topCapHeight代表顶端盖高度。系统会自动计算出右端盖宽度(rightCapWidth)和底端盖高度(bottomCapHeight)    
-
- * 算法如下：    
- * width为图片宽度  rightCapWidth = width - leftCapWidth - 1;       
- * height为图片高度 bottomCapHeight = height - topCapHeight - 1    
- *    
- *经过计算，你会发现中间的可拉伸区域只有1x1    
- *   
-
-* stretchWidth为中间可拉伸区域的宽度        stretchWidth = width - leftCapWidth - rightCapWidth = 1;       
-* stretchHeight为中间可拉伸区域的高度        stretchHeight = height - topCapHeight - bottomCapHeight = 1;    
-*    
-* 因此，使用这个方法只会拉伸图片中间1x1的区域，并不会影响到边缘和角落。    
-*/
-
-/**   
- * - (UIImage * )resizableImageWithCapInsets:(UIEdgeInsets)capInsets    
- *  这个方法只接收一个UIEdgeInsets类型的参数，可以通过设置UIEdgeInsets的left、right、top、bottom来分别指定左端盖宽度、右端盖宽度、顶端盖高度、底端盖高度    
- * */       
-
-/**    
- *- (UIImage * )resizableImageWithCapInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode  
-
-对比iOS5.0中的方法，只多了一个<code>UIImageResizingMode</code>参数，用来指定拉伸的模式：
-    UIImageResizingModeStretch：拉伸模式，通过拉伸
-    UIEdgeInsets:指定的矩形区域来填充图片    
-    UIImageResizingModeTile：平铺模式，通过重复显示
-    UIEdgeInsets指定的矩形区域来填充图片   
-**/</pre>
-
-<p>图片拉伸的以上内容参考文章 《<a href="http://blog.csdn.net/q199109106q/article/details/8615661" target="_blank" rel="noopener">iOS图片拉伸技巧</a>》讲的很好，建议大家多看看。</p>
-<h3 id="4、iOS中唤起自带浏览器（safari）的方法"><a href="#4、iOS中唤起自带浏览器（safari）的方法" class="headerlink" title="4、iOS中唤起自带浏览器（safari）的方法"></a>4、iOS中唤起自带浏览器（safari）的方法</h3><p>也是一个简单的一句代码 ，这种也就是知道了就知道了，不知道就是抓耳挠腮吧 </p>
-<pre>NSURL *url = [NSURL URLWithString:urlStr]; 
-
-[[UIApplication sharedApplication] openURL:url]; </pre>
-
-<h3 id="5、iOS中唤起电话界面"><a href="#5、iOS中唤起电话界面" class="headerlink" title="5、iOS中唤起电话界面"></a>5、iOS中唤起电话界面</h3><p>app内部唤起电话界面的实现，是找了很多资料才有的一个结论（安全，并且拨打完之后可以返回app）</p>
-<p>实现的方法是使用UIWebView 加载电话，目前这种方法是合法的，App Store也允许通过的。  </p>
-<pre>NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",newPhoneString]];    
- if (_phoneCallWebView) { 
-   [_phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];  
-
- }</pre>
-
-<p>但如果使用下面的这种方法，则可能不允许通过审核  </p>
-<pre>[[UIApplication sharedApplication] openURL:phoneURL];</pre>
-
-<h3 id="6、iOS-调用地图的方法"><a href="#6、iOS-调用地图的方法" class="headerlink" title="6、iOS 调用地图的方法"></a>6、iOS 调用地图的方法</h3><p>app内部调用第三方app，这里有一个详细的文章《<a href="http://blog.csdn.net/a416863220/article/details/51220739" target="_blank" rel="noopener">IOS实现应用内打开第三方地图app进行导航</a>》</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">UIImage *<span class="built_in">image</span> = [UIImage imageNamed:@<span class="string">"picture"</span>];        </span><br><span class="line"><span class="comment">//iOS5之前     </span></span><br><span class="line"><span class="comment">// 左端盖宽度        </span></span><br><span class="line">NSInteger leftCapWidth = <span class="built_in">image</span>.<span class="built_in">size</span>.<span class="built_in">width</span> * <span class="number">0.5</span>f;       </span><br><span class="line">NSInteger topCapHeight = <span class="built_in">image</span>.<span class="built_in">size</span>.<span class="built_in">height</span> * <span class="number">0.8</span>f;        </span><br><span class="line">	</span><br><span class="line"><span class="built_in">image</span> = [<span class="built_in">image</span> stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];        </span><br><span class="line">	</span><br><span class="line"><span class="comment">//iOS5之后       </span></span><br><span class="line">UIEdgeInsets insets = UIEdgeInsetsMake(<span class="built_in">image</span>.<span class="built_in">size</span>.<span class="built_in">height</span> * <span class="number">0.8</span>f,<span class="built_in">image</span>.<span class="built_in">size</span>.<span class="built_in">width</span> * <span class="number">0.5</span>f, <span class="number">40</span>, <span class="number">40</span>);       </span><br><span class="line">	</span><br><span class="line"><span class="built_in">image</span> = [<span class="built_in">image</span> resizableImageWithCapInsets:insets];      </span><br><span class="line"><span class="comment">//iOS6之后        </span></span><br><span class="line">UIEdgeInsets insets = UIEdgeInsetsMake(<span class="built_in">image</span>.<span class="built_in">size</span>.<span class="built_in">height</span> * <span class="number">0.8</span>f,<span class="built_in">image</span>.<span class="built_in">size</span>.<span class="built_in">width</span> * <span class="number">0.5</span>f, <span class="number">40</span>, <span class="number">40</span>);       </span><br><span class="line"><span class="built_in">image</span> = [<span class="built_in">image</span> resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch]; </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">下面是使用的解释：</span><br><span class="line">![pictureStretch](http:<span class="comment">//obzx0h1re.bkt.clouddn.com/pictureStretch.png)</span></span><br></pre></td></tr></table></figure>
+<p>/**   </p>
 <ul>
-<li>app内部调用地图，需要先检测用户手机上是否已经安装地图app。</li>
+<li><ul>
+<li>(UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight;    </li>
 </ul>
-<p>我们常用的地图app有：高德、百度；国外有：谷歌（Google Map ）。当然还有苹果自带的地图，随着iOS10的发布，苹果地图这块也有很大的完善和进步。</p>
-<p>我使用Xcode模拟器实现时，会提示:</p>
-<pre>1、canOpenURL: failed for URL: "iosamap://" error: "(null)" 。</pre>
+</li>
+<li></li>
+<li><p>leftCapWidth代表左端盖宽度，topCapHeight代表顶端盖高度。系统会自动计算出右端盖宽度(rightCapWidth)和底端盖高度(bottomCapHeight)    </p>
+</li>
+<li><p>算法如下：    </p>
+</li>
+<li>width为图片宽度  rightCapWidth = width - leftCapWidth - 1;       </li>
+<li>height为图片高度 bottomCapHeight = height - topCapHeight - 1    </li>
+<li>*经过计算，你会发现中间的可拉伸区域只有1x1    </li>
+<li></li>
+</ul>
+<ul>
+<li>stretchWidth为中间可拉伸区域的宽度        stretchWidth = width - leftCapWidth - rightCapWidth = 1;       </li>
+<li>stretchHeight为中间可拉伸区域的高度        stretchHeight = height - topCapHeight - bottomCapHeight = 1;    </li>
+<li></li>
+<li>因此，使用这个方法只会拉伸图片中间1x1的区域，并不会影响到边缘和角落。<br>*/</li>
+</ul>
+<p>/**   </p>
+<ul>
+<li><ul>
+<li>(UIImage * )resizableImageWithCapInsets:(UIEdgeInsets)capInsets    </li>
+</ul>
+</li>
+<li>这个方法只接收一个UIEdgeInsets类型的参数，可以通过设置UIEdgeInsets的left、right、top、bottom来分别指定左端盖宽度、右端盖宽度、顶端盖高度、底端盖高度    </li>
+<li>*/       </li>
+</ul>
+<p>/*<em>    
+ </em>- (UIImage * )resizableImageWithCapInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode  </p>
+<p>对比iOS5.0中的方法，只多了一个<code>UIImageResizingMode</code>参数，用来指定拉伸的模式：<br>    UIImageResizingModeStretch：拉伸模式，通过拉伸<br>    UIEdgeInsets:指定的矩形区域来填充图片<br>    UIImageResizingModeTile：平铺模式，通过重复显示<br>    UIEdgeInsets指定的矩形区域来填充图片<br>**/<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">图片拉伸的以上内容参考文章 《[<span class="string">iOS图片拉伸技巧</span>](<span class="link">http://blog.csdn.net/q199109106q/article/details/8615661</span>)》讲的很好，建议大家多看看。</span><br><span class="line"><span class="section">### 4、iOS中唤起自带浏览器（safari）的方法</span></span><br><span class="line">也是一个简单的一句代码 ，这种也就是知道了就知道了，不知道就是抓耳挠腮吧</span><br></pre></td></tr></table></figure></p>
+<p>NSURL *url = [NSURL URLWithString:urlStr]; </p>
+<p>[[UIApplication sharedApplication] openURL:url];<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### <span class="number">5</span>、iOS中唤起电话界面</span><br><span class="line"></span><br><span class="line">app内部唤起电话界面的实现，是找了很多资料才有的一个结论（安全，并且拨打完之后可以返回app）</span><br><span class="line"></span><br><span class="line">实现的方法是使用UIWebView 加载电话，目前这种方法是合法的，App Store也允许通过的。</span><br></pre></td></tr></table></figure></p>
+<p>NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@”tel:%@”,newPhoneString]];<br> if (_phoneCallWebView) {<br>   [_phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];  </p>
+<p> }<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">但如果使用下面的这种方法，则可能不允许通过审核</span><br></pre></td></tr></table></figure></p>
+<p>[[UIApplication sharedApplication] openURL:phoneURL];<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">### 6、iOS 调用地图的方法</span></span><br><span class="line"></span><br><span class="line">app内部调用第三方app，这里有一个详细的文章《[<span class="string">IOS实现应用内打开第三方地图app进行导航</span>](<span class="link">http://blog.csdn.net/a416863220/article/details/51220739</span>)》</span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>app内部调用地图，需要先检测用户手机上是否已经安装地图app。</span><br><span class="line"></span><br><span class="line">我们常用的地图app有：高德、百度；国外有：谷歌（Google Map ）。当然还有苹果自带的地图，随着iOS10的发布，苹果地图这块也有很大的完善和进步。</span><br><span class="line"></span><br><span class="line">我使用Xcode模拟器实现时，会提示:</span><br></pre></td></tr></table></figure></p>
+<p>1、canOpenURL: failed for URL: “iosamap://“ error: “(null)” 。<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">*<span class="strong">*原因是*</span><span class="strong">*：模拟器上没有高德地图。</span></span><br></pre></td></tr></table></figure></p>
+<p>2、canOpenURL: failed for URL:”comgooglemaps://“ error: “This app is not allowed to query for scheme comgooglemaps”。<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="strong">**原因是**</span>：<span class="code">`LSApplicationQueriesSchemes`</span>我自己马虎设成了字典类型。</span><br><span class="line"></span><br><span class="line">首先iOS9以后，我们在app内部要跳转到其他软件时，需要在 <span class="code">`Info.plist`</span> 中添加白名单。</span><br><span class="line"></span><br><span class="line">方法为：在<span class="code">`Info.plist`</span>中添加 <span class="code">`key : LSApplicationQueriesSchemes `</span> 类型为：<span class="code">`Array`</span>。</span><br><span class="line"></span><br><span class="line">将高德、百度、谷歌的值填进去分别是：<span class="code">`iosamap`</span>、<span class="code">`baidumap`</span>、 <span class="code">`comgooglemaps`</span></span><br><span class="line"></span><br><span class="line">图片：</span><br><span class="line">![<span class="string">LSApplicationQueriesSchemes</span>](<span class="link">http://obzx0h1re.bkt.clouddn.com/LSApplicationQueriesSchemes.png</span>)</span><br><span class="line"></span><br><span class="line">至于下面代码中的<span class="code">`URLScheme`</span> 和<span class="code">`appName `</span> 是在<span class="code">`Info.plist`</span> 的<span class="code">`URL types`</span>中添加  <span class="code">`URL Scheme`</span>(URL Schemes是一个数组，允许应用定义多个URL schemes)和<span class="code">`URL identifier`</span>（建议采用反转域名的方法保证该名字的唯一性，比如 <span class="code">`com.yourApp.www`</span>）</span><br><span class="line"></span><br><span class="line">图片如下：</span><br><span class="line"></span><br><span class="line">![<span class="string">URLTypes</span>](<span class="link">http://obzx0h1re.bkt.clouddn.com/URLTypes.png</span>)</span><br><span class="line"></span><br><span class="line">下面是具体的代码：</span><br></pre></td></tr></table></figure></p>
+<p> __block NSString *urlScheme = urlScheme;   </p>
+<p> __block NSString *appName = appName;    </p>
+<p>__block CLLocationCoordinate2D coordinate = self.coordinate;        </p>
+<p>UIAlertController *alert = [UIAlertController alertControllerWithTitle:@”选择地图” message:nil preferredStyle:UIAlertControllerStyleActionSheet];          </p>
+<p>//apple自带的地图不需要判断        </p>
+<p>UIAlertAction <em> action = [UIAlertAction actionWithTitle:@”苹果地图” style:UIAlertActionStyleDefault handler:^(UIAlertAction </em>action) {      </p>
+<pre><code>  MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation]; 
 
-<p><strong>原因是</strong>：模拟器上没有高德地图。</p>
-<pre>
-2、canOpenURL: failed for URL:"comgooglemaps://" error: "This app is not allowed to query for scheme comgooglemaps"。</pre>
+MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil]];                      
 
-<p><strong>原因是</strong>：<code>LSApplicationQueriesSchemes</code>我自己马虎设成了字典类型。</p>
-<p>首先iOS9以后，我们在app内部要跳转到其他软件时，需要在 <code>Info.plist</code> 中添加白名单。</p>
-<p>方法为：在<code>Info.plist</code>中添加 <code>key : LSApplicationQueriesSchemes </code> 类型为：<code>Array</code>。</p>
-<p>将高德、百度、谷歌的值填进去分别是：<code>iosamap</code>、<code>baidumap</code>、 <code>comgooglemaps</code></p>
-<p>图片：<br><img src="http://obzx0h1re.bkt.clouddn.com/LSApplicationQueriesSchemes.png" alt="LSApplicationQueriesSchemes"></p>
-<p>至于下面代码中的<code>URLScheme</code> 和<code>appName </code> 是在<code>Info.plist</code> 的<code>URL types</code>中添加  <code>URL Scheme</code>(URL Schemes是一个数组，允许应用定义多个URL schemes)和<code>URL identifier</code>（建议采用反转域名的方法保证该名字的唯一性，比如 <code>com.yourApp.www</code>）</p>
-<p>图片如下：</p>
-<p><img src="http://obzx0h1re.bkt.clouddn.com/URLTypes.png" alt="URLTypes"></p>
-<p>下面是具体的代码：</p>
- <pre>__block NSString *urlScheme = urlScheme;   
-
- __block NSString *appName = appName;    
-
-__block CLLocationCoordinate2D coordinate = self.coordinate;        
-
-UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择地图" message:nil preferredStyle:UIAlertControllerStyleActionSheet];          
-
-//apple自带的地图不需要判断        
-
-UIAlertAction * action = [UIAlertAction actionWithTitle:@"苹果地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {      
-
-       MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation]; 
-
-     MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil]];                      
-
-     [MKMapItem openMapsWithItems:@[currentLocation, toLocation]                           launchOptions:@{
-
-MKLaunchOptionsDirectionsModeKey:     MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];        
-
-}];        
-
- [alert addAction:action];        
-
- //判断百度地图   
-
- if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://"]])      
-
-{        UIAlertAction * action = [UIAlertAction actionWithTitle:@"百度地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {                       
-
- NSString *urlString = [[NSString stringWithFormat:@"baidumap://map/direction?origin=&destination=latlng:%f,%f|name=目的地&mode=driving&coord_type=gcj02",coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];         
-
- }];        
-
-[alert addAction:action];      
-
-}     
-
- //判断高德地图     
-
- if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"iosamap://"]])      
-
- {        
-
-UIAlertAction * action = [UIAlertAction actionWithTitle:@"高德地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {                        
-
-NSString *urlString = [[NSString stringWithFormat:@"iosamap://navi?sourceApplication=%@&backScheme=%@&lat=%f&lon=%f&dev=0&style=2",appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];  
-
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];                    }];       
-
- [alert addAction:action];    
-
-}        
-
- //判断谷歌地图   
-
- if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]])    {       
-
- UIAlertAction * action = [UIAlertAction actionWithTitle:@"谷歌地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {                       
-
- NSString *urlString = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];                       
- [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];          
-
-}];                
-
-[alert addAction:action];    
-
-}        
-
-UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];    [alert addAction:action];        
-
-[self presentViewController:alert animated:YES completion:^{          
-
-}];    
-
-}</pre>
-
-</div><div class="tags"><a href="/tags/iOS/">iOS</a></div><div class="post-nav"><a class="pre" href="/2016/09/23/BlurEffect/">iOS模糊效果(毛玻璃效果)的实现</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://guohuaden.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/欠下的时光/">欠下的时光</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/统计代码量/">统计代码量</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/欠下的时光/" style="font-size: 15px;">欠下的时光</a> <a href="/tags/iOS-and-Swift/" style="font-size: 15px;">iOS and Swift</a> <a href="/tags/Objective-C-iOS-SDWebImage-SDImageCache/" style="font-size: 15px;">Objective-C, iOS, SDWebImage,SDImageCache</a> <a href="/tags/Objective-C-iOS-SDWebImage-SDWebImageDownloader/" style="font-size: 15px;">Objective-C, iOS,SDWebImage,SDWebImageDownloader</a> <a href="/tags/Objective-C-iOS-SDWebImage-SDWebImageManager/" style="font-size: 15px;">Objective-C, iOS, SDWebImage,SDWebImageManager</a> <a href="/tags/iOS-Objective-C-SDWebImage/" style="font-size: 15px;">iOS,Objective-C,SDWebImage</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/Swift/" style="font-size: 15px;">Swift</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/Read-SDWebImage-SDWebImageDownloader/">读 SDWebImage 四 (SDWebImageDownloader)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/02/Read-SDWebImage-SDImageCache/">读 SDWebImage 三 (SDImageCache)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/Read-SDWebImage-SDWebImageManager/">读SDWebImage二 (SDWebImageManager)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/29/Read-SDWebImage-note1/">读 SDWebImage 一 使用分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/30/copyAndMutableCopy/">copy 和 mutableCopy</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/Project-summary-Four/">项目总结四</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/05/project-summary-Three/">iOS之项目总结三：项目开发中遇到的一些问题及解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/03/WKWebView-issue/">WKWebView使用遇到的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/20/GH-SearchView/">一个自定义的搜索框：GH_SearchView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/get-keyboard-height/">利用通知(NSNotificationCenter)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Wheat-Qin" title="github" target="_blank">github</a><ul></ul><a href="wheatden@guohuaden.com" title="email" target="_blank">email</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">喂、三二一
+[MKMapItem openMapsWithItems:@[currentLocation, toLocation]                           launchOptions:@{
+</code></pre><p>MKLaunchOptionsDirectionsModeKey:     MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];        </p>
+<p>}];        </p>
+<p> [alert addAction:action];        </p>
+<p> //判断百度地图   </p>
+<p> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@”baidumap://“]])      </p>
+<p>{        UIAlertAction <em> action = [UIAlertAction actionWithTitle:@”百度地图” style:UIAlertActionStyleDefault handler:^(UIAlertAction </em>action) {                       </p>
+<p> NSString *urlString = [[NSString stringWithFormat:@”baidumap://map/direction?origin=&amp;destination=latlng:%f,%f|name=目的地&amp;mode=driving&amp;coord_type=gcj02”,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</p>
+<p>  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];         </p>
+<p> }];        </p>
+<p>[alert addAction:action];      </p>
+<p>}     </p>
+<p> //判断高德地图     </p>
+<p> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@”iosamap://“]])      </p>
+<p> {        </p>
+<p>UIAlertAction <em> action = [UIAlertAction actionWithTitle:@”高德地图” style:UIAlertActionStyleDefault handler:^(UIAlertAction </em>action) {                        </p>
+<p>NSString *urlString = [[NSString stringWithFormat:@”iosamap://navi?sourceApplication=%@&amp;backScheme=%@&amp;lat=%f&amp;lon=%f&amp;dev=0&amp;style=2”,appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];  </p>
+<pre><code>[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];                    }];       
+</code></pre><p> [alert addAction:action];    </p>
+<p>}        </p>
+<p> //判断谷歌地图   </p>
+<p> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@”comgooglemaps://“]])    {       </p>
+<p> UIAlertAction <em> action = [UIAlertAction actionWithTitle:@”谷歌地图” style:UIAlertActionStyleDefault handler:^(UIAlertAction </em>action) {                       </p>
+<p> NSString *urlString = [[NSString stringWithFormat:@”comgooglemaps://?x-source=%@&amp;x-success=%@&amp;saddr=&amp;daddr=%f,%f&amp;directionsmode=driving”,appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];<br> [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];          </p>
+<p>}];                </p>
+<p>[alert addAction:action];    </p>
+<p>}        </p>
+<p>UIAlertAction *action = [UIAlertAction actionWithTitle:@”取消” style:UIAlertActionStyleCancel handler:nil];    [alert addAction:action];        </p>
+<p>[self presentViewController:alert animated:YES completion:^{          </p>
+<p>}];    </p>
+<p>}</p>
+<p><code>`</code></p>
+</div><div class="tags"><a href="/tags/iOS/">iOS</a></div><div class="post-nav"><a class="pre" href="/2016/09/23/BlurEffect/">iOS模糊效果(毛玻璃效果)的实现</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://guohuaden.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/欠下的时光/">欠下的时光</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/统计代码量/">统计代码量</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/欠下的时光/" style="font-size: 15px;">欠下的时光</a> <a href="/tags/iOS-and-Swift/" style="font-size: 15px;">iOS and Swift</a> <a href="/tags/Objective-C-iOS-SDWebImage-SDImageCache/" style="font-size: 15px;">Objective-C, iOS, SDWebImage,SDImageCache</a> <a href="/tags/Objective-C-iOS-SDWebImage-SDWebImageDownloader/" style="font-size: 15px;">Objective-C, iOS,SDWebImage,SDWebImageDownloader</a> <a href="/tags/Objective-C-iOS-SDWebImage-SDWebImageManager/" style="font-size: 15px;">Objective-C, iOS, SDWebImage,SDWebImageManager</a> <a href="/tags/iOS-Objective-C-SDWebImage/" style="font-size: 15px;">iOS,Objective-C,SDWebImage</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/Swift/" style="font-size: 15px;">Swift</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/Read-SDWebImage-SDWebImageDownloader/">读 SDWebImage 四 (SDWebImageDownloader)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/02/Read-SDWebImage-SDImageCache/">读 SDWebImage 三 (SDImageCache)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/Read-SDWebImage-SDWebImageManager/">读SDWebImage二 (SDWebImageManager)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/29/Read-SDWebImage-note1/">读 SDWebImage 一 使用分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/30/copyAndMutableCopy/">copy 和 mutableCopy</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/03/Project-summary-Four/">项目总结四</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/05/project-summary-Three/">iOS之项目总结三：项目开发中遇到的一些问题及解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/03/WKWebView-issue/">WKWebView使用遇到的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/20/GH-SearchView/">一个自定义的搜索框：GH_SearchView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/get-keyboard-height/">利用通知(`NSNotificationCenter`)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Wheat-Qin" title="github" target="_blank">github</a><ul></ul><a href="wheatden@guohuaden.com" title="email" target="_blank">email</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">喂、三二一
 </a>Motto：灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人.+'\n'
 Email：guohua@guohuaden.com</div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
