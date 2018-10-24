@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2017/03/14/bridge-understand/</loc>
+    <lastmod>2018-10-24T11:07:10.329Z</lastmod>
+    <data>
+        <display>
+        <title>__bridge 和 Core Foundation</title>
+        <pubTime>2017-03-14T02:25:36.000Z</pubTime>
+        
+        <tag>bridge和Core Foundation</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2016/11/14/Xcode-error-Code%20Sign%20Error/</loc>
     <lastmod>2018-10-24T11:06:20.612Z</lastmod>
     <data>
@@ -491,26 +511,6 @@
         <display>
         <title>服务器返回的json数据中含有null的处理方法</title>
         <pubTime>2017-03-06T05:33:53.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2017/03/14/bridge-understand/</loc>
-    <lastmod>2018-10-24T06:50:20.188Z</lastmod>
-    <data>
-        <display>
-        <title>__bridge 和 Core Foundation</title>
-        <pubTime>2017-03-14T02:25:36.000Z</pubTime>
         
         <tag>iOS</tag>
          
