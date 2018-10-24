@@ -7,6 +7,7 @@ if ([str isKindOfClass: [NSNull class]]){
     NSLog(@&quot;str 为空！&quot;);
 }
 //或者使用[str isEqual:[NSNull null]]
+
 </code></pre><p>为什么首先说这种方法呢，大抵是因为这个方法的工作量比较大吧。但有时候你是完全不能避免这种情况的，尤其是在老旧的项目中，当你看到项目中所有的解析都是<code>KVO</code>模式时，你就知道一个个去判断是多么让人纠结的事情了。</p>
 <hr>
 <p><strong>二、使用<code>JSONModel</code>等第三方json解析库</strong>  </p>
