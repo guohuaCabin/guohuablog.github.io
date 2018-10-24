@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://guohuaden.com/about/index.html</loc>
+    
+    <lastmod>2018-10-24T03:53:54.105Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://guohuaden.com/2018/10/04/Read-SDWebImage-SDWebImageDownloader/</loc>
     
     <lastmod>2018-10-22T08:44:36.555Z</lastmod>
@@ -236,13 +243,6 @@
     <loc>http://guohuaden.com/complain/index.html</loc>
     
     <lastmod>2018-08-16T13:56:55.127Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://guohuaden.com/about/index.html</loc>
-    
-    <lastmod>2018-08-12T05:22:59.336Z</lastmod>
     
   </url>
   
