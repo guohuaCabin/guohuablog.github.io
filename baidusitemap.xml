@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2018/10/11/Read-SDWebImage-SDWebImageDownloaderOperation/</loc>
+    <lastmod>2018-10-25T01:31:39.615Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 五 （SDWebImageDownloaderOperation）</title>
+        <pubTime>2018-10-11T09:58:01.000Z</pubTime>
+        
+        <tag>SDWebImage</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2017/03/14/bridge-understand/</loc>
     <lastmod>2018-10-24T11:07:10.329Z</lastmod>
     <data>
@@ -411,26 +431,6 @@
         <display>
         <title>读SDWebImage 二 (SDWebImageManager)</title>
         <pubTime>2018-10-01T01:38:06.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/10/24/Read-SDWebImage-SDWebImageDownloaderOperation/</loc>
-    <lastmod>2018-10-24T09:59:11.264Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 五 （SDWebImageDownloaderOperation）</title>
-        <pubTime>2018-10-24T09:58:01.000Z</pubTime>
         
         <tag>SDWebImage</tag>
          
