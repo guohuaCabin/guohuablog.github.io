@@ -2,30 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://guohuaden.com/2018/10/13/Read-SDWebImage-SDWebImageCoder/</loc>
+    <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
     
-    <lastmod>2018-10-25T11:20:14.535Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://guohuaden.com/2018/10/15/Read-SDWebImage-SDWebImageCoderHelper/</loc>
-    
-    <lastmod>2018-10-25T11:17:56.186Z</lastmod>
+    <lastmod>2018-10-25T11:23:22.054Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://guohuaden.com/2018/10/11/Read-SDWebImage-SDWebImageDownloaderOperation/</loc>
     
-    <lastmod>2018-10-25T04:36:47.915Z</lastmod>
+    <lastmod>2018-10-25T11:23:12.187Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
+    <loc>http://guohuaden.com/2018/10/04/Read-SDWebImage-SDWebImageDownloader/</loc>
     
-    <lastmod>2018-10-25T04:30:49.682Z</lastmod>
+    <lastmod>2018-10-25T11:23:06.489Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://guohuaden.com/2018/10/15/Read-SDWebImage-SDWebImageCoderHelper/</loc>
+    
+    <lastmod>2018-10-25T11:22:58.027Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://guohuaden.com/2018/10/13/Read-SDWebImage-SDWebImageCoder/</loc>
+    
+    <lastmod>2018-10-25T11:22:46.158Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://guohuaden.com/2018/10/02/Read-SDWebImage-SDImageCache/</loc>
+    
+    <lastmod>2018-10-25T11:22:37.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://guohuaden.com/2018/09/29/Read-SDWebImage-note1/</loc>
+    
+    <lastmod>2018-10-25T11:22:24.733Z</lastmod>
     
   </url>
   
@@ -180,27 +201,6 @@
     <loc>http://guohuaden.com/about/index.html</loc>
     
     <lastmod>2018-10-24T10:57:58.754Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://guohuaden.com/2018/10/04/Read-SDWebImage-SDWebImageDownloader/</loc>
-    
-    <lastmod>2018-10-24T09:55:22.786Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://guohuaden.com/2018/10/02/Read-SDWebImage-SDImageCache/</loc>
-    
-    <lastmod>2018-10-24T09:55:07.611Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://guohuaden.com/2018/09/29/Read-SDWebImage-note1/</loc>
-    
-    <lastmod>2018-10-24T09:54:51.847Z</lastmod>
     
   </url>
   
