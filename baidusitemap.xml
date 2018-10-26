@@ -4,6 +4,66 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2018/10/26/Read-SDWebImage-SDWebImageCodersManager/</loc>
+    <lastmod>2018-10-26T06:52:00.169Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</title>
+        <pubTime>2018-10-26T06:48:55.000Z</pubTime>
+        
+        <tag>SDWebImage</tag>
+         
+         
+           
+             
+              <breadCrumb title="读SDWebImage手札" url="http://guohuaden.com/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/10/13/Read-SDWebImage-SDWebImageCoder/</loc>
+    <lastmod>2018-10-26T03:07:23.441Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器一：SDWebImageCoder）</title>
+        <pubTime>2018-10-13T13:15:04.000Z</pubTime>
+        
+        <tag>SDWebImage</tag>
+         
+         
+           
+             
+              <breadCrumb title="读SDWebImage手札" url="http://guohuaden.com/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/10/15/Read-SDWebImage-SDWebImageCoderHelper/</loc>
+    <lastmod>2018-10-26T02:52:32.450Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</title>
+        <pubTime>2018-10-15T13:52:22.000Z</pubTime>
+        
+        <tag>SDWebImage</tag>
+         
+         
+           
+             
+              <breadCrumb title="读SDWebImage手札" url="http://guohuaden.com/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
     <lastmod>2018-10-25T11:23:22.054Z</lastmod>
     <data>
@@ -50,46 +110,6 @@
         <display>
         <title>读 SDWebImage 四 (SDWebImageDownloader)</title>
         <pubTime>2018-10-04T11:38:50.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="http://guohuaden.com/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/10/15/Read-SDWebImage-SDWebImageCoderHelper/</loc>
-    <lastmod>2018-10-25T11:22:58.027Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</title>
-        <pubTime>2018-10-15T13:52:22.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="http://guohuaden.com/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/10/13/Read-SDWebImage-SDWebImageCoder/</loc>
-    <lastmod>2018-10-25T11:22:46.158Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （编码器一：SDWebImageCoder）</title>
-        <pubTime>2018-10-13T13:15:04.000Z</pubTime>
         
         <tag>SDWebImage</tag>
          
