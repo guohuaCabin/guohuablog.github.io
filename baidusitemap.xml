@@ -4,12 +4,32 @@
 
     
   <url>
-    <loc>http://guohuaden.com/2018/10/26/Read-SDWebImage-SDWebImageCodersManager/</loc>
-    <lastmod>2018-10-26T07:05:07.938Z</lastmod>
+    <loc>http://guohuaden.com/2018/10/23/Read-SDWebImage-SDWebImageImageIOCoder/</loc>
+    <lastmod>2018-10-29T09:59:39.307Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</title>
+        <pubTime>2018-10-23T13:57:30.000Z</pubTime>
+        
+        <tag>SDWebImage</tag>
+         
+         
+           
+             
+              <breadCrumb title="读SDWebImage手札" url="http://guohuaden.com/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/10/18/Read-SDWebImage-SDWebImageCodersManager/</loc>
+    <lastmod>2018-10-29T09:59:10.285Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</title>
-        <pubTime>2018-10-26T06:48:55.000Z</pubTime>
+        <pubTime>2018-10-18T12:48:55.000Z</pubTime>
         
         <tag>SDWebImage</tag>
          
