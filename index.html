@@ -7,9 +7,9 @@
 </li>
 </ol></div><p class="readmore"><a href="/2018/11/02/Read-SDWebImage-SDWebImagePrefetcher/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/11/02/Read-SDWebImage-SDWebImageTransition/">读 SDWebImage 七 （SDWebImageTransition）</a></h1><div class="post-meta">2018-11-02</div><div class="post-content"><p>该类用于在视图类别加载图像完成后提供过渡动画。 </p>
 <ol>
-<li><p>在<code>UIVit + WebCache.h</code> 中的 <code>sd_imageTransition</code> 用于<code>UIKit(iOS和tvOS)</code>，使用 <code>+ [UIView transitionWithView：duration：options：animations：completion]</code> 进行过渡动画。 </p>
+<li><p>在<code>UIVit + WebCache.h</code> 中的 <code>sd_imageTransition</code> 用于<code>UIKit(iOS和tvOS)</code><br>使用 <code>+ [UIView transitionWithView：duration：options：animations：completion]</code> 进行过渡动画。 </p>
 </li>
-<li><p>对于<code>AppKit(macOS)</code>，使用 <code>+ [NSAnimationContext runAnimationGroup：completionHandler：]</code>进行过渡动画。 我们可以调用<code>+ [NSAnimationContext currentContext]</code>来获取动画块中的上下文。 提供这些转换以用于基本用途。 </p>
+<li><p>对于<code>AppKit(macOS)</code><br>使用 <code>+ [NSAnimationContext runAnimationGroup：completionHandler：]</code>进行过渡动画。 我们可以调用<code>+ [NSAnimationContext currentContext]</code>来获取动画块中的上下文。 提供这些转换以用于基本用途。 </p>
 </li>
 </ol>
 <ol start="3">
