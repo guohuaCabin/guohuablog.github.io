@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2019/04/05/Arithmetic-daily2/</loc>
+    <lastmod>2019-04-06T07:50:01.329Z</lastmod>
+    <data>
+        <display>
+        <title>每日算法--篇二</title>
+        <pubTime>2019-04-05T03:58:52.000Z</pubTime>
+        
+        <tag>每日算法、算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="每日算法" url="http://guohuaden.com/categories/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2019/04/04/Arithmetic-daily1/</loc>
     <lastmod>2019-04-06T07:48:15.618Z</lastmod>
     <data>
@@ -17,26 +37,6 @@
            
              
               <breadCrumb title="每日算法" url="http://guohuaden.com/categories/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/04/05/Arithmetic-daily2/</loc>
-    <lastmod>2019-04-06T07:48:08.635Z</lastmod>
-    <data>
-        <display>
-        <title>每日算法--篇二</title>
-        <pubTime>2019-04-05T03:58:52.000Z</pubTime>
-        
-        <tag>每日算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
           
         </display>
     </data>
