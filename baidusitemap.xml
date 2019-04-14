@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2019/04/04/Arithmetic-weekly1/</loc>
+    <lastmod>2019-04-14T07:37:19.768Z</lastmod>
+    <data>
+        <display>
+        <title>每周算法--篇一</title>
+        <pubTime>2019-04-04T02:27:55.000Z</pubTime>
+        
+        <tag>每周算法,算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="每周算法" url="http://guohuaden.com/categories/%E6%AF%8F%E5%91%A8%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2019/04/14/Arithmetic-weekly4/</loc>
-    <lastmod>2019-04-14T07:35:38.447Z</lastmod>
+    <lastmod>2019-04-14T07:37:11.300Z</lastmod>
     <data>
         <display>
         <title>每周算法 -- 篇四</title>
@@ -16,7 +36,7 @@
          
            
              
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
+              <breadCrumb title="每周算法" url="http://guohuaden.com/categories/%E6%AF%8F%E5%91%A8%E7%AE%97%E6%B3%95/"/>
           
         </display>
     </data>
@@ -52,26 +72,6 @@
         <pubTime>2019-04-11T03:58:52.000Z</pubTime>
         
         <tag>每周算法、算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="每周算法" url="http://guohuaden.com/categories/%E6%AF%8F%E5%91%A8%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/04/04/Arithmetic-weekly1/</loc>
-    <lastmod>2019-04-10T11:50:34.753Z</lastmod>
-    <data>
-        <display>
-        <title>每周算法--篇一</title>
-        <pubTime>2019-04-04T02:27:55.000Z</pubTime>
-        
-        <tag>每周算法</tag>
          
          
            
