@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://guohuaden.com/2019/04/20/Arithmetic-weekly5/</loc>
-    <lastmod>2019-05-15T07:54:04.126Z</lastmod>
+    <lastmod>2019-05-15T07:54:04.120Z</lastmod>
     <data>
         <display>
         <title>每周算法—篇五</title>
@@ -45,7 +45,7 @@
     
   <url>
     <loc>http://guohuaden.com/2019/04/04/Arithmetic-weekly1/</loc>
-    <lastmod>2019-04-14T07:37:19.768Z</lastmod>
+    <lastmod>2019-04-14T07:37:19.760Z</lastmod>
     <data>
         <display>
         <title>每周算法--篇一</title>
@@ -65,7 +65,7 @@
     
   <url>
     <loc>http://guohuaden.com/2019/04/12/Arithmetic-weekly3/</loc>
-    <lastmod>2019-04-14T07:34:29.431Z</lastmod>
+    <lastmod>2019-04-14T07:34:29.430Z</lastmod>
     <data>
         <display>
         <title>每周算法--篇三</title>
@@ -85,7 +85,7 @@
     
   <url>
     <loc>http://guohuaden.com/2019/04/11/Arithmetic-weekly2/</loc>
-    <lastmod>2019-04-10T11:50:54.829Z</lastmod>
+    <lastmod>2019-04-10T11:50:54.820Z</lastmod>
     <data>
         <display>
         <title>每周算法--篇二</title>
@@ -105,7 +105,7 @@
     
   <url>
     <loc>http://guohuaden.com/2016/10/06/DES-encryption/</loc>
-    <lastmod>2019-04-09T07:59:48.654Z</lastmod>
+    <lastmod>2019-04-09T07:59:48.650Z</lastmod>
     <data>
         <display>
         <title>Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</title>
@@ -125,7 +125,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/04/27/fileEncryptionAndDecryption/</loc>
-    <lastmod>2019-04-09T07:58:00.483Z</lastmod>
+    <lastmod>2019-04-09T07:58:00.480Z</lastmod>
     <data>
         <display>
         <title>iOS中关于图片、PDF等文件加密</title>
@@ -145,7 +145,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/05/20/GH-SearchView/</loc>
-    <lastmod>2019-04-09T07:57:27.307Z</lastmod>
+    <lastmod>2019-04-09T07:57:27.300Z</lastmod>
     <data>
         <display>
         <title>一个自定义的搜索框：GH_SearchView</title>
@@ -165,7 +165,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/03/06/json-dataNull/</loc>
-    <lastmod>2019-04-09T07:56:16.107Z</lastmod>
+    <lastmod>2019-04-09T07:56:16.100Z</lastmod>
     <data>
         <display>
         <title>服务器返回的json数据中含有null的处理方法</title>
@@ -185,7 +185,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/10/05/project-summary-Three/</loc>
-    <lastmod>2019-04-09T07:55:21.741Z</lastmod>
+    <lastmod>2019-04-09T07:55:21.740Z</lastmod>
     <data>
         <display>
         <title>iOS之项目总结三：项目开发中遇到的一些问题及解决方案</title>
@@ -226,11 +226,11 @@
     
   <url>
     <loc>http://guohuaden.com/2019/01/25/PrivacyPolicy/</loc>
-    <lastmod>2019-03-02T11:46:53.652Z</lastmod>
+    <lastmod>2019-03-02T11:46:53.650Z</lastmod>
     <data>
         <display>
         <title>隐私协议</title>
-        <pubTime>2019-01-25T07:19:56.755Z</pubTime>
+        <pubTime>2019-01-25T07:19:56.000Z</pubTime>
         
          
            
@@ -241,7 +241,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/12/31/Arithmetic-Basice-SelectSort/</loc>
-    <lastmod>2019-01-15T07:58:28.548Z</lastmod>
+    <lastmod>2019-01-15T07:58:28.540Z</lastmod>
     <data>
         <display>
         <title>基础算法：选择排序</title>
@@ -261,7 +261,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/12/30/Arithmetic-Basice-InsertSort/</loc>
-    <lastmod>2019-01-15T07:56:32.133Z</lastmod>
+    <lastmod>2019-01-15T07:56:32.130Z</lastmod>
     <data>
         <display>
         <title>基础算法：插入排序</title>
@@ -281,7 +281,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/11/29/Arithmetic-Basice-ExchangeSort/</loc>
-    <lastmod>2019-01-15T07:55:49.911Z</lastmod>
+    <lastmod>2019-01-15T07:55:49.910Z</lastmod>
     <data>
         <display>
         <title>基础算法：交换排序</title>
@@ -301,7 +301,7 @@
     
   <url>
     <loc>http://guohuaden.com/2019/01/08/Arithmetic7-BinaryTreeTraverse/</loc>
-    <lastmod>2019-01-15T07:44:33.644Z</lastmod>
+    <lastmod>2019-01-15T07:44:33.640Z</lastmod>
     <data>
         <display>
         <title>算法七：二叉树遍历</title>
@@ -321,7 +321,7 @@
     
   <url>
     <loc>http://guohuaden.com/2019/01/07/Arithmetic6-KNN/</loc>
-    <lastmod>2019-01-15T07:43:37.612Z</lastmod>
+    <lastmod>2019-01-15T07:43:37.610Z</lastmod>
     <data>
         <display>
         <title>算法六：K最近邻算法</title>
@@ -361,7 +361,7 @@
     
   <url>
     <loc>http://guohuaden.com/2019/01/05/Arithmetic4-BFSAndDFS/</loc>
-    <lastmod>2019-01-15T07:41:56.637Z</lastmod>
+    <lastmod>2019-01-15T07:41:56.630Z</lastmod>
     <data>
         <display>
         <title>算法四：广度优先搜索和深度优先搜索</title>
@@ -381,7 +381,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/12/01/Arithmetic2-RecursionAndFor/</loc>
-    <lastmod>2019-01-15T07:36:13.468Z</lastmod>
+    <lastmod>2019-01-15T07:36:13.460Z</lastmod>
     <data>
         <display>
         <title>算法基础二：递归和for循环</title>
@@ -401,7 +401,7 @@
     
   <url>
     <loc>http://guohuaden.com/2019/01/03/Arithmetic3-DynamicProgramming/</loc>
-    <lastmod>2019-01-15T07:35:58.553Z</lastmod>
+    <lastmod>2019-01-15T07:35:58.550Z</lastmod>
     <data>
         <display>
         <title>算法三：动态规划</title>
@@ -441,7 +441,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/27/Read-SDWebImage-SDWebImagePrefetcher/</loc>
-    <lastmod>2018-11-02T08:04:38.551Z</lastmod>
+    <lastmod>2018-11-02T08:04:38.550Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 六 （SDWebImagePrefetcher）</title>
@@ -461,7 +461,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/30/Read-SDWebImage-SDWebImageTransition/</loc>
-    <lastmod>2018-11-02T08:04:14.448Z</lastmod>
+    <lastmod>2018-11-02T08:04:14.440Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 七 （SDWebImageTransition）</title>
@@ -481,7 +481,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/24/Read-SDWebImage-SDWebImageGIFCoder/</loc>
-    <lastmod>2018-10-30T07:54:59.419Z</lastmod>
+    <lastmod>2018-10-30T07:54:59.410Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 六（编码器五：SDWebImageGIFCoder）</title>
@@ -501,7 +501,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/23/Read-SDWebImage-SDWebImageImageIOCoder/</loc>
-    <lastmod>2018-10-30T02:50:13.633Z</lastmod>
+    <lastmod>2018-10-30T02:50:13.630Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</title>
@@ -521,7 +521,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/18/Read-SDWebImage-SDWebImageCodersManager/</loc>
-    <lastmod>2018-10-29T09:59:10.285Z</lastmod>
+    <lastmod>2018-10-29T09:59:10.280Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</title>
@@ -541,7 +541,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/13/Read-SDWebImage-SDWebImageCoder/</loc>
-    <lastmod>2018-10-26T03:07:23.441Z</lastmod>
+    <lastmod>2018-10-26T03:07:23.440Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 六 （编码器一：SDWebImageCoder）</title>
@@ -581,7 +581,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
-    <lastmod>2018-10-25T11:23:22.054Z</lastmod>
+    <lastmod>2018-10-25T11:23:22.050Z</lastmod>
     <data>
         <display>
         <title>读SDWebImage 二 (SDWebImageManager)</title>
@@ -601,7 +601,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/11/Read-SDWebImage-SDWebImageDownloaderOperation/</loc>
-    <lastmod>2018-10-25T11:23:12.187Z</lastmod>
+    <lastmod>2018-10-25T11:23:12.180Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 五 （SDWebImageDownloaderOperation）</title>
@@ -621,7 +621,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/04/Read-SDWebImage-SDWebImageDownloader/</loc>
-    <lastmod>2018-10-25T11:23:06.489Z</lastmod>
+    <lastmod>2018-10-25T11:23:06.480Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 四 (SDWebImageDownloader)</title>
@@ -641,7 +641,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/10/02/Read-SDWebImage-SDImageCache/</loc>
-    <lastmod>2018-10-25T11:22:37.616Z</lastmod>
+    <lastmod>2018-10-25T11:22:37.610Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 三 (SDImageCache)</title>
@@ -661,7 +661,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/09/29/Read-SDWebImage-note1/</loc>
-    <lastmod>2018-10-25T11:22:24.733Z</lastmod>
+    <lastmod>2018-10-25T11:22:24.730Z</lastmod>
     <data>
         <display>
         <title>读 SDWebImage 一 使用分析</title>
@@ -682,7 +682,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/03/14/bridge-understand/</loc>
-    <lastmod>2018-10-24T11:07:10.329Z</lastmod>
+    <lastmod>2018-10-24T11:07:10.320Z</lastmod>
     <data>
         <display>
         <title>__bridge 和 Core Foundation</title>
@@ -702,7 +702,7 @@
     
   <url>
     <loc>http://guohuaden.com/2016/11/14/Xcode-error-Code%20Sign%20Error/</loc>
-    <lastmod>2018-10-24T11:06:20.612Z</lastmod>
+    <lastmod>2018-10-24T11:06:20.610Z</lastmod>
     <data>
         <display>
         <title>iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)</title>
@@ -722,7 +722,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/10/03/WKWebView-issue/</loc>
-    <lastmod>2018-10-24T11:06:00.688Z</lastmod>
+    <lastmod>2018-10-24T11:06:00.680Z</lastmod>
     <data>
         <display>
         <title>WKWebView使用遇到的问题</title>
@@ -742,7 +742,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/02/27/WebView-ErrorOpen/</loc>
-    <lastmod>2018-10-24T11:05:51.969Z</lastmod>
+    <lastmod>2018-10-24T11:05:51.960Z</lastmod>
     <data>
         <display>
         <title>WebView 打不开问题 (转码问题)</title>
@@ -762,7 +762,7 @@
     
   <url>
     <loc>http://guohuaden.com/2016/11/29/Swift-BlurEffect/</loc>
-    <lastmod>2018-10-24T11:05:26.312Z</lastmod>
+    <lastmod>2018-10-24T11:05:26.310Z</lastmod>
     <data>
         <display>
         <title>Swift之模糊效果（毛玻璃效果，虚化效果）的实现</title>
@@ -782,7 +782,7 @@
     
   <url>
     <loc>http://guohuaden.com/2016/12/15/SVN-error/</loc>
-    <lastmod>2018-10-24T11:05:10.956Z</lastmod>
+    <lastmod>2018-10-24T11:05:10.950Z</lastmod>
     <data>
         <display>
         <title>SVN提交错误："XXX" is scheduled for addition, but is missing</title>
@@ -802,7 +802,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/01/15/support-64bit/</loc>
-    <lastmod>2018-10-24T11:04:56.549Z</lastmod>
+    <lastmod>2018-10-24T11:04:56.540Z</lastmod>
     <data>
         <display>
         <title>关于app支持64bit</title>
@@ -822,7 +822,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/01/11/project-summary-two/</loc>
-    <lastmod>2018-10-24T11:04:17.155Z</lastmod>
+    <lastmod>2018-10-24T11:04:17.150Z</lastmod>
     <data>
         <display>
         <title>iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</title>
@@ -842,7 +842,7 @@
     
   <url>
     <loc>http://guohuaden.com/2016/08/16/project-summary-one/</loc>
-    <lastmod>2018-10-24T11:03:58.136Z</lastmod>
+    <lastmod>2018-10-24T11:03:58.130Z</lastmod>
     <data>
         <display>
         <title>iOS之项目总结－：项目中遇到的各种的问题和解决方法</title>
@@ -862,7 +862,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/06/03/Project-summary-Four/</loc>
-    <lastmod>2018-10-24T11:03:47.552Z</lastmod>
+    <lastmod>2018-10-24T11:03:47.550Z</lastmod>
     <data>
         <display>
         <title>项目总结四</title>
@@ -882,7 +882,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/04/22/MARK-TODO-FIXME/</loc>
-    <lastmod>2018-10-24T11:03:18.102Z</lastmod>
+    <lastmod>2018-10-24T11:03:18.100Z</lastmod>
     <data>
         <display>
         <title>Xcode中常用的标记(MARK、TODO、FIXME)</title>
@@ -902,7 +902,7 @@
     
   <url>
     <loc>http://guohuaden.com/2018/06/30/copyAndMutableCopy/</loc>
-    <lastmod>2018-10-24T11:01:54.936Z</lastmod>
+    <lastmod>2018-10-24T11:01:54.930Z</lastmod>
     <data>
         <display>
         <title>copy 和 mutableCopy</title>
@@ -942,7 +942,7 @@
     
   <url>
     <loc>http://guohuaden.com/2016/09/27/block-and-weak/</loc>
-    <lastmod>2018-10-24T11:00:42.212Z</lastmod>
+    <lastmod>2018-10-24T11:00:42.210Z</lastmod>
     <data>
         <display>
         <title>block 和 weak的了解</title>
@@ -962,7 +962,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/04/29/Project-code-number/</loc>
-    <lastmod>2018-10-24T10:59:46.059Z</lastmod>
+    <lastmod>2018-10-24T10:59:46.050Z</lastmod>
     <data>
         <display>
         <title>统计项目代码量</title>
@@ -982,7 +982,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/02/16/Build-Active-Architecture-Only-Query/</loc>
-    <lastmod>2018-10-24T06:12:01.771Z</lastmod>
+    <lastmod>2018-10-24T06:12:01.770Z</lastmod>
     <data>
         <display>
         <title>对于Xcode中 Build Active Architecture Only 的认识</title>
@@ -1023,7 +1023,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/03/10/Repeat-ButtonClick/</loc>
-    <lastmod>2018-08-21T04:58:27.565Z</lastmod>
+    <lastmod>2018-08-21T04:58:27.560Z</lastmod>
     <data>
         <display>
         <title>iOS之防止用户重复点击Button（按钮）问题</title>
@@ -1043,7 +1043,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/04/21/borrow-me/</loc>
-    <lastmod>2018-08-21T04:58:00.724Z</lastmod>
+    <lastmod>2018-08-21T04:58:00.720Z</lastmod>
     <data>
         <display>
         <title>借我</title>
@@ -1063,7 +1063,7 @@
     
   <url>
     <loc>http://guohuaden.com/2017/03/12/I-am-not-familiar-with-this-world/</loc>
-    <lastmod>2018-08-21T04:57:46.902Z</lastmod>
+    <lastmod>2018-08-21T04:57:46.900Z</lastmod>
     <data>
         <display>
         <title>我和这个世界不熟 --北岛</title>
@@ -1083,7 +1083,7 @@
     
   <url>
     <loc>http://guohuaden.com/2016/11/13/Project-Logout/</loc>
-    <lastmod>2018-08-21T04:57:39.094Z</lastmod>
+    <lastmod>2018-08-21T04:57:39.090Z</lastmod>
     <data>
         <display>
         <title>iOS之退出app(项目)的几种方法</title>
