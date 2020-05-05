@@ -12,9 +12,9 @@ ga('create','GTM-NHB73SK','auto');ga('send','pageview');
   })();
 </script><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">关于app支持64bit</h1><a id="logo" href="/.">似梦言生</a><p class="description">踏实、低调、前行。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">关于app支持64bit</h1><div class="post-meta">Jan 15, 2017<span> | </span><span class="category"><a href="/categories/iOS/">iOS</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><p>关于iOS应用，其实苹果很早就就发布消息：2015年的2月开始，提交App Store的应用必须支持64-bit。而Apple在iPhone 5s 就已经搭配64位双核苹果A7处理器。还是在15年6月，苹果App Store中所有应用更新都必须支持64bit。</p>
 <p>但这对于企业级应用来说，并不能限制应用去支持64bit，因为企业级应用不必提交App Store审核。但Apple又有了新的对策：在iOS 10.1测试版中加入了一项提示，如果用户下载的是一个32位应用，系统会提示<code>“XXX”可能使iPhone变慢，应用开发者需要更新此应用以改进其兼容性。</code></p>
-<p><img src="http://obzx0h1re.bkt.clouddn.com/64Bit-Prompt.jpg" alt="提示效果图"><br>现在看来Apple这种方式，可算是最有效的方式了，因为这样会直接导致用户对一个应用的不同态度。甚至是不止降低用户量。如果是企业级用户，可以直接引起用户的强烈不满。</p>
+<p><img src="http://blog.guohuaden.com/64Bit-Prompt.jpg" alt="提示效果图"><br>现在看来Apple这种方式，可算是最有效的方式了，因为这样会直接导致用户对一个应用的不同态度。甚至是不止降低用户量。如果是企业级用户，可以直接引起用户的强烈不满。</p>
 <p>不管怎么说，作为一个iOS开发者，既然Apple已经提出，还是要去支持64-bit。</p>
-<p>具体做法：<br><img src="http://obzx0h1re.bkt.clouddn.com/64Bit-Work.png" alt="方法如图"></p>
+<p>具体做法：<br><img src="http://blog.guohuaden.com/64Bit-Work.png" alt="方法如图"></p>
 <p>关于Xcode <code>“Build Setting”</code>中的<code>Architectures</code>参数问题：</p>
 <ul>
 <li><p><code>Architectures</code>：你想支持的指令集。（支持指令集是通过编译生成对应的二进制数据包实现的，如果支持的指令集数目有多个，就会编译出包含多个指令集代码的数据包，造成最终编译的包很大。）</p>
@@ -28,7 +28,7 @@ ga('create','GTM-NHB73SK','auto');ga('send','pageview');
 <p>而是对于代码中的改变其实也就分为：<strong>数据类型和方法调用</strong> 两个部分。</p>
 <p>比如：<code>int -&gt; NSInteger</code></p>
 <p>以及得到数组个数的方法：<code>[dataArray count] -&gt; dataArray.count</code></p>
-<p>这是关于数据类型改变的总结：<br><img src="http://obzx0h1re.bkt.clouddn.com/64bit-Summary.png" alt="64bit-Summary"><br>上图所说：</p>
+<p>这是关于数据类型改变的总结：<br><img src="http://blog.guohuaden.com/64bit-Summary.png" alt="64bit-Summary"><br>上图所说：</p>
 <ul>
 <li>避免将长整型long赋值给整型int (64-bit上会导致数据丢失)</li>
 <li>避免将指针类型pointer赋值给整型int (64-bit导致地址数据丢失)。</li>

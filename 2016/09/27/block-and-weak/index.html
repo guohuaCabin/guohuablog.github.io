@@ -52,8 +52,8 @@ ga('create','GTM-NHB73SK','auto');ga('send','pageview');
 <p>先看一段代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@autoreleasepool &#123;</span><br><span class="line">__block NSInteger value = 0;</span><br><span class="line">void (^block)(void) = ^&#123;</span><br><span class="line">value = 1;</span><br><span class="line">&#125;;</span><br><span class="line">block();</span><br><span class="line">NSLog(@&quot;val = %ld&quot;, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们现在看着可能得不出什么结论，那么，我们再看下面的代码，为了直观，我以图片的形式呈现：</p>
-<p><img src="http://obzx0h1re.bkt.clouddn.com/__blocktest.png" alt="block_picture1"></p>
-<p><img src="http://obzx0h1re.bkt.clouddn.com/__blocktest1.png" alt="block_picture2"></p>
+<p><img src="http://blog.guohuaden.com/__blocktest.png" alt="block_picture1"></p>
+<p><img src="http://blog.guohuaden.com/__blocktest1.png" alt="block_picture2"></p>
 <p>现在对比就明显了。</p>
 <p>下面总结一下：</p>
 <ol>
@@ -65,9 +65,9 @@ ga('create','GTM-NHB73SK','auto');ga('send','pageview');
 </li>
 </ol>
 <p>对于 block 外的变量引用，<code>block</code> 默认是将其复制到其数据结构中来实现访问的</p>
-<p><img src="http://obzx0h1re.bkt.clouddn.com/const-non-local-variables.png" alt="const-non-local-variables"></p>
+<p><img src="http://blog.guohuaden.com/const-non-local-variables.png" alt="const-non-local-variables"></p>
 <p>对于用 <code>__block</code> 修饰的外部变量引用，<code>block</code> 是复制其引用地址来实现访问的</p>
-<p><img src="http://obzx0h1re.bkt.clouddn.com/mutable-non-local-variables.png" alt="mutable-non-local-variables"></p>
+<p><img src="http://blog.guohuaden.com/mutable-non-local-variables.png" alt="mutable-non-local-variables"></p>
 <p><strong>四、<strong>block 和 </strong>weak修饰符的区别</strong></p>
 <ol>
 <li><p><code>__block</code>不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。</p>

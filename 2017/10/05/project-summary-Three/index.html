@@ -15,7 +15,7 @@ ga('create','GTM-NHB73SK','auto');ga('send','pageview');
 <h4 id="1、中文显示标题之类"><a href="#1、中文显示标题之类" class="headerlink" title="1、中文显示标题之类"></a>1、中文显示标题之类</h4><p>我们在项目中调用相册、相机等往往默认的是显示英文，但有时候开发的项目是针对国内的，所以需要中文配合显示，这就需要我们做一下配置。<br>其实很简单：就是在<code>info.plist</code>中允许应用程序获取框架内语言即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Localizedresources can be mixed  YES</span><br><span class="line">Localization native development region  China //en</span><br></pre></td></tr></table></figure>
 <p>图片显示：</p>
-<p><img src="http://obzx0h1re.bkt.clouddn.com/project_summary_lauguageSet.png" alt="允许应用程序获取框架内语言图片"></p>
+<p><img src="http://blog.guohuaden.com/project_summary_lauguageSet.png" alt="允许应用程序获取框架内语言图片"></p>
 <h4 id="2、运行报错问题"><a href="#2、运行报错问题" class="headerlink" title="2、运行报错问题"></a>2、运行报错问题</h4><p>报错信息：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld: 4 duplicate symbols for architecture arm64 clang: error: linker command failed with exit</span><br></pre></td></tr></table></figure>
 <p>这个是粗心大意而差生的报错，最可能的情况是：引入【.h】文件重复。<br>我们知道iOS不允许在A类中重复引入相同的B类的，使用<code>improt</code>关键字引入头文件时，它会判断是否已经引入，如果引入了一次就不在引入。但并不能直接提示报错，所以在运行时会提示上面的报错信息。所以首先要做的是排查是否重复引入【.h】文件。</p>
