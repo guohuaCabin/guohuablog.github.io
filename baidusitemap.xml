@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
+    <lastmod>2020-05-05T13:40:48.581Z</lastmod>
+    <data>
+        <display>
+        <title>读SDWebImage 二 (SDWebImageManager)</title>
+        <pubTime>2018-10-01T01:38:06.000Z</pubTime>
+        
+        <tag>SDWebImage</tag>
+         
+         
+           
+             
+              <breadCrumb title="读SDWebImage手札" url="http://guohuaden.com/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2016/11/29/Swift-BlurEffect/</loc>
     <lastmod>2020-05-05T13:38:02.620Z</lastmod>
     <data>
@@ -237,26 +257,6 @@
            
              
               <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
-    <lastmod>2020-05-05T13:18:31.627Z</lastmod>
-    <data>
-        <display>
-        <title>读SDWebImage 二 (SDWebImageManager)</title>
-        <pubTime>2018-10-01T01:38:06.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="http://guohuaden.com/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
           
         </display>
     </data>
