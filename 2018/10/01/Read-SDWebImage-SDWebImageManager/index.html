@@ -15,53 +15,22 @@ ga('create','GTM-NHB73SK','auto');ga('send','pageview');
 <h2 id="2、SDWebImageManager类分析"><a href="#2、SDWebImageManager类分析" class="headerlink" title="2、SDWebImageManager类分析"></a>2、<code>SDWebImageManager</code>类分析</h2><h3 id="先看下-h文件"><a href="#先看下-h文件" class="headerlink" title="先看下.h文件"></a>先看下.h文件</h3><h3 id="2-1、公共枚举"><a href="#2-1、公共枚举" class="headerlink" title="2.1、公共枚举"></a>2.1、公共枚举</h3><p>该枚举定义了图像加载的可选项:<br><strong>options 选项（枚举类型）</strong></p>
 <blockquote>
 <p><code>SDWebImageRetryFailed = 1 &lt;&lt; 0,</code><br>默认情况下当通过URL下载图片失败后，该URL就被加入黑名单，之后SDWebImage不会再去尝试下载。此标志作用就是禁用该黑名单，也就是说使用SDWebImageRetryFailed后，图片下载失败仍会尝试下载</p>
-</blockquote>
-<blockquote>
-<p><code>SDWebImageLowPriority = 1 &lt;&lt; 1,</code><br> 默认情况下图片在UI交互期间下载，此标志的作用就是禁用该功能。例如：在UIScrollView减速时导致延迟下载。</p>
-</blockquote>
-<blockquote>
-<p><code>SDWebImageCacheMemoryOnly = 1 &lt;&lt; 2,</code><br> 此标志作用是：图片下载完成后仅缓存到内存，不缓存在磁盘上</p>
-</blockquote>
-<blockquote>
-<p><code>SDWebImageProgressiveDownload = 1 &lt;&lt; 3,</code><br> 此标志启用渐进式下载，图像在下载过程中逐步显示，就像浏览器一样。<br> 默认情况下，图像仅在完全下载后显示。</p>
-</blockquote>
-<blockquote>
-<p><code>SDWebImageRefreshCached = 1 &lt;&lt; 4,</code><br> 即使缓存中存在该图片，也尊重HTTP响应缓存控制，在需要时从远程刷新图片。<br> 磁盘缓存将由 <code>NSURLCache</code> 替代 <code>SDWebImage</code> 去处理，这样也将导致性能略有下降。<br> 该选项有助于处理同一个URL请求但更换图片的情况，例如Facebook图形api配置文件的图片。<br>如果刷新了缓存图片，则使用缓存图片调用一次完成block代码块，再使用最终的图片调用完成block代码块。<br>仅当你无法使用嵌入式缓存清除参数使URL保持静态时，才使用该标志。</p>
-</blockquote>
-<blockquote>
+<p><code>SDWebImageLowPriority = 1 &lt;&lt; 1,</code><br>默认情况下图片在UI交互期间下载，此标志的作用就是禁用该功能。例如：在UIScrollView减速时导致延迟下载。</p>
+<p><code>SDWebImageCacheMemoryOnly = 1 &lt;&lt; 2,</code><br>此标志作用是：图片下载完成后仅缓存到内存，不缓存在磁盘上</p>
+<p><code>SDWebImageCacheMemoryOnly = 1 &lt;&lt; 2,</code><br>此标志作用是：图片下载完成后仅缓存到内存，不缓存在磁盘上</p>
+<p><code>SDWebImageProgressiveDownload = 1 &lt;&lt; 3,</code><br>此标志启用渐进式下载，图像在下载过程中逐步显示，就像浏览器一样。<br>默认情况下，图像仅在完全下载后显示。</p>
+<p><code>SDWebImageRefreshCached = 1 &lt;&lt; 4,</code><br>即使缓存中存在该图片，也尊重HTTP响应缓存控制，在需要时从远程刷新图片。<br>磁盘缓存将由 <code>NSURLCache</code> 替代 <code>SDWebImage</code> 去处理，这样也将导致性能略有下降。<br>该选项有助于处理同一个URL请求但更换图片的情况，例如Facebook图形api配置文件的图片。<br>如果刷新了缓存图片，则使用缓存图片调用一次完成block代码块，再使用最终的图片调用完成block代码块。<br>仅当你无法使用嵌入式缓存清除参数使URL保持静态时，才使用该标志。</p>
 <p><code>SDWebImageContinueInBackground = 1 &lt;&lt; 5,</code><br>在<code>iOS 4+</code>中，如果app进入后台也继续下载图片，这是通过询问系统实现的。<br>在后台有额外的时间让请求完成，如果后台任务到期，则操作被取消。</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageHandleCookies = 1 &lt;&lt; 6,</code><br>通过<code>NSMutableURLRequest.HTTPShouldHandleCookies = YES</code>设置处理在 <code>NSHTTPCookieStore</code>中的cookies。</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageAllowInvalidSSLCertificates = 1 &lt;&lt; 7,</code><br>启用允许不受信任的SSL证书（用于测试目的，在生产中谨慎使用）</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageHighPriority = 1 &lt;&lt; 8,</code><br>默认情况下，图像按其排队顺序加载，此标志将它们移动到队列的前面</p>
-</blockquote>
-<blockquote>
-<p><code>SDWebImageDelayPlaceholder = 1 &lt;&lt; 9,</code><br> 默认情况下，加载图像时会加载占位符。 此标志将延迟加载占位符图像，直到图像加载完毕。</p>
-</blockquote>
-<blockquote>
+<p><code>SDWebImageDelayPlaceholder = 1 &lt;&lt; 9,</code><br>默认情况下，加载图像时会加载占位符。 此标志将延迟加载占位符图像，直到图像加载完毕。</p>
 <p><code>SDWebImageTransformAnimatedImage = 1 &lt;&lt; 10,</code><br>我们通常不会在动画图像上调用transformDownloadedImage委托方法，因为大多数转换代码会破坏它。如果使用必须使用此标志来转换它们。</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageAvoidAutoSetImage = 1 &lt;&lt; 11,</code><br>默认情况下，下载后会将图像添加到imageView。 但在某些情况下，我们想要<br>在设置图像之前手动处理一些东西（例如应用滤镜或添加交叉渐变动画）请使用此标志</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageScaleDownLargeImages = 1 &lt;&lt; 12,</code><br>默认情况下，图像会根据其原始大小进行解码。 在iOS上，此标志将缩小图像尺寸与设备的受限内存兼容。（如果设置了“SDWebImageProgressiveDownload”标志，则停用缩小比例。）</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageQueryDataWhenInMemory = 1 &lt;&lt; 13,</code><br>默认情况下，当图像缓存在内存中时，我们不查询磁盘数据。 此掩码可以强制同时查询磁盘数据。<br>建议将此标志与<code>SDWebImageQueryDiskSync</code>一起使用，以确保图像在同一个runloop中加载。</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageQueryDiskSync = 1 &lt;&lt; 14,</code><br>默认情况下，我们同步查询内存缓存，异步查询磁盘缓存。 此掩码可以强制同步查询磁盘缓存，以确保在同一个runloop中加载映像。<br>如果禁用内存缓存或在某些其他情况下，此标志可以避免在单元重用期间闪烁。</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageFromCacheOnly = 1 &lt;&lt; 15,</code><br>默认情况下，当缓存丢失时，将从网络下载映像。此标志可以阻止网络仅从缓存加载。</p>
-</blockquote>
-<blockquote>
 <p><code>SDWebImageForceTransition = 1 &lt;&lt; 16</code><br>默认情况下，当您使用 <code>SDWebImageTransition</code> 在图像加载完成后进行某些视图转换时，此转换仅适用于从网络下载图像。 此掩码也可以强制为内存和磁盘缓存应用视图转换。</p>
 </blockquote>
 <h3 id="2-2、公共类型定义"><a href="#2-2、公共类型定义" class="headerlink" title="2.2、公共类型定义"></a>2.2、公共类型定义</h3><p>四个回调代码块：</p>
