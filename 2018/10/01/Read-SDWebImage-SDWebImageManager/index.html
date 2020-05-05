@@ -14,7 +14,7 @@ ga('create','GTM-NHB73SK','auto');ga('send','pageview');
 <p>下面就重点分析<code>SDWebImageManager</code>：<br><code>SDWebImageManager</code>是 <code>SDWebImage</code> 的管理以及操作类。也是<code>SDWebImage</code>的核心类，拥有一个<code>SDWebImageCache</code> 和 <code>SDWebImageDownloader</code> 属性，分别用于图片缓存和下载处理。</p>
 <h2 id="2、SDWebImageManager类分析"><a href="#2、SDWebImageManager类分析" class="headerlink" title="2、SDWebImageManager类分析"></a>2、<code>SDWebImageManager</code>类分析</h2><h3 id="先看下-h文件"><a href="#先看下-h文件" class="headerlink" title="先看下.h文件"></a>先看下.h文件</h3><h3 id="2-1、公共枚举"><a href="#2-1、公共枚举" class="headerlink" title="2.1、公共枚举"></a>2.1、公共枚举</h3><p>该枚举定义了图像加载的可选项:<br><strong>options 选项（枚举类型）</strong></p>
 <blockquote>
-<p><code>SDWebImageRetryFailed = 1 &lt;&lt; 0,</code><br> 默认情况下当通过URL下载图片失败后，该URL就被加入黑名单，之后SDWebImage不会再去尝试下载。此标志作用就是禁用该黑名单，也就是说使用SDWebImageRetryFailed后，图片下载失败仍会尝试下载</p>
+<p><code>SDWebImageRetryFailed = 1 &lt;&lt; 0,</code><br>默认情况下当通过URL下载图片失败后，该URL就被加入黑名单，之后SDWebImage不会再去尝试下载。此标志作用就是禁用该黑名单，也就是说使用SDWebImageRetryFailed后，图片下载失败仍会尝试下载</p>
 </blockquote>
 <blockquote>
 <p><code>SDWebImageLowPriority = 1 &lt;&lt; 1,</code><br> 默认情况下图片在UI交互期间下载，此标志的作用就是禁用该功能。例如：在UIScrollView减速时导致延迟下载。</p>
