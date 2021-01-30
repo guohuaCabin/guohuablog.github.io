@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2019/01/05/Arithmetic4-DFS/</loc>
+    <lastmod>2021-01-30T11:11:26.696Z</lastmod>
+    <data>
+        <display>
+        <title>算法四：广度优先搜索和深度优先搜索</title>
+        <pubTime>2019-01-05T13:37:34.000Z</pubTime>
+        
+        <tag>算法、基础算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2018/10/01/Read-SDWebImage-SDWebImageManager/</loc>
     <lastmod>2020-05-05T13:48:25.849Z</lastmod>
     <data>
@@ -568,26 +588,6 @@
         <pubTime>2019-01-06T14:38:27.000Z</pubTime>
         
         <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/01/05/Arithmetic4-BFSAndDFS/</loc>
-    <lastmod>2019-01-15T07:41:56.630Z</lastmod>
-    <data>
-        <display>
-        <title>算法四：广度优先搜索和深度优先搜索</title>
-        <pubTime>2019-01-05T13:37:34.000Z</pubTime>
-        
-        <tag>算法、基础算法</tag>
          
          
            
