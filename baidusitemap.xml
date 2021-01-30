@@ -4,19 +4,219 @@
 
     
   <url>
-    <loc>http://guohuaden.com/2021/01/30/Binary-Tree/</loc>
-    <lastmod>2021-01-30T11:27:22.162Z</lastmod>
+    <loc>http://guohuaden.com/2019/04/12/Arithmetic-weekly3/</loc>
+    <lastmod>2021-01-30T11:33:59.589Z</lastmod>
     <data>
         <display>
-        <title>二叉树遍历（Binary Tree）</title>
-        <pubTime>2021-01-30T11:14:01.000Z</pubTime>
+        <title>算法：判断数组中是否含有某个整数</title>
+        <pubTime>2019-04-12T08:00:18.000Z</pubTime>
         
-        <tag>算法</tag>
+        <tag>Algorithm</tag>
          
          
            
              
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2019/04/11/Arithmetic-weekly2/</loc>
+    <lastmod>2021-01-30T11:33:42.608Z</lastmod>
+    <data>
+        <display>
+        <title>算法：找出数组中重复的数字</title>
+        <pubTime>2019-04-11T03:58:52.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2019/04/04/Arithmetic-weekly1/</loc>
+    <lastmod>2021-01-30T11:33:27.952Z</lastmod>
+    <data>
+        <display>
+        <title>算法：找出有序数组中和等于指定数的两个数</title>
+        <pubTime>2019-04-04T02:27:55.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/11/28/Arithmetic-basics/</loc>
+    <lastmod>2021-01-30T11:33:17.807Z</lastmod>
+    <data>
+        <display>
+        <title>基础算法一：排序</title>
+        <pubTime>2018-11-28T12:14:26.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/12/31/Arithmetic-Basice-SelectSort/</loc>
+    <lastmod>2021-01-30T11:33:16.518Z</lastmod>
+    <data>
+        <display>
+        <title>基础算法：选择排序</title>
+        <pubTime>2018-12-31T12:52:49.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/12/30/Arithmetic-Basice-InsertSort/</loc>
+    <lastmod>2021-01-30T11:33:15.386Z</lastmod>
+    <data>
+        <display>
+        <title>基础算法：插入排序</title>
+        <pubTime>2018-12-30T13:10:56.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/11/29/Arithmetic-Basice-ExchangeSort/</loc>
+    <lastmod>2021-01-30T11:33:13.863Z</lastmod>
+    <data>
+        <display>
+        <title>基础算法：交换排序</title>
+        <pubTime>2018-11-29T12:54:23.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2019/04/14/Arithmetic-weekly4/</loc>
+    <lastmod>2021-01-30T11:32:43.424Z</lastmod>
+    <data>
+        <display>
+        <title>算法：实现一个函数，把字符串中的每个空格替换成"%20"</title>
+        <pubTime>2019-04-14T03:46:09.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2019/04/20/Arithmetic-weekly5/</loc>
+    <lastmod>2021-01-30T11:32:07.794Z</lastmod>
+    <data>
+        <display>
+        <title>算法：从尾到头打印链表</title>
+        <pubTime>2019-04-20T12:46:09.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2018/12/01/Arithmetic2-RecursionAndFor/</loc>
+    <lastmod>2021-01-30T11:31:48.417Z</lastmod>
+    <data>
+        <display>
+        <title>递归和for循环</title>
+        <pubTime>2018-12-01T13:05:51.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2019/01/03/Arithmetic3-DynamicProgramming/</loc>
+    <lastmod>2021-01-30T11:31:39.321Z</lastmod>
+    <data>
+        <display>
+        <title>动态规划</title>
+        <pubTime>2019-01-03T13:32:21.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
           
         </display>
     </data>
@@ -25,13 +225,73 @@
     
   <url>
     <loc>http://guohuaden.com/2019/01/05/Arithmetic4-DFS/</loc>
-    <lastmod>2021-01-30T11:11:26.696Z</lastmod>
+    <lastmod>2021-01-30T11:31:33.122Z</lastmod>
     <data>
         <display>
-        <title>算法四：广度优先搜索和深度优先搜索</title>
+        <title>深度优先搜索（DFS）</title>
         <pubTime>2019-01-05T13:37:34.000Z</pubTime>
         
-        <tag>算法、基础算法</tag>
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2019/01/06/Arithmetic5-Dijkstra/</loc>
+    <lastmod>2021-01-30T11:31:14.694Z</lastmod>
+    <data>
+        <display>
+        <title>迪克特斯拉算法</title>
+        <pubTime>2019-01-06T14:38:27.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2019/01/07/Arithmetic6-KNN/</loc>
+    <lastmod>2021-01-30T11:31:08.514Z</lastmod>
+    <data>
+        <display>
+        <title>K最近邻算法</title>
+        <pubTime>2019-01-07T13:38:58.000Z</pubTime>
+        
+        <tag>Algorithm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://guohuaden.com/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://guohuaden.com/2021/01/30/Binary-Tree/</loc>
+    <lastmod>2021-01-30T11:27:22.162Z</lastmod>
+    <data>
+        <display>
+        <title>二叉树遍历（Binary Tree）</title>
+        <pubTime>2021-01-30T11:14:01.000Z</pubTime>
+        
+        <tag>算法</tag>
          
          
            
@@ -304,106 +564,6 @@
 
     
   <url>
-    <loc>http://guohuaden.com/2019/04/20/Arithmetic-weekly5/</loc>
-    <lastmod>2019-05-15T07:54:04.120Z</lastmod>
-    <data>
-        <display>
-        <title>每周算法—篇五</title>
-        <pubTime>2019-04-20T12:46:09.000Z</pubTime>
-        
-        <tag>每周算法,算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="每周算法" url="http://guohuaden.com/categories/%E6%AF%8F%E5%91%A8%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/04/14/Arithmetic-weekly4/</loc>
-    <lastmod>2019-04-14T07:39:03.690Z</lastmod>
-    <data>
-        <display>
-        <title>每周算法--篇四</title>
-        <pubTime>2019-04-14T03:46:09.000Z</pubTime>
-        
-        <tag>每周算法,算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="每周算法" url="http://guohuaden.com/categories/%E6%AF%8F%E5%91%A8%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/04/04/Arithmetic-weekly1/</loc>
-    <lastmod>2019-04-14T07:37:19.760Z</lastmod>
-    <data>
-        <display>
-        <title>每周算法--篇一</title>
-        <pubTime>2019-04-04T02:27:55.000Z</pubTime>
-        
-        <tag>每周算法,算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="每周算法" url="http://guohuaden.com/categories/%E6%AF%8F%E5%91%A8%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/04/12/Arithmetic-weekly3/</loc>
-    <lastmod>2019-04-14T07:34:29.430Z</lastmod>
-    <data>
-        <display>
-        <title>每周算法--篇三</title>
-        <pubTime>2019-04-12T08:00:18.000Z</pubTime>
-        
-        <tag>每周算法、算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="每周算法" url="http://guohuaden.com/categories/%E6%AF%8F%E5%91%A8%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/04/11/Arithmetic-weekly2/</loc>
-    <lastmod>2019-04-10T11:50:54.820Z</lastmod>
-    <data>
-        <display>
-        <title>每周算法--篇二</title>
-        <pubTime>2019-04-11T03:58:52.000Z</pubTime>
-        
-        <tag>每周算法、算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="每周算法" url="http://guohuaden.com/categories/%E6%AF%8F%E5%91%A8%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://guohuaden.com/2016/10/06/DES-encryption/</loc>
     <lastmod>2019-04-09T07:59:48.650Z</lastmod>
     <data>
@@ -494,186 +654,6 @@
         
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/12/31/Arithmetic-Basice-SelectSort/</loc>
-    <lastmod>2019-01-15T07:58:28.540Z</lastmod>
-    <data>
-        <display>
-        <title>基础算法：选择排序</title>
-        <pubTime>2018-12-31T12:52:49.000Z</pubTime>
-        
-        <tag>基础算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="基础算法" url="http://guohuaden.com/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/12/30/Arithmetic-Basice-InsertSort/</loc>
-    <lastmod>2019-01-15T07:56:32.130Z</lastmod>
-    <data>
-        <display>
-        <title>基础算法：插入排序</title>
-        <pubTime>2018-12-30T13:10:56.000Z</pubTime>
-        
-        <tag>基础算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="基础算法" url="http://guohuaden.com/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/11/29/Arithmetic-Basice-ExchangeSort/</loc>
-    <lastmod>2019-01-15T07:55:49.910Z</lastmod>
-    <data>
-        <display>
-        <title>基础算法：交换排序</title>
-        <pubTime>2018-11-29T12:54:23.000Z</pubTime>
-        
-        <tag>基础算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="基础算法" url="http://guohuaden.com/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/01/08/Arithmetic7-BinaryTreeTraverse/</loc>
-    <lastmod>2019-01-15T07:44:33.640Z</lastmod>
-    <data>
-        <display>
-        <title>算法七：二叉树遍历</title>
-        <pubTime>2019-01-08T12:40:33.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/01/07/Arithmetic6-KNN/</loc>
-    <lastmod>2019-01-15T07:43:37.610Z</lastmod>
-    <data>
-        <display>
-        <title>算法六：K最近邻算法</title>
-        <pubTime>2019-01-07T13:38:58.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/01/06/Arithmetic5-Dijkstra/</loc>
-    <lastmod>2019-01-15T07:42:36.520Z</lastmod>
-    <data>
-        <display>
-        <title>算法五：迪克特斯拉算法</title>
-        <pubTime>2019-01-06T14:38:27.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/12/01/Arithmetic2-RecursionAndFor/</loc>
-    <lastmod>2019-01-15T07:36:13.460Z</lastmod>
-    <data>
-        <display>
-        <title>算法基础二：递归和for循环</title>
-        <pubTime>2018-12-01T13:05:51.000Z</pubTime>
-        
-        <tag>基础算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2019/01/03/Arithmetic3-DynamicProgramming/</loc>
-    <lastmod>2019-01-15T07:35:58.550Z</lastmod>
-    <data>
-        <display>
-        <title>算法三：动态规划</title>
-        <pubTime>2019-01-03T13:32:21.000Z</pubTime>
-        
-        <tag>基础算法、算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2018/11/28/Arithmetic-basics/</loc>
-    <lastmod>2019-01-15T07:17:41.450Z</lastmod>
-    <data>
-        <display>
-        <title>基础算法一：排序</title>
-        <pubTime>2018-11-28T12:14:26.000Z</pubTime>
-        
-        <tag>基础算法</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://guohuaden.com/categories/algorithm/"/>
-          
         </display>
     </data>
     </url>
