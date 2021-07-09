@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://guohuaden.com/2016/12/15/SVN-error/</loc>
+    <lastmod>2021-07-09T14:49:34.038Z</lastmod>
+    <data>
+        <display>
+        <title>SVN提交错误："XXX" is scheduled for addition, but is missing</title>
+        <pubTime>2016-12-15T03:18:00.000Z</pubTime>
+        
+        <tag>SVN</tag>
+         
+         
+           
+             
+              <breadCrumb title="SVN" url="http://guohuaden.com/categories/SVN/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://guohuaden.com/2020/07/07/watchdog/</loc>
     <lastmod>2021-07-07T14:50:46.746Z</lastmod>
     <data>
@@ -974,26 +994,6 @@
            
              
               <breadCrumb title="iOS" url="http://guohuaden.com/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://guohuaden.com/2016/12/15/SVN-error/</loc>
-    <lastmod>2018-10-24T11:05:10.950Z</lastmod>
-    <data>
-        <display>
-        <title>SVN提交错误："XXX" is scheduled for addition, but is missing</title>
-        <pubTime>2016-12-15T03:18:00.000Z</pubTime>
-        
-        <tag>SVN</tag>
-         
-         
-           
-             
-              <breadCrumb title="SVN" url="http://guohuaden.com/categories/SVN/"/>
           
         </display>
     </data>
