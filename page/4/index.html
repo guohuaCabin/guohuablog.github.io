@@ -1,30 +1,916 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。"><title>所念皆星辰 | 踏实、低调、前行。</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','GTM-NHB73SK','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = 'https://hm.baidu.com/hm.js?' + 'ae05530a6a007cdb8063cf611691cc3e';
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">所念皆星辰</h1><a id="logo" href="/.">所念皆星辰</a><p class="description">踏实、低调、前行。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2018/06/30/copyAndMutableCopy/">copy 和 mutableCopy</a></h1><div class="post-meta">2018-06-30</div><div class="post-content"><p>今天来谈下深浅拷贝【copy 和 mutableCopy】</p>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 4 页 | 所念皆星辰 | 踏实、低调、前行。</title>
+
+  
+  <meta name="author" content="Wheat">
+  
+
+  
+  <meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="所念皆星辰"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="所念皆星辰" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">所念皆星辰</a>
+    </h1>
+    <p class="site-description">踏实、低调、前行。</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/06/30/copyAndMutableCopy/"><span>copy 和 mutableCopy</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/06/30/copyAndMutableCopy/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-06-30T06:16:37.000Z">
+          2018-06-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>今天来谈下深浅拷贝【copy 和 mutableCopy】</p>
 <p>想写这篇文章，是因为看到了一个有意思的文章，对于其中的一些观点不太认同，所以想简单分析一下深浅拷贝</p>
 <p>先看一段代码，稍后会对代码进行分析</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-(void)testOne</span><br><span class="line">&#123;</span><br><span class="line">    NSArray *test = @[@1,@2,@3];</span><br><span class="line">    NSLog(@&quot;test-&gt;%p\n&quot;,test);</span><br><span class="line">    NSArray *testCopy = [test copy];</span><br><span class="line">    NSLog(@&quot;testCopy-&gt;%p\n&quot;,testCopy);</span><br><span class="line">    NSArray *testMutableCopy = [test mutableCopy];</span><br><span class="line">    NSLog(@&quot;testMutableCopy-&gt;%p\n&quot;,testMutableCopy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/06/30/copyAndMutableCopy/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/03/Project-summary-Four/">项目总结四</a></h1><div class="post-meta">2018-06-03</div><div class="post-content"><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近都一直在忙新项目的事，真是倍感身心疲别啊。目前项目终于成型，也算时间宽松渐缓吧，就把项目中遇到的一些问题做个总结。</p>
-<h4 id="1、textField限制输入的位数以及小数点的位数"><a href="#1、textField限制输入的位数以及小数点的位数" class="headerlink" title="1、textField限制输入的位数以及小数点的位数"></a>1、textField限制输入的位数以及小数点的位数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;</span><br><span class="line">&#123; </span><br><span class="line"> //string就是此时输入的那个字符textField就是此时正在输入的那个输入框返回YES就是可以改变输入框的值NO相反</span><br><span class="line">    NSString * toBeString = [textField.text     stringByReplacingCharactersInRange:range withString:string]; </span><br><span class="line">    // 判断是否输入内容，或者用户点击的是键盘的删除按钮</span><br><span class="line">    if (![string isEqualToString:@&quot;&quot;]) &#123;</span><br><span class="line">        if ([textField isEqual:self.textField]) &#123;</span><br><span class="line">            // 小数点在字符串中的位置 第一个数字从0位置开始</span><br><span class="line">            NSInteger dotLocation = [textField.text rangeOfString:@&quot;.&quot;].location;</span><br><span class="line">            if (dotLocation == NSNotFound &amp;&amp; range.location != 0) &#123;</span><br><span class="line">                //没有小数点,最大数值</span><br><span class="line">                if (range.location &gt;= 9)&#123;</span><br><span class="line">                    NSLog(@&quot;单笔金额不能超过亿位&quot;);</span><br><span class="line">                    if ([string isEqualToString:@&quot;.&quot;] &amp;&amp; range.location == 9) &#123;</span><br><span class="line">                        return YES;</span><br><span class="line">                    &#125;</span><br><span class="line">                    return NO;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            //判断输入多个小数点,禁止输入多个小数点</span><br><span class="line">            if (dotLocation != NSNotFound)&#123;</span><br><span class="line">                if ([string isEqualToString:@&quot;.&quot;])return NO;</span><br><span class="line">            &#125;</span><br><span class="line">            //判断小数点后最多两位</span><br><span class="line">            if (dotLocation != NSNotFound &amp;&amp; range.location &gt; dotLocation + 2) &#123; return NO; &#125;</span><br><span class="line">            //判断总长度</span><br><span class="line">            if (textField.text.length &gt; 11) &#123;</span><br><span class="line">                return NO;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/06/03/Project-summary-Four/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/10/05/project-summary-Three/">iOS之项目总结三：项目开发中遇到的一些问题及解决方案</a></h1><div class="post-meta">2017-10-05</div><div class="post-content"><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>两年多以来，基本上都是独立开发或者维护项目，不得不自嘲的说挺锻炼人的。最近的一家公司是涉足金融行列的，算是第一次踏足金融吧，过程怎样不说，确实学到了不少东西。</p></div><p class="readmore"><a href="/2017/10/05/project-summary-Three/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/10/03/WKWebView-issue/">WKWebView使用遇到的问题</a></h1><div class="post-meta">2017-10-03</div><div class="post-content"><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><code>WKWebView</code>在iOS8之后正式替代<code>UIWebView</code>，速度方面确实提升了不少。关于<code>WKWebView</code>的简单使用，在《<a href="http://guohuaden.com/2017/02/11/WKWebView/" target="_blank" rel="noopener">聊一聊WKWebView</a>》中我已经介绍过了，这里就不再絮叨，本篇主要记录s三个开发中遇到的问题。</p></div><p class="readmore"><a href="/2017/10/03/WKWebView-issue/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/05/20/GH-SearchView/">一个自定义的搜索框：GH_SearchView</a></h1><div class="post-meta">2017-05-20</div><div class="post-content"><p>对于iOS自带的搜索框，其实我用着也挺好的，但低版本的使用：  高版本的使用:UISearchController，两个难有个统一。很多项目中都是将着两套代码都写入项目中去，这样做难免显得代码冗余。所以就简单的自定义个搜索框。</p>
-<p><a href="https://github.com/guohuaCabin/GH_SearchView" target="_blank" rel="noopener">下载地址：https://github.com/guohuaCabin/GH_SearchView  【支持pods】</a></p></div><p class="readmore"><a href="/2017/05/20/GH-SearchView/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/30/get-keyboard-height/">利用通知(`NSNotificationCenter`)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</a></h1><div class="post-meta">2017-04-30</div><div class="post-content"><p>我们在开发中会遇到这样的情况：调用键盘时需要界面有一个调整，避免键盘遮掩输入框。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-(void)testOne</span><br><span class="line">&#123;</span><br><span class="line">    NSArray *test = @[@1,@2,@3];</span><br><span class="line">    NSLog(@&quot;test-&gt;%p\n&quot;,test);</span><br><span class="line">    NSArray *testCopy = [test copy];</span><br><span class="line">    NSLog(@&quot;testCopy-&gt;%p\n&quot;,testCopy);</span><br><span class="line">    NSArray *testMutableCopy = [test mutableCopy];</span><br><span class="line">    NSLog(@&quot;testMutableCopy-&gt;%p\n&quot;,testMutableCopy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>分析：</strong></p>
+<p>很简单的创建一个数组，对其进行copy和mutableCopy操作，打印其内存地址。结果看图会知道：<br>test和testCopy 内存地址是一样的，而testMutableCopy的内存地址是和test不同的。</p>
+<p><strong>小总结：</strong></p>
+<ol>
+<li><code>copy</code> 只是拷贝指向对象的指针，并没有出现新的内存地址，我们称之为<strong>浅拷贝</strong>：</li>
+<li><code>mutableCopy</code> 拷贝整个对象内存到另一块内存中，是产生了新的内存地址。</li>
+</ol>
+<p><img src="http://blog.guohuaden.com/copyAndMutableCopy_one.png" alt="copy和mutableCopy操作1"></p>
+<hr>
+<p>再看下面的一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-(void)testTwo</span><br><span class="line">&#123;</span><br><span class="line">    NSLog(@&quot;\n&quot;);</span><br><span class="line">    NSMutableArray *test2 = [NSMutableArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;, nil];</span><br><span class="line">    NSLog(@&quot;test2-&gt;%p\n&quot;,test2);</span><br><span class="line">    NSMutableArray *testCopy2 = [test2 copy];</span><br><span class="line">    NSLog(@&quot;testCopy2-&gt;%p\n&quot;,testCopy2);</span><br><span class="line">    </span><br><span class="line">    NSMutableArray *testMutableCopy2 = [test2 mutableCopy];</span><br><span class="line">    NSLog(@&quot;testMutableCopy2-&gt;%p\n&quot;,testMutableCopy2);</span><br><span class="line">    </span><br><span class="line">    [test2 addObject:@&quot;A&quot;];</span><br><span class="line">    </span><br><span class="line">    //这里不能对数组做操作， 可变数组的copy属于深拷贝，和mutableCopy一样都是将数组拷贝一份存入新的内存中，但通过mutableCopy得到的可变数组可以再操作，而copy出来的是不可变数组。</span><br><span class="line">//    [testCopy2 removeObject:@&quot;1&quot;];</span><br><span class="line">//    [testCopy2 addObject:@&quot;B&quot;]; </span><br><span class="line">    </span><br><span class="line">    [testMutableCopy2 addObject:@&quot;C&quot;];</span><br><span class="line">    [testMutableCopy2 removeObject:@&quot;3&quot;];</span><br><span class="line">    NSLog(@&quot;test2 = %@, testCopy2 =%@,testMutableCopy2 = %@&quot;,test2,testCopy2,testMutableCopy2);</span><br><span class="line">    </span><br><span class="line">    //打印结果： test2 = @[1,2,3,A]   testCopy2 = @[1,2,3]   testMutableCopy2 = @[1,2,3,C]</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>分析：</strong><br>上面这段代码会和之前的不一样，我们这里创建的是一个可变数组，然后对可变数组进行<code>copy</code>和<code>mutableCopy</code>操作。发现打印其内存地址都不一样，<br>这说明对可变数组进行<code>copy</code>和<code>mutableCopy</code>都是深拷贝。<br>但你会发现<code>copy</code>得到的数组不能添加删除操作，这是因为<code>copy</code>得到的是不可变数组。</p>
+<p><strong>小总结：</strong></p>
+<p>可变数组的<code>copy</code>和<code>mutableCopy</code>都是深拷贝</p>
+<p><img src="http://blog.guohuaden.com/copyAndMutableCopy_two.png" alt="copy和mutableCopy操作2"></p>
+<p>最后一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-(void)testThree</span><br><span class="line">&#123;</span><br><span class="line">    NSMutableArray *test4 = [NSMutableArray arrayWithObjects:@&quot;1&quot;,@&quot;2&quot;,@&quot;3&quot;, nil];</span><br><span class="line">    NSMutableArray *newTest = [NSMutableArray arrayWithObject:test4];</span><br><span class="line">    NSMutableArray *testMutableCopy4 = [newTest mutableCopy];//拷贝出来的是NSMutableArray类型数组</span><br><span class="line">    NSLog(@&quot;newTest-&gt;%p,testMutableCopy4-&gt;%p\n&quot;,newTest,testMutableCopy4);</span><br><span class="line">    </span><br><span class="line">    //copy的先不说， 我们看下mutableCopy得到的数组，你会发现通过mutableCopy得到的数组中的元素地址是不变的</span><br><span class="line">    NSLog(@&quot;newTest.first-&gt;%p,testMutableCopy4first-&gt;%p\n&quot;,newTest.firstObject,testMutableCopy4.firstObject);</span><br><span class="line">    </span><br><span class="line">    //test</span><br><span class="line">    [testMutableCopy4.firstObject addObject:@6];</span><br><span class="line">    [newTest.firstObject addObject:@&quot;12&quot;];</span><br><span class="line">    </span><br><span class="line">    //打印出来这里两个数组，会发现结果是一样的，原因就是mutableCopy的深拷贝是容器和其中的元素，但元素的地址并没有改变，修改其中的元素中的内容，结果必然都改变</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot;newTest = %@,testMutableCopy2 = %@&quot;,newTest,testMutableCopy4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>分析：</strong></p>
+<p>通过<code>mutableCopy</code>得到的数组，你会发现通过<code>mutableCopy</code>得到的数组中的元素地址是不变的。如果你往数组的元素中添加或删除元素，会发现newTest和testMutableCopy4中的元素都发生了改变。</p>
+<p><strong>小总结：</strong></p>
+<p>集合对象的内容复制（mutableCopy）仅限于对象本身，对象中的元素仍然是指针复制。</p>
+<p><img src="http://blog.guohuaden.com/copyAndMutableCopy_four.png" alt="copy和mutableCopy操作4"></p>
+<p>关于这点其实苹果官网文档中<code>CopyFunctions</code>给了解释，看下以下介绍：</p>
+<p><strong>关于复制的介绍：</strong></p>
+<blockquote>
+<p>Copy Functions<br>In general, a standard copy operation, which might also be called simple assignment, occurs when you use the = operator to assign the value of one variable to another. The expression myInt2 = myInt1, for example, causes the integer contents of myInt1 to be copied from the memory used by myInt1 into the memory used by myInt2. Following the copy operation, two separate areas of memory contain the same value. However, if you attempt to copy a Core Foundation object in this way, be aware that you will not duplicate the object itself, only the reference to the object.</p>
+</blockquote>
+<blockquote>
+<p>For example, someone new to Core Foundation might think that to make a copy of a CFString object she would use the expression myCFString2 = myCFString1. Again, this expression does not actually copy the string data. Because both myCFString1 and myCFString2 must have the CFStringRef type, this expression only copies the reference to the object. Following the copy operation, you have two copies of the reference to the CFString. This type of copy is very fast because only the reference is duplicated, but it is important to remember that copying a mutable object in this way is dangerous. As with programs that use global variables, if one part of your application changes an object using a copy of the reference, there is no way for other parts of the program which have copies of that reference to know that the data has changed.</p>
+</blockquote>
+<blockquote>
+<p>If you want to duplicate an object, you must use one of the functions provided by Core Foundation specifically for this purpose. Continuing with the CFString example, you would use CFStringCreateCopy to create an entirely new CFString object containing the same data as the original. Core Foundation types which have “CreateCopy” functions also provide the variant “CreateMutableCopy” which returns a copy of an object that can be modified.</p>
+</blockquote>
+<p><strong>浅拷贝：</strong></p>
+<blockquote>
+<p>Shallow Copy<br>Copying compound objects, objects such as collection objects that can contain other objects, must also be done with care. As you would expect, using the = operator to perform a copy on these objects results in a duplication of the object reference. In contrast to simple objects like CFString and CFData, the “CreateCopy” functions provided for compound objects such as CFArray and CFSet actually perform a shallow copy. In the case of these objects, a shallow copy means that a new collection object is created, but the contents of the original collection are not duplicated—only the object references are copied to the new container. This type of copy is useful if, for example, you have an array that’s immutable and you want to reorder it. In this case, you don’t want to duplicate all of the contained objects because there’s no need to change them—and why use up that extra memory? You just want the set of included objects to be changed. The same risks apply here as with copying object references with simple types.</p>
+</blockquote>
+<p><strong>深拷贝：</strong></p>
+<blockquote>
+<p>Deep Copy<br>When you want to create an entirely new compound object, you must perform a deep copy. A deep copy duplicates the compound object as well as the contents of all of its contained objects. The current release of Core Foundation includes a function that performs deep copying of a property list (see CFPropertyListCreateDeepCopy). If you want to create deep copies of other structures, you could perform the deep copy yourself by recursively descending into the compound object and copying all of its contents one by one. Take care in implementing this functionality as compound objects can be recursive—they may directly or indirectly contain a reference to themselves—which can cause a recursive loop.</p>
+</blockquote>
+<p>引用自：<a href="https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFMemoryMgmt/Concepts/CopyFunctions.html#//apple_ref/doc/uid/20001149-CJBEJBHH" target="_blank" rel="noopener">苹果官网文档-CopyFunctions</a></p>
+<p><strong>小总结：</strong></p>
+<p>我们通过对集合类对象进行mutableCopy得到的新对象，从某种意义上来说，并不是真正的深层次的复制，严格意义上说：它只是一个单层次的深复制。原因上面已说明：集合对象的内容复制（mutableCopy）仅限于对象本身，对象中的元素仍然是指针复制。</p>
+<p>那如果需要深层次的复制，就需要以递归的形式找到集合中的元素对象，再对元素对象进行mutableCopy，以此来实现深层次的复制。但Apple并不提倡这种方式，因为这可能会导致递归循环。</p>
+<p>最后总结：</p>
+<ol>
+<li>不管是集合类对象还是非集合类对象，copy和mutableCopy时，都遵循以下准则：<ol>
+<li>copy得到的都是不可变对象（imutable），所以对其copy返回的对象做可变对象的操作，都会崩溃。</li>
+<li>mutableCopy返回的是可变对象（mutable）</li>
+</ol>
+</li>
+<li>在非集合类对象中：<ol>
+<li>对不可变对象进行copy操作，是指针复制，其内存地址不变。</li>
+<li>对不可变对象进行mutableCopy操作，是内容复制，其内存地址改变。</li>
+<li>对可变对象进行copy和mutableCopy操作，都是内容复制，其内存地址改变。</li>
+</ol>
+</li>
+<li>在集合类对象中：<ol>
+<li>对不可变对象进行copy操作，是指针复制，其内存地址不变。</li>
+<li>对不可变对象进行mutableCopy操作，是内容复制，其内存地址改变。</li>
+<li>对可变对象进行copy和mutableCopy操作，都是内容复制，其内存地址改变。但集合对象的内容复制仅限于对象本身，对象中的元素仍然是指针复制。</li>
+</ol>
+</li>
+</ol>
+<p>最后可以看下这个Apple的官方文档《<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Collections/Articles/Copying.html#//apple_ref/doc/uid/TP40010162-SW1" target="_blank" rel="noopener">苹果官网文档-Copying</a>》</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/copy-mutableCopy/">copy, mutableCopy</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/06/03/Project-summary-Four/"><span>项目总结四</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/06/03/Project-summary-Four/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-06-03T04:01:57.000Z">
+          2018-06-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>最近都一直在忙新项目的事，真是倍感身心疲别啊。目前项目终于成型，也算时间宽松渐缓吧，就把项目中遇到的一些问题做个总结。</p>
+<h4 id="1、textField限制输入的位数以及小数点的位数"><a href="#1、textField限制输入的位数以及小数点的位数" class="headerlink" title="1、textField限制输入的位数以及小数点的位数"></a>1、textField限制输入的位数以及小数点的位数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;</span><br><span class="line">&#123; </span><br><span class="line"> //string就是此时输入的那个字符textField就是此时正在输入的那个输入框返回YES就是可以改变输入框的值NO相反</span><br><span class="line">    NSString * toBeString = [textField.text     stringByReplacingCharactersInRange:range withString:string]; </span><br><span class="line">    // 判断是否输入内容，或者用户点击的是键盘的删除按钮</span><br><span class="line">    if (![string isEqualToString:@&quot;&quot;]) &#123;</span><br><span class="line">        if ([textField isEqual:self.textField]) &#123;</span><br><span class="line">            // 小数点在字符串中的位置 第一个数字从0位置开始</span><br><span class="line">            NSInteger dotLocation = [textField.text rangeOfString:@&quot;.&quot;].location;</span><br><span class="line">            if (dotLocation == NSNotFound &amp;&amp; range.location != 0) &#123;</span><br><span class="line">                //没有小数点,最大数值</span><br><span class="line">                if (range.location &gt;= 9)&#123;</span><br><span class="line">                    NSLog(@&quot;单笔金额不能超过亿位&quot;);</span><br><span class="line">                    if ([string isEqualToString:@&quot;.&quot;] &amp;&amp; range.location == 9) &#123;</span><br><span class="line">                        return YES;</span><br><span class="line">                    &#125;</span><br><span class="line">                    return NO;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            //判断输入多个小数点,禁止输入多个小数点</span><br><span class="line">            if (dotLocation != NSNotFound)&#123;</span><br><span class="line">                if ([string isEqualToString:@&quot;.&quot;])return NO;</span><br><span class="line">            &#125;</span><br><span class="line">            //判断小数点后最多两位</span><br><span class="line">            if (dotLocation != NSNotFound &amp;&amp; range.location &gt; dotLocation + 2) &#123; return NO; &#125;</span><br><span class="line">            //判断总长度</span><br><span class="line">            if (textField.text.length &gt; 11) &#123;</span><br><span class="line">                return NO;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、禁用第三方键盘"><a href="#2、禁用第三方键盘" class="headerlink" title="2、禁用第三方键盘"></a>2、禁用第三方键盘</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application shouldAllowExtensionPointIdentifier:(NSString *)extensionPointIdentifier</span><br><span class="line">&#123;</span><br><span class="line">    return NO;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、延迟执行"><a href="#3、延迟执行" class="headerlink" title="3、延迟执行"></a>3、延迟执行</h4><p>取消延迟执行函<code>cancelPreviousPerformRequestsWithTarget</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">延迟执行函数</span><br><span class="line">[self performSelector:@selector(scrollDone) withObject:nil afterDelay:0.5];</span><br><span class="line"></span><br><span class="line">在0.5秒内取消执行函数，带的参数必须一样，才能取消成功</span><br><span class="line">[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(scrollDone) object:nil];</span><br></pre></td></tr></table></figure>
+<h4 id="4、关于浮点数精度问题"><a href="#4、关于浮点数精度问题" class="headerlink" title="4、关于浮点数精度问题"></a>4、关于浮点数精度问题</h4><p>大部分开发是不需要关心浮点数精度问题，但在股票等软件开发中，浮点数精度问题会显得很重要，这时就需要用到十进制数字类<code>NSDecimalNumber</code>，这个类继承自NSNumber，苹果针对浮点类型计算精度问题提供出来的计算类，基于十进制的科学计数法来计算，同时可以指定舍入模式，一般用于货币计算。</p>
+<h4 id="5、判断是否为单页-是就执行js"><a href="#5、判断是否为单页-是就执行js" class="headerlink" title="5、判断是否为单页,是就执行js"></a>5、判断是否为单页,是就执行js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NSString *jsStr=@&quot;if(window.historyBack)historyBack();else window.inject.finish();&quot;;</span><br><span class="line">[_webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable response, NSError * _Nullable error) &#123;</span><br><span class="line">    if (!error) &#123;</span><br><span class="line">        NSLog(@&quot;No error&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        [super leftAction];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>注</strong>：先写到这里，其他以后补充。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/项目总结/">项目总结</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/iOS/">iOS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/10/05/project-summary-Three/"><span>iOS之项目总结三：项目开发中遇到的一些问题及解决方案</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/10/05/project-summary-Three/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-10-05T03:19:10.000Z">
+          2017-10-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>两年多以来，基本上都是独立开发或者维护项目，不得不自嘲的说挺锻炼人的。最近的一家公司是涉足金融行列的，算是第一次踏足金融吧，过程怎样不说，确实学到了不少东西。</p>
+<p><strong><em>下面就开发第一款金融类项目遇到的问题做一下总结：</em></strong></p>
+<h4 id="1、中文显示标题之类"><a href="#1、中文显示标题之类" class="headerlink" title="1、中文显示标题之类"></a>1、中文显示标题之类</h4><p>我们在项目中调用相册、相机等往往默认的是显示英文，但有时候开发的项目是针对国内的，所以需要中文配合显示，这就需要我们做一下配置。<br>其实很简单：就是在<code>info.plist</code>中允许应用程序获取框架内语言即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Localizedresources can be mixed  YES</span><br><span class="line">Localization native development region  China //en</span><br></pre></td></tr></table></figure>
+<p>图片显示：</p>
+<p><img src="http://blog.guohuaden.com/project_summary_lauguageSet.png" alt="允许应用程序获取框架内语言图片"></p>
+<h4 id="2、运行报错问题"><a href="#2、运行报错问题" class="headerlink" title="2、运行报错问题"></a>2、运行报错问题</h4><p>报错信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld: 4 duplicate symbols for architecture arm64 clang: error: linker command failed with exit</span><br></pre></td></tr></table></figure>
+<p>这个是粗心大意而差生的报错，最可能的情况是：引入【.h】文件重复。<br>我们知道iOS不允许在A类中重复引入相同的B类的，使用<code>improt</code>关键字引入头文件时，它会判断是否已经引入，如果引入了一次就不在引入。但并不能直接提示报错，所以在运行时会提示上面的报错信息。所以首先要做的是排查是否重复引入【.h】文件。</p>
+<h4 id="3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况"><a href="#3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况" class="headerlink" title="3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况"></a>3、在使用jsonModel做项目的数据解析时，出现一个属性名字不确定是否存在的情况</h4><p>这个问题是没有技术含量的，遇到了解决就行，方法如下：<br>在【.m】文件中添加下面的方法即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+(BOOL)propertyIsOptional:(NSString*)propertyName</span><br><span class="line">&#123;</span><br><span class="line">  return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4、AES加密遇到的和android统一加密模式问题"><a href="#4、AES加密遇到的和android统一加密模式问题" class="headerlink" title="4、AES加密遇到的和android统一加密模式问题"></a>4、AES加密遇到的和<em>android</em>统一加密模式问题</h4><p>这种情况我以前在《<a href="http://guohuaden.com/2016/10/06/DES-encryption/" target="_blank" rel="noopener">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</a>》这篇文章中有提到多，主要是iOS这边SDK中只提供了两种模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding.</span><br><span class="line">@constant   kCCOptionECBMode        Electronic Code Book Mode.</span><br><span class="line">                                    Default is CBC.</span><br><span class="line">enum &#123;</span><br><span class="line">    / options for block ciphers /</span><br><span class="line">    kCCOptionPKCS7Padding   = 0x0001,</span><br><span class="line">    kCCOptionECBMode        = 0x0002</span><br><span class="line">    / stream ciphers currently have no options /</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>但安卓的不一样，有十几种左右，所以在开发中一定要和安卓、服务器端做好统一。</p>
+<ol>
+<li>如果使用CBC模式，那直接用：<code>kCCOptionPKCS7Padding</code>即可。</li>
+<li>但如果是ECB模式，就需要做下转变 <code>kCCOptionECBMode | kCCOptionPKCS7Padding</code></li>
+</ol>
+<h4 id="5、服务器端小数显示问题（如：1e-05）"><a href="#5、服务器端小数显示问题（如：1e-05）" class="headerlink" title="5、服务器端小数显示问题（如：1e-05）"></a>5、服务器端小数显示问题（如：1e-05）</h4><p>这个做下处理即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:leastWaveStr];</span><br><span class="line">NSString *numberStr = [decNumber stringValue];</span><br></pre></td></tr></table></figure>
+<p>金融类项目中常用到这个<code>NSDecimalNumber</code> ,用于货币处理 。<br>通过<code>NSDecimalNumber</code>提供的计算方式，可以很好的计算出准确的精度的数据，同时不需要使用格式化输出等。</p>
+<h4 id="6、自定义导航栏按钮不靠左／右问题"><a href="#6、自定义导航栏按钮不靠左／右问题" class="headerlink" title="6、自定义导航栏按钮不靠左／右问题"></a>6、自定义导航栏按钮不靠左／右问题</h4><p>很简单，解决方法，添加一个空的按钮进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">UIButton *leftButton = [[UIButton alloc]init];</span><br><span class="line">leftButton.frame = CGRectMake(0, 0, 20, 20);</span><br><span class="line">[leftButton setBackgroundImage:[UIImage imageNamed:@&quot;back.png&quot;] forState:UIControlStateNormal];</span><br><span class="line">[leftButton addTarget:self action:@selector(popToLastVC:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">UIBarButtonItem *leftBarButtonItems = [[UIBarButtonItem alloc]initWithCustomView:leftButton];</span><br><span class="line">//解决按钮不靠左 靠右的问题.</span><br><span class="line">UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItemalloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace</span><br><span class="line">target:nil action:nil];</span><br><span class="line">nagetiveSpacer.width = -15;//这个值可以根据自己需要自己调整</span><br><span class="line">self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];</span><br></pre></td></tr></table></figure>
+<h4 id="7、不同屏幕尺寸字体显示字体大小问题"><a href="#7、不同屏幕尺寸字体显示字体大小问题" class="headerlink" title="7、不同屏幕尺寸字体显示字体大小问题"></a>7、不同屏幕尺寸字体显示字体大小问题</h4><p>我们应该清楚，UI设计图大多数是以iPhone6 为模版设计的，但开发中腰考虑不同的屏幕尺寸显示字体大小不同的情况。<br>网上给出的大多数是针对<code>Xib</code>和<code>storyboard</code>做的处理，下面我说一下针对纯代码开发的处理方法。<br>其实很简单，在pch文件中设置宏定义，针对不同的机型做一下简单判断，在开发中使用宏定义字体大小就可以了。<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#define kDevice_Is_iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line">//字体大小（以6s为基准,以6p为判断）</span><br><span class="line">#define kFontSize10  kDevice_Is_iPhone6Plus ? 12:10</span><br><span class="line">#define kFontSize11  kDevice_Is_iPhone6Plus ? 13:11</span><br><span class="line">#define kFontSize12  kDevice_Is_iPhone6Plus ? 14:12</span><br><span class="line">#define kFontSize13  kDevice_Is_iPhone6Plus ? 15:13</span><br><span class="line">#define kFontSize14  kDevice_Is_iPhone6Plus ? 16:14</span><br><span class="line">#define kFontSize15  kDevice_Is_iPhone6Plus ? 17:15</span><br><span class="line">#define kFontSize16  kDevice_Is_iPhone6Plus ? 18:16</span><br><span class="line">#define kFontSize17  kDevice_Is_iPhone6Plus ? 19:17</span><br><span class="line">#define kFontSize18  kDevice_Is_iPhone6Plus ? 20:18</span><br><span class="line">#define kFontSize19  kDevice_Is_iPhone6Plus ? 21:19</span><br><span class="line">#define kFontSize20  kDevice_Is_iPhone6Plus ? 22:20</span><br><span class="line">#define kFontSize21  kDevice_Is_iPhone6Plus ? 23:21</span><br><span class="line">#define kFontSize22  kDevice_Is_iPhone6Plus ? 24:22</span><br><span class="line">#define kFontSize23  kDevice_Is_iPhone6Plus ? 25:23</span><br><span class="line">#define kFontSize24  kDevice_Is_iPhone6Plus ? 26:24</span><br><span class="line">#define kFontSize25  kDevice_Is_iPhone6Plus ? 27:25</span><br><span class="line">#define kFontSize34  kDevice_Is_iPhone6Plus ? 35:34</span><br><span class="line">#define kFontSize36  kDevice_Is_iPhone6Plus ? 38:36</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UILabel *label = [UILabel new];</span><br><span class="line">label.text = @&quot;&quot;;</span><br><span class="line">label.textColor = [UIColor darkGrayColor];</span><br><span class="line">label.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">label.font = [UIFont systemFontOfSize:kFontSize16];</span><br><span class="line">[self addSubview:label];</span><br></pre></td></tr></table></figure>
+<p>这样就不需要每次使用字体都判断不同屏幕尺寸了。</p>
+<h4 id="8、view上有tableView，view添加手势后与tableView手势冲突问题"><a href="#8、view上有tableView，view添加手势后与tableView手势冲突问题" class="headerlink" title="8、view上有tableView，view添加手势后与tableView手势冲突问题"></a>8、view上有tableView，view添加手势后与tableView手势冲突问题</h4><p> 解决这个问题，我们需要利用系统的方法做个判断：如果点击了tableView，就不接收Touch点击事件。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch &#123;</span><br><span class="line">    // 点击的view的类名</span><br><span class="line">    NSLog(@&quot;%@&quot;, NSStringFromClass([touch.view class]));</span><br><span class="line">    // 点击了tableViewCell，view的类名为UITableViewCellContentView，则不接收Touch点击事件</span><br><span class="line">    if ([NSStringFromClass([touch.view class]) isEqualToString:@&quot;UITableViewCellContentView&quot;]) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return  YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方法用来执行点击View的操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - UIGestureRecognizerDelegate methods</span><br><span class="line">-(void)viewtapClicked:(UITapGestureRecognizer *)tap</span><br><span class="line">&#123;</span><br><span class="line">    CGPoint point = [tap locationInView:self];</span><br><span class="line">    BOOL isTouch = CGRectContainsPoint(self.baseView.frame, point);</span><br><span class="line">    if (isTouch) &#123;</span><br><span class="line">        NSLog(@&quot;点击tableView&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        [UIView animateWithDuration:1.0 animations:^&#123;</span><br><span class="line">            [self removeFromSuperview];</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="9、断网重连后更新界面"><a href="#9、断网重连后更新界面" class="headerlink" title="9、断网重连后更新界面"></a>9、断网重连后更新界面</h4><p>我们在开发项目中，网络状态的监听基本设置在<code>appDelegate</code>中。所以需要在这里针对网络状态做一个广播通知，在需要网络重连后更新界面的地方注册该广播进行界面的刷新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//注册网络监控通知</span><br><span class="line">[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:kIsNetWork object:nil];</span><br><span class="line">- (void)notificationHandler:(NSNotification *) notification</span><br><span class="line">&#123;</span><br><span class="line">dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">    [self requestHomeInfoData];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/项目总结/">项目总结</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/iOS/">iOS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/10/03/WKWebView-issue/"><span>WKWebView使用遇到的问题</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/10/03/WKWebView-issue/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-10-03T02:30:40.000Z">
+          2017-10-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><code>WKWebView</code>在iOS8之后正式替代<code>UIWebView</code>，速度方面确实提升了不少。关于<code>WKWebView</code>的简单使用，在《<a href="http://guohuaden.com/2017/02/11/WKWebView/" target="_blank" rel="noopener">聊一聊WKWebView</a>》中我已经介绍过了，这里就不再絮叨，本篇主要记录s三个开发中遇到的问题。</p>
+<h4 id="1、去缓存问题"><a href="#1、去缓存问题" class="headerlink" title="1、去缓存问题"></a>1、去缓存问题</h4><p>我们在第一次打开webView后，移动端为了使用的便捷，会在本地做一个缓存，服务器端也有类似的缓存。但有时服务器端更改信息或者web端更改界面信息。我们往往打开移动端的webView界面，仍然是原来的界面状态，这就是缓存机制造成的现象。<br>解决方法：如果不考虑流量，则需要在请求时忽略本地和远程的缓存即可,使用<code>NSURLRequestReloadIgnoringLocalAndRemoteCacheData</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURLRequest *request = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:20];</span><br><span class="line">[self.webView loadRequest:request];</span><br></pre></td></tr></table></figure>
+<p>这里附上iOS提供的请求缓存类型:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(NSUInteger, NSURLRequestCachePolicy)</span><br><span class="line">&#123;</span><br><span class="line">    NSURLRequestUseProtocolCachePolicy = 0,</span><br><span class="line">    NSURLRequestReloadIgnoringLocalCacheData = 1,</span><br><span class="line">    NSURLRequestReloadIgnoringLocalAndRemoteCacheData = 4, // Unimplemented</span><br><span class="line">    NSURLRequestReloadIgnoringCacheData = NSURLRequestReloadIgnoringLocalCacheData,</span><br><span class="line">    NSURLRequestReturnCacheDataElseLoad = 2,</span><br><span class="line">    NSURLRequestReturnCacheDataDontLoad = 3,</span><br><span class="line">    NSURLRequestReloadRevalidatingCacheData = 5, // Unimplemented</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>也可以看看这篇文章：《<a href="http://www.cnblogs.com/lolDragon/p/6774509.html" target="_blank" rel="noopener">iOS webview加载时序和缓存问题总结</a>》</p>
+<h4 id="2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）"><a href="#2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）" class="headerlink" title="2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）"></a>2、拦截WKWebView中界面的URL，自己进行处理跳转（例如跳转到appstore、支付宝等）</h4><p>如果在<code>webView</code>界面中有跳转<code>appstore</code>、支付宝等调手机中app的点击按钮时，如果iOS端不做处理的话，是调不起来手机中的app的。<br>我们需要做的就是在代理方法中截取<code>webView</code>的<code>url</code>，再使用iOS的代码进行跳转。<br>例如打开<code>appstore</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler</span><br><span class="line">&#123;</span><br><span class="line">    NSURL *url = navigationAction.request.URL;</span><br><span class="line">    UIApplication *app = [UIApplication sharedApplication];</span><br><span class="line">    // 打开appstore</span><br><span class="line">    if ([url.absoluteString containsString:@&quot;https://itunes.apple.com/&quot;])&#123;</span><br><span class="line">        if ([app canOpenURL:url])&#123;</span><br><span class="line">            [[UIApplication sharedApplication] openURL:url];</span><br><span class="line">            decisionHandler(WKNavigationActionPolicyCancel);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    decisionHandler(WKNavigationActionPolicyAllow);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题"><a href="#4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题" class="headerlink" title="4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题"></a>4、在WKWebView中点击事件需要上传cookie中的数据，但cookie数据有问题</h4><p>开发中发现，在WKWebView中点击获取验证码等失败（抓包工具查看，发现需要和请求一块上传cookie中的数据，实际并没有上传或者数据丢失一部分）</p>
+<p>在WKWebView中，cookie的是需要我们自己去设置的，这一点和UIWebView不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-(void)setUIWebviewcookie&#123;</span><br><span class="line">    NSHTTPCookieStorage *cs = [NSHTTPCookieStorage sharedHTTPCookieStorage];</span><br><span class="line">    [cs setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在webView响应请求的代理方法中，查看cookie</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler&#123;</span><br><span class="line">    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;</span><br><span class="line">    NSArray *cookies =[NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];</span><br><span class="line">    //读取wkwebview中的cookie 方法1</span><br><span class="line">    for (NSHTTPCookie *cookie in cookies) &#123;</span><br><span class="line">        //[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];</span><br><span class="line">        NSLog(@&quot;wkwebview中的cookie:%@&quot;, cookie);</span><br><span class="line">    &#125;</span><br><span class="line">    //读取wkwebview中的cookie 方法2 读取Set-Cookie字段</span><br><span class="line">    NSString *cookieString = [[response allHeaderFields] valueForKey:@&quot;Set-Cookie&quot;];</span><br><span class="line">    NSLog(@&quot;wkwebview中的cookie:%@&quot;, cookieString);</span><br><span class="line">    //看看存入到了NSHTTPCookieStorage了没有</span><br><span class="line">    NSHTTPCookieStorage *cookieJar2 = [NSHTTPCookieStorage sharedHTTPCookieStorage];</span><br><span class="line">    for (NSHTTPCookie *cookie in cookieJar2.cookies) &#123;</span><br><span class="line">        NSLog(@&quot;NSHTTPCookieStorage中的cookie%@&quot;, cookie);</span><br><span class="line">    &#125;</span><br><span class="line">    decisionHandler(WKNavigationResponsePolicyAllow);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/WKWebView/">WKWebView</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/20/GH-SearchView/"><span>一个自定义的搜索框：GH_SearchView</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/20/GH-SearchView/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-20T05:46:13.000Z">
+          2017-05-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>对于iOS自带的搜索框，其实我用着也挺好的，但低版本的使用：  高版本的使用:UISearchController，两个难有个统一。很多项目中都是将着两套代码都写入项目中去，这样做难免显得代码冗余。所以就简单的自定义个搜索框。</p>
+<p><a href="https://github.com/guohuaCabin/GH_SearchView" target="_blank" rel="noopener">下载地址：https://github.com/guohuaCabin/GH_SearchView  【支持pods】</a></p>
+<p>怎样使用<code>&#39;GH_SearchView&#39;:</code></p>
+<p>安装CocoaPods：<code>pod &#39;GH_SearchView&#39;</code></p>
+<p>手动倒入：<br>拖动<code>GH_SearchView</code>文件夹中的所有文件到工程项目中</p>
+<p>引入主要文件：<code>#import &quot;GH_SearchView.h&quot;</code></p>
+<p>使用时实现起来也很简单，一句代码创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GH_SearchView *searchView_1 = [[GH_SearchView alloc]initWithFrame:CGRectMake(10, 80, IPHONE_WIDTH-20, 44.f) withTarget:self backgroundColor:[UIColor redColor] placeholderContent:@&quot;请输入搜索内容&quot; searchImage:@&quot;GH_search&quot; withTableView:nil];</span><br><span class="line"> </span><br><span class="line">//自定制取消按钮字体颜色</span><br><span class="line">[searchView_1  setCancelButtonTitleColor:[UIColor blueColor]];</span><br><span class="line">//设置背景色透明度</span><br><span class="line">[searchView_1 setBackgroundColorWithAlphaComponent:0.5];</span><br><span class="line">//设置激活状态</span><br><span class="line">[searchView_1 setSearchActiveState:YES];</span><br><span class="line">    </span><br><span class="line">[self.view addSubview:searchView_1];</span><br><span class="line">//或者</span><br><span class="line">//self.tableView.tableHeaderView = self.searchView;</span><br></pre></td></tr></table></figure>
+<p>使用时需遵守<code>GH_searchDelegate</code>协议。<br>其中必需实现的协议方法有一种:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 搜索按钮</span><br><span class="line"></span><br><span class="line"> @param content 搜索的内容</span><br><span class="line"> */</span><br><span class="line">-(void)searchClickedWithContent:(NSString *)content;</span><br></pre></td></tr></table></figure>
+<p>可选的协议方法有三种:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 实时搜索协议方法</span><br><span class="line"> @param content 搜索的内容</span><br><span class="line"> */</span><br><span class="line">-(void)searchBoxContentDidChange:(NSString *)content;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 搜索框开始输入</span><br><span class="line"> @param content 搜索的内容</span><br><span class="line"> */</span><br><span class="line">-(void)searchDidBeginEditing:(NSString *)content;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 搜索框输入结束</span><br><span class="line"> @param content 搜索的内容</span><br><span class="line"> */</span><br><span class="line">-(void)searchDidEndEditing:(NSString *)content;</span><br></pre></td></tr></table></figure>
+<p>效果图如下：<br>无tableView情况下：<br><img src="http://blog.guohuaden.com/GH_searchView_1.png" alt="GH_searchView_1"></p>
+<p>有tableView情况下：<br><img src="http://blog.guohuaden.com/GH_searchView_2.png" alt="GH_searchView_2"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/自定义的搜索框/">自定义的搜索框</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/04/30/get-keyboard-height/"><span>利用通知(`NSNotificationCenter`)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/04/30/get-keyboard-height/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-30T02:42:19.000Z">
+          2017-04-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>我们在开发中会遇到这样的情况：调用键盘时需要界面有一个调整，避免键盘遮掩输入框。</p>
 <p>但实现时你会发现，在不同的手机上键盘的高度是不同的。这里列举一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//获取键盘的高度</span><br><span class="line"> iphone 6:</span><br><span class="line"> 中文</span><br><span class="line"> 2014-12-31 11:16:23.643 Demo[686:41289] 键盘高度是  258</span><br><span class="line"> 2014-12-31 11:16:23.644 Demo[686:41289] 键盘宽度是  375</span><br><span class="line"> 英文</span><br><span class="line"> 2014-12-31 11:55:21.417 Demo[1102:58972] 键盘高度是  216</span><br><span class="line"> 2014-12-31 11:55:21.417 Demo[1102:58972] 键盘宽度是  375</span><br><span class="line"> </span><br><span class="line"> iphone  6 plus：</span><br><span class="line"> 英文：</span><br><span class="line"> 2014-12-31 11:31:14.669 Demo[928:50593] 键盘高度是  226</span><br><span class="line"> 2014-12-31 11:31:14.669 Demo[928:50593] 键盘宽度是  414</span><br><span class="line"> 中文：</span><br><span class="line"> 2015-01-07 09:22:49.438 Demo[622:14908] 键盘高度是  271</span><br><span class="line"> 2015-01-07 09:22:49.439 Demo[622:14908] 键盘宽度是  414</span><br><span class="line"> </span><br><span class="line"> iPhone 7</span><br><span class="line"> 2016-11-13 17:44:48.315 LoginDemo[2431:120937] 键盘高度是  258</span><br><span class="line"> 2016-11-13 17:44:48.316 LoginDemo[2431:120937] 键盘宽度是  375</span><br><span class="line"> </span><br><span class="line"> iPhone 7 Plus</span><br><span class="line"> 2016-11-13 17:43:20.683 LoginDemo[2322:119257] 键盘高度是  271</span><br><span class="line"> 2016-11-13 17:43:20.683 LoginDemo[2322:119257] 键盘宽度是  414</span><br><span class="line"> </span><br><span class="line"> iphone 5 :</span><br><span class="line"> 2014-12-31 11:19:36.452 Demo[755:43233] 键盘高度是  216</span><br><span class="line"> 2014-12-31 11:19:36.452 Demo[755:43233] 键盘宽度是  320</span><br><span class="line"> </span><br><span class="line"> ipad Air：</span><br><span class="line"> 2014-12-31 11:28:32.178 Demo[851:48085] 键盘高度是  264</span><br><span class="line"> 2014-12-31 11:28:32.178 Demo[851:48085] 键盘宽度是  768</span><br><span class="line"> </span><br><span class="line"> ipad2 ：</span><br><span class="line"> 2014-12-31 11:33:57.258 Demo[1014:53043] 键盘高度是  264</span><br><span class="line"> 2014-12-31 11:33:57.258 Demo[1014:53043] 键盘宽度是  768</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/04/30/get-keyboard-height/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/29/Project-code-number/">统计项目代码量</a></h1><div class="post-meta">2017-04-29</div><div class="post-content"><p>有遇到过这样的情况，项目经理在写文档时会要求开发人员提供项目的代码量。下面就说一下代码量的统计问题。</p>
-<h4 id="1、统计总的代码量（代码的行数）"><a href="#1、统计总的代码量（代码的行数）" class="headerlink" title="1、统计总的代码量（代码的行数）"></a>1、统计总的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。</p></div><p class="readmore"><a href="/2017/04/29/Project-code-number/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/27/fileEncryptionAndDecryption/">iOS中关于图片、PDF等文件加密</a></h1><div class="post-meta">2017-04-27</div><div class="post-content"><p>这里加密使用的是三方库：<code>RNCryptor</code>,它是一个跨语言AES加密/解密库。</p>
-<p>主要目标是<code>Swift</code>和<code>Objective-C</code>，但<code>C</code>,<code>C ++</code>,<code>C＃</code>,<code>Erlang</code>,<code>Go</code>,<code>Haskell</code>,<code>Java</code>,<code>PHP</code>,<code>Python</code>,<code>Javascript</code>和<code>Ruby</code>中都有实现。</p></div><p class="readmore"><a href="/2017/04/27/fileEncryptionAndDecryption/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/22/MARK-TODO-FIXME/">Xcode中常用的标记(MARK、TODO、FIXME)</a></h1><div class="post-meta">2017-04-22</div><div class="post-content"><p>在项目中以<code>ViewController</code>界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：<code>#pragma mark</code>以及 打断点引起注意的方式都可以达到我们想要的效果。</p>
-<p>但细心的开发者会注意到，苹果提供了三个标记(<code>MARK、TODO、FIXME</code>)来给我们提供便利。至于用法也是很简单，和<code>#pragma mark</code>类似。下面👇做解释：</p></div><p class="readmore"><a href="/2017/04/22/MARK-TODO-FIXME/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/21/borrow-me/">借我</a></h1><div class="post-meta">2017-04-21</div><div class="post-content"><p><strong>借我一个暮年，</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//获取键盘的高度</span><br><span class="line"> iphone 6:</span><br><span class="line"> 中文</span><br><span class="line"> 2014-12-31 11:16:23.643 Demo[686:41289] 键盘高度是  258</span><br><span class="line"> 2014-12-31 11:16:23.644 Demo[686:41289] 键盘宽度是  375</span><br><span class="line"> 英文</span><br><span class="line"> 2014-12-31 11:55:21.417 Demo[1102:58972] 键盘高度是  216</span><br><span class="line"> 2014-12-31 11:55:21.417 Demo[1102:58972] 键盘宽度是  375</span><br><span class="line"> </span><br><span class="line"> iphone  6 plus：</span><br><span class="line"> 英文：</span><br><span class="line"> 2014-12-31 11:31:14.669 Demo[928:50593] 键盘高度是  226</span><br><span class="line"> 2014-12-31 11:31:14.669 Demo[928:50593] 键盘宽度是  414</span><br><span class="line"> 中文：</span><br><span class="line"> 2015-01-07 09:22:49.438 Demo[622:14908] 键盘高度是  271</span><br><span class="line"> 2015-01-07 09:22:49.439 Demo[622:14908] 键盘宽度是  414</span><br><span class="line"> </span><br><span class="line"> iPhone 7</span><br><span class="line"> 2016-11-13 17:44:48.315 LoginDemo[2431:120937] 键盘高度是  258</span><br><span class="line"> 2016-11-13 17:44:48.316 LoginDemo[2431:120937] 键盘宽度是  375</span><br><span class="line"> </span><br><span class="line"> iPhone 7 Plus</span><br><span class="line"> 2016-11-13 17:43:20.683 LoginDemo[2322:119257] 键盘高度是  271</span><br><span class="line"> 2016-11-13 17:43:20.683 LoginDemo[2322:119257] 键盘宽度是  414</span><br><span class="line"> </span><br><span class="line"> iphone 5 :</span><br><span class="line"> 2014-12-31 11:19:36.452 Demo[755:43233] 键盘高度是  216</span><br><span class="line"> 2014-12-31 11:19:36.452 Demo[755:43233] 键盘宽度是  320</span><br><span class="line"> </span><br><span class="line"> ipad Air：</span><br><span class="line"> 2014-12-31 11:28:32.178 Demo[851:48085] 键盘高度是  264</span><br><span class="line"> 2014-12-31 11:28:32.178 Demo[851:48085] 键盘宽度是  768</span><br><span class="line"> </span><br><span class="line"> ipad2 ：</span><br><span class="line"> 2014-12-31 11:33:57.258 Demo[1014:53043] 键盘高度是  264</span><br><span class="line"> 2014-12-31 11:33:57.258 Demo[1014:53043] 键盘宽度是  768</span><br></pre></td></tr></table></figure>
+<p> 我们看出不同的手机设备键盘的高度是不同的，而且英文和中文键盘的高度也是不一样的。</p>
+<p> 下面我们说一下利用通知来获取键盘的高度：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//增加监听，当键盘出现或改变时收出消息</span><br><span class="line">[[NSNotificationCenter defaultCenter] addObserver:self</span><br><span class="line">                                      selector:@selector(keyboardWillShow:)</span><br><span class="line">                                      name:UIKeyboardWillShowNotification</span><br><span class="line">                                      object:nil];</span><br><span class="line"> </span><br><span class="line">//增加监听，当键退出时收出消息</span><br><span class="line">[[NSNotificationCenter defaultCenter] addObserver:self</span><br><span class="line">                                      selector:@selector(keyboardWillHide:)</span><br><span class="line">                                      name:UIKeyboardWillHideNotification</span><br><span class="line">                                      object:nil];</span><br></pre></td></tr></table></figure>
+<p>显示键盘的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (void)keyboardWillShow:(NSNotification *)aNotification</span><br><span class="line">&#123;</span><br><span class="line">    //获取键盘的高度</span><br><span class="line">    NSDictionary *userInfo = [aNotification userInfo];</span><br><span class="line">    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];</span><br><span class="line">    CGRect keyboardRect = [aValue CGRectValue];</span><br><span class="line">    int height = keyboardRect.size.height;</span><br><span class="line">    int width = keyboardRect.size.width;</span><br><span class="line">    NSLog(@&quot;键盘高度是  %d&quot;,height);</span><br><span class="line">    NSLog(@&quot;键盘宽度是  %d&quot;,width);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>隐藏键盘的高度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//当键盘隐藏的时候</span><br><span class="line">- (void)keyboardWillBeHidden:(NSNotification*)aNotification</span><br><span class="line">&#123;</span><br><span class="line">     //do something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> 当然在注册通知(<code>NSNotificationCenter</code>)后，记得最后的注销通知：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-(void)viewWillDisappear:(BOOL)animated</span><br><span class="line">&#123;</span><br><span class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>⚠️：切换键盘时也会产生 <code>UIKeyboardWillShowNotification</code> ，所以很可能方法被调用多次。最好在 <code>keyboardWillShow</code> 中不要写与调用次数有关的代码。在键盘第一次产生时，如果不是默认的英文键盘也会调用多次方法。</p>
+<p> 比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark -  ******************打开键盘********</span><br><span class="line">- (void) keyboardWillShowOfFeedBackVC:(NSNotification *)notify &#123;</span><br><span class="line">    </span><br><span class="line">    //这样写是不正确的：因为切换中英文键盘时都会调用该方法。</span><br><span class="line">//    CGRect frame = self.view.frame;</span><br><span class="line">//    frame.origin.y = self.view.frame.origin.y - 64;</span><br><span class="line">//    self.view.frame = frame;</span><br><span class="line">    </span><br><span class="line">    self.view.frame = CGRectMake(0, -40, IPHONE_WIDTH, IPHONE_HEIGHT);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/iOS/">iOS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/04/29/Project-code-number/"><span>统计项目代码量</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/04/29/Project-code-number/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-29T01:48:46.000Z">
+          2017-04-29
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>有遇到过这样的情况，项目经理在写文档时会要求开发人员提供项目的代码量。下面就说一下代码量的统计问题。</p>
+<h4 id="1、统计总的代码量（代码的行数）"><a href="#1、统计总的代码量（代码的行数）" class="headerlink" title="1、统计总的代码量（代码的行数）"></a>1、统计总的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs grep -v &quot;^$&quot;|wc -l</span><br></pre></td></tr></table></figure>
+<p>该指令是统计总共的代码量，并不统计具体的文件代码<br>其中<code>grep -v “^$”</code>：去除空行</p>
+<p>注释是包含在代码量中的，这一点要注意。</p>
+<p>统计效果图：<br><img src="http://obzx0h1re.bkt.clouddn.com/ProjectCodeTotal.png" alt="统计总的代码量"></p>
+<h4 id="2、统计每个文件的代码量（代码的行数）"><a href="#2、统计每个文件的代码量（代码的行数）" class="headerlink" title="2、统计每个文件的代码量（代码的行数）"></a>2、统计每个文件的代码量（代码的行数）</h4><p>在终端中，cd 到项目文件夹；输入下面的指令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.m&quot; -or -name &quot;*.h&quot; -or -name &quot;*.xib&quot; -or -name &quot;*.c&quot; |xargs wc -l</span><br></pre></td></tr></table></figure></p>
+<p>该指令会统计具体的文件代码行数。</p>
+<p>统计效果图：<br><img src="http://blog.guohuaden.com/ProjectCodeNumber1.png" alt="统计每个文件的代码量1"></p>
+<p><img src="http://blog.guohuaden.com/ProjectCodeNumber2.png" alt="统计每个文件的代码量2"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/统计代码量/">统计代码量</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/04/27/fileEncryptionAndDecryption/"><span>iOS中关于图片、PDF等文件加密</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/04/27/fileEncryptionAndDecryption/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-27T03:20:25.000Z">
+          2017-04-27
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>这里加密使用的是三方库：<code>RNCryptor</code>,它是一个跨语言AES加密/解密库。</p>
+<p>主要目标是<code>Swift</code>和<code>Objective-C</code>，但<code>C</code>,<code>C ++</code>,<code>C＃</code>,<code>Erlang</code>,<code>Go</code>,<code>Haskell</code>,<code>Java</code>,<code>PHP</code>,<code>Python</code>,<code>Javascript</code>和<code>Ruby</code>中都有实现。</p>
+<p>RNCryptor地址：</p>
+<p><a href="https://github.com/RNCryptor/RNCryptor" target="_blank" rel="noopener">RNCryptor ：https://github.com/RNCryptor/RNCryptor</a></p>
+<p>以及OC专用的地址:</p>
+<p><a href="https://github.com/RNCryptor/RNCryptor-objc" target="_blank" rel="noopener">RNCryptor-objc ：https://github.com/RNCryptor/RNCryptor-objc</a></p>
+<p>下面就用到的图片和PDF文件加密做一下简单的介绍。</p>
+<h4 id="1、图片加解密"><a href="#1、图片加解密" class="headerlink" title="1、图片加解密"></a>1、图片加解密</h4><p>这个没有什么思想可言，直接看下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#pragma  mark --Image加解密</span><br><span class="line">-(void)imageEncryptionAndDecryption</span><br><span class="line">&#123;</span><br><span class="line">    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@&quot;default.jpg&quot; ofType:nil]];</span><br><span class="line">    NSError *error;</span><br><span class="line">    </span><br><span class="line">    //加密</span><br><span class="line">    NSData *encryptedData = [RNEncryptor encryptData:data withSettings:kRNCryptorAES256Settings password:aPassword error:&amp;error ];</span><br><span class="line">    </span><br><span class="line">    if (!error) &#123;</span><br><span class="line">        NSLog(@&quot;^_^ 加密成功 ……——(^_^)\n&quot;);</span><br><span class="line">//        NSLog(@&quot;encryptedData==%@&quot;,encryptedData);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //解密</span><br><span class="line">    NSData *decryptedData = [RNDecryptor decryptData:encryptedData withPassword:aPassword error:&amp;error];</span><br><span class="line">    if (!error) &#123;</span><br><span class="line">        NSLog(@&quot;^_^ 解密成功 ……——(^_^)\n&quot;);</span><br><span class="line">//        NSLog(@&quot;decryptedData==%@&quot;,decryptedData);</span><br><span class="line"></span><br><span class="line">        self.imageView.image = [UIImage imageWithData:decryptedData];</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、PDF加解密"><a href="#2、PDF加解密" class="headerlink" title="2、PDF加解密"></a>2、PDF加解密</h4><p>考虑到PDF文件可能较大的原因，这里在加解密时使用了子线程，以避免加解密过程耗时。</p>
+<p>另：PDF查看需要提供路径，而这也是关键。</p>
+<p>思路：</p>
+<ol>
+<li>将网络请求下来的数据流（NSData）直接进行加密，加密成功后存入沙盒目录中。</li>
+<li>在查看PDF时,先对加密的PDF进行解密，再将解密的PDF存入沙盒目录中（区分加解密PDF文件）。</li>
+<li>获取解密的PDF文件路径，查看PDF文件。</li>
+<li>退出查看当前的PDF文件时，删除解密后的PDF文件缓存，保留加密的PDF缓存。</li>
+</ol>
+<p>查看代码：</p>
+<p><strong>加密</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark --PDF加密</span><br><span class="line">-(void)PDFEncryption</span><br><span class="line">&#123;</span><br><span class="line">    __block NSData *encryptedData;</span><br><span class="line">    __block NSError *error;</span><br><span class="line">    NSString *filePath = [[NSBundle mainBundle]pathForResource:@&quot;11.pdf&quot; ofType:nil];</span><br><span class="line">    NSString *fileEncryPath = [NSHomeDirectory()stringByAppendingPathComponent:@&quot;/Documents/TKAMC.qgh&quot;];</span><br><span class="line">    NSFileManager *fileManager = [NSFileManager defaultManager];</span><br><span class="line">    //判断是否已存在加密文件，若存在直接执行解密过程。</span><br><span class="line">    if ([fileManager fileExistsAtPath:fileEncryPath]) &#123;</span><br><span class="line">        </span><br><span class="line">        [self PDFDecryptedData:[NSData dataWithContentsOfFile:fileEncryPath]];</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //异步去加密，防止占用太多内存</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        NSData *data = [NSData dataWithContentsOfFile:filePath];</span><br><span class="line">        //加密</span><br><span class="line">        encryptedData = [RNEncryptor encryptData:data withSettings:kRNCryptorAES256Settings password:aPassword error:&amp;error ];</span><br><span class="line">        if (!error) &#123;</span><br><span class="line">            NSLog(@&quot;^_^ PDF加密成功 ……——(^_^)\n&quot;);</span><br><span class="line">//            NSLog(@&quot;encryptedData==%@&quot;,encryptedData);</span><br><span class="line">        &#125;</span><br><span class="line">        //在主线程上写入文件</span><br><span class="line">        dispatch_sync(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            BOOL yes = [encryptedData writeToFile:fileEncryPath atomically:NO];</span><br><span class="line">            if (yes) &#123;</span><br><span class="line">                NSLog(@&quot;加密文件写入成功&quot;);</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                NSLog(@&quot;加密文件写入失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            NSLog(@&quot;写入PDF路径：%@&quot;,fileEncryPath);</span><br><span class="line">            [self PDFDecryptedData:encryptedData];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解密</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark ---PDF解密</span><br><span class="line">-(void)PDFDecryptedData:(NSData *)encryptedData&#123;</span><br><span class="line"></span><br><span class="line">    NSString *fileDecryPath = [NSHomeDirectory()stringByAppendingPathComponent:@&quot;/Documents/TKAMC&quot;];</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</span><br><span class="line">        //    解密</span><br><span class="line">        NSError *error;</span><br><span class="line">        </span><br><span class="line">        if (encryptedData != nil || aPassword != nil) &#123;</span><br><span class="line">            NSData *decryptedData = [RNDecryptor decryptData:encryptedData</span><br><span class="line">                                                withPassword:aPassword</span><br><span class="line">                                                       error:&amp;error];</span><br><span class="line">            </span><br><span class="line">            dispatch_sync(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                 BOOL yes = [decryptedData writeToFile:fileDecryPath atomically:NO];</span><br><span class="line">                if (yes) &#123;</span><br><span class="line">                    NSLog(@&quot;解密文件写入成功&quot;);</span><br><span class="line">                    NSLog(@&quot;写入解密PDF路径：%@&quot;,fileDecryPath);</span><br><span class="line">                    self.filepath = fileDecryPath;</span><br><span class="line">                    [self pushVC];</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    NSLog(@&quot;解密文件写入失败&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            NSLog(@&quot;加密数据为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><font color="#FF6347"><strong>注：</strong></font>这里加解密时并没有具体实现网络请求模块，只是简单的对本地文件进行了实践，但大体实现过程已经实现。</p>
+<p><strong>退出PDF时，删除解密的PDF文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - ReaderViewControllerDelegate methods</span><br><span class="line">- (void)dismissReaderViewController:(ReaderViewController *)viewController</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    //MARK:退出查看PDF时删除解密存储文件。</span><br><span class="line">    NSFileManager *fileManager = [NSFileManager defaultManager];</span><br><span class="line">    </span><br><span class="line">    [fileManager removeItemAtPath:self.filepath error:nil];</span><br><span class="line">    </span><br><span class="line">    [self dismissViewControllerAnimated:YES completion:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>这里提供一个个人测试使用的一个Demo，仅供参考</p>
+<p><a href="https://github.com/guohuaCabin/FileEncryption_Demo" target="_blank" rel="noopener">FileEncryption_Demo ：https://github.com/guohuaCabin/FileEncryption_Demo</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/文件加密/">文件加密</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/04/22/MARK-TODO-FIXME/"><span>Xcode中常用的标记(MARK、TODO、FIXME)</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/04/22/MARK-TODO-FIXME/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-22T05:55:39.000Z">
+          2017-04-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>在项目中以<code>ViewController</code>界面为例，在创建很多方法的情况下，会导致代码在翻阅时很浪费时间。但我们也是有对应的便捷方法。例如：<code>#pragma mark</code>以及 打断点引起注意的方式都可以达到我们想要的效果。</p>
+<p>但细心的开发者会注意到，苹果提供了三个标记(<code>MARK、TODO、FIXME</code>)来给我们提供便利。至于用法也是很简单，和<code>#pragma mark</code>类似。下面👇做解释：</p>
+<p><strong>MARK:标注</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//MARK:视图将要消失（viewWillDisappear）</span><br><span class="line">- (void)viewWillDisappear:(BOOL)animated&#123;</span><br><span class="line">    [super viewWillDisappear:animated];</span><br><span class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>TODO:备忘录</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//TODO: back super ViewController(返回上级视图)</span><br><span class="line">- (void)goback:(id)sender&#123;</span><br><span class="line">    if (self.myBlock) &#123;</span><br><span class="line">        self.myBlock(NO);</span><br><span class="line">    &#125;</span><br><span class="line">    [super goback:sender];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>FIXME:通常在bug的位置做该标记</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//FIXME:如果使用点击空白处，取消键盘响应事件，打开下面👇代码</span><br><span class="line">//- (void)tapGestures:(UIGestureRecognizer *)gesture&#123;</span><br><span class="line">//    [self.view endEditing:YES];</span><br><span class="line">//&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>#pragma mark:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark UIImagePickerControllerDelegate图片选择代理方法</span><br><span class="line">- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker</span><br><span class="line">&#123;</span><br><span class="line">    [self.IPCView disappear];</span><br><span class="line">    [picker dismissViewControllerAnimated:YES completion:Nil];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看下效果：<br><img src="http://blog.guohuaden.com/TODO_sign.png" alt="MARK-TODO-FIXME"><br>下面是关于写警告的方法，这个警告是我们在项目中自己制造的，旨在引起注意</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#pragma message &quot;warn one&quot;</span><br><span class="line">#warning &quot;warn two&quot;</span><br></pre></td></tr></table></figure>
+<p>警告效果：<br><img src="http://blog.guohuaden.com/warn_sign.png" alt="warning"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/常用的标记/">常用的标记</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/04/21/borrow-me/"><span>借我</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/04/21/borrow-me/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-21T01:44:16.000Z">
+          2017-04-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><strong>借我一个暮年，</strong></p>
 <p><strong>借我碎片，</strong></p>
 <p><strong>借我瞻前与顾后，</strong></p>
 <p><strong>借我执拗如少年。</strong></p>
-<p><strong>借我后天长成的先天，</strong></p></div><p class="readmore"><a href="/2017/04/21/borrow-me/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页</a></nav><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-</script><script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://qinguohua.fun"/></form></div><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://qinguohua.fun"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVN/">SVN</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/欠下的时光/">欠下的时光</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读SDWebImage手札/">读SDWebImage手札</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目总结/">项目总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/毛玻璃效果/" style="font-size: 15px;">毛玻璃效果</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/自定义的搜索框/" style="font-size: 15px;">自定义的搜索框</a> <a href="/tags/常用的标记/" style="font-size: 15px;">常用的标记</a> <a href="/tags/统计代码量/" style="font-size: 15px;">统计代码量</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/加解密/" style="font-size: 15px;">加解密</a> <a href="/tags/欠下的时光/" style="font-size: 15px;">欠下的时光</a> <a href="/tags/SDWebImage/" style="font-size: 15px;">SDWebImage</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/毛玻璃效果，虚化效果/" style="font-size: 15px;">毛玻璃效果，虚化效果</a> <a href="/tags/WKWebView/" style="font-size: 15px;">WKWebView</a> <a href="/tags/block-weak/" style="font-size: 15px;">block,weak</a> <a href="/tags/模拟器错误/" style="font-size: 15px;">模拟器错误</a> <a href="/tags/copy-mutableCopy/" style="font-size: 15px;">copy, mutableCopy</a> <a href="/tags/bridge和Core-Foundation/" style="font-size: 15px;">bridge和Core Foundation</a> <a href="/tags/WebView/" style="font-size: 15px;">WebView</a> <a href="/tags/iOS代码规范/" style="font-size: 15px;">iOS代码规范</a> <a href="/tags/文件加密/" style="font-size: 15px;">文件加密</a> <a href="/tags/关于app支持64bit-iOS/" style="font-size: 15px;">关于app支持64bit,iOS</a> <a href="/tags/watchdog/" style="font-size: 15px;">watchdog</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/01/30/iOS-Code-Standards/">iOS 代码规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/30/Binary-Tree/">二叉树遍历（Binary Tree）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/07/watchdog/">watchdog</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/20/Arithmetic-weekly5/">算法：从尾到头打印链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/14/Arithmetic-weekly4/">算法：实现一个函数，把字符串中的每个空格替换成"%20"</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/12/Arithmetic-weekly3/">算法：判断数组中是否含有某个整数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/11/Arithmetic-weekly2/">算法：找出数组中重复的数字</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/04/Arithmetic-weekly1/">算法：找出有序数组中和等于指定数的两个数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/PrivacyPolicy/">隐私协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/07/Arithmetic6-KNN/">K最近邻算法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://onevcat.com/" title="王巍" target="_blank">王巍</a><ul></ul><a href="http://blog.cnbang.net/" title="bang`s blog" target="_blank">bang`s blog</a><ul></ul><a href="https://tech.meituan.com/" title="美团技术团队" target="_blank">美团技术团队</a><ul></ul><a href="https://draveness.me/index" title="面向信仰编程" target="_blank">面向信仰编程</a><ul></ul><a href="https://nshipster.com/" title="NSHipster" target="_blank">NSHipster</a><ul></ul><a href="https://tech.glowing.com/cn/" title="Glow 技术团队博客" target="_blank">Glow 技术团队博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2021 <a href="/." rel="nofollow">所念皆星辰</a><p>灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人</p></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
+<p><strong>借我后天长成的先天，</strong></p>
+<p><strong>借我变如不曾改变。</strong></p>
+<p><strong>借我素淡的世故和明白的愚，</strong></p>
+<p><strong>借我可预知的险。</strong></p>
+<p><strong>借我悲怆的磊落，</strong></p>
+<p><strong>借我温软的鲁莽和玩笑的庄严。</strong></p>
+<p><strong>借我最初与最终的不敢，借我不言而喻的不见。</strong></p>
+<p><strong>借我一场秋啊，可你说这已是冬天。</strong><br><br> </p>
+<p><font color="#DC143C"><strong>注：</strong></font>这首诗感觉很特别，初次读到时是在一个好朋友发表的说说中，那时的感觉很是欢喜，也有一些自责。欢喜是因为很喜欢，而且最终还是看到了这首诗；自责是因为，这么好的一首诗，我却迟迟未曾发现，如果不是因为这个好朋友发的说说，我也许就会错过。<br><br></p>
+<p><font color="#DC143C"><strong>另注：</strong></font>有人说这首诗是樊小纯写给木心的，也有人说是木心写的。我不确定，所以没有注明作者。但这并不影响我对这首诗的喜欢，我喜欢的始终是诗，跟作者的是谁关系并不太大，但写出这首诗的作者，我是很佩服的。  <br></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/欠下的时光/">欠下的时光</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/欠下的时光/">欠下的时光</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  <a href="/page/3/" class="pagination-prev">上一页</a>
+  
+  
+  <a href="/page/5/" class="pagination-next">下一页</a>
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 Wheat
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'GTM-NHB73SK', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+    
+<script>
+    var _hmt = _hmt || [];
+    ( function () {
+        var hm = document.createElement( "script" );
+        hm.src = "https://hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+        var s = document.getElementsByTagName( "script" )[ 0 ];
+        s.parentNode.insertBefore( hm, s );
+    } )();
+</script>
+
+  </div>
+</div>
+</body>
+</html>

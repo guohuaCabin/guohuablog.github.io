@@ -1,16 +1,89 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。"><title>iOS之项目总结－：项目中遇到的各种的问题和解决方法 | 所念皆星辰</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','GTM-NHB73SK','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = 'https://hm.baidu.com/hm.js?' + 'ae05530a6a007cdb8063cf611691cc3e';
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">iOS之项目总结－：项目中遇到的各种的问题和解决方法</h1><a id="logo" href="/.">所念皆星辰</a><p class="description">踏实、低调、前行。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">iOS之项目总结－：项目中遇到的各种的问题和解决方法</h1><div class="post-meta">Aug 16, 2016<span> | </span><span class="category"><a href="/categories/项目总结/">项目总结</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p> 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：</p>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS之项目总结－：项目中遇到的各种的问题和解决方法 | 所念皆星辰 | 踏实、低调、前行。</title>
+
+  
+  <meta name="author" content="Wheat">
+  
+
+  
+  <meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。">
+  
+
+  
+  
+  <meta name="keywords" content="iOS">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="iOS之项目总结－：项目中遇到的各种的问题和解决方法"/>
+
+  <meta property="og:site_name" content="所念皆星辰"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="所念皆星辰" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">所念皆星辰</a>
+    </h1>
+    <p class="site-description">踏实、低调、前行。</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>iOS之项目总结－：项目中遇到的各种的问题和解决方法</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/08/16/project-summary-one/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-08-16T10:28:00.000Z">
+          2016-08-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p> 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：</p>
 <h3 id="1、自带键盘的next用法"><a href="#1、自带键盘的next用法" class="headerlink" title="1、自带键盘的next用法"></a>1、自带键盘的next用法</h3><p>这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。</p>
 <p>想法也就是：用户在输入用户名后，点击next跳转到下一个输入框。其实也不用想的如此复杂，在登录界面，我们完全可以用一个 if 语句做判断，去实现键盘的响应和注销响应。</p>
 <p>代码如下： </p>
@@ -52,4 +125,82 @@ ga('create','GTM-NHB73SK','auto');ga('send','pageview');
 <p><img src="http://blog.guohuaden.com/URLTypes.png" alt="URLTypes"></p>
 <p>下面是具体的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"> __block NSString *urlScheme = urlScheme;   </span><br><span class="line"></span><br><span class="line"> __block NSString *appName = appName;    </span><br><span class="line"></span><br><span class="line">__block CLLocationCoordinate2D coordinate = self.coordinate;        </span><br><span class="line"></span><br><span class="line">UIAlertController *alert = [UIAlertController alertControllerWithTitle:@&quot;选择地图&quot; message:nil preferredStyle:UIAlertControllerStyleActionSheet];          </span><br><span class="line"></span><br><span class="line">//apple自带的地图不需要判断        </span><br><span class="line"></span><br><span class="line">UIAlertAction * action = [UIAlertAction actionWithTitle:@&quot;苹果地图&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) &#123;      </span><br><span class="line"></span><br><span class="line">   	MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation]; </span><br><span class="line"></span><br><span class="line"> 	MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil]];                      </span><br><span class="line"></span><br><span class="line"> 	[MKMapItem openMapsWithItems:@[currentLocation, toLocation]                           launchOptions:@&#123;</span><br><span class="line"></span><br><span class="line">MKLaunchOptionsDirectionsModeKey: 	MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]&#125;];        </span><br><span class="line"></span><br><span class="line">&#125;];        </span><br><span class="line"></span><br><span class="line"> [alert addAction:action];        </span><br><span class="line"></span><br><span class="line"> //判断百度地图   </span><br><span class="line"></span><br><span class="line"> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@&quot;baidumap://&quot;]])      </span><br><span class="line"></span><br><span class="line">&#123;        UIAlertAction * action = [UIAlertAction actionWithTitle:@&quot;百度地图&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) &#123;                       </span><br><span class="line"></span><br><span class="line"> NSString *urlString = [[NSString stringWithFormat:@&quot;baidumap://map/direction?origin=&#123;&#123;我的位置&#125;&#125;&amp;destination=latlng:%f,%f|name=目的地&amp;mode=driving&amp;coord_type=gcj02&quot;,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line"></span><br><span class="line">  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];         </span><br><span class="line"></span><br><span class="line"> &#125;];        </span><br><span class="line"></span><br><span class="line">[alert addAction:action];      </span><br><span class="line"></span><br><span class="line">&#125;     </span><br><span class="line"></span><br><span class="line"> //判断高德地图     </span><br><span class="line"></span><br><span class="line"> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@&quot;iosamap://&quot;]])      </span><br><span class="line"></span><br><span class="line"> &#123;        </span><br><span class="line"></span><br><span class="line">UIAlertAction * action = [UIAlertAction actionWithTitle:@&quot;高德地图&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) &#123;                        </span><br><span class="line"></span><br><span class="line">NSString *urlString = [[NSString stringWithFormat:@&quot;iosamap://navi?sourceApplication=%@&amp;backScheme=%@&amp;lat=%f&amp;lon=%f&amp;dev=0&amp;style=2&quot;,appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];  </span><br><span class="line"></span><br><span class="line">        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];                    &#125;];       </span><br><span class="line"></span><br><span class="line"> [alert addAction:action];    </span><br><span class="line"></span><br><span class="line">&#125;        </span><br><span class="line"></span><br><span class="line"> //判断谷歌地图   </span><br><span class="line"></span><br><span class="line"> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@&quot;comgooglemaps://&quot;]])    &#123;       </span><br><span class="line"></span><br><span class="line"> UIAlertAction * action = [UIAlertAction actionWithTitle:@&quot;谷歌地图&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) &#123;                       </span><br><span class="line"></span><br><span class="line"> NSString *urlString = [[NSString stringWithFormat:@&quot;comgooglemaps://?x-source=%@&amp;x-success=%@&amp;saddr=&amp;daddr=%f,%f&amp;directionsmode=driving&quot;,appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];                       </span><br><span class="line"> [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];          </span><br><span class="line"></span><br><span class="line">&#125;];                </span><br><span class="line"></span><br><span class="line">[alert addAction:action];    </span><br><span class="line"></span><br><span class="line">&#125;        </span><br><span class="line"></span><br><span class="line">UIAlertAction *action = [UIAlertAction actionWithTitle:@&quot;取消&quot; style:UIAlertActionStyleCancel handler:nil];    [alert addAction:action];        </span><br><span class="line"></span><br><span class="line">[self presentViewController:alert animated:YES completion:^&#123;          </span><br><span class="line"></span><br><span class="line">&#125;];    </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div><div class="tags"><a href="/tags/iOS/">iOS</a></div><div class="post-nav"><a class="pre" href="/2016/09/23/BlurEffect/">iOS模糊效果(毛玻璃效果)的实现</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://qinguohua.fun"/></form></div><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://qinguohua.fun"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVN/">SVN</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/欠下的时光/">欠下的时光</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读SDWebImage手札/">读SDWebImage手札</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目总结/">项目总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/毛玻璃效果/" style="font-size: 15px;">毛玻璃效果</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/自定义的搜索框/" style="font-size: 15px;">自定义的搜索框</a> <a href="/tags/常用的标记/" style="font-size: 15px;">常用的标记</a> <a href="/tags/统计代码量/" style="font-size: 15px;">统计代码量</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/加解密/" style="font-size: 15px;">加解密</a> <a href="/tags/欠下的时光/" style="font-size: 15px;">欠下的时光</a> <a href="/tags/SDWebImage/" style="font-size: 15px;">SDWebImage</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/毛玻璃效果，虚化效果/" style="font-size: 15px;">毛玻璃效果，虚化效果</a> <a href="/tags/WKWebView/" style="font-size: 15px;">WKWebView</a> <a href="/tags/block-weak/" style="font-size: 15px;">block,weak</a> <a href="/tags/模拟器错误/" style="font-size: 15px;">模拟器错误</a> <a href="/tags/copy-mutableCopy/" style="font-size: 15px;">copy, mutableCopy</a> <a href="/tags/bridge和Core-Foundation/" style="font-size: 15px;">bridge和Core Foundation</a> <a href="/tags/WebView/" style="font-size: 15px;">WebView</a> <a href="/tags/iOS代码规范/" style="font-size: 15px;">iOS代码规范</a> <a href="/tags/文件加密/" style="font-size: 15px;">文件加密</a> <a href="/tags/关于app支持64bit-iOS/" style="font-size: 15px;">关于app支持64bit,iOS</a> <a href="/tags/watchdog/" style="font-size: 15px;">watchdog</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/01/30/iOS-Code-Standards/">iOS 代码规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/30/Binary-Tree/">二叉树遍历（Binary Tree）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/07/watchdog/">watchdog</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/20/Arithmetic-weekly5/">算法：从尾到头打印链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/14/Arithmetic-weekly4/">算法：实现一个函数，把字符串中的每个空格替换成"%20"</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/12/Arithmetic-weekly3/">算法：判断数组中是否含有某个整数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/11/Arithmetic-weekly2/">算法：找出数组中重复的数字</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/04/Arithmetic-weekly1/">算法：找出有序数组中和等于指定数的两个数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/PrivacyPolicy/">隐私协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/07/Arithmetic6-KNN/">K最近邻算法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://onevcat.com/" title="王巍" target="_blank">王巍</a><ul></ul><a href="http://blog.cnbang.net/" title="bang`s blog" target="_blank">bang`s blog</a><ul></ul><a href="https://tech.meituan.com/" title="美团技术团队" target="_blank">美团技术团队</a><ul></ul><a href="https://draveness.me/index" title="面向信仰编程" target="_blank">面向信仰编程</a><ul></ul><a href="https://nshipster.com/" title="NSHipster" target="_blank">NSHipster</a><ul></ul><a href="https://tech.glowing.com/cn/" title="Glow 技术团队博客" target="_blank">Glow 技术团队博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2021 <a href="/." rel="nofollow">所念皆星辰</a><p>灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人</p></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/项目总结/">项目总结</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/iOS/">iOS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 Wheat
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'GTM-NHB73SK', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+    
+<script>
+    var _hmt = _hmt || [];
+    ( function () {
+        var hm = document.createElement( "script" );
+        hm.src = "https://hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+        var s = document.getElementsByTagName( "script" )[ 0 ];
+        s.parentNode.insertBefore( hm, s );
+    } )();
+</script>
+
+  </div>
+</div>
+</body>
+</html>

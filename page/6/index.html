@@ -1,24 +1,783 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。"><title>所念皆星辰 | 踏实、低调、前行。</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','GTM-NHB73SK','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = 'https://hm.baidu.com/hm.js?' + 'ae05530a6a007cdb8063cf611691cc3e';
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">所念皆星辰</h1><a id="logo" href="/.">所念皆星辰</a><p class="description">踏实、低调、前行。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2016/11/29/Swift-BlurEffect/">Swift之模糊效果（毛玻璃效果，虚化效果）的实现</a></h1><div class="post-meta">2016-11-29</div><div class="post-content"><font color="#FF8000"><strong>前言：</strong></font>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 6 页 | 所念皆星辰 | 踏实、低调、前行。</title>
 
-<p>之前项目中有用到过<code>Objective-C</code>的的模糊效果，感觉很是不错，而且iOS8之后官方SDK也直接提供了可以实现毛玻璃效果的三个类：<code>UIBlurEffect</code>、<code>UIVibrancyEffect</code> 和 <code>UIVisualEffectView</code>。通过这三个类可以很容易的去实现毛玻璃效果。</p></div><p class="readmore"><a href="/2016/11/29/Swift-BlurEffect/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/11/14/Xcode-error-Code Sign Error/">iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)</a></h1><div class="post-meta">2016-11-14</div><div class="post-content"><p>很奇怪的问题，使用真机测试没有问题。但使用模拟器测试的时候就会报这样的错误，错误类型为：<code>Code Sign Error</code></p>
-<p>错误提示是这样：<code>resource fork, Finder information, or similar detritus not allowed。</code></p></div><p class="readmore"><a href="/2016/11/14/Xcode-error-Code Sign Error/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/11/13/Project-Logout/">iOS之退出app(项目)的几种方法</a></h1><div class="post-meta">2016-11-13</div><div class="post-content"><p>路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。</p>
+  
+  <meta name="author" content="Wheat">
+  
+
+  
+  <meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="所念皆星辰"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="所念皆星辰" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">所念皆星辰</a>
+    </h1>
+    <p class="site-description">踏实、低调、前行。</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2016/11/29/Swift-BlurEffect/"><span>Swift之模糊效果（毛玻璃效果，虚化效果）的实现</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/11/29/Swift-BlurEffect/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-11-29T06:19:25.000Z">
+          2016-11-29
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <font color="#FF8000"><strong>前言：</strong></font>
+
+<p>之前项目中有用到过<code>Objective-C</code>的的模糊效果，感觉很是不错，而且iOS8之后官方SDK也直接提供了可以实现毛玻璃效果的三个类：<code>UIBlurEffect</code>、<code>UIVibrancyEffect</code> 和 <code>UIVisualEffectView</code>。通过这三个类可以很容易的去实现毛玻璃效果。</p>
+<p>最近在熟悉<code>Swift</code>，所以今天说的是使用Swift去实现这种效果。<br>前提：</p>
+<p>我们去实现的模糊效果有个前提，就是需要背景有一个色调，这样才能使毛玻璃有一个明显的效果，这里我直接在底部添加一个背景图片吧</p>
+<p><img src="http://blog.guohuaden.com/Swift-BlurImage.png" alt="背景图片"></p>
+<p>我们就在这张背景图片上去实现模糊效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//MARK: ******* 创建背景图片 *************</span><br><span class="line">func createBackgroundImageView() &#123;</span><br><span class="line">    self.imageView1 = UIImageView(frame: self.view.bounds)</span><br><span class="line">    imageView1.layer.borderColor     = UIColor.black.cgColor</span><br><span class="line">    imageView1.layer.borderWidth     = 2 </span><br><span class="line">    imageView1.layer.cornerRadius    = 5</span><br><span class="line">    imageView1.clipsToBounds         = true</span><br><span class="line">    imageView1.image = UIImage(named: &quot;05&quot;)</span><br><span class="line">    self.view.addSubview(imageView1)  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<font color="#0B1746"><strong>1、<code>UIBlurEffect</code>类（用作创建一个模糊效果）</strong></font>
+
+<p>SDK中提供的模糊效果有5种，其中两种是iOS10之后添加的，我们来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     public enum UIBlurEffectStyle : Int &#123;</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     case extraLight</span><br><span class="line">     </span><br><span class="line">     case light</span><br><span class="line">     </span><br><span class="line">     case dark</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     @available(iOS 10.0, *)</span><br><span class="line">     case regular // Adapts to user interface style</span><br><span class="line">     </span><br><span class="line">     @available(iOS 10.0, *)</span><br><span class="line">     case prominent // Adapts to user interface style</span><br><span class="line">     &#125;</span><br><span class="line">     */</span><br></pre></td></tr></table></figure>
+<p>我们就直接创建好了，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//创建一个模糊效果</span><br><span class="line">  let blurEffect = UIBlurEffect(style: .light)</span><br></pre></td></tr></table></figure>
+<p>上面使用的是普通的亮色。</p>
+<font color="#0B1746"><strong>2、<code>UIVibrancyEffect</code>类</strong></font>
+
+<p><code>UIVibrancyEffect</code> 主要用于放大和调整 <code>UIVisualEffectView</code> 视图下面的内容的颜色，同时让 <code>UIVisualEffectView</code> 的 <code>contentView</code> 中的内容看起来更加生动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//创建并添加vibrancy`视图</span><br><span class="line">let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)</span><br></pre></td></tr></table></figure>
+<font color="#0B1746"><strong>3、<code>UIVisualEffectView</code>类</strong></font>
+
+<p><code>UIVisualEffectView</code>：模糊视图。将前面创建的 <code>UIBlurEffect</code> 类的实例应用到这个模糊视图上。将 <code>UIVisualEffectView</code> 类的实例（模糊视图）置于待毛玻璃化的视图之上即可。在其下方的所有视图都会有模糊效果。值得一提的是：不要直接添加子视图去<code>UIVisualEffectView</code>，而是要添加到<code>contentView</code>上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//创建一个承载模糊效果的视图</span><br><span class="line">let blurView = UIVisualEffectView(effect: blurEffect)</span><br></pre></td></tr></table></figure>
+<font color="#0B1746"><strong>4、整体的代码实现</strong></font>
+
+<p>下面我们直接看整体的代码实现：</p>
+<p>这部分分为两种，效果也是不一样的：</p>
+<p>先看一下效果图：<br><img src="http://blog.guohuaden.com/Swift-blurEffec.png" alt="Swift-blurEffec"><br>毛玻璃效果图</p>
+<font color="##87CEEB"><strong>4.1 <code>UIBlurEffect</code> 和 <code>UIVisualEffectView</code>两者配合使用</strong></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">func showBlurEffect() &#123;   </span><br><span class="line">//创建一个模糊效果</span><br><span class="line">let blurEffect = UIBlurEffect(style: .light)</span><br><span class="line">//创建一个承载模糊效果的视图</span><br><span class="line">let blurView = UIVisualEffectView(effect: blurEffect)   </span><br><span class="line">blurView.frame = CGRect(x: 0, y: 64, width: viewWidth+2*space, height: Double(viewHeight))</span><br><span class="line">let label = UILabel(frame: CGRect(x: 10, y: 100, width: viewWidth - 20, height: 100))   </span><br><span class="line">label.text = &quot;bfjnecsjdkcmslc,samosacmsacdfvneaui&quot;  </span><br><span class="line">label.font = UIFont.boldSystemFont(ofSize: 30)</span><br><span class="line">label.numberOfLines = 0</span><br><span class="line">label.textAlignment = .center</span><br><span class="line">label.textColor = UIColor.white    </span><br><span class="line">blurView.contentView.addSubview(label)   </span><br><span class="line">self.view.addSubview(blurView)   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<font color="##87CEEB"><strong>4.2 <code>UIBlurEffect</code>、<code>UIVibrancyEffect</code> 和 <code>UIVisualEffectView</code></strong></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">func showBlurEffectWithUIVibrancyEffect() &#123;</span><br><span class="line">//创建一个模糊效果</span><br><span class="line">let blurEffect = UIBlurEffect(style: .light)</span><br><span class="line">//创建一个承载模糊效果的视图</span><br><span class="line">let blurView = UIVisualEffectView(effect: blurEffect)    </span><br><span class="line">blurView.frame = CGRect(x: 0, y: Double(viewHeight+64), width: viewWidth+2*space, height: Double(viewHeight))    </span><br><span class="line">self.view.addSubview(blurView)    </span><br><span class="line">//创建并添加vibrancy视图</span><br><span class="line">let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)    </span><br><span class="line">let vibrancyView = UIVisualEffectView(effect:vibrancyEffect)</span><br><span class="line">vibrancyView.frame = self.view.bounds       </span><br><span class="line">let label = UILabel(frame: CGRect(x: 10, y: viewY, width: viewWidth - 20, height: 100))    </span><br><span class="line">label.text = &quot;bfjnecsjdkcmslc,samosacmsacdfvneaui&quot;    </span><br><span class="line">label.font = UIFont.boldSystemFont(ofSize: 30)</span><br><span class="line">label.numberOfLines = 0</span><br><span class="line">label.textAlignment = .center</span><br><span class="line">label.textColor = UIColor.white    </span><br><span class="line">vibrancyView.contentView.addSubview(label)    </span><br><span class="line">blurView.contentView.addSubview(vibrancyView)   </span><br><span class="line">self.view.addSubview(blurView)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <font color="#6B8E23"><strong>图片的前者是：</strong></font><code>UIBlurEffect</code> 和 <code>UIVisualEffectView</code>两者配合使用</p>
+<p><font color="#6B8E23"><strong>后者：</strong></font><code>UIBlurEffect</code>、<code>UIVibrancyEffect</code> 和 <code>UIVisualEffectView</code></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Swift/">Swift</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/毛玻璃效果，虚化效果/">毛玻璃效果，虚化效果</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2016/11/14/Xcode-error-Code Sign Error/"><span>iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/11/14/Xcode-error-Code Sign Error/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-11-14T12:01:31.000Z">
+          2016-11-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>很奇怪的问题，使用真机测试没有问题。但使用模拟器测试的时候就会报这样的错误，错误类型为：<code>Code Sign Error</code></p>
+<p>错误提示是这样：<code>resource fork, Finder information, or similar detritus not allowed。</code></p>
+<p>找了很多资料，说的都是一半一半，有的看了仍是无从下手。最后看到的处理方式是这样的：</p>
+<p>首先关闭<code>Xcode</code>，打开终端：</p>
+<p>进入<code>DerivedData</code>目录</p>
+<p><code>cd ~/Library/Developer/Xcode/DerivedData/</code></p>
+<p>然后再终端输入：<code>xattr -rc .</code> </p>
+<p><code>xattr -rc .</code> </p>
+<p>再次运行项目，就没有这样报错了。（也算是对症下药吧）</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Xcode/">Xcode</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/模拟器错误/">模拟器错误</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2016/11/13/Project-Logout/"><span>iOS之退出app(项目)的几种方法</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/11/13/Project-Logout/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-11-13T03:01:32.000Z">
+          2016-11-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>路漫漫其修远兮，吾将上下而求索。也算是对程序员的一种真实写照了吧。</p>
 <p>今天想研究一下iOS中退出项目的方法，说是今天，其实也关注并去了解很久了。只是始终找不到自己认为很好的方法。今天就先把自己了解的列举一下，以后如果还能找到认为更好的，就在补充吧。</p>
-<p>这里是我们在项目的<code>AppDelegate</code>中普遍写到的一句代码（至于扩展和丰富，我们暂不去深究）：</p></div><p class="readmore"><a href="/2016/11/13/Project-Logout/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/10/06/DES-encryption/">Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</a></h1><div class="post-meta">2016-10-06</div><div class="post-content"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><em>我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。</em></p></div><p class="readmore"><a href="/2016/10/06/DES-encryption/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/09/27/block-and-weak/">block 和 weak的了解</a></h1><div class="post-meta">2016-09-27</div><div class="post-content"><p>果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：<code>__block</code>和<code>__weak</code> 。也是做一下温习吧。</p>
+<p>这里是我们在项目的<code>AppDelegate</code>中普遍写到的一句代码（至于扩展和丰富，我们暂不去深究）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123; </span><br><span class="line">	LoginViewController *loginVC = [[LoginViewController alloc] init];</span><br><span class="line">//    UINavigationController *homeNavigationView = [[UINavigationController alloc] initWithRootViewController:loginVC];</span><br><span class="line">//    self.window.rootViewController = 	homeNavigationView;</span><br><span class="line">	self.window.rootViewController = loginVC;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面我们就围绕<code>LoginViewController</code>这个登录界面展开我们的讨论。我们都知道，登录的方式不同，才会导致退出的方式差异，有登录才有退出，这是因果关系。</p>
+<p>而我们的登录方式无外乎这几种：利用 <code>Modal</code> 形式展示控制器 ；利用导航控制器<code>UINavigationController</code>跳转；当然也可以更改 <code>UIWindow</code> 的 <code>rootViewController</code>。下面我们就介绍一下这几种登录方式吧。</p>
+<font color="#228B22"><strong>1、登录退出A</strong></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)login</span><br><span class="line">&#123;</span><br><span class="line">	HomeViewController *homeVC = [[HomeViewController alloc]init];  </span><br><span class="line">	[self presentViewController:homeVC animated:YES completion:nil];</span><br><span class="line">&#125; </span><br><span class="line">- (void)exit</span><br><span class="line">&#123;</span><br><span class="line">	[self dismissViewControllerAnimated:YES completion:nil];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是利用<code>model</code>形式登录和退出app的。当然登录的动画形式是多选的，你可以挑选一种喜欢的方式，你也可以自定义转场动画，这是你的自由。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     UIModalTransitionStyleCoverVertical = 0,</span><br><span class="line">     UIModalTransitionStyleFlipHorizontal __TVOS_PROHIBITED,</span><br><span class="line">     UIModalTransitionStyleCrossDissolve,</span><br><span class="line">     UIModalTransitionStylePartialCurl NS_ENUM_AVAILABLE_IOS(3_2) __TVOS_PROHIBITED,</span><br><span class="line">     */</span><br></pre></td></tr></table></figure>
+<p>这里我做了个gif动画，是关于系统自带的，可以看下：<br><img src="http://obzx0h1re.bkt.clouddn.com/%E8%BD%AC%E5%9C%BA%E5%8A%A8%E7%94%BB.gif" alt="logout_gif"></p>
+<font color="#228B22"><strong>2、登录退出B</strong></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)login</span><br><span class="line">&#123;</span><br><span class="line">	HomeViewController *homeVC = [[HomeViewController alloc]init];</span><br><span class="line">	[self.navigationController pushViewController:homeVC animated:YES];</span><br><span class="line">&#125;</span><br><span class="line">- (void)exit</span><br><span class="line">&#123;</span><br><span class="line">	[self.navigationController popViewControllerAnimated:YES];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是利用导航控制器<code>UINavigationController</code>跳转。也是我们在项目中经常用到的一种方式，当然，登录退出也是常用这种方式的。这里就不过多去述。</p>
+<font color="#228B22"><strong>3、更改 <code>UIWindow</code> 的 <code>rootViewController</code></strong></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)login&#123;</span><br><span class="line">    HomeViewController *homeVC = [[HomeViewController alloc]init];</span><br><span class="line">    self.window.rootViewController = homeVC;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个是写在AppDelegate中的，退出时再调用该方法。</p>
+<font color="#228B22"><strong>4、退出app程序（不推荐使用，这种方式会让用户觉得app闪退）</strong></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)exitApplication &#123;</span><br><span class="line">    UIWindow *window =  [UIApplication sharedApplication].keyWindow;</span><br><span class="line">    [UIView animateWithDuration:1.0f animations:^&#123;</span><br><span class="line">        window.alpha = 0;</span><br><span class="line">        window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);</span><br><span class="line">    &#125; completion:^(BOOL finished) &#123;</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <font color="#E3170D"><strong>警告：</strong></font>不要使用<code>exit</code>函数，调用<code>exit</code>会让用户感觉程序崩溃了，不会有按<code>Home</code>键返回时的平滑过渡和动画效果。</p>
+<p> 另外，使用<code>exit</code>可能会丢失数据，因为调用<code>exit</code>并不会调用<code>-applicationWillTerminate:</code>方法和<code>UIApplicationDelegate</code>方法； </p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/iOS/">iOS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2016/10/06/DES-encryption/"><span>Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/10/06/DES-encryption/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-10-06T14:14:00.000Z">
+          2016-10-06
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><em>我们在项目中为了安全方面的考虑，通常情况下会选择一种加密方式对需要安全性的文本进行加密，而Base64加密和DES64加密是常用的加密算法。我记得我在前一个项目中使用的就是这两种加密算法的结合：Base64 ＋ DES加密。当然这需要移动端和后台服务器做一个统一。</em></p>
+<h3 id="1、Base64加解密"><a href="#1、Base64加解密" class="headerlink" title="1、Base64加解密"></a>1、Base64加解密</h3><p>值得一提的是：apple提供了基础的Base64加解密算法。这样我们就可以直接使用方法去实现Base64加解密。先看一下apple都提供了哪些方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@interface NSData (NSDataBase64Encoding)</span><br><span class="line">-(nullable instancetype)initWithBase64EncodedString:(NSString * )base64String options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);</span><br><span class="line">-(NSString * )base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);</span><br><span class="line">-(nullable instancetype)initWithBase64EncodedData:(NSData * )base64Data options:(NSDataBase64DecodingOptions)options NS_AVAILABLE(10_9, 7_0);</span><br><span class="line">-(NSData * )base64EncodedDataWithOptions:(NSDataBase64EncodingOptions)options NS_AVAILABLE(10_9, 7_0);</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>我们先创建一个NSData，再去一条一条的分析以上的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData *data = [@&quot;Base64 encoding string&quot; dataUsingEncoding:NSUTF8StringEncoding];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>（1）创建一个Data（从一个Base64编码字符串使用给出的设置创建一个Data）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData *dataFromBase64String = [[NSData alloc]initWithBase64EncodedString:base64String options:0];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(2)创建一个Base64编码字符串（从接受者内容创建）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *base64String = [data base64EncodedStringWithOptions:0];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(3)创建一个Data（从一个Base64、UTF-8编码的Data创建）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData *base64AndUTFData = [base64Data initWithBase64EncodedData:base64Data options:0];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(4)创建一个Base64、UTF-8编码的Data（从接受者内容创建）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSData *base64Data = [data base64EncodedDataWithOptions:0];</span><br></pre></td></tr></table></figure>
+<p><strong>当然，我们最后也可以将Data转化成String类型。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *base64Decoded = [[NSString alloc]initWithData:dataFromBase64String encoding:NSUTF8StringEncoding];</span><br></pre></td></tr></table></figure>
+<p>以上是Base64加解密方法。下面我们看看DES的加解密。</p>
+<h3 id="2、DES加解密"><a href="#2、DES加解密" class="headerlink" title="2、DES加解密"></a>2、DES加解密</h3><p>我们都知道安卓和后台可以使用统一的代码去解决这个问题，这也是java的优势之一吧。这里我会附一段java的代码。主要是为了下面说明java和iOS端实现中需要注意的地方（也是不同点）。<br>为了使说明更方便一些，我们先看一下java的DES加密方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// EDS加密</span><br><span class="line"> public static String Encrypt(String originalStr) &#123;</span><br><span class="line">   String result = null;</span><br><span class="line">   byte[] tmpOriginalStr = null;</span><br><span class="line">   try &#123;</span><br><span class="line">       if (!Tools.isEmpty(originalStr)) &#123;</span><br><span class="line">           tmpOriginalStr = originalStr.getBytes(&quot;utf-8&quot;);</span><br><span class="line">           SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(&quot;DES&quot;);</span><br><span class="line">           DESKeySpec dks = new DESKeySpec(KEY);</span><br><span class="line">           SecretKey secretKey = keyFactory.generateSecret(dks);</span><br><span class="line">           IvParameterSpec param = new IvParameterSpec(IV);</span><br><span class="line">           Cipher cipher = Cipher.getInstance(&quot;DES/CBC/PKCS5Padding&quot;);</span><br><span class="line">           cipher.init(Cipher.ENCRYPT_MODE, secretKey,param);</span><br><span class="line">           byte[] tmpEncypt = cipher.doFinal(tmpOriginalStr);</span><br><span class="line">           if (tmpEncypt != null) &#123;</span><br><span class="line">               result = Base64.encodeToString(tmpEncypt,Base64.NO_WRAP);</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125; catch (Exception e) &#123;</span><br><span class="line">            Log.e(&quot;Erro&quot;,e.getMessage());</span><br><span class="line">      &#125;</span><br><span class="line">     return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看出Java针对DES加密算法默认使用的是<code>CBC模式</code>，对齐方式采用的是:<code>PKCS5Padding</code>。</p>
+<p>而OC中的加密并不是java中的形式实现加密的，接下来我们看一看OC中实现DES加密的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">+(NSString *) encryptUseDES:(NSString *)plainText &#123;</span><br><span class="line">    NSString * ciphertext = nil;</span><br><span class="line">    NSData * textData = [plainText dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    NSUInteger dataLength = [textData length];</span><br><span class="line">    unsigned char buffer[1024 * 5];</span><br><span class="line">    memset(buffer, 0, sizeof(char));</span><br><span class="line">    size_t numBytesEncrypted = 0;</span><br><span class="line">    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt, kCCAlgorithmDES,</span><br><span class="line">                                          kCCOptionPKCS7Padding,</span><br><span class="line">                                          [key UTF8String], kCCKeySizeDES,</span><br><span class="line">                                          [iv UTF8String],</span><br><span class="line">                                          [textData bytes], dataLength,</span><br><span class="line">                                          buffer, 1024,</span><br><span class="line">                                          &amp;numBytesEncrypted);</span><br><span class="line">    if (cryptStatus == kCCSuccess) &#123;</span><br><span class="line">        NSData *data = [NSData dataWithBytes:buffer length:(NSUInteger)numBytesEncrypted];</span><br><span class="line">        ciphertext = [data base64EncodedStringWithOptions:0];</span><br><span class="line">    &#125;</span><br><span class="line">	return ciphertext;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先说一下代码中的<strong>key和iv</strong> 。<code>key</code>：是DES加密的公钥。而<code>iv</code>：是初始化的矢量。两者都是DES加密的关键参数。这个是必须要和Android、后台有个统一的。</p>
+<p>我们可以看出OC使用的是<code>kCCOptionPKCS7Padding</code>对齐方式。而java中很明确的指出使用的是<code>PKCS5Padding</code>。接下来我们点进去看看OC中给出的对齐选择有哪些，我直接以代码的形式展示出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@constant   kCCOptionPKCS7Padding   Perform PKCS7 padding. </span><br><span class="line">@constant   kCCOptionECBMode        Electronic Code Book Mode. </span><br><span class="line">                                    Default is CBC.</span><br><span class="line">enum &#123;</span><br><span class="line">    /* options for block ciphers */</span><br><span class="line">    kCCOptionPKCS7Padding   = 0x0001,</span><br><span class="line">    kCCOptionECBMode        = 0x0002</span><br><span class="line">    /* stream ciphers currently have no options */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p> OC中给出的是<code>kCCOptionECBMode</code> 和<code>kCCOptionPKCS7Padding</code>这两种选择。那么，问题现在出现了。java中的DES加密算法有很多种，例如：<code>ECB，CBC，OFB，CFB</code>等。</p>
+<p>java 和 OC的DES加密怎样才能实现一致性呢？（这也是我在项目中遇到的问题）。</p>
+<p>查阅很多资料，再加上自己的很多次测试，得出的结果如下：</p>
+<p><strong>在JAVA中使用这种方式加密：<code>DES/CBC/PKCS5Padding</code> 对应的Object-C的是 <code>kCCOptionPKCS7Padding</code>.<br>而使用<code>DES/ECB/PKCS5Padding</code> 对应的Object-C的是   <code>kCCOptionPKCS7Padding | kCCOptionECBMod</code><br>觉得似乎OC目前只支持这两种方式的加密。当然结果是已经得到验证的。</strong></p>
+<p><strong>注意：md5加密（iOS SDK中自带了CommonCrypto）出现警告⚠️ 。解决方法添加：引入函数定义的头文件</strong> :<code>#import &lt;CommonCrypto/CommonDigest.h&gt;</code></p>
+<p>其他链接：</p>
+<p>《<a href="http://www.tuicool.com/articles/UJJrAj" target="_blank" rel="noopener">Objective C与Java之间的DES加解密实现</a>》</p>
+<p>《<a href="http://iosdevelopertips.com/core-services/encode-decode-using-base64.html" target="_blank" rel="noopener">iOS 7: Base64 Encode and Decode NSData and NSString Objects</a>》</p>
+<p> 这里附上demo：<a href="https://github.com/guohuaCabin/Base64-DES" target="_blank" rel="noopener">https://github.com/guohuaCabin/Base64-DES</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/加解密/">加解密</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2016/09/27/block-and-weak/"><span>block 和 weak的了解</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/09/27/block-and-weak/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-09-27T01:45:07.000Z">
+          2016-09-27
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>果然还是对最基础的知识了解不透彻，今天看一看iOS中的两个修饰符：<code>__block</code>和<code>__weak</code> 。也是做一下温习吧。</p>
 <p><strong>一、先说<code>weak</code>，&lt;弱引用&gt;</strong></p>
-<p>我们知道<code>weak</code>的使用，比如声明一个控件属性，就会用到<code>weak</code>。</p></div><p class="readmore"><a href="/2016/09/27/block-and-weak/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/09/23/BlurEffect/">iOS模糊效果(毛玻璃效果)的实现</a></h1><div class="post-meta">2016-09-23</div><div class="post-content"><p>　前一段时间项目中用到毛玻璃效果，那时对<code>UIBlurEffect</code>类和 <code>UIVisualEffectView</code>这两个类做了一部分了解。但当时并没有去特别的深入研究，直到项目做完后，才静下心来好好研究了一番。记录一下。</p>
-<p>　　iOS8之后，Apple新添加<code>UIBlurEffect</code>类、<code>UIVibrancyEffect</code>类 和 <code>UIVisualEffectView</code>类这三种类，用途就是对背景色进行模糊化，也就是我们称的 “毛玻璃效果”。接下来就对具体的使用做一下分析吧。</p></div><p class="readmore"><a href="/2016/09/23/BlurEffect/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/08/16/project-summary-one/">iOS之项目总结－：项目中遇到的各种的问题和解决方法</a></h1><div class="post-meta">2016-08-16</div><div class="post-content"><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p> 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：</p></div><p class="readmore"><a href="/2016/08/16/project-summary-one/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span></nav><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-</script><script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://qinguohua.fun"/></form></div><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="http://qinguohua.fun"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVN/">SVN</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/欠下的时光/">欠下的时光</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读SDWebImage手札/">读SDWebImage手札</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目总结/">项目总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/毛玻璃效果/" style="font-size: 15px;">毛玻璃效果</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/自定义的搜索框/" style="font-size: 15px;">自定义的搜索框</a> <a href="/tags/常用的标记/" style="font-size: 15px;">常用的标记</a> <a href="/tags/统计代码量/" style="font-size: 15px;">统计代码量</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/加解密/" style="font-size: 15px;">加解密</a> <a href="/tags/欠下的时光/" style="font-size: 15px;">欠下的时光</a> <a href="/tags/SDWebImage/" style="font-size: 15px;">SDWebImage</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/毛玻璃效果，虚化效果/" style="font-size: 15px;">毛玻璃效果，虚化效果</a> <a href="/tags/WKWebView/" style="font-size: 15px;">WKWebView</a> <a href="/tags/block-weak/" style="font-size: 15px;">block,weak</a> <a href="/tags/模拟器错误/" style="font-size: 15px;">模拟器错误</a> <a href="/tags/copy-mutableCopy/" style="font-size: 15px;">copy, mutableCopy</a> <a href="/tags/bridge和Core-Foundation/" style="font-size: 15px;">bridge和Core Foundation</a> <a href="/tags/WebView/" style="font-size: 15px;">WebView</a> <a href="/tags/iOS代码规范/" style="font-size: 15px;">iOS代码规范</a> <a href="/tags/文件加密/" style="font-size: 15px;">文件加密</a> <a href="/tags/关于app支持64bit-iOS/" style="font-size: 15px;">关于app支持64bit,iOS</a> <a href="/tags/watchdog/" style="font-size: 15px;">watchdog</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/01/30/iOS-Code-Standards/">iOS 代码规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/30/Binary-Tree/">二叉树遍历（Binary Tree）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/07/watchdog/">watchdog</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/20/Arithmetic-weekly5/">算法：从尾到头打印链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/14/Arithmetic-weekly4/">算法：实现一个函数，把字符串中的每个空格替换成"%20"</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/12/Arithmetic-weekly3/">算法：判断数组中是否含有某个整数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/11/Arithmetic-weekly2/">算法：找出数组中重复的数字</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/04/Arithmetic-weekly1/">算法：找出有序数组中和等于指定数的两个数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/25/PrivacyPolicy/">隐私协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/07/Arithmetic6-KNN/">K最近邻算法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://onevcat.com/" title="王巍" target="_blank">王巍</a><ul></ul><a href="http://blog.cnbang.net/" title="bang`s blog" target="_blank">bang`s blog</a><ul></ul><a href="https://tech.meituan.com/" title="美团技术团队" target="_blank">美团技术团队</a><ul></ul><a href="https://draveness.me/index" title="面向信仰编程" target="_blank">面向信仰编程</a><ul></ul><a href="https://nshipster.com/" title="NSHipster" target="_blank">NSHipster</a><ul></ul><a href="https://tech.glowing.com/cn/" title="Glow 技术团队博客" target="_blank">Glow 技术团队博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2021 <a href="/." rel="nofollow">所念皆星辰</a><p>灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人</p></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
+<p>我们知道<code>weak</code>的使用，比如声明一个控件属性，就会用到<code>weak</code>。</p>
+<p>看代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property(nonatomic,weak)UILabel *label;</span><br></pre></td></tr></table></figure>
+<p>当然这并不是说声明控件就一定使用<code>weak</code>，相反的我在手动创建控件是大多数会使用<code>strong</code>。但如果你比较细心的话，你会发现我们使用xib时，使用的却是<code>weak</code>这一属性。那问题来了，我们使用<code>strong</code> 和 <code>weak</code> 的时机是何时呢？咱们接着往下看。<br>从<code>storyboard</code> 或者 <code>xib</code>上创建控件 </p>
+<p>在控件放在view<code>上的时候，已经形成了如下的引用关系,以<code>UILabel</code>为例：<code>UIViewController-&gt;UIView-&gt;subView-&gt; UILabel</code> ，然后你为这个<code>UILabel</code>声明一个<code>weak</code>属性。</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property(nonatomic,weak) IBOOutlet UILabel * label;</span><br></pre></td></tr></table></figure>
+<p>相当于<code>xib</code>对这个<code>label</code>是强引用，你声明的属性对它是弱引用。<br>手动创建控件 </p>
+<ul>
+<li><strong>a). 将控件声明成<code>strong</code></strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property(nonatomic,strong) UIlabel * label;</span><br></pre></td></tr></table></figure>
+<p>那么你在实现这个控件时只需这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_label = [[UIlabel alloc]init];</span><br><span class="line">[self.view addSubview:_label];</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>b). 将控件声明成weak</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property(nonatomic,weak) UIlabel * label;</span><br></pre></td></tr></table></figure>
+<p>那么你在实现这个控件时需要这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UIlabel *label = [[UIlabel alloc]init];</span><br><span class="line">_label = label;</span><br><span class="line">[self.view addSubview:_btn];</span><br></pre></td></tr></table></figure>
+<p>关于<code>block</code>循环引用的问题</p>
+<p>由于<code>block</code>会复制外部的变量，所以如果不注意，就会造成循环引用。对于这种情况，需要将引用的一方变成<code>weak</code>，从而避免循环引用。</p>
+<p>看代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BlocksViewController *blockVC  = [[BlocksViewController alloc]init];</span><br><span class="line">__weak ViewController *weekSelf = self;</span><br><span class="line">/**</span><br><span class="line">*  1、使用弱引用来解决block循环引用问题</span><br><span class="line">*</span><br><span class="line">*  2、block能截取自动变量，并且是不能在block块中进行修改的（除非用 __block修饰符）这里的 weekSelf.textField.text 的值是被修改了，并且没有使用 __block修饰符。原因是因为textField是全局变量，如果定义一个局部变量，比如：定义个 “text”是不能被修改的，编译器会报错，</span><br><span class="line">*/</span><br><span class="line">//block回调传值</span><br><span class="line">[blockVC returnValue:^(NSString *content) &#123;</span><br><span class="line">weekSelf.textField.text = content;</span><br><span class="line">// text = content;//这里会提示错失__block;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p><strong>二、<code>strong</code>和<code>weak</code>的区别</strong></p>
+<ul>
+<li><p><strong>strong</strong>：强引用，也是我们通常说的引用，其存亡直接决定了所指向对象的存亡。如果不存在指向一个对象的引用，并且此对象不再显示在列表中，则此对象会被从内存中释放。</p>
+</li>
+<li><p><strong>weak</strong>：弱引用，不决定对象的存亡。即使一个对象被持有无数个弱引用，只要没有强引用指向它，那么还是会被清除。</p>
+</li>
+<li><p><strong>strong</strong>和<strong>copy</strong>是用来修饰强引用的属性，weak 用来修饰弱引用的属性；</p>
+</li>
+<li><p><strong>strong</strong>、<strong>weak</strong> 需要ARC支持才能使用，<strong>copy</strong>不需要ARC支持</p>
+</li>
+<li><p><strong>strong</strong>与<strong>retain</strong>功能相似；<strong>weak</strong>与<strong>assign</strong>相似，只是当对象消失后weak会自动把指针变为nil;</p>
+</li>
+</ul>
+<p><strong>三、关于<code>__block</code></strong></p>
+<p>先看一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@autoreleasepool &#123;</span><br><span class="line">__block NSInteger value = 0;</span><br><span class="line">void (^block)(void) = ^&#123;</span><br><span class="line">value = 1;</span><br><span class="line">&#125;;</span><br><span class="line">block();</span><br><span class="line">NSLog(@&quot;val = %ld&quot;, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们现在看着可能得不出什么结论，那么，我们再看下面的代码，为了直观，我以图片的形式呈现：</p>
+<p><img src="http://blog.guohuaden.com/__blocktest.png" alt="block_picture1"></p>
+<p><img src="http://blog.guohuaden.com/__blocktest1.png" alt="block_picture2"></p>
+<p>现在对比就明显了。</p>
+<p>下面总结一下：</p>
+<ol>
+<li><p>a) <code>__block</code>对象在<code>block</code>中是可以被修改、重新赋值的。</p>
+</li>
+<li><p>b)<code>__block</code>对象在<code>block</code>中不会被<code>block</code>强引用一次，从而不会出现循环引用问题。</p>
+</li>
+<li><p>c) <code>block</code>可以访问局部变量，但是不能修改。如果修改局部变量，需要加<code>__block</code> ,所以<code>__block</code>是让修改外部变量的值.</p>
+</li>
+</ol>
+<p>对于 block 外的变量引用，<code>block</code> 默认是将其复制到其数据结构中来实现访问的</p>
+<p><img src="http://blog.guohuaden.com/const-non-local-variables.png" alt="const-non-local-variables"></p>
+<p>对于用 <code>__block</code> 修饰的外部变量引用，<code>block</code> 是复制其引用地址来实现访问的</p>
+<p><img src="http://blog.guohuaden.com/mutable-non-local-variables.png" alt="mutable-non-local-variables"></p>
+<p><strong>四、<strong>block 和 </strong>weak修饰符的区别</strong></p>
+<ol>
+<li><p><code>__block</code>不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。</p>
+</li>
+<li><p><code>__weak</code>只能在ARC模式下使用，也只能修饰对象<code>（NSString）</code>，不能修饰基本数据类型<code>（int）</code>。</p>
+</li>
+<li><p><code>__block</code>对象可以在<code>block</code>中被重新赋值，<code>__weak</code>不可以。</p>
+</li>
+</ol>
+<hr>
+<p> <strong>链接：</strong></p>
+<p><a href="http://blog.devtang.com/2013/07/28/a-look-inside-blocks/" target="_blank" rel="noopener">谈Objective-C block的实现</a></p>
+<p><a href="http://rypress.com/tutorials/objective-c/blocks" target="_blank" rel="noopener">Blocks are Objective-C`s</a></p>
+<p><a href="http://www.cnblogs.com/luoxiaofu/p/5445327.html" target="_blank" rel="noopener">iOS开发-由浅至深学习block</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/block-weak/">block,weak</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2016/09/23/BlurEffect/"><span>iOS模糊效果(毛玻璃效果)的实现</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/09/23/BlurEffect/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-09-23T02:42:42.000Z">
+          2016-09-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>　前一段时间项目中用到毛玻璃效果，那时对<code>UIBlurEffect</code>类和 <code>UIVisualEffectView</code>这两个类做了一部分了解。但当时并没有去特别的深入研究，直到项目做完后，才静下心来好好研究了一番。记录一下。</p>
+<p>　　iOS8之后，Apple新添加<code>UIBlurEffect</code>类、<code>UIVibrancyEffect</code>类 和 <code>UIVisualEffectView</code>类这三种类，用途就是对背景色进行模糊化，也就是我们称的 “毛玻璃效果”。接下来就对具体的使用做一下分析吧。</p>
+<p>　　其实细看下来，Apple对这种特效封装的很好，所以我们使用起来的并不需要什么步骤。不得不佩服Apple的强大啊。</p>
+<p>1、关于<code>UIBlurEffect</code>类</p>
+<p>我们首先看UIBlurEffect类，Apple文档中只给出了一个方法：</p>
+<p>`</p>
+<ul>
+<li>(UIBlurEffect *)effectWithStyle:(UIBlurEffectStyle)style;<br>`<br>我们实现也是这样：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *   模糊效果的三种风格</span><br><span class="line"> *</span><br><span class="line"> *  @param UIBlurEffectStyle</span><br><span class="line">   UIBlurEffectStyleExtraLight,//额外亮度，（高亮风格）</span><br><span class="line">   UIBlurEffectStyleLight,//亮风格</span><br><span class="line">   UIBlurEffectStyleDark//暗风格</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">//实现模糊效果</span><br><span class="line">UIBlurEffect *blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];</span><br></pre></td></tr></table></figure>
+<p> 2、关于<code>UIVibrancyEffect</code>类</p>
+<p>文档中给出的也是一个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (UIVibrancyEffect *)effectForBlurEffect:(UIBlurEffect *)blurEffect;</span><br></pre></td></tr></table></figure>
+<p>官方给出的解释是这样的</p>
+<blockquote>
+<p>UIVibrancyEffect amplifies and adjusts the color of content layered behind the view, allowing content placed inside the contentView to become more vivid.</p>
+<p>It is intended to be placed over, or as a subview of, a UIVisualEffectView that has been configured with a UIBlurEffect.</p>
+<p>This effect only affects content added to the contentView. Because the vibrancy effect is color dependent, subviews added to the contentView need to be tintColorDidChange aware and must be prepared to update themselves accordingly. </p>
+<p>UIImageView will need its image to have a rendering mode of UIImageRenderingModeAlwaysTemplate to receive the proper effect.</p>
+</blockquote>
+<p>翻译如下：</p>
+<p><code>UIVibrancyEffect</code>的作用是放大和调整<code>UIVisualEffectView</code>内容视图的内容的颜色,让<code>UIVisualEffectView</code>的<code>contentView</code>中的内容看起来更加生动。它作为一个子视图被放置在<code>UIVisualEffectView</code>上面，去连接<code>UIBlurEffect</code>。这种效果只会影响添加到<code>UIVisualEffectView</code>的<code>contentView</code>上的内容。因为活力影响是受颜色依赖的…..</p>
+<p><font color="#FF8000"><strong>我们可以看出</strong></font>：通常<code>UIVibrancyEffect</code>对象是与<code>UIBlurEffect</code>一起使用，主要用于处理在<code>UIBlurEffect</code>特效上的一些显示效果。</p>
+<p>下面看看实现代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//实现模糊效果</span><br><span class="line">UIBlurEffect *blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];   </span><br><span class="line">UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffrct];  </span><br><span class="line">UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc]initWithEffect:vibrancyEffect];</span><br><span class="line">// visualEffectView.backgroundColor = [ UIColor grayColor ];</span><br><span class="line">visualEffectView.contentView.frame = CGRectMake(10, 100, 300, 500);</span><br><span class="line">[self.view addSubview:visualEffectView];</span><br></pre></td></tr></table></figure>
+<p>下面我们往 <figure class="highlight plain"><figcaption><span>的`contentView`上添加个`view`看看效果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 300, 280, 90)];<br>label.text = @”曾经撒次考试了hhhhhhhhhhhhhhh”;<br>label.textAlignment = NSTextAlignmentLeft;<br>label.font = [UIFont systemFontOfSize:30];<br>label.tintColor = [UIColor yellowColor];<br>label.numberOfLines = 0;<br>[visualEffectView.contentView addSubview:label];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">上面代码中可以看到， 我改变`Label`中`text`的颜色是使用的：`tintColor` ，这也是特别要注意的地方，文档中也有专门提出，并给出了解释：</span><br><span class="line">`Because the vibrancy effect is color dependent, subviews added to the contentView need to be tintColorDidChange aware and must be prepared to update themselves accordingly`</span><br><span class="line">所以我们使用 `label.textColor`去改变颜色是完全不起作用的。</span><br><span class="line"></span><br><span class="line">运行效果图如下：(只剪切出效果部分)</span><br><span class="line">![VisualEffect](http://blog.guohuaden.com/VisualEffect.png)</span><br><span class="line">至于颜色不是设置的`yellowColor`，我想不需要多说了吧，这就是`UIVibrancyEffect`的功能。</span><br><span class="line"></span><br><span class="line">**三、`UIVisualEffectView`类**</span><br><span class="line"></span><br><span class="line">老规矩先看文档：也是寥寥的四种，其中值得一提的是：`contentView`。这里明确告诉我们：不要直接添加子视图去`UIVisualEffectView`，而是要添加到`contentView`上。</span><br></pre></td></tr></table></figure></p>
+<p>@property (nonatomic, strong, readonly) UIView <em>contentView; // Do not add subviews directly to UIVisualEffectView, use this view instead.<br>@property (nonatomic, copy, nullable) UIVisualEffect </em>effect;</p>
+<ul>
+<li>(instancetype)initWithEffect:(nullable UIVisualEffect *)effect NS_DESIGNATED_INITIALIZER;</li>
+<li>(nullable instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这里我就给出一个比较完整的代码（我们看一看`UIBlurEffect`类 和 `UIVisualEffectView`类 的效果）：</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@”6.jpg”]];<br>/**</p>
+<ul>
+<li>模糊效果的三种风格<br>*</li>
+<li>@param UIBlurEffectStyle<br>UIBlurEffectStyleExtraLight,//额外亮度，（高亮风格）<br>UIBlurEffectStyleLight,//亮风格<br>UIBlurEffectStyleDark//暗风格<br><em>
+</em>/<br>//实现模糊效果<br>UIBlurEffect <em>blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];<br>//毛玻璃视图<br>UIVisualEffectView </em>visualEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffrct];<br>visualEffectView.frame = CGRectMake(60, 100, 300, 500);<br>visualEffectView.alpha = 0.9;<br>[self.view addSubview:visualEffectView];<br><code>`</code></li>
+</ul>
+<p>看看效果图是不是你想要的：<br><img src="http://blog.guohuaden.com/BlurEffect.png" alt="BlurEffect"><br>关于iOS8之前的实现，可以去github上看看一些封装库。有很多不错的三方库不错，这里就不列出了。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/iOS/">iOS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/毛玻璃效果/">毛玻璃效果</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2016/08/16/project-summary-one/"><span>iOS之项目总结－：项目中遇到的各种的问题和解决方法</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/08/16/project-summary-one/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-08-16T10:28:00.000Z">
+          2016-08-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p> 一到公司报道那时，便着手独立的去完成了一个项目，其中的辛酸泪也是不足为外人道也。这次算是一个新型的app，仍然是独立开发，但心境和想法却是完全的不同。下面说一次以前做开发时常常忽略的知识，也算是一种复习了吧。下面言归正传：</p>
+<h3 id="1、自带键盘的next用法"><a href="#1、自带键盘的next用法" class="headerlink" title="1、自带键盘的next用法"></a>1、自带键盘的next用法</h3><p>这算是比较常用的了吧，只要我们想到登录和注册界面，就应该自然而然的想到 - 键盘的next用法（当然不排除相当多的软件并没有实现这个功能）。</p>
+<p>想法也就是：用户在输入用户名后，点击next跳转到下一个输入框。其实也不用想的如此复杂，在登录界面，我们完全可以用一个 if 语句做判断，去实现键盘的响应和注销响应。</p>
+<p>代码如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)textFieldShouldReturn:(UITextField * )textField &#123; 	</span><br><span class="line">  UITextField * passTextFiled = (UITextField *)[self.view viewWithTag:201];   </span><br><span class="line">  if (textField.tag == 200) &#123;</span><br><span class="line">  		[passTextFiled becomeFirstResponder];   </span><br><span class="line">   &#125;else&#123;     </span><br><span class="line">  	 	[passTextFiled resignFirstResponder];  </span><br><span class="line">	&#125;   </span><br><span class="line">   return YES; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就简单的在变成响应和注销响应之间实现了输入框的切换。</p>
+<p>但还是存在一个问题，如果我实现注册界面的跳转输入框，并且在输入框很多的情况下，显然如果我仍是这样判断，会显得啰嗦和冗余。</p>
+<p>我曾想过使用计数的方式，记录每一次的点击next后的tag，但实践中失败了，因为当我不通过next而是直接用手去触摸选择输入框时，则无法计数。</p>
+<p> 这里先留个空白，等把手里的项目完成时再研究这个问题</p>
+<h3 id="2、UITextField的纠错和首字母大小写问题"><a href="#2、UITextField的纠错和首字母大小写问题" class="headerlink" title="2、UITextField的纠错和首字母大小写问题"></a>2、UITextField的纠错和首字母大小写问题</h3><p>这个问题只是简单的属性问题，在开发时如果忘记，建议多点进去看看，（如：command + UITextField）   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> //输入框中是否有个叉号，在什么时候显示，用于一次性删除输入框中的内容    </span><br><span class="line">self.clearButtonMode = UITextFieldViewModeWhileEditing;    </span><br><span class="line">//是否纠错,本人感觉纠错是一个很反感的东西，但UITextField默认是 YES,这里我改成了NO      </span><br><span class="line">self.autocorrectionType = UITextAutocorrectionTypeNo;       </span><br><span class="line"> //再次编辑就清空      </span><br><span class="line">self.clearsOnBeginEditing = YES;       </span><br><span class="line">//设置自动缩小显示的最小字体大小      </span><br><span class="line">self.minimumFontSize = 15;        </span><br><span class="line">//设置键盘的样式，本人感觉这个设置对用户体验有影响。比如说我想打电话，Type为UIKeyboardTypeNumberPad,而不是其他     </span><br><span class="line">self.keyboardType = UIKeyboardTypeNamePhonePad;</span><br></pre></td></tr></table></figure>
+<h3 id="3、iOS中图片的几种拉伸方法的使用"><a href="#3、iOS中图片的几种拉伸方法的使用" class="headerlink" title="3、iOS中图片的几种拉伸方法的使用"></a>3、iOS中图片的几种拉伸方法的使用</h3><p>以下是Apple SDK给出的3种方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">UIImage *image = [UIImage imageNamed:@&quot;picture&quot;];        </span><br><span class="line">//iOS5之前     </span><br><span class="line">// 左端盖宽度        </span><br><span class="line">NSInteger leftCapWidth = image.size.width * 0.5f;       </span><br><span class="line">NSInteger topCapHeight = image.size.height * 0.8f;        </span><br><span class="line">	</span><br><span class="line">image = [image stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];        </span><br><span class="line">	</span><br><span class="line">//iOS5之后       </span><br><span class="line">UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       </span><br><span class="line">	</span><br><span class="line">image = [image resizableImageWithCapInsets:insets];      </span><br><span class="line">//iOS6之后        </span><br><span class="line">UIEdgeInsets insets = UIEdgeInsetsMake(image.size.height * 0.8f,image.size.width * 0.5f, 40, 40);       </span><br><span class="line">image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];</span><br></pre></td></tr></table></figure>
+<p>下面是使用的解释：<br><img src="http://blog.guohuaden.com/pictureStretch.png" alt="pictureStretch"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**   </span><br><span class="line"> *  - (UIImage *)stretchableImageWithLeftCapWidth:(NSInteger)leftCapWidth topCapHeight:(NSInteger)topCapHeight;    </span><br><span class="line"> *  </span><br><span class="line"> *  leftCapWidth代表左端盖宽度，topCapHeight代表顶端盖高度。系统会自动计算出右端盖宽度(rightCapWidth)和底端盖高度(bottomCapHeight)    </span><br><span class="line"></span><br><span class="line"> * 算法如下：    </span><br><span class="line"> * width为图片宽度  rightCapWidth = width - leftCapWidth - 1;       </span><br><span class="line"> * height为图片高度 bottomCapHeight = height - topCapHeight - 1    </span><br><span class="line"> *    </span><br><span class="line"> *经过计算，你会发现中间的可拉伸区域只有1x1    </span><br><span class="line"> *   </span><br><span class="line"></span><br><span class="line">* stretchWidth为中间可拉伸区域的宽度        stretchWidth = width - leftCapWidth - rightCapWidth = 1;       </span><br><span class="line">* stretchHeight为中间可拉伸区域的高度        stretchHeight = height - topCapHeight - bottomCapHeight = 1;    </span><br><span class="line">*    </span><br><span class="line">* 因此，使用这个方法只会拉伸图片中间1x1的区域，并不会影响到边缘和角落。    </span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">/**   </span><br><span class="line"> * - (UIImage * )resizableImageWithCapInsets:(UIEdgeInsets)capInsets    </span><br><span class="line"> *  这个方法只接收一个UIEdgeInsets类型的参数，可以通过设置UIEdgeInsets的left、right、top、bottom来分别指定左端盖宽度、右端盖宽度、顶端盖高度、底端盖高度    </span><br><span class="line"> * */       </span><br><span class="line"></span><br><span class="line">/**    </span><br><span class="line"> *- (UIImage * )resizableImageWithCapInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode  </span><br><span class="line"></span><br><span class="line">对比iOS5.0中的方法，只多了一个`UIImageResizingMode`参数，用来指定拉伸的模式：</span><br><span class="line">	UIImageResizingModeStretch：拉伸模式，通过拉伸</span><br><span class="line">	UIEdgeInsets:指定的矩形区域来填充图片    </span><br><span class="line">	UIImageResizingModeTile：平铺模式，通过重复显示</span><br><span class="line">	UIEdgeInsets指定的矩形区域来填充图片   </span><br><span class="line">**/</span><br></pre></td></tr></table></figure>
+<p>图片拉伸的以上内容参考文章 《<a href="http://blog.csdn.net/q199109106q/article/details/8615661" target="_blank" rel="noopener">iOS图片拉伸技巧</a>》讲的很好，建议大家多看看。</p>
+<h3 id="4、iOS中唤起自带浏览器（safari）的方法"><a href="#4、iOS中唤起自带浏览器（safari）的方法" class="headerlink" title="4、iOS中唤起自带浏览器（safari）的方法"></a>4、iOS中唤起自带浏览器（safari）的方法</h3><p>也是一个简单的一句代码 ，这种也就是知道了就知道了，不知道就是抓耳挠腮吧 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [NSURL URLWithString:urlStr]; </span><br><span class="line">   </span><br><span class="line">[[UIApplication sharedApplication] openURL:url];</span><br></pre></td></tr></table></figure>
+<h3 id="5、iOS中唤起电话界面"><a href="#5、iOS中唤起电话界面" class="headerlink" title="5、iOS中唤起电话界面"></a>5、iOS中唤起电话界面</h3><p>app内部唤起电话界面的实现，是找了很多资料才有的一个结论（安全，并且拨打完之后可以返回app）</p>
+<p>实现的方法是使用UIWebView 加载电话，目前这种方法是合法的，App Store也允许通过的。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@&quot;tel:%@&quot;,newPhoneString]];    </span><br><span class="line"> if (_phoneCallWebView) &#123; </span><br><span class="line">   [_phoneCallWebView loadRequest:[NSURLRequest requestWithURL:phoneURL]];  </span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>但如果使用下面的这种方法，则可能不允许通过审核  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[UIApplication sharedApplication] openURL:phoneURL];</span><br></pre></td></tr></table></figure>
+<h3 id="6、iOS-调用地图的方法"><a href="#6、iOS-调用地图的方法" class="headerlink" title="6、iOS 调用地图的方法"></a>6、iOS 调用地图的方法</h3><p>app内部调用第三方app，这里有一个详细的文章《<a href="http://blog.csdn.net/a416863220/article/details/51220739" target="_blank" rel="noopener">IOS实现应用内打开第三方地图app进行导航</a>》</p>
+<ul>
+<li>app内部调用地图，需要先检测用户手机上是否已经安装地图app。</li>
+</ul>
+<p>我们常用的地图app有：高德、百度；国外有：谷歌（Google Map ）。当然还有苹果自带的地图，随着iOS10的发布，苹果地图这块也有很大的完善和进步。</p>
+<p>我使用Xcode模拟器实现时，会提示:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1、canOpenURL: failed for URL: &quot;iosamap://&quot; error: &quot;(null)&quot; 。</span><br></pre></td></tr></table></figure>
+<p><strong>原因是</strong>：模拟器上没有高德地图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2、canOpenURL: failed for URL:&quot;comgooglemaps://&quot; error: &quot;This app is not allowed to query for scheme comgooglemaps&quot;。</span><br></pre></td></tr></table></figure>
+<p><strong>原因是</strong>：<code>LSApplicationQueriesSchemes</code>我自己马虎设成了字典类型。</p>
+<p>首先iOS9以后，我们在app内部要跳转到其他软件时，需要在 <code>Info.plist</code> 中添加白名单。</p>
+<p>方法为：在<code>Info.plist</code>中添加 <code>key : LSApplicationQueriesSchemes</code> 类型为：<code>Array</code>。</p>
+<p>将高德、百度、谷歌的值填进去分别是：<code>iosamap</code>、<code>baidumap</code>、 <code>comgooglemaps</code></p>
+<p>图片：<br><img src="http://blog.guohuaden.com/LSApplicationQueriesSchemes.png" alt="LSApplicationQueriesSchemes"></p>
+<p>至于下面代码中的<code>URLScheme</code> 和<code>appName</code> 是在<code>Info.plist</code> 的<code>URL types</code>中添加  <code>URL Scheme</code>(URL Schemes是一个数组，允许应用定义多个URL schemes)和<code>URL identifier</code>（建议采用反转域名的方法保证该名字的唯一性，比如 <code>com.yourApp.www</code>）</p>
+<p>图片如下：</p>
+<p><img src="http://blog.guohuaden.com/URLTypes.png" alt="URLTypes"></p>
+<p>下面是具体的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"> __block NSString *urlScheme = urlScheme;   </span><br><span class="line"></span><br><span class="line"> __block NSString *appName = appName;    </span><br><span class="line"></span><br><span class="line">__block CLLocationCoordinate2D coordinate = self.coordinate;        </span><br><span class="line"></span><br><span class="line">UIAlertController *alert = [UIAlertController alertControllerWithTitle:@&quot;选择地图&quot; message:nil preferredStyle:UIAlertControllerStyleActionSheet];          </span><br><span class="line"></span><br><span class="line">//apple自带的地图不需要判断        </span><br><span class="line"></span><br><span class="line">UIAlertAction * action = [UIAlertAction actionWithTitle:@&quot;苹果地图&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) &#123;      </span><br><span class="line"></span><br><span class="line">   	MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation]; </span><br><span class="line"></span><br><span class="line"> 	MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil]];                      </span><br><span class="line"></span><br><span class="line"> 	[MKMapItem openMapsWithItems:@[currentLocation, toLocation]                           launchOptions:@&#123;</span><br><span class="line"></span><br><span class="line">MKLaunchOptionsDirectionsModeKey: 	MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]&#125;];        </span><br><span class="line"></span><br><span class="line">&#125;];        </span><br><span class="line"></span><br><span class="line"> [alert addAction:action];        </span><br><span class="line"></span><br><span class="line"> //判断百度地图   </span><br><span class="line"></span><br><span class="line"> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@&quot;baidumap://&quot;]])      </span><br><span class="line"></span><br><span class="line">&#123;        UIAlertAction * action = [UIAlertAction actionWithTitle:@&quot;百度地图&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) &#123;                       </span><br><span class="line"></span><br><span class="line"> NSString *urlString = [[NSString stringWithFormat:@&quot;baidumap://map/direction?origin=&#123;&#123;我的位置&#125;&#125;&amp;destination=latlng:%f,%f|name=目的地&amp;mode=driving&amp;coord_type=gcj02&quot;,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line"></span><br><span class="line">  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];         </span><br><span class="line"></span><br><span class="line"> &#125;];        </span><br><span class="line"></span><br><span class="line">[alert addAction:action];      </span><br><span class="line"></span><br><span class="line">&#125;     </span><br><span class="line"></span><br><span class="line"> //判断高德地图     </span><br><span class="line"></span><br><span class="line"> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@&quot;iosamap://&quot;]])      </span><br><span class="line"></span><br><span class="line"> &#123;        </span><br><span class="line"></span><br><span class="line">UIAlertAction * action = [UIAlertAction actionWithTitle:@&quot;高德地图&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) &#123;                        </span><br><span class="line"></span><br><span class="line">NSString *urlString = [[NSString stringWithFormat:@&quot;iosamap://navi?sourceApplication=%@&amp;backScheme=%@&amp;lat=%f&amp;lon=%f&amp;dev=0&amp;style=2&quot;,appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];  </span><br><span class="line"></span><br><span class="line">        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];                    &#125;];       </span><br><span class="line"></span><br><span class="line"> [alert addAction:action];    </span><br><span class="line"></span><br><span class="line">&#125;        </span><br><span class="line"></span><br><span class="line"> //判断谷歌地图   </span><br><span class="line"></span><br><span class="line"> if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@&quot;comgooglemaps://&quot;]])    &#123;       </span><br><span class="line"></span><br><span class="line"> UIAlertAction * action = [UIAlertAction actionWithTitle:@&quot;谷歌地图&quot; style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) &#123;                       </span><br><span class="line"></span><br><span class="line"> NSString *urlString = [[NSString stringWithFormat:@&quot;comgooglemaps://?x-source=%@&amp;x-success=%@&amp;saddr=&amp;daddr=%f,%f&amp;directionsmode=driving&quot;,appName,urlScheme,coordinate.latitude, coordinate.longitude] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];                       </span><br><span class="line"> [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];          </span><br><span class="line"></span><br><span class="line">&#125;];                </span><br><span class="line"></span><br><span class="line">[alert addAction:action];    </span><br><span class="line"></span><br><span class="line">&#125;        </span><br><span class="line"></span><br><span class="line">UIAlertAction *action = [UIAlertAction actionWithTitle:@&quot;取消&quot; style:UIAlertActionStyleCancel handler:nil];    [alert addAction:action];        </span><br><span class="line"></span><br><span class="line">[self presentViewController:alert animated:YES completion:^&#123;          </span><br><span class="line"></span><br><span class="line">&#125;];    </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/项目总结/">项目总结</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/iOS/">iOS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  <a href="/page/5/" class="pagination-prev">上一页</a>
+  
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2021 Wheat
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'GTM-NHB73SK', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+    
+<script>
+    var _hmt = _hmt || [];
+    ( function () {
+        var hm = document.createElement( "script" );
+        hm.src = "https://hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+        var s = document.getElementsByTagName( "script" )[ 0 ];
+        s.parentNode.insertBefore( hm, s );
+    } )();
+</script>
+
+  </div>
+</div>
+</body>
+</html>
