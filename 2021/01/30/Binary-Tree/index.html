@@ -1,89 +1,171 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>二叉树遍历（Binary Tree） | 所念皆星辰 | 踏实、低调、前行。</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>二叉树遍历（Binary Tree） | 所念皆星辰</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="author" content="Wheat">
-  
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
-  
-  <meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。">
-  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="二叉树遍历（Binary Tree） | 所念皆星辰">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
-  
-  
-  <meta name="keywords" content="算法">
-  
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="二叉树遍历（Binary Tree） | 所念皆星辰">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <meta name="author" content="Wheat">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
-  <meta property="og:title" content="二叉树遍历（Binary Tree）"/>
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
 
-  <meta property="og:site_name" content="所念皆星辰"/>
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="所念皆星辰" href="/atom.xml">
+    
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
+    <link rel="canonical" href="http://qinguohua.fun/2021/01/30/Binary-Tree/"/>
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="所念皆星辰" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+    
+      
 </head>
 
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
 
-<body>
-<div class="blog">
-  <div class="content">
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url()">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">所念皆星辰</a>
-    </h1>
-    <p class="site-description">踏实、低调、前行。</p>
+        <a href="/" title="前往 所念皆星辰 的主页"><img src="/images/avatar.png" width="80" alt="所念皆星辰 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 所念皆星辰">所念皆星辰</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">踏实、低调、前行。</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">简单的一个技术博客，用来作为学习笔记和日常记录使用。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/books">读书</a></li>
+            
+              <li class="navigation__item"><a href="/complain">牢骚</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Wheat-Qin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/wheatDen" title="@wheat" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
   </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-    </ul>
-  </nav>
 </header>
 
-    <main class="site-main posts-loop">
-    <article>
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
 
-  
-    
-    <h3 class="article-title"><span>二叉树遍历（Binary Tree）</span></h3>
-    
-  
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2021-01-30T11:14:01.000Z" class="post-list__meta--date date">2021-01-30</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/算法/">算法</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">二叉树遍历（Binary Tree）</h1>
+  </header>
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2021/01/30/Binary-Tree/" rel="bookmark">
-        <time class="entry-date published" datetime="2021-01-30T11:14:01.000Z">
-          2021-01-30
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>二叉树（Binary Tree）：计算机中数据结构的一种，是树形结构的一个重要类型。结构类型是<strong>每个节点最多有两个子树的树结构</strong>。特点是<strong>每个节点最多只能有了两棵子树，且有左右之分</strong>。</p>
+  <section class="post">
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>二叉树（Binary Tree）：计算机中数据结构的一种，是树形结构的一个重要类型。结构类型是<strong>每个节点最多有两个子树的树结构</strong>。特点是<strong>每个节点最多只能有了两棵子树，且有左右之分</strong>。</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>二叉树</strong>是指树中节点的度不大于2的有序树，是n(n&gt;=0)个节点的有限集合，该集合或者为空集（称为空二叉树），或者是一棵由一个根节点和两棵互不相交的，分别称作根的左子树和右子树组成的非空树；左子树和右子树又同样都是二叉树 。</p>
 <h2 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h2><ul>
 <li>叶子节点：也称为终端节点，没有子树的节点或者度为零的节点。</li>
@@ -147,81 +229,110 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">公式 T(N) = a*T(N / b) + O (N^d)</span><br><span class="line">代入公式得到：T(N)=2T(N/2)+O(1):，其中 a = 2, b = 2, d = 0;</span><br><span class="line">得到 log(2,2) = 1 &gt; 0，代入公式 O(N ^ log(b,a)) = O(N^ log(2,2)) = O(N)</span><br></pre></td></tr></table></figure>
 <h3 id="层级遍历（BFS）"><a href="#层级遍历（BFS）" class="headerlink" title="层级遍历（BFS）"></a>层级遍历（BFS）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//层级遍历</span></span><br><span class="line"><span class="keyword">var</span> levelOrderBottom = <span class="function"><span class="keyword">function</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">  	<span class="keyword">if</span>(root == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> result = [];<span class="comment">//输出结果</span></span><br><span class="line">    <span class="keyword">let</span> queue = [];<span class="comment">//队列</span></span><br><span class="line">    queue.push(root);<span class="comment">//进栈</span></span><br><span class="line">    <span class="keyword">let</span> node;</span><br><span class="line">    <span class="keyword">while</span> (queue.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> count = queue.length;<span class="comment">//每个层级下的节点</span></span><br><span class="line">        <span class="keyword">let</span> list = [];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i++)&#123;</span><br><span class="line">            node = queue.shift();<span class="comment">//出栈</span></span><br><span class="line">            list.push(node.val);</span><br><span class="line">            <span class="keyword">if</span>(node.left != <span class="literal">null</span>)&#123;</span><br><span class="line">                queue.push(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(node.right != <span class="literal">null</span>)&#123;</span><br><span class="line">                queue.push(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result.push(list);<span class="comment">//这个如果要求自底向上输出，可以每次添加到首位。result.unshift(list)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//时间复杂度：每个节点都需要进栈出栈，所以时间复杂度和空间复杂度都是O(n)</span></span><br></pre></td></tr></table></figure>
 <h3 id="二叉树深度-（BFS-and-DFS）"><a href="#二叉树深度-（BFS-and-DFS）" class="headerlink" title="二叉树深度 （BFS and DFS）"></a>二叉树深度 （BFS and DFS）</h3>
-      
-    </div>
+  </section>
 
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/algorithm/">算法</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/算法/">算法</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
 </article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2021/01/30/iOS-Code-Standards/" title="iOS 代码规范">iOS 代码规范</a></h2>
+                <p class="excerpt">
+                
+                命名规范基本原则命名应该尽可能的清晰和简洁，避免使用单词的简写，避免有歧义的命名
 
+命名遵循驼峰命名法
+必须由数字、字母、下滑线组成，不能数字开头。
+见名知意（非常重要，严禁出现无意义的命名，如aa，cc，data1，data2..）
+变量名不能重名
+变量名不能和系统关键字重名（如int id 等）
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2021-01-30T11:39:50.000Z" class="post-list__meta--date date">2021-01-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/iOS代码规范/">iOS代码规范</a>
+</span><a class="btn-border-small" href="/2021/01/30/iOS-Code-Standards/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2020/07/07/watchdog/" title="watchdog">watchdog</a></h2>
+                <p class="excerpt">
+                
+                简介为了防止一个应用程序占用过多的系统资源，苹果设计一个监督机构 watchdog ,音译：看门狗机制。
+用户希望应用程序快速启动，并对触摸和手势做出响应。操作系统使用一个监督机构来监控启动时间和应用程序的响应，如果超出了该场景下所规定的运行时间，该机制就会终止无响应的应用程序。
+watchdog 
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2020-07-07T14:44:50.000Z" class="post-list__meta--date date">2020-07-07</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/watchdog/">watchdog</a>
+</span><a class="btn-border-small" href="/2020/07/07/watchdog/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
   
+</section>
 
-
-
-
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2021 Wheat
-    
-  </p>
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
 </footer>
-    
+
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        </div>
+    </div>
 
-    ga('create', 'GTM-NHB73SK', 'auto');
-    ga('send', 'pageview');
+    
 
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
 </script>
 
     
-<script>
-    var _hmt = _hmt || [];
-    ( function () {
-        var hm = document.createElement( "script" );
-        hm.src = "https://hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
-        var s = document.getElementsByTagName( "script" )[ 0 ];
-        s.parentNode.insertBefore( hm, s );
-    } )();
-</script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
-  </div>
-</div>
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
 </body>
 </html>
