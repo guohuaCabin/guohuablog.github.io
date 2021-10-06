@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>读 SDWebImage 六 （SDWebImagePrefetcher） | 所念皆星辰</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="读 SDWebImage 六 （SDWebImagePrefetcher） | 所念皆星辰">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="读 SDWebImage 六 （SDWebImagePrefetcher） | 所念皆星辰">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    
+    <meta name="author" content="Wheat">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="所念皆星辰" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://qinguohua.fun/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url()">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 所念皆星辰 的主页"><img src="/images/avatar.png" width="80" alt="所念皆星辰 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 所念皆星辰">所念皆星辰</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">踏实、低调、前行。</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">简单的一个技术博客，用来作为学习笔记和日常记录使用。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/books">读书</a></li>
+            
+              <li class="navigation__item"><a href="/essays">随笔</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/guohuaCabin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-10-27T14:32:36.000Z" class="post-list__meta--date date">2018-10-27</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/SDWebImage/">SDWebImage</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">读 SDWebImage 六 （SDWebImagePrefetcher）</h1>
+  </header>
+
+  <section class="post">
+    <p><code>SDWebImagePrefetcher</code> 预先下载（预加载）图片，以方便后续使用，主要是用于部分图片需要先行下载并存储的情况。预先取出缓存中的一些URLs以供将来使用。 图像以低优先级下载。</p>
+<p><code>SDWebImagePrefetcher</code> 设计了两种回调方式：</p>
+<ol>
+<li><p><code>SDWebImagePrefetcherDelegate</code><br>用来处理每一个预下载完成的回调，以及所有下载完成的回调 </p>
+</li>
+<li><p><code>block</code><br>用来处理整体进度的回调，返回的是下载完成的数量和总数量等</p>
+</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@protocol SDWebImagePrefetcherDelegate &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@optional</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 在预加载图片时调用。</span><br><span class="line"> *</span><br><span class="line"> * @param imagePrefetcher 当前图片预加载类</span><br><span class="line"> * @param imageURL       预加载的图片网址</span><br><span class="line"> * @param finishedCount   预加载的图片总数（成功与否）</span><br><span class="line"> * @param totalCount      预加载的图片总数</span><br><span class="line"> */</span><br><span class="line">- (void)imagePrefetcher:(nonnull SDWebImagePrefetcher *)imagePrefetcher didPrefetchURL:(nullable NSURL *)imageURL finishedCount:(NSUInteger)finishedCount totalCount:(NSUInteger)totalCount;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 在预加载所有图像时调用。</span><br><span class="line"> * @param imagePrefetcher 当前图片的预加载类</span><br><span class="line"> * @param totalCount      预加载的图片总数（无论是否成功）</span><br><span class="line"> * @param skippedCount    跳过的图片总数</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">- (void)imagePrefetcher:(nonnull SDWebImagePrefetcher *)imagePrefetcher didFinishWithTotalCount:(NSUInteger)totalCount skippedCount:(NSUInteger)skippedCount;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h3 id="两个block代码块"><a href="#两个block代码块" class="headerlink" title="两个block代码块"></a>两个block代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 预加载进度block</span><br><span class="line"> @param noOfFinishedUrls 已经完成的数量，无论成功失败</span><br><span class="line"> @param noOfTotalUrls    总数量</span><br><span class="line"> */</span><br><span class="line">typedef void(^SDWebImagePrefetcherProgressBlock)(NSUInteger noOfFinishedUrls, NSUInteger noOfTotalUrls);</span><br><span class="line">/**</span><br><span class="line"> 预加载完成block</span><br><span class="line"></span><br><span class="line"> @param noOfFinishedUrls 已经完成的数量，无论成功失败</span><br><span class="line"> @param noOfSkippedUrls  跳过的数量</span><br><span class="line"> */</span><br><span class="line">typedef void(^SDWebImagePrefetcherCompletionBlock)(NSUInteger noOfFinishedUrls, NSUInteger noOfSkippedUrls);</span><br></pre></td></tr></table></figure>
+<h3 id="属性声明"><a href="#属性声明" class="headerlink" title="属性声明"></a>属性声明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 网络图片管理器,只读</span><br><span class="line"> */</span><br><span class="line">@property (strong, nonatomic, readonly, nonnull) SDWebImageManager *manager;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *同时预加载的最大URL数。 默认为3。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign) NSUInteger maxConcurrentDownloads;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 预加载的SDWebImageOptions选项。 默认为SDWebImageLowPriority。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign) SDWebImageOptions options;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Prefetcher的队列选项。 默认为主队列。</span><br><span class="line"> */</span><br><span class="line">@property (strong, nonatomic, nonnull) dispatch_queue_t prefetcherQueue;</span><br><span class="line"></span><br><span class="line">//协议</span><br><span class="line">@property (weak, nonatomic, nullable) id &lt;SDWebImagePrefetcherDelegate&gt; delegate;</span><br></pre></td></tr></table></figure>
+<h3 id="方法声明"><a href="#方法声明" class="headerlink" title="方法声明"></a>方法声明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 返回全局图像预加载实例。</span><br><span class="line"> */</span><br><span class="line">+ (nonnull instancetype)sharedImagePrefetcher;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 允许您使用任意图像管理器实例化预加载类。</span><br><span class="line"> */</span><br><span class="line">- (nonnull instancetype)initWithImageManager:(nonnull SDWebImageManager *)manager NS_DESIGNATED_INITIALIZER;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 分配URL列表以让SDWebImagePrefetcher对预加载进行排队</span><br><span class="line"> * 目前一次下载一张图片，并跳过下载失败的图像，然后进入列表中的下一个图像。任何先前运行的预加载操作都将被取消。</span><br><span class="line"> * @param urls 预加载的URL列表</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">- (void)prefetchURLs:(nullable NSArray&lt;NSURL *&gt; *)urls;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 分配URL列表以让SDWebImagePrefetcher对预加载进行排队，目前一次下载一张图片，并跳过下载失败的图像，然后进入列表中的下一个图像。任何先前运行的预加载操作都将被取消。</span><br><span class="line"> * currently one image is downloaded at a time,</span><br><span class="line"> * and skips images for failed downloads and proceed to the next image in the list.</span><br><span class="line"> * Any previously-running prefetch operations are canceled.</span><br><span class="line"> *</span><br><span class="line"> * @param urls           预加载的URL列表</span><br><span class="line"> * @param progressBlock   block块在进度更新时被调用;</span><br><span class="line"> *                        第一个参数是已完成（成功或未成功）请求的数量，</span><br><span class="line"> *                        第二个参数是最初请求预加载的图像总数</span><br><span class="line"> * @param completionBlock Block块在预加载完成时被调用</span><br><span class="line"> *                       第一个参数是已完成（成功或未成功）请求的数量，</span><br><span class="line"> *                        第二个参数是跳过的请求数</span><br><span class="line"> */</span><br><span class="line">- (void)prefetchURLs:(nullable NSArray&lt;NSURL *&gt; *)urls</span><br><span class="line">            progress:(nullable SDWebImagePrefetcherProgressBlock)progressBlock</span><br><span class="line">           completed:(nullable SDWebImagePrefetcherCompletionBlock)completionBlock;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 删除并取消排队列表</span><br><span class="line"> */</span><br><span class="line">- (void)cancelPrefetching;</span><br></pre></td></tr></table></figure>
+<h3 id="私有属性声明"><a href="#私有属性声明" class="headerlink" title="私有属性声明"></a>私有属性声明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//.h文件manager管理器声明为只读，这里声明为读写类型。实现外部只能访问，内部可读写。</span><br><span class="line">@property (strong, nonatomic, nonnull) SDWebImageManager *manager;</span><br><span class="line">//可以从不同的队列访问</span><br><span class="line">@property (strong, atomic, nullable) NSArray&lt;NSURL *&gt; *prefetchURLs; </span><br><span class="line"></span><br><span class="line">//已请求的数量</span><br><span class="line">@property (assign, nonatomic) NSUInteger requestedCount;</span><br><span class="line">//已跳过的数量</span><br><span class="line">@property (assign, nonatomic) NSUInteger skippedCount;</span><br><span class="line">//已完成的数量</span><br><span class="line">@property (assign, nonatomic) NSUInteger finishedCount;</span><br><span class="line">//已开始的时间</span><br><span class="line">@property (assign, nonatomic) NSTimeInterval startedTime;</span><br><span class="line">//预加载图片完成代码块</span><br><span class="line">@property (copy, nonatomic, nullable) SDWebImagePrefetcherCompletionBlock completionBlock;</span><br><span class="line">//预加载图片进度代码块</span><br><span class="line">@property (copy, nonatomic, nullable) SDWebImagePrefetcherProgressBlock progressBlock;</span><br></pre></td></tr></table></figure>
+<h3 id="方法实现"><a href="#方法实现" class="headerlink" title="方法实现"></a>方法实现</h3><p>初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">+ (nonnull instancetype)sharedImagePrefetcher &#123;</span><br><span class="line">    static dispatch_once_t once;</span><br><span class="line">    static id instance;</span><br><span class="line">    dispatch_once(&amp;once, ^&#123;</span><br><span class="line">        instance = [self new];</span><br><span class="line">    &#125;);</span><br><span class="line">    return instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (nonnull instancetype)init &#123;</span><br><span class="line">    return [self initWithImageManager:[SDWebImageManager new]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (nonnull instancetype)initWithImageManager:(SDWebImageManager *)manager &#123;</span><br><span class="line">    if ((self = [super init])) &#123;</span><br><span class="line">        //图片管理器</span><br><span class="line">        _manager = manager;</span><br><span class="line">        </span><br><span class="line">        预加载的SDWebImageOptions选项。 默认为SDWebImageLowPriority。</span><br><span class="line">        _options = SDWebImageLowPriority;</span><br><span class="line">        //Prefetcher的队列选项。 默认为主队列。</span><br><span class="line">        _prefetcherQueue = dispatch_get_main_queue();</span><br><span class="line">        //同时预加载的最大URL数。 默认为3。</span><br><span class="line">        self.maxConcurrentDownloads = 3;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>属性get和set方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//同时预加载的最大数的set方法</span><br><span class="line">- (void)setMaxConcurrentDownloads:(NSUInteger)maxConcurrentDownloads &#123;</span><br><span class="line">    self.manager.imageDownloader.maxConcurrentDownloads = maxConcurrentDownloads;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//同时预加载的最大数的get方法</span><br><span class="line">- (NSUInteger)maxConcurrentDownloads &#123;</span><br><span class="line">    return self.manager.imageDownloader.maxConcurrentDownloads;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>预加载图片实现方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">- (void)startPrefetchingAtIndex:(NSUInteger)index &#123;</span><br><span class="line">    //创建临时变量，用于存储当前的URL</span><br><span class="line">    NSURL *currentURL;</span><br><span class="line">    </span><br><span class="line">    //同步锁，判断index是否越界，如果越界就返回，否则获取当前的URL，赋值给临时变量currentURL，已请求的数量+1</span><br><span class="line">    @synchronized(self) &#123;</span><br><span class="line">        if (index &gt;= self.prefetchURLs.count) return;</span><br><span class="line">        currentURL = self.prefetchURLs[index];</span><br><span class="line">        self.requestedCount++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //图片管理器加载当前URL的图片</span><br><span class="line">    [self.manager loadImageWithURL:currentURL options:self.options progress:nil completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) &#123;</span><br><span class="line">        </span><br><span class="line">        //如果已经完成，返回</span><br><span class="line">        if (!finished) return;</span><br><span class="line">        </span><br><span class="line">        //完成的记数+1</span><br><span class="line">        self.finishedCount++;</span><br><span class="line"></span><br><span class="line">        //如果需要过程回调，执行过程回调操作</span><br><span class="line">        if (self.progressBlock) &#123;</span><br><span class="line">            self.progressBlock(self.finishedCount,(self.prefetchURLs).count);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //如果图片不存在，跳过的记数+1</span><br><span class="line">        if (!image) &#123;</span><br><span class="line">            // Add last failed</span><br><span class="line">            self.skippedCount++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //如果delegate存在，执行delegate方法</span><br><span class="line">        if ([self.delegate respondsToSelector:@selector(imagePrefetcher:didPrefetchURL:finishedCount:totalCount:)]) &#123;</span><br><span class="line">            [self.delegate imagePrefetcher:self</span><br><span class="line">                            didPrefetchURL:currentURL</span><br><span class="line">                             finishedCount:self.finishedCount</span><br><span class="line">                                totalCount:self.prefetchURLs.count</span><br><span class="line">             ];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //如果预下载的URLs数量大于已经下载的数量，就说明还有没下载完的任务，继续下载下一个。（这里是使用的递归方法）</span><br><span class="line">        if (self.prefetchURLs.count &gt; self.requestedCount) &#123;</span><br><span class="line">            dispatch_async(self.prefetcherQueue, ^&#123;</span><br><span class="line">                // 我们需要调度来避免函数递归调用。 即使对于巨大的URL列表，这也可以防止堆栈溢出</span><br><span class="line">                [self startPrefetchingAtIndex:self.requestedCount];</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; else if (self.finishedCount == self.requestedCount) &#123; //如果预下载的URLs数量等于已经下载的数量，说明已经下载完。</span><br><span class="line">        </span><br><span class="line">            //执行预加载完成的delegate方法。</span><br><span class="line">            [self reportStatus];</span><br><span class="line">            </span><br><span class="line">            //如果有需要，执行完成block回调</span><br><span class="line">            if (self.completionBlock) &#123;</span><br><span class="line">                self.completionBlock(self.finishedCount, self.skippedCount);</span><br><span class="line">                </span><br><span class="line">                //将self.completionBlock 置空</span><br><span class="line">                self.completionBlock = nil;</span><br><span class="line">            &#125;</span><br><span class="line">            //将self.progressBlock 置空</span><br><span class="line">            self.progressBlock = nil;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//预加载完成状态的delegate方法</span><br><span class="line">- (void)reportStatus &#123;</span><br><span class="line">    NSUInteger total = (self.prefetchURLs).count;</span><br><span class="line">    if ([self.delegate respondsToSelector:@selector(imagePrefetcher:didFinishWithTotalCount:skippedCount:)]) &#123;</span><br><span class="line">        [self.delegate imagePrefetcher:self</span><br><span class="line">               didFinishWithTotalCount:(total - self.skippedCount)</span><br><span class="line">                          skippedCount:self.skippedCount</span><br><span class="line">         ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分配URL列表使得SDWebImagePrefetcher来安排预加载队列，当前同一时间下载一张图片，忽略下载时间的图片并继续执行列表中的下一张图片。任何之前执行的预加载操作都会被取消。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//urls：预加载的URL列表。</span><br><span class="line">- (void)prefetchURLs:(nullable NSArray&lt;NSURL *&gt; *)urls &#123;</span><br><span class="line">    [self prefetchURLs:urls progress:nil completed:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)prefetchURLs:(nullable NSArray&lt;NSURL *&gt; *)urls</span><br><span class="line">            progress:(nullable SDWebImagePrefetcherProgressBlock)progressBlock</span><br><span class="line">           completed:(nullable SDWebImagePrefetcherCompletionBlock)completionBlock &#123;</span><br><span class="line">    //防止重复的预加载请求</span><br><span class="line">    [self cancelPrefetching]; </span><br><span class="line">    </span><br><span class="line">    //CFAbsoluteTimeGetCurrent() 返回网络时间同步的时钟时间</span><br><span class="line">    self.startedTime = CFAbsoluteTimeGetCurrent();</span><br><span class="line">    </span><br><span class="line">    //预加载的URL列表</span><br><span class="line">    self.prefetchURLs = urls;</span><br><span class="line">    </span><br><span class="line">    代码块</span><br><span class="line">    self.completionBlock = completionBlock;</span><br><span class="line">    self.progressBlock = progressBlock;</span><br><span class="line">    </span><br><span class="line">    //如果预加载的URL列表为空，直接回调完成代码块，没有完成的urls和没有跳过的urls都传0</span><br><span class="line">    if (urls.count == 0) &#123;</span><br><span class="line">        if (completionBlock) &#123;</span><br><span class="line">            completionBlock(0,0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // 从具有最大允许并发性的列表中的第一个图像开始预加载，然后执行预加载操作</span><br><span class="line">        NSUInteger listCount = self.prefetchURLs.count;</span><br><span class="line">        for (NSUInteger i = 0; i &lt; self.maxConcurrentDownloads &amp;&amp; self.requestedCount &lt; listCount; i++) &#123;</span><br><span class="line">            [self startPrefetchingAtIndex:i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>防止重复的预加载请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)cancelPrefetching &#123;</span><br><span class="line">    @synchronized(self) &#123;</span><br><span class="line">        self.prefetchURLs = nil;</span><br><span class="line">        self.skippedCount = 0;</span><br><span class="line">        self.requestedCount = 0;</span><br><span class="line">        self.finishedCount = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    [self.manager cancelAll];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/" title="读 SDWebImage 七 （SDWebImageTransition）">读 SDWebImage 七 （SDWebImageTransition）</a></h2>
+                <p class="excerpt">
+                
+                该类用于在视图类别加载图像完成后提供过渡动画。 
+
+在UIVit + WebCache.h 中的 sd_imageTransition 用于UIKit(iOS和tvOS)，使用 + [UIView transitionWithView：duration：options：animations：completion] 进行过渡动画。 
+
+对于AppKit(macOS)使用 + [NSAnimationContext runAnimationGroup：completionHandler：]进行过渡动画。 我们可以调用+ [NSAnimationContext currentContext]来获取动画块中的上下文。 提供这些转换以用于基本用途。 
+
+
+
+如果需要复杂的动画，可以考虑直接使用Core Animation或使用SDWebImageAvoidAutoSetImage并实现自己的后映像加载完成。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-10-30T13:32:19.000Z" class="post-list__meta--date date">2018-10-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/SDWebImage/">SDWebImage</a>
+</span><a class="btn-border-small" href="/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/" title="读 SDWebImage 六（编码器五：SDWebImageGIFCoder）">读 SDWebImage 六（编码器五：SDWebImageGIFCoder）</a></h2>
+                <p class="excerpt">
+                
+                SDWebImage 内部实现了一个图片解码/编码的图片编码器，用于图片的编解码、压缩。其中涉及到编解码管理（SDWebImageCodersManager）、编解码协议（SDWebImageCoder 和 SDWebImageProgressiveCoder ）、PNG/JPEG/TIFF编解码，解压缩，显示大图（SDWebImageImageIOCoder）、GIF编解码（SDWebImageGIFCoder）、WebP编解码（SDWebImageWebPCoder）以及辅助类（SDWebImageCoderHelper）。
+SDWebImageImageIOCoder ：内置编码器,该类遵守了 SDWebImageCoder协议，但并没有遵守 SDWebImageProgressiveCoder协议，说明该类仅针对git图片的编解码，并不支持git图片的逐行解码功能。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-10-24T14:31:13.000Z" class="post-list__meta--date date">2018-10-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/SDWebImage/">SDWebImage</a>
+</span><a class="btn-border-small" href="/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

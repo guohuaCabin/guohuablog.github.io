@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>读 SDWebImage 七 （SDWebImageTransition） | 所念皆星辰</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="读 SDWebImage 七 （SDWebImageTransition） | 所念皆星辰">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="读 SDWebImage 七 （SDWebImageTransition） | 所念皆星辰">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    
+    <meta name="author" content="Wheat">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="所念皆星辰" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://qinguohua.fun/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url()">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 所念皆星辰 的主页"><img src="/images/avatar.png" width="80" alt="所念皆星辰 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 所念皆星辰">所念皆星辰</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">踏实、低调、前行。</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">简单的一个技术博客，用来作为学习笔记和日常记录使用。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/books">读书</a></li>
+            
+              <li class="navigation__item"><a href="/essays">随笔</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/guohuaCabin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-10-30T13:32:19.000Z" class="post-list__meta--date date">2018-10-30</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/SDWebImage/">SDWebImage</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">读 SDWebImage 七 （SDWebImageTransition）</h1>
+  </header>
+
+  <section class="post">
+    <p>该类用于在视图类别加载图像完成后提供过渡动画。 </p>
+<ol>
+<li><p>在<code>UIVit + WebCache.h</code> 中的 <code>sd_imageTransition</code><br> 用于<code>UIKit(iOS和tvOS)</code>，使用<br> <code>+ [UIView transitionWithView：duration：options：animations：completion]</code> 进行过渡动画。 </p>
+</li>
+<li><p>对于<code>AppKit(macOS)</code><br>使用 <code>+ [NSAnimationContext runAnimationGroup：completionHandler：]</code>进行过渡动画。 我们可以调用<code>+ [NSAnimationContext currentContext]</code>来获取动画块中的上下文。 提供这些转换以用于基本用途。 </p>
+</li>
+</ol>
+<ol start="3">
+<li>如果需要复杂的动画，可以考虑直接使用<code>Core Animation</code>或使用<code>SDWebImageAvoidAutoSetImage</code>并实现自己的后映像加载完成。<a id="more"></a>
+</li>
+</ol>
+<h3 id="动画选项"><a href="#动画选项" class="headerlink" title="动画选项"></a>动画选项</h3><p>分两种情况，如果是 SD_UIKIT 类型，就直接使用系统的动画选项，否则定义的枚举类型只有一种隐式动画</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#if SD_UIKIT</span><br><span class="line">typedef UIViewAnimationOptions SDWebImageAnimationOptions;</span><br><span class="line">#else</span><br><span class="line">typedef NS_OPTIONS(NSUInteger, SDWebImageAnimationOptions) &#123;</span><br><span class="line">    SDWebImageAnimationOptionAllowsImplicitAnimation = 1 &lt;&lt; 0, // specify `allowsImplicitAnimation` for the `NSAnimationContext`</span><br><span class="line">&#125;;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<h3 id="三个block代码块"><a href="#三个block代码块" class="headerlink" title="三个block代码块"></a>三个block代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//用于动画开始之前要执行的代码块</span><br><span class="line">typedef void (^SDWebImageTransitionPreparesBlock)(__kindof UIView * _Nonnull view, UIImage * _Nullable image, NSData * _Nullable imageData, SDImageCacheType cacheType, NSURL * _Nullable imageURL);</span><br><span class="line"></span><br><span class="line">//用于控制展示动画的代码块</span><br><span class="line">typedef void (^SDWebImageTransitionAnimationsBlock)(__kindof UIView * _Nonnull view, UIImage * _Nullable image);</span><br><span class="line"></span><br><span class="line">//用于动画结束后要执行的代码块</span><br><span class="line">typedef void (^SDWebImageTransitionCompletionBlock)(BOOL finished);</span><br></pre></td></tr></table></figure>
+<h3 id="属性声明"><a href="#属性声明" class="headerlink" title="属性声明"></a>属性声明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//默认情况下，我们将图像设置为动画开头的视图。 您可以禁用此功能并提供自定义设置图像处理</span><br><span class="line">@property (nonatomic, assign) BOOL avoidAutoSetImage;</span><br><span class="line"></span><br><span class="line">//过渡动画的持续时间，以秒为单位。 默认为0.5。</span><br><span class="line">@property (nonatomic, assign) NSTimeInterval duration;</span><br><span class="line"></span><br><span class="line">//用于此过渡动画（macOS）中所有动画的计时功能。</span><br><span class="line">@property (nonatomic, strong, nullable) CAMediaTimingFunction *timingFunction NS_AVAILABLE_MAC(10_7);</span><br><span class="line"></span><br><span class="line">//一个动画选项</span><br><span class="line">@property (nonatomic, assign) SDWebImageAnimationOptions animationOptions;</span><br><span class="line"></span><br><span class="line">//动画开始前所要执行的代码块</span><br><span class="line">@property (nonatomic, copy, nullable) SDWebImageTransitionPreparesBlock prepares;</span><br><span class="line"></span><br><span class="line">动画代码块</span><br><span class="line">@property (nonatomic, copy, nullable) SDWebImageTransitionAnimationsBlock animations;</span><br><span class="line"></span><br><span class="line">//动画结束时要执行的代码块。</span><br><span class="line">@property (nonatomic, copy, nullable) SDWebImageTransitionCompletionBlock completion;</span><br></pre></td></tr></table></figure>
+<h3 id="Conveniences分类"><a href="#Conveniences分类" class="headerlink" title="Conveniences分类"></a>Conveniences分类</h3><p>创建过渡的便捷方式 如果需要，请记住指定持续时间。 对于UIKit，这些转换只使用对应的<code>animationOptions</code>。 默认情况下，我们启用<code>UIViewAnimationOptionAllowUserInteraction</code>以允许用户在转换期间进行交互。 对于AppKit，这些过渡在“动画”中使用了Core Animation。 因此，您的视图必须是图层支持的。 在应用之前设置<code>wantsLayer = YES</code>。</p>
+<h4 id="公共属性和方法"><a href="#公共属性和方法" class="headerlink" title="公共属性和方法"></a>公共属性和方法</h4><p>调用不同的类属性获取不同的动画效果，如果类属性不可用，就调用类方法类获取不同的动画效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#if __has_feature(objc_class_property)</span><br><span class="line">/// 淡出过渡。</span><br><span class="line">@property (nonatomic, class, nonnull, readonly) SDWebImageTransition *fadeTransition;</span><br><span class="line">/// 从左转换翻转。</span><br><span class="line">@property (nonatomic, class, nonnull, readonly) SDWebImageTransition *flipFromLeftTransition;</span><br><span class="line">/// 从右转换翻转。</span><br><span class="line">@property (nonatomic, class, nonnull, readonly) SDWebImageTransition *flipFromRightTransition;</span><br><span class="line">/// 从顶部过渡翻转。</span><br><span class="line">@property (nonatomic, class, nonnull, readonly) SDWebImageTransition *flipFromTopTransition;</span><br><span class="line">/// 从底部过渡翻转。</span><br><span class="line">@property (nonatomic, class, nonnull, readonly) SDWebImageTransition *flipFromBottomTransition;</span><br><span class="line">/// 卷起过渡。</span><br><span class="line">@property (nonatomic, class, nonnull, readonly) SDWebImageTransition *curlUpTransition;</span><br><span class="line">/// 向下弯曲过渡。</span><br><span class="line">@property (nonatomic, class, nonnull, readonly) SDWebImageTransition *curlDownTransition;</span><br><span class="line">#else</span><br><span class="line"></span><br><span class="line">+ (nonnull instancetype)fadeTransition;</span><br><span class="line">+ (nonnull instancetype)flipFromLeftTransition;</span><br><span class="line">+ (nonnull instancetype)flipFromRightTransition;</span><br><span class="line">+ (nonnull instancetype)flipFromTopTransition;</span><br><span class="line">+ (nonnull instancetype)flipFromBottomTransition;</span><br><span class="line">+ (nonnull instancetype)curlUpTransition;</span><br><span class="line">+ (nonnull instancetype)curlDownTransition;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<h3 id="方法实现"><a href="#方法实现" class="headerlink" title="方法实现"></a>方法实现</h3><p><code>SDWebImageTransition</code> 只有一个初始化方法，设置了动画时间为0.5秒</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@implementation SDWebImageTransition</span><br><span class="line"></span><br><span class="line">- (instancetype)init &#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        self.duration = 0.5;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>SDWebImageTransition 分类中创建了不同的动画,这里区别了SD_UIKIT 和 其他。（即iOS 、tvOS、部分watchOS ）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">+ (SDWebImageTransition *)fadeTransition &#123;</span><br><span class="line">    SDWebImageTransition *transition = [SDWebImageTransition new];</span><br><span class="line">#if SD_UIKIT</span><br><span class="line">    transition.animationOptions = UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionAllowUserInteraction;</span><br><span class="line">#else</span><br><span class="line">    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) &#123;</span><br><span class="line">        CATransition *trans = [CATransition animation];</span><br><span class="line">        trans.type = kCATransitionFade;</span><br><span class="line">        [view.layer addAnimation:trans forKey:kCATransition];</span><br><span class="line">    &#125;;</span><br><span class="line">#endif</span><br><span class="line">    return transition;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (SDWebImageTransition *)flipFromLeftTransition &#123;</span><br><span class="line">    SDWebImageTransition *transition = [SDWebImageTransition new];</span><br><span class="line">#if SD_UIKIT</span><br><span class="line">    transition.animationOptions = UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionAllowUserInteraction;</span><br><span class="line">#else</span><br><span class="line">    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) &#123;</span><br><span class="line">        CATransition *trans = [CATransition animation];</span><br><span class="line">        trans.type = kCATransitionPush;</span><br><span class="line">        trans.subtype = kCATransitionFromLeft;</span><br><span class="line">        [view.layer addAnimation:trans forKey:kCATransition];</span><br><span class="line">    &#125;;</span><br><span class="line">#endif</span><br><span class="line">    return transition;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (SDWebImageTransition *)flipFromRightTransition &#123;</span><br><span class="line">    SDWebImageTransition *transition = [SDWebImageTransition new];</span><br><span class="line">#if SD_UIKIT</span><br><span class="line">    transition.animationOptions = UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionAllowUserInteraction;</span><br><span class="line">#else</span><br><span class="line">    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) &#123;</span><br><span class="line">        CATransition *trans = [CATransition animation];</span><br><span class="line">        trans.type = kCATransitionPush;</span><br><span class="line">        trans.subtype = kCATransitionFromRight;</span><br><span class="line">        [view.layer addAnimation:trans forKey:kCATransition];</span><br><span class="line">    &#125;;</span><br><span class="line">#endif</span><br><span class="line">    return transition;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (SDWebImageTransition *)flipFromTopTransition &#123;</span><br><span class="line">    SDWebImageTransition *transition = [SDWebImageTransition new];</span><br><span class="line">#if SD_UIKIT</span><br><span class="line">    transition.animationOptions = UIViewAnimationOptionTransitionFlipFromTop | UIViewAnimationOptionAllowUserInteraction;</span><br><span class="line">#else</span><br><span class="line">    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) &#123;</span><br><span class="line">        CATransition *trans = [CATransition animation];</span><br><span class="line">        trans.type = kCATransitionPush;</span><br><span class="line">        trans.subtype = kCATransitionFromTop;</span><br><span class="line">        [view.layer addAnimation:trans forKey:kCATransition];</span><br><span class="line">    &#125;;</span><br><span class="line">#endif</span><br><span class="line">    return transition;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (SDWebImageTransition *)flipFromBottomTransition &#123;</span><br><span class="line">    SDWebImageTransition *transition = [SDWebImageTransition new];</span><br><span class="line">#if SD_UIKIT</span><br><span class="line">    transition.animationOptions = UIViewAnimationOptionTransitionFlipFromBottom | UIViewAnimationOptionAllowUserInteraction;</span><br><span class="line">#else</span><br><span class="line">    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) &#123;</span><br><span class="line">        CATransition *trans = [CATransition animation];</span><br><span class="line">        trans.type = kCATransitionPush;</span><br><span class="line">        trans.subtype = kCATransitionFromBottom;</span><br><span class="line">        [view.layer addAnimation:trans forKey:kCATransition];</span><br><span class="line">    &#125;;</span><br><span class="line">#endif</span><br><span class="line">    return transition;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (SDWebImageTransition *)curlUpTransition &#123;</span><br><span class="line">    SDWebImageTransition *transition = [SDWebImageTransition new];</span><br><span class="line">#if SD_UIKIT</span><br><span class="line">    transition.animationOptions = UIViewAnimationOptionTransitionCurlUp | UIViewAnimationOptionAllowUserInteraction;</span><br><span class="line">#else</span><br><span class="line">    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) &#123;</span><br><span class="line">        CATransition *trans = [CATransition animation];</span><br><span class="line">        trans.type = kCATransitionReveal;</span><br><span class="line">        trans.subtype = kCATransitionFromTop;</span><br><span class="line">        [view.layer addAnimation:trans forKey:kCATransition];</span><br><span class="line">    &#125;;</span><br><span class="line">#endif</span><br><span class="line">    return transition;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (SDWebImageTransition *)curlDownTransition &#123;</span><br><span class="line">    SDWebImageTransition *transition = [SDWebImageTransition new];</span><br><span class="line">#if SD_UIKIT</span><br><span class="line">    transition.animationOptions = UIViewAnimationOptionTransitionCurlDown | UIViewAnimationOptionAllowUserInteraction;</span><br><span class="line">#else</span><br><span class="line">    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) &#123;</span><br><span class="line">        CATransition *trans = [CATransition animation];</span><br><span class="line">        trans.type = kCATransitionReveal;</span><br><span class="line">        trans.subtype = kCATransitionFromBottom;</span><br><span class="line">        [view.layer addAnimation:trans forKey:kCATransition];</span><br><span class="line">    &#125;;</span><br><span class="line">#endif</span><br><span class="line">    return transition;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/11/28/2018-11-28-Arithmetic-basics/" title="基础算法一：排序">基础算法一：排序</a></h2>
+                <p class="excerpt">
+                
+                
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-11-28T12:14:26.000Z" class="post-list__meta--date date">2018-11-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>
+</span><a class="btn-border-small" href="/2018/11/28/2018-11-28-Arithmetic-basics/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/" title="读 SDWebImage 六 （SDWebImagePrefetcher）">读 SDWebImage 六 （SDWebImagePrefetcher）</a></h2>
+                <p class="excerpt">
+                
+                SDWebImagePrefetcher 预先下载（预加载）图片，以方便后续使用，主要是用于部分图片需要先行下载并存储的情况。预先取出缓存中的一些URLs以供将来使用。 图像以低优先级下载。
+SDWebImagePrefetcher 设计了两种回调方式：
+
+SDWebImagePrefetcherDelegate用来处理每一个预下载完成的回调，以及所有下载完成的回调 
+
+block用来处理整体进度的回调，返回的是下载完成的数量和总数量等
+
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-10-27T14:32:36.000Z" class="post-list__meta--date date">2018-10-27</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/SDWebImage/">SDWebImage</a>
+</span><a class="btn-border-small" href="/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

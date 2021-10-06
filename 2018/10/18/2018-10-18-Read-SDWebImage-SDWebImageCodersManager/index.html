@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>读 SDWebImage 六 （编码器三：SDWebImageCodersManager） | 所念皆星辰</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="读 SDWebImage 六 （编码器三：SDWebImageCodersManager） | 所念皆星辰">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="读 SDWebImage 六 （编码器三：SDWebImageCodersManager） | 所念皆星辰">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    
+    <meta name="author" content="Wheat">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="所念皆星辰" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://qinguohua.fun/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url()">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 所念皆星辰 的主页"><img src="/images/avatar.png" width="80" alt="所念皆星辰 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 所念皆星辰">所念皆星辰</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">踏实、低调、前行。</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">简单的一个技术博客，用来作为学习笔记和日常记录使用。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/books">读书</a></li>
+            
+              <li class="navigation__item"><a href="/essays">随笔</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/guohuaCabin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-10-18T12:48:55.000Z" class="post-list__meta--date date">2018-10-18</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/SDWebImage/">SDWebImage</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</h1>
+  </header>
+
+  <section class="post">
+    <p><code>SDWebImage</code> 内部实现了一个图片解码/编码的图片编解码器，用于图片的编解码、压缩。其中涉及到编解码管理（<code>SDWebImageCodersManager</code>）、编解码协议（<code>SDWebImageCoder</code>）、PNG/JPEG/TIFF编解码，解压缩，显示大图（<code>SDWebImageImageIOCoder</code>）、GIF编解码（<code>SDWebImageGIFCoder</code>）、WebP编解码（<code>SDWebImageWebPCoder</code>）以及辅助类（<code>SDWebImageCoderHelper</code>）</p>
+<h3 id="编解码管理（-SDWebImageCodersManager-）"><a href="#编解码管理（-SDWebImageCodersManager-）" class="headerlink" title="编解码管理（ SDWebImageCodersManager ）"></a>编解码管理（ <code>SDWebImageCodersManager</code> ）</h3><p>编解码管理器，整体编解码器的入口，该类遵守了 <code>SDWebImageCoder</code> 协议，说明这个类可以提供基本的编解码功能 。编解码器数组是一个优先级队列，也意味着处理多个图片编解码任务时新添加的编解码器将具有最高优先级（即被先调用）<a id="more"></a></p>
+<h4 id="声明属性和方法"><a href="#声明属性和方法" class="headerlink" title="声明属性和方法"></a>声明属性和方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 单例初始化</span><br><span class="line"> */</span><br><span class="line">+ (nonnull instancetype)sharedInstance;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 所有的编解码器都在这个编解码器管理中（编码器数组）这个编解码器数组是一个优先级对列, 这意味着最后添加的编解码器拥有最高的优先级</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, copy, readwrite, nullable) NSArray&lt;id&lt;SDWebImageCoder&gt;&gt; *coders;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 在编解码器数组的末尾添加一个新的编解码器。 新添加的编解码器优先级最高。</span><br><span class="line"></span><br><span class="line"> @param coder 需添加的coder</span><br><span class="line"> */</span><br><span class="line">- (void)addCoder:(nonnull id&lt;SDWebImageCoder&gt;)coder;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 在编解码器数组中移除编码器</span><br><span class="line"></span><br><span class="line"> @param coder 需移除的coder</span><br><span class="line"> */</span><br><span class="line">- (void)removeCoder:(nonnull id&lt;SDWebImageCoder&gt;)coder;</span><br></pre></td></tr></table></figure>
+<h4 id="初始化方法实现"><a href="#初始化方法实现" class="headerlink" title="初始化方法实现"></a>初始化方法实现</h4><p>初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//单例</span><br><span class="line">+ (nonnull instancetype)sharedInstance &#123;</span><br><span class="line">    static dispatch_once_t once;</span><br><span class="line">    static id instance;</span><br><span class="line">    dispatch_once(&amp;once, ^&#123;</span><br><span class="line">        instance = [self new];</span><br><span class="line">    &#125;);</span><br><span class="line">    return instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (instancetype)init &#123;</span><br><span class="line">    if (self = [super init]) &#123;</span><br><span class="line">        // 初始化默认的编解码器，默认编码器只有SDWebImageImageIOCoder类型的</span><br><span class="line">        NSMutableArray&lt;id&lt;SDWebImageCoder&gt;&gt; *mutableCoders = [@[[SDWebImageImageIOCoder sharedCoder]] mutableCopy];</span><br><span class="line">#ifdef SD_WEBP</span><br><span class="line">        //如果是WEBP，就添加SDWebImageWebPCoder单例</span><br><span class="line">        [mutableCoders addObject:[SDWebImageWebPCoder sharedCoder]];</span><br><span class="line">#endif</span><br><span class="line">        _coders = [mutableCoders copy];</span><br><span class="line">        _codersLock = dispatch_semaphore_create(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="编码器IO操作"><a href="#编码器IO操作" class="headerlink" title="编码器IO操作"></a>编码器IO操作</h4><p>添加编码器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)addCoder:(nonnull id&lt;SDWebImageCoder&gt;)coder &#123;</span><br><span class="line">    //判断要添加的编解码器是否遵守SDWebImageCoder协议，以提供最基本的编解码功能</span><br><span class="line">    //如果不遵守SDWebImageCoder协议，返回</span><br><span class="line">    if (![coder conformsToProtocol:@protocol(SDWebImageCoder)]) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    LOCK(self.codersLock);</span><br><span class="line">    //临时变量，编解码器数组，如果不存在，重新初始化一个</span><br><span class="line">    NSMutableArray&lt;id&lt;SDWebImageCoder&gt;&gt; *mutableCoders = [self.coders mutableCopy];</span><br><span class="line">    if (!mutableCoders) &#123;</span><br><span class="line">        mutableCoders = [NSMutableArray array];</span><br><span class="line">    &#125;</span><br><span class="line">    //添加新的coder</span><br><span class="line">    [mutableCoders addObject:coder];</span><br><span class="line">    //重新赋值给self.coders</span><br><span class="line">    self.coders = [mutableCoders copy];</span><br><span class="line">    UNLOCK(self.codersLock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>移除编码器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (void)removeCoder:(nonnull id&lt;SDWebImageCoder&gt;)coder &#123;</span><br><span class="line">    //判断要添加的编解码器是否遵守SDWebImageCoder协议，以提供最基本的编解码功能</span><br><span class="line">    //如果不遵守SDWebImageCoder协议，返回</span><br><span class="line">    if (![coder conformsToProtocol:@protocol(SDWebImageCoder)]) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    LOCK(self.codersLock);</span><br><span class="line">    //临时变量，编解码器数组，使其等于self.coders（深拷贝）</span><br><span class="line">    NSMutableArray&lt;id&lt;SDWebImageCoder&gt;&gt; *mutableCoders = [self.coders mutableCopy];</span><br><span class="line">    //移除编解码器coder</span><br><span class="line">    [mutableCoders removeObject:coder];</span><br><span class="line">     //重新赋值给self.coders</span><br><span class="line">    self.coders = [mutableCoders copy];</span><br><span class="line">    UNLOCK(self.codersLock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="SDWebImageCoder协议方法实现"><a href="#SDWebImageCoder协议方法实现" class="headerlink" title="SDWebImageCoder协议方法实现"></a>SDWebImageCoder协议方法实现</h4><p>解码协议实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 如果此编解码器可以解码某些data，返回YES，否则，它应该传递给另一个编码器</span><br><span class="line"> </span><br><span class="line"> @param data 需要解码的图片数据</span><br><span class="line"> @return 如果此编解码器可以解码图片数据，返回YES，否则返回NO</span><br><span class="line"> */</span><br><span class="line">- (BOOL)canDecodeFromData:(NSData *)data &#123;</span><br><span class="line">    LOCK(self.codersLock);</span><br><span class="line">    //临时变量，编解码器数组，赋值等于 self.coders</span><br><span class="line">    NSArray&lt;id&lt;SDWebImageCoder&gt;&gt; *coders = self.coders;</span><br><span class="line">    UNLOCK(self.codersLock);</span><br><span class="line">    //倒序遍历编解码器数组（倒序的原因是：编解码器数组中最新添加的具有最高优先级）</span><br><span class="line">    for (id&lt;SDWebImageCoder&gt; coder in coders.reverseObjectEnumerator) &#123;</span><br><span class="line">        //判断，如果其中有编解码器能够解码，就返回YES，否则返回NO</span><br><span class="line">        if ([coder canDecodeFromData:data]) &#123;</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return NO;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 将图片数据解码为图片。</span><br><span class="line"> </span><br><span class="line"> @param data 需要解码的图片数据</span><br><span class="line"> @return 解码后得到的图片</span><br><span class="line"> */</span><br><span class="line">- (UIImage *)decodedImageWithData:(NSData *)data &#123;</span><br><span class="line">    LOCK(self.codersLock);</span><br><span class="line">    NSArray&lt;id&lt;SDWebImageCoder&gt;&gt; *coders = self.coders;</span><br><span class="line">    UNLOCK(self.codersLock);</span><br><span class="line">    //倒序遍历编解码器列表</span><br><span class="line">    for (id&lt;SDWebImageCoder&gt; coder in coders.reverseObjectEnumerator) &#123;</span><br><span class="line">        //判断，如果其中有编解码器能够解码，就执行解码操作，否则返回Image为nil</span><br><span class="line">        if ([coder canDecodeFromData:data]) &#123;</span><br><span class="line">            return [coder decodedImageWithData:data];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return nil;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">使用原始图片和图片数据解压缩图片。</span><br><span class="line"></span><br><span class="line"> @param image 需要压缩的原图片</span><br><span class="line"> @param data 指向原始图像数据的指针。 指针本身是非空的，但图像数据可以为空。 如果需要，此数据将设置为缓存。 如果您不需要同时修改数据，请忽略此参数。</span><br><span class="line"> @param optionsDict 一个包含任何解压缩选项的字典。 通过&#123;SDWebImageCoderScaleDownLargeImagesKey：@（YES）&#125;缩小大图像</span><br><span class="line"> @return 解压缩后的图片</span><br><span class="line"> */</span><br><span class="line">- (UIImage *)decompressedImageWithImage:(UIImage *)image</span><br><span class="line">                                   data:(NSData *__autoreleasing  _Nullable *)data</span><br><span class="line">                                options:(nullable NSDictionary&lt;NSString*, NSObject*&gt;*)optionsDict &#123;</span><br><span class="line">    //如果image不存在，返回nil</span><br><span class="line">    if (!image) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    LOCK(self.codersLock);</span><br><span class="line">    NSArray&lt;id&lt;SDWebImageCoder&gt;&gt; *coders = self.coders;</span><br><span class="line">    UNLOCK(self.codersLock);</span><br><span class="line">    //倒序遍历编解码器列表</span><br><span class="line">    for (id&lt;SDWebImageCoder&gt; coder in coders.reverseObjectEnumerator) &#123;</span><br><span class="line">        //如果其中有编解码器可以解码，执行解压缩图片操作，并返回解压缩后的图片</span><br><span class="line">        if ([coder canDecodeFromData:*data]) &#123;</span><br><span class="line">            //解压缩图片操作</span><br><span class="line">            UIImage *decompressedImage = [coder decompressedImageWithImage:image data:data options:optionsDict];</span><br><span class="line">            decompressedImage.sd_imageFormat = image.sd_imageFormat;</span><br><span class="line">            return decompressedImage;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return nil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编码协议实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 如果此编码器可以编码某些图片格式，返回YES，否则，它应该传递给另一个编码器</span><br><span class="line"> </span><br><span class="line"> @param format 图片格式</span><br><span class="line"> @return 如果此编码器可以编码图片格式，返回YES，否则返回NO</span><br><span class="line"> */</span><br><span class="line">- (BOOL)canEncodeToFormat:(SDImageFormat)format &#123;</span><br><span class="line">    LOCK(self.codersLock);</span><br><span class="line">    NSArray&lt;id&lt;SDWebImageCoder&gt;&gt; *coders = self.coders;</span><br><span class="line">    UNLOCK(self.codersLock);</span><br><span class="line">    //倒序遍历编解码器列表</span><br><span class="line">    for (id&lt;SDWebImageCoder&gt; coder in coders.reverseObjectEnumerator) &#123;</span><br><span class="line">        //判断，如果其中有编解码器能够编码图片格式，就返回YES，否则返回NO</span><br><span class="line">        if ([coder canEncodeToFormat:format]) &#123;</span><br><span class="line">            return YES;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return NO;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 将图片编码为图片数据（imagedata）</span><br><span class="line"></span><br><span class="line"> @param image 需要编码的图片</span><br><span class="line"> @param format 要编码的图片格式, 也有可能是 `SDImageFormatUndefined` 格式（未识别格式）</span><br><span class="line"> @return The encoded image data</span><br><span class="line"> */</span><br><span class="line">- (NSData *)encodedDataWithImage:(UIImage *)image format:(SDImageFormat)format &#123;</span><br><span class="line">    //如果image不存在，返回nil</span><br><span class="line">    if (!image) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    LOCK(self.codersLock);</span><br><span class="line">    NSArray&lt;id&lt;SDWebImageCoder&gt;&gt; *coders = self.coders;</span><br><span class="line">    UNLOCK(self.codersLock);</span><br><span class="line">    //倒序遍历编解码器列表</span><br><span class="line">    for (id&lt;SDWebImageCoder&gt; coder in coders.reverseObjectEnumerator) &#123;</span><br><span class="line">        //判断，如果其中有编解码器能够编码图片格式，就执行将图片以format格式编码为data操作，并返回imagedata</span><br><span class="line">        if ([coder canEncodeToFormat:format]) &#123;</span><br><span class="line">            // 将图片编码为图片数据（imagedata）</span><br><span class="line">            return [coder encodedDataWithImage:image format:format];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return nil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/" title="读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）">读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</a></h2>
+                <p class="excerpt">
+                
+                SDWebImage 内部实现了一个图片解码/编码的图片编码器，用于图片的编解码、压缩。其中涉及到编解码管理（SDWebImageCodersManager）、编解码协议（SDWebImageCoder）、PNG/JPEG/TIFF编解码，解压缩，显示大图（SDWebImageImageIOCoder）、GIF编解码（SDWebImageGIFCoder）、WebP编解码（SDWebImageWebPCoder）以及辅助类（SDWebImageCoderHelper）
+SDWebImageImageIOCoder ：内置编码器，支持PNG，JPEG，TIFF，支持逐行解码。该类遵守 SDWebImageProgressiveCoder协议。该协议也遵守SDWebImageCoder协议，所以这个类要实现这两个协议的方法。
+  GIF  还支持静态GIF（意思是只处理第一帧）。  要获得完整的GIF支持，我们建议使用FLAnimatedImage或性能较差的SDWebImageGIFCoder
+  HEIC  该编码器还支持HEIC格式，因为ImageIO本身支持它。但这取决于系统功能，因此无法在所有设备上运行。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-10-23T13:57:30.000Z" class="post-list__meta--date date">2018-10-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/SDWebImage/">SDWebImage</a>
+</span><a class="btn-border-small" href="/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/" title="读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）">读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</a></h2>
+                <p class="excerpt">
+                
+                SDWebImage 内部实现了一个图片解码/编码的图片编码器，用于图片的编解码、压缩。其中涉及到编解码管理（SDWebImageCodersManager）、编解码协议（SDWebImageCoder）、PNG/JPEG/TIFF编解码，解压缩，显示大图（SDWebImageImageIOCoder）、GIF编解码（SDWebImageGIFCoder）、WebP编解码（SDWebImageWebPCoder）以及辅助类（SDWebImageCoderHelper）
+本篇只做 SDWebImageCoderHelper 类的分析。该类作为辅助类，主要实现了两个功能：动图处理 和 图片方向处理。每个功能有两种方法，均为互逆方法。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-10-15T13:52:22.000Z" class="post-list__meta--date date">2018-10-15</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/SDWebImage/">SDWebImage</a>
+</span><a class="btn-border-small" href="/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

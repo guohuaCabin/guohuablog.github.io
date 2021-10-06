@@ -18,8 +18,8 @@
   
   <entry>
     <title>iOS 代码规范</title>
-    <link href="http://qinguohua.fun/2021/01/30/iOS-Code-Standards/"/>
-    <id>http://qinguohua.fun/2021/01/30/iOS-Code-Standards/</id>
+    <link href="http://qinguohua.fun/2021/01/30/2021-01-30-iOS-Code-Standards/"/>
+    <id>http://qinguohua.fun/2021/01/30/2021-01-30-iOS-Code-Standards/</id>
     <published>2021-01-30T11:39:50.000Z</published>
     <updated>2021-01-30T11:43:44.902Z</updated>
     
@@ -43,8 +43,8 @@
   
   <entry>
     <title>二叉树遍历（Binary Tree）</title>
-    <link href="http://qinguohua.fun/2021/01/30/Binary-Tree/"/>
-    <id>http://qinguohua.fun/2021/01/30/Binary-Tree/</id>
+    <link href="http://qinguohua.fun/2021/01/30/2019-01-30-Binary-Tree/"/>
+    <id>http://qinguohua.fun/2021/01/30/2019-01-30-Binary-Tree/</id>
     <published>2021-01-30T11:14:01.000Z</published>
     <updated>2021-01-30T11:27:22.162Z</updated>
     
@@ -68,8 +68,8 @@
   
   <entry>
     <title>watchdog</title>
-    <link href="http://qinguohua.fun/2020/07/07/watchdog/"/>
-    <id>http://qinguohua.fun/2020/07/07/watchdog/</id>
+    <link href="http://qinguohua.fun/2020/07/07/2020-07-07-watchdog/"/>
+    <id>http://qinguohua.fun/2020/07/07/2020-07-07-watchdog/</id>
     <published>2020-07-07T14:44:50.000Z</published>
     <updated>2021-07-07T14:50:46.746Z</updated>
     
@@ -93,8 +93,8 @@
   
   <entry>
     <title>算法：从尾到头打印链表</title>
-    <link href="http://qinguohua.fun/2019/04/20/Arithmetic-weekly5/"/>
-    <id>http://qinguohua.fun/2019/04/20/Arithmetic-weekly5/</id>
+    <link href="http://qinguohua.fun/2019/04/20/2019-04-20-Arithmetic-weekly5/"/>
+    <id>http://qinguohua.fun/2019/04/20/2019-04-20-Arithmetic-weekly5/</id>
     <published>2019-04-20T12:46:09.000Z</published>
     <updated>2021-01-30T11:32:07.794Z</updated>
     
@@ -118,8 +118,8 @@
   
   <entry>
     <title>算法：实现一个函数，把字符串中的每个空格替换成&quot;%20&quot;</title>
-    <link href="http://qinguohua.fun/2019/04/14/Arithmetic-weekly4/"/>
-    <id>http://qinguohua.fun/2019/04/14/Arithmetic-weekly4/</id>
+    <link href="http://qinguohua.fun/2019/04/14/2019-04-14-Arithmetic-weekly4/"/>
+    <id>http://qinguohua.fun/2019/04/14/2019-04-14-Arithmetic-weekly4/</id>
     <published>2019-04-14T03:46:09.000Z</published>
     <updated>2021-01-30T11:32:43.424Z</updated>
     
@@ -143,8 +143,8 @@
   
   <entry>
     <title>算法：判断数组中是否含有某个整数</title>
-    <link href="http://qinguohua.fun/2019/04/12/Arithmetic-weekly3/"/>
-    <id>http://qinguohua.fun/2019/04/12/Arithmetic-weekly3/</id>
+    <link href="http://qinguohua.fun/2019/04/12/2019-04-12-Arithmetic-weekly3/"/>
+    <id>http://qinguohua.fun/2019/04/12/2019-04-12-Arithmetic-weekly3/</id>
     <published>2019-04-12T08:00:18.000Z</published>
     <updated>2021-01-30T11:33:59.589Z</updated>
     
@@ -168,10 +168,10 @@
   
   <entry>
     <title>算法：找出数组中重复的数字</title>
-    <link href="http://qinguohua.fun/2019/04/11/Arithmetic-weekly2/"/>
-    <id>http://qinguohua.fun/2019/04/11/Arithmetic-weekly2/</id>
+    <link href="http://qinguohua.fun/2019/04/11/2019-04-11-Arithmetic-weekly2/"/>
+    <id>http://qinguohua.fun/2019/04/11/2019-04-11-Arithmetic-weekly2/</id>
     <published>2019-04-11T03:58:52.000Z</published>
-    <updated>2021-01-30T11:33:42.608Z</updated>
+    <updated>2021-10-06T16:10:54.358Z</updated>
     
     <content type="html"><![CDATA[<h3 id="找出数组中重复的数字"><a href="#找出数组中重复的数字" class="headerlink" title="找出数组中重复的数字"></a>找出数组中重复的数字</h3><h4 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h4><p>在一个长度为n的数组里的所有数字都在0~n-1的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。例如：如果输入长度为 7 的数组{2，3，1，0，2，5，3}，那么对应的输出是重复的数字2或者3。</p><h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>从数组中找出重复的数字，如果没有提示！</p><h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>遍历数组进行匹配，考虑时间复杂度问题。</p><h4 id="方案："><a href="#方案：" class="headerlink" title="方案："></a>方案：</h4><h5 id="1、双重遍历"><a href="#1、双重遍历" class="headerlink" title="1、双重遍历"></a>1、双重遍历</h5><p>将数组中的每一个数与其他数做匹配，如果两者相等，输出，否则输出未找到提示。</p><h5 id="2、排序-遍历"><a href="#2、排序-遍历" class="headerlink" title="2、排序+遍历"></a>2、排序+遍历</h5><p>将数组排序，匹配相邻者数字，如果两者相等，输出，否则输出未找到提示。</p><h5 id="3、哈希表-遍历"><a href="#3、哈希表-遍历" class="headerlink" title="3、哈希表+遍历"></a>3、哈希表+遍历</h5><p>将遍历时的每个数存入哈希表中，每次存入的时候判断下是否</p><h5 id="4、辅助数组-遍历"><a href="#4、辅助数组-遍历" class="headerlink" title="4、辅助数组+遍历"></a>4、辅助数组+遍历</h5><p>创建一个辅助数组，然后逐一把原数组的每个数字复制到辅助数组中，如果原数组中被复制的数字是n,则把它复制到辅助数组中下标为n的位置。如果该位置已有相同的数字，则该数字为重复数字。该方案需要O(n)的辅助空间。</p><h5 id="5、类似二分查找方法"><a href="#5、类似二分查找方法" class="headerlink" title="5、类似二分查找方法"></a>5、类似二分查找方法</h5><p>前提：在一个长度为n的数组里的所有数字都在0~n-1的范围内。我们把从0~n-1的数字从中间的数字【 (n-1)/2】（下面以m表示）分为两部分，前半部分为0~m,后半部分为m+1 ~ n-1。如果1~m的数字个数超过m，则这个区间一定存在重复的数字；否则后半部分区间一定存在重复的数字。继续重复分割数字区间，直到找到一个重复的数字。</p><h4 id="代码实践"><a href="#代码实践" class="headerlink" title="代码实践:"></a>代码实践:</h4><p><strong>双重遍历</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> len = (<span class="keyword">int</span>) <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(*arr);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> number = arr[i];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = i;j&lt;len;j++) &#123;</span><br><span class="line"><span class="keyword">if</span> (number == arr[j]) &#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,number);</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"未找到"</span>);</span><br></pre></td></tr></table></figure><p><strong>排序+遍历</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> len = (<span class="keyword">int</span>) <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(*arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line"><span class="keyword">int</span> i,j,temp;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">temp = arr[i];</span><br><span class="line"><span class="keyword">for</span> (j=i;j&gt;<span class="number">0</span> &amp;&amp; arr[j<span class="number">-1</span>]&gt;temp;j--)&#123;</span><br><span class="line">arr[j] = arr[j<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line">arr[j] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历</span></span><br><span class="line"><span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> result = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;len<span class="number">-1</span>;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> number = arr[index];</span><br><span class="line"><span class="keyword">int</span> next = arr[index+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">if</span> (number == next) &#123;</span><br><span class="line">result = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"--%d---"</span>,number);</span><br><span class="line">&#125;</span><br><span class="line">index = index+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(result == <span class="literal">false</span>)&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"未找到"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>哈希表+遍历</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> len = (<span class="keyword">int</span>) <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(*arr);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(len &lt;= <span class="number">0</span> )&#123;</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i =  <span class="number">0</span>; i &lt; len ; i++)&#123;</span><br><span class="line"><span class="keyword">if</span> (arr[i] &lt; <span class="number">0</span> || arr[i] &gt; len<span class="number">-1</span> ) &#123;</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> number = arr[i];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(number != i)&#123;</span><br><span class="line"><span class="keyword">int</span> nextNum = arr[number];</span><br><span class="line"><span class="keyword">if</span>(number == nextNum)&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,number);</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> temp = number;</span><br><span class="line">arr[i] = nextNum;</span><br><span class="line">arr[number] = temp;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>4、辅助数组+遍历</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> len = (<span class="keyword">int</span>) <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(*arr);</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> arr1[len+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> number = arr[i];</span><br><span class="line"><span class="keyword">int</span> tagerNumber = arr1[number];</span><br><span class="line"><span class="keyword">if</span>(number == tagerNumber)&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"----%d\n"</span>,number);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">arr1[number] = number;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>5、类似二分查找方法</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> len = (<span class="keyword">int</span>) <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(*arr);</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> end = len;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(start &lt;= end)&#123;</span><br><span class="line"><span class="keyword">int</span> middle = (end+start)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//计算区间里的数字数目</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line"><span class="keyword">if</span>(arr[i]&lt;=middle &amp;&amp; arr[i]&gt;=start)&#123;</span><br><span class="line">count++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果区间内的数字个数大于区间的应有个数（比如：10-20， 中间数为15，区间为10-15，区间内应有5个数）</span></span><br><span class="line"><span class="keyword">if</span> (count &gt; middle-start+<span class="number">1</span>) &#123;</span><br><span class="line"><span class="comment">//说明重复数字在[start,middle]中</span></span><br><span class="line">end = middle;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="comment">//说明重复数字在[middle,end]中</span></span><br><span class="line">start = middle+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//二分查找索引相遇代表查找结束。</span></span><br><span class="line"><span class="keyword">if</span>(end == start)&#123;</span><br><span class="line"><span class="comment">//count大于0，说明找到重复数字</span></span><br><span class="line"><span class="keyword">if</span>(count &gt; <span class="number">1</span>)&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,start);</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -193,8 +193,8 @@
   
   <entry>
     <title>算法：找出有序数组中和等于指定数的两个数</title>
-    <link href="http://qinguohua.fun/2019/04/04/Arithmetic-weekly1/"/>
-    <id>http://qinguohua.fun/2019/04/04/Arithmetic-weekly1/</id>
+    <link href="http://qinguohua.fun/2019/04/04/2019-04-04-Arithmetic-weekly1/"/>
+    <id>http://qinguohua.fun/2019/04/04/2019-04-04-Arithmetic-weekly1/</id>
     <published>2019-04-04T02:27:55.000Z</published>
     <updated>2021-01-30T11:33:27.952Z</updated>
     
@@ -217,30 +217,9 @@
   </entry>
   
   <entry>
-    <title>隐私协议</title>
-    <link href="http://qinguohua.fun/2019/01/25/PrivacyPolicy/"/>
-    <id>http://qinguohua.fun/2019/01/25/PrivacyPolicy/</id>
-    <published>2019-01-25T07:19:56.000Z</published>
-    <updated>2019-03-02T11:46:53.650Z</updated>
-    
-    <content type="html"><![CDATA[<p>本软件尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，本软件会按照本隐私权政策的规定使用和披露您的个人信息。但本软件将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外，在未征得您事先许可的情况下，本软件不会将这些信息对外披露或向第三方提供。本软件会不时更新本隐私权政策。您在同意本软件服务使用协议之时，即视为您已经同意本隐私权政策全部内容。本隐私权政策属于本软件服务使用协议不可分割的一部分。</p><h3 id="1-适用范围"><a href="#1-适用范围" class="headerlink" title="1.适用范围"></a>1.适用范围</h3><p>a.在您使用本软件网络服务，本软件自动接收并记录的您的手机上的信息，包括但不限于您的健康数据、使用的语言、访问日期和时间等数据；</p><h3 id="2-信息的使用"><a href="#2-信息的使用" class="headerlink" title="2.信息的使用"></a>2.信息的使用</h3><p>a.在获得您的数据之后，本软件会将其上传至服务器，以便您能够更好地使用服务。</p><h3 id="3-信息披露"><a href="#3-信息披露" class="headerlink" title="3.信息披露"></a>3.信息披露</h3><p>a.本软件不会将您的信息披露给不受信任的第三方。</p><p>b.根据法律的有关规定，或者行政或司法机构的要求，向第三方或者行政、司法机构披露；</p><p>c.如您出现违反中国有关法律、法规或者相关规则的情况，需要向第三方披露；</p><h3 id="4-信息存储和交换"><a href="#4-信息存储和交换" class="headerlink" title="4.信息存储和交换"></a>4.信息存储和交换</h3><p>本软件收集的有关您的信息和资料将保存在本软件及服务器上，这些信息和资料可能传送至您所在国家、地区或本软件收集信息和资料所在地的境外并在境外被访问、存储和展示。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;本软件尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，本软件会按照本隐私权政策的规定使用和披露您的个人信息。但本软件将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外，在未征得您事先许可的情况下，本软件不会将这些信息对外披露或向第三
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>K最近邻算法</title>
-    <link href="http://qinguohua.fun/2019/01/07/Arithmetic6-KNN/"/>
-    <id>http://qinguohua.fun/2019/01/07/Arithmetic6-KNN/</id>
+    <link href="http://qinguohua.fun/2019/01/07/2019-01-07-Arithmetic6-KNN/"/>
+    <id>http://qinguohua.fun/2019/01/07/2019-01-07-Arithmetic6-KNN/</id>
     <published>2019-01-07T13:38:58.000Z</published>
     <updated>2021-01-30T11:31:08.514Z</updated>
     
@@ -257,8 +236,8 @@
   
   <entry>
     <title>迪克特斯拉算法</title>
-    <link href="http://qinguohua.fun/2019/01/06/Arithmetic5-Dijkstra/"/>
-    <id>http://qinguohua.fun/2019/01/06/Arithmetic5-Dijkstra/</id>
+    <link href="http://qinguohua.fun/2019/01/06/2019-01-06-Arithmetic5-Dijkstra/"/>
+    <id>http://qinguohua.fun/2019/01/06/2019-01-06-Arithmetic5-Dijkstra/</id>
     <published>2019-01-06T14:38:27.000Z</published>
     <updated>2021-01-30T11:31:14.694Z</updated>
     
@@ -275,8 +254,8 @@
   
   <entry>
     <title>深度优先搜索（DFS）</title>
-    <link href="http://qinguohua.fun/2019/01/05/Arithmetic4-DFS/"/>
-    <id>http://qinguohua.fun/2019/01/05/Arithmetic4-DFS/</id>
+    <link href="http://qinguohua.fun/2019/01/05/2019-01-05-Arithmetic4-DFS/"/>
+    <id>http://qinguohua.fun/2019/01/05/2019-01-05-Arithmetic4-DFS/</id>
     <published>2019-01-05T13:37:34.000Z</published>
     <updated>2021-01-30T11:31:33.122Z</updated>
     
@@ -301,8 +280,8 @@
   
   <entry>
     <title>动态规划</title>
-    <link href="http://qinguohua.fun/2019/01/03/Arithmetic3-DynamicProgramming/"/>
-    <id>http://qinguohua.fun/2019/01/03/Arithmetic3-DynamicProgramming/</id>
+    <link href="http://qinguohua.fun/2019/01/03/2019-01-03-Arithmetic3-DynamicProgramming/"/>
+    <id>http://qinguohua.fun/2019/01/03/2019-01-03-Arithmetic3-DynamicProgramming/</id>
     <published>2019-01-03T13:32:21.000Z</published>
     <updated>2021-01-30T11:31:39.321Z</updated>
     
@@ -319,8 +298,8 @@
   
   <entry>
     <title>基础算法：选择排序</title>
-    <link href="http://qinguohua.fun/2018/12/31/Arithmetic-Basice-SelectSort/"/>
-    <id>http://qinguohua.fun/2018/12/31/Arithmetic-Basice-SelectSort/</id>
+    <link href="http://qinguohua.fun/2018/12/31/2018-12-31-Arithmetic-Basice-SelectSort/"/>
+    <id>http://qinguohua.fun/2018/12/31/2018-12-31-Arithmetic-Basice-SelectSort/</id>
     <published>2018-12-31T12:52:49.000Z</published>
     <updated>2021-01-30T11:33:16.518Z</updated>
     
@@ -337,8 +316,8 @@
   
   <entry>
     <title>基础算法：插入排序</title>
-    <link href="http://qinguohua.fun/2018/12/30/Arithmetic-Basice-InsertSort/"/>
-    <id>http://qinguohua.fun/2018/12/30/Arithmetic-Basice-InsertSort/</id>
+    <link href="http://qinguohua.fun/2018/12/30/2018-12-30-Arithmetic-Basice-InsertSort/"/>
+    <id>http://qinguohua.fun/2018/12/30/2018-12-30-Arithmetic-Basice-InsertSort/</id>
     <published>2018-12-30T13:10:56.000Z</published>
     <updated>2021-01-30T11:33:15.386Z</updated>
     
@@ -355,8 +334,8 @@
   
   <entry>
     <title>递归和for循环</title>
-    <link href="http://qinguohua.fun/2018/12/01/Arithmetic2-RecursionAndFor/"/>
-    <id>http://qinguohua.fun/2018/12/01/Arithmetic2-RecursionAndFor/</id>
+    <link href="http://qinguohua.fun/2018/12/01/2018-12-01-Arithmetic2-RecursionAndFor/"/>
+    <id>http://qinguohua.fun/2018/12/01/2018-12-01-Arithmetic2-RecursionAndFor/</id>
     <published>2018-12-01T13:05:51.000Z</published>
     <updated>2021-01-30T11:31:48.417Z</updated>
     
@@ -373,8 +352,8 @@
   
   <entry>
     <title>基础算法：交换排序</title>
-    <link href="http://qinguohua.fun/2018/11/29/Arithmetic-Basice-ExchangeSort/"/>
-    <id>http://qinguohua.fun/2018/11/29/Arithmetic-Basice-ExchangeSort/</id>
+    <link href="http://qinguohua.fun/2018/11/29/2018-11-29-Arithmetic-Basice-ExchangeSort/"/>
+    <id>http://qinguohua.fun/2018/11/29/2018-11-29-Arithmetic-Basice-ExchangeSort/</id>
     <published>2018-11-29T12:54:23.000Z</published>
     <updated>2021-01-30T11:33:13.863Z</updated>
     
@@ -391,8 +370,8 @@
   
   <entry>
     <title>基础算法一：排序</title>
-    <link href="http://qinguohua.fun/2018/11/28/Arithmetic-basics/"/>
-    <id>http://qinguohua.fun/2018/11/28/Arithmetic-basics/</id>
+    <link href="http://qinguohua.fun/2018/11/28/2018-11-28-Arithmetic-basics/"/>
+    <id>http://qinguohua.fun/2018/11/28/2018-11-28-Arithmetic-basics/</id>
     <published>2018-11-28T12:14:26.000Z</published>
     <updated>2021-01-30T11:33:17.807Z</updated>
     
@@ -409,8 +388,8 @@
   
   <entry>
     <title>读 SDWebImage 七 （SDWebImageTransition）</title>
-    <link href="http://qinguohua.fun/2018/10/30/Read-SDWebImage-SDWebImageTransition/"/>
-    <id>http://qinguohua.fun/2018/10/30/Read-SDWebImage-SDWebImageTransition/</id>
+    <link href="http://qinguohua.fun/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/"/>
+    <id>http://qinguohua.fun/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/</id>
     <published>2018-10-30T13:32:19.000Z</published>
     <updated>2018-11-02T08:04:14.440Z</updated>
     
@@ -439,8 +418,8 @@
   
   <entry>
     <title>读 SDWebImage 六 （SDWebImagePrefetcher）</title>
-    <link href="http://qinguohua.fun/2018/10/27/Read-SDWebImage-SDWebImagePrefetcher/"/>
-    <id>http://qinguohua.fun/2018/10/27/Read-SDWebImage-SDWebImagePrefetcher/</id>
+    <link href="http://qinguohua.fun/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/"/>
+    <id>http://qinguohua.fun/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/</id>
     <published>2018-10-27T14:32:36.000Z</published>
     <updated>2018-11-02T08:04:38.550Z</updated>
     
@@ -456,6 +435,29 @@
 &lt;li&gt;&lt;p&gt;&lt;code&gt;block&lt;/code&gt;&lt;br&gt;用来处理整体进度的回调，返回的是下载完成的数量和总数量等&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="读SDWebImage手札" scheme="http://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
+    
+    
+      <category term="SDWebImage" scheme="http://qinguohua.fun/tags/SDWebImage/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读 SDWebImage 六（编码器五：SDWebImageGIFCoder）</title>
+    <link href="http://qinguohua.fun/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/"/>
+    <id>http://qinguohua.fun/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/</id>
+    <published>2018-10-24T14:31:13.000Z</published>
+    <updated>2018-10-30T07:54:59.410Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>SDWebImage</code> 内部实现了一个图片解码/编码的图片编码器，用于图片的编解码、压缩。其中涉及到编解码管理（<code>SDWebImageCodersManager</code>）、编解码协议（<code>SDWebImageCoder</code> 和 <code>SDWebImageProgressiveCoder</code> ）、PNG/JPEG/TIFF编解码，解压缩，显示大图（<code>SDWebImageImageIOCoder</code>）、GIF编解码（<code>SDWebImageGIFCoder</code>）、WebP编解码（<code>SDWebImageWebPCoder</code>）以及辅助类（<code>SDWebImageCoderHelper</code>）。</p><p><code>SDWebImageImageIOCoder</code> ：内置编码器,该类遵守了 <code>SDWebImageCoder</code>协议，但并没有遵守 <code>SDWebImageProgressiveCoder</code>协议，说明该类仅针对git图片的编解码，并不支持git图片的逐行解码功能。<a id="more"></a></p><h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>判断图片格式是否支持编码，该类仅针对动图的操作，所以仅判断图片的格式是否为GIF格式，如果是返回YES，否则返回NO</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)canEncodeToFormat:(SDImageFormat)format &#123;</span><br><span class="line">    return (format == SDImageFormatGIF);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>根据给定的图片格式将图片进行编码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">- (NSData *)encodedDataWithImage:(UIImage *)image format:(SDImageFormat)format &#123;</span><br><span class="line">    //如果image不存在，返回nil</span><br><span class="line">    if (!image) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //该类只支持动图的编解码，如果image的格式不是GIF，返回nil</span><br><span class="line">    if (format != SDImageFormatGIF) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //临时变量imageData，用来保存图片数据</span><br><span class="line">    NSMutableData *imageData = [NSMutableData data];</span><br><span class="line">    // 获取GIF图像格式的CFStringRef格式字符串</span><br><span class="line">    CFStringRef imageUTType = [NSData sd_UTTypeFromSDImageFormat:SDImageFormatGIF];</span><br><span class="line">    // 生成图片对象的SDWebImageFrame类型元素的数组</span><br><span class="line">    NSArray&lt;SDWebImageFrame *&gt; *frames = [SDWebImageCoderHelper framesFromAnimatedImage:image];</span><br><span class="line">    </span><br><span class="line">    // 创建图像目标。 GIF不支持EXIF图像方向</span><br><span class="line">    CGImageDestinationRef imageDestination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)imageData, imageUTType, frames.count, NULL);</span><br><span class="line">    </span><br><span class="line">    //如果创建失败，返回nil</span><br><span class="line">    if (!imageDestination) &#123;</span><br><span class="line">        // Handle failure.</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    if (frames.count == 0) &#123;</span><br><span class="line">        // 用于静态单个GIF图片（如果是单帧的动图就直接将图片添加到imageDestination中）</span><br><span class="line">        CGImageDestinationAddImage(imageDestination, image.CGImage, nil);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // 用于动画的GIF图片</span><br><span class="line">        //// 获取到动图的循环次数</span><br><span class="line">        NSUInteger loopCount = image.sd_imageLoopCount;</span><br><span class="line">        </span><br><span class="line">        // 创建一个动图属性字典保存循环次数</span><br><span class="line">        NSDictionary *gifProperties = @&#123;(__bridge NSString *)kCGImagePropertyGIFDictionary: @&#123;(__bridge NSString *)kCGImagePropertyGIFLoopCount : @(loopCount)&#125;&#125;;</span><br><span class="line">        </span><br><span class="line">        // 为图像目标设置属性</span><br><span class="line">        CGImageDestinationSetProperties(imageDestination, (__bridge CFDictionaryRef)gifProperties);</span><br><span class="line">        </span><br><span class="line">        //循环每一帧的图拼啊</span><br><span class="line">        for (size_t i = 0; i &lt; frames.count; i++) &#123;</span><br><span class="line">             // 获取SDWebImageFrame对象</span><br><span class="line">            SDWebImageFrame *frame = frames[i];</span><br><span class="line">            </span><br><span class="line">            //获取没一帧的显示时间</span><br><span class="line">            float frameDuration = frame.duration;</span><br><span class="line">            </span><br><span class="line">            //获取每一帧取位图图片</span><br><span class="line">            CGImageRef frameImageRef = frame.image.CGImage;</span><br><span class="line">            </span><br><span class="line">            // 创建一个临时变量字典保存每一帧的展示时间</span><br><span class="line">            NSDictionary *frameProperties = @&#123;(__bridge NSString *)kCGImagePropertyGIFDictionary : @&#123;(__bridge NSString *)kCGImagePropertyGIFDelayTime : @(frameDuration)&#125;&#125;;</span><br><span class="line">            </span><br><span class="line">            // 将位图和其对应的属性添加到imageDestination中</span><br><span class="line">            CGImageDestinationAddImage(imageDestination, frameImageRef, (__bridge CFDictionaryRef)frameProperties);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 如果编码失败就返回nil</span><br><span class="line">    if (CGImageDestinationFinalize(imageDestination) == NO) &#123;</span><br><span class="line">       </span><br><span class="line">        imageData = nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 释放imageDestination对象</span><br><span class="line">    CFRelease(imageDestination);</span><br><span class="line">    </span><br><span class="line">    返回图片数据</span><br><span class="line">    return [imageData copy];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h3><p>判断是否支持图片数据的解码<br>该类仅针对动图的操作，所以仅判断图片的格式是否为GIF格式，如果是支持该图片数据解码，否则返回NO</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)canDecodeFromData:(nullable NSData *)data &#123;</span><br><span class="line">    return ([NSData sd_imageFormatForImageData:data] == SDImageFormatGIF);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>将图片数据解码为图片</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">- (UIImage *)decodedImageWithData:(NSData *)data &#123;</span><br><span class="line">    //如果数据为空，返回nil</span><br><span class="line">    if (!data) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">#if SD_MAC</span><br><span class="line">    SDAnimatedImageRep *imageRep = [[SDAnimatedImageRep alloc] initWithData:data];</span><br><span class="line">    NSImage *animatedImage = [[NSImage alloc] initWithSize:imageRep.size];</span><br><span class="line">    [animatedImage addRepresentation:imageRep];</span><br><span class="line">    return animatedImage;</span><br><span class="line">#else</span><br><span class="line">     // 生成图片源</span><br><span class="line">    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);</span><br><span class="line">    //如果图片源不存在，返回nil</span><br><span class="line">    if (!source) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 获取子图片数量</span><br><span class="line">    size_t count = CGImageSourceGetCount(source);</span><br><span class="line">    </span><br><span class="line">    // 创建临时变量，用来保存动图对象</span><br><span class="line">    UIImage *animatedImage;</span><br><span class="line">    </span><br><span class="line">    //如果子图片个数不大于2，直接将数据转化成图片</span><br><span class="line">    if (count &lt;= 1) &#123;</span><br><span class="line">        animatedImage = [[UIImage alloc] initWithData:data];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 创建可变数组保存SDWebImageFrame对象</span><br><span class="line">        NSMutableArray&lt;SDWebImageFrame *&gt; *frames = [NSMutableArray array];</span><br><span class="line">        </span><br><span class="line">        // 遍历子图片对象，并将其包装成SDWebImageFrame对象</span><br><span class="line">        for (size_t i = 0; i &lt; count; i++) &#123;</span><br><span class="line">            // 获取指定帧数的相位图</span><br><span class="line">            CGImageRef imageRef = CGImageSourceCreateImageAtIndex(source, i, NULL);</span><br><span class="line">            // 如果没获取到就跳过进入下次循环</span><br><span class="line">            if (!imageRef) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // 获取指定帧数的持续时间</span><br><span class="line">            float duration = [self sd_frameDurationAtIndex:i source:source];</span><br><span class="line">            </span><br><span class="line">            // 根据相位图生成图片对象</span><br><span class="line">            UIImage *image = [[UIImage alloc] initWithCGImage:imageRef];</span><br><span class="line">            </span><br><span class="line">            // 释放相位图</span><br><span class="line">            CGImageRelease(imageRef);</span><br><span class="line">            </span><br><span class="line">            // 将一帧的信息封装成SDWebImageFrame对象</span><br><span class="line">            SDWebImageFrame *frame = [SDWebImageFrame frameWithImage:image duration:duration];</span><br><span class="line">            </span><br><span class="line">            // 将封装好的SDWebImageFrame对象添加到数组中保存</span><br><span class="line">            [frames addObject:frame];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 创建临时变量，用来保存循环次数</span><br><span class="line">        NSUInteger loopCount = 1;</span><br><span class="line">        </span><br><span class="line">        // 获取到图片属性</span><br><span class="line">        NSDictionary *imageProperties = (__bridge_transfer NSDictionary *)CGImageSourceCopyProperties(source, nil);</span><br><span class="line">        </span><br><span class="line">        // 获取到GIF相关的图像属性</span><br><span class="line">        NSDictionary *gifProperties = [imageProperties valueForKey:(__bridge NSString *)kCGImagePropertyGIFDictionary];</span><br><span class="line">        </span><br><span class="line">        如果gifProperties存在</span><br><span class="line">        if (gifProperties) &#123;</span><br><span class="line">            //获取GIF循环次数</span><br><span class="line">            NSNumber *gifLoopCount = [gifProperties valueForKey:(__bridge NSString *)kCGImagePropertyGIFLoopCount];</span><br><span class="line">            </span><br><span class="line">            //如果可以转换成NSNumber类型，就将获取到的GIF循环次数赋值给loopCount</span><br><span class="line">            if (gifLoopCount != nil) &#123;</span><br><span class="line">                loopCount = gifLoopCount.unsignedIntegerValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 利用封装好的SDWebImageFrame对象数组生成动图对象</span><br><span class="line">        animatedImage = [SDWebImageCoderHelper animatedImageWithFrames:frames];</span><br><span class="line">        // 设置动图对象的循环次数</span><br><span class="line">        animatedImage.sd_imageLoopCount = loopCount;</span><br><span class="line">        //设置动图的图片格式</span><br><span class="line">        animatedImage.sd_imageFormat = SDImageFormatGIF;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //释放图片源source</span><br><span class="line">    CFRelease(source);</span><br><span class="line">    </span><br><span class="line">    //返回动图</span><br><span class="line">    return animatedImage;</span><br><span class="line">#endif</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果执行动图的解压操作，就直接返回该图片，动图不支持解压</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (UIImage *)decompressedImageWithImage:(UIImage *)image</span><br><span class="line">                                   data:(NSData *__autoreleasing  _Nullable *)data</span><br><span class="line">                                options:(nullable NSDictionary&lt;NSString*, NSObject*&gt;*)optionsDict &#123;</span><br><span class="line">    // GIF do not decompress</span><br><span class="line">    return image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h3><p>获取动图每一帧的显示时间</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">- (float)sd_frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source &#123;</span><br><span class="line">    //临时变量每一帧的显示时间，默认为0.1f</span><br><span class="line">    float frameDuration = 0.1f;</span><br><span class="line">    </span><br><span class="line">    // 获取图片源中指定位置的图片属性</span><br><span class="line">    CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil);</span><br><span class="line">    //如果获取失败，就返回默认每一帧的显示时间</span><br><span class="line">    if (!cfFrameProperties) &#123;</span><br><span class="line">        return frameDuration;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    获取图片属性字典</span><br><span class="line">    NSDictionary *frameProperties = (__bridge NSDictionary *)cfFrameProperties;</span><br><span class="line">    //从图片属性中获取gif属性字典</span><br><span class="line">    NSDictionary *gifProperties = frameProperties[(NSString *)kCGImagePropertyGIFDictionary];</span><br><span class="line">    </span><br><span class="line">    //从git属性中获取当前帧的显示时间</span><br><span class="line">    NSNumber *delayTimeUnclampedProp = gifProperties[(NSString *)kCGImagePropertyGIFUnclampedDelayTime];</span><br><span class="line">    </span><br><span class="line">    //如果当前帧的显示时间不为nil，赋值给frameDuration</span><br><span class="line">    if (delayTimeUnclampedProp != nil) &#123;</span><br><span class="line">        frameDuration = [delayTimeUnclampedProp floatValue];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //如果通过key：kCGImagePropertyGIFUnclampedDelayTime 从gifProperties字典中获取不到当前帧的显示时间，则通过另一个key：kCGImagePropertyGIFDelayTime获取</span><br><span class="line">        NSNumber *delayTimeProp = gifProperties[(NSString *)kCGImagePropertyGIFDelayTime];</span><br><span class="line">        </span><br><span class="line">        //如果不为空，赋值给赋值给frameDuration</span><br><span class="line">        if (delayTimeProp != nil) &#123;</span><br><span class="line">            frameDuration = [delayTimeProp floatValue];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //许多烦人的广告指定0持续时间，以使图像尽快闪现。 我们遵循Firefox的行为，并为指定持续时间&lt;= 10 ms的任何帧使用100 ms的持续时间。</span><br><span class="line">    </span><br><span class="line">    如果当前帧显示的时间实现小于11ms，就重新设置为100ms</span><br><span class="line">    if (frameDuration &lt; 0.011f) &#123;</span><br><span class="line">        frameDuration = 0.100f;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //释放cfFrameProperties</span><br><span class="line">    CFRelease(cfFrameProperties);</span><br><span class="line">    </span><br><span class="line">    //返回当前帧显示时间</span><br><span class="line">    return frameDuration;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;SDWebImage&lt;/code&gt; 内部实现了一个图片解码/编码的图片编码器，用于图片的编解码、压缩。其中涉及到编解码管理（&lt;code&gt;SDWebImageCodersManager&lt;/code&gt;）、编解码协议（&lt;code&gt;SDWebImageCoder&lt;/code&gt; 和 &lt;code&gt;SDWebImageProgressiveCoder&lt;/code&gt; ）、PNG/JPEG/TIFF编解码，解压缩，显示大图（&lt;code&gt;SDWebImageImageIOCoder&lt;/code&gt;）、GIF编解码（&lt;code&gt;SDWebImageGIFCoder&lt;/code&gt;）、WebP编解码（&lt;code&gt;SDWebImageWebPCoder&lt;/code&gt;）以及辅助类（&lt;code&gt;SDWebImageCoderHelper&lt;/code&gt;）。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SDWebImageImageIOCoder&lt;/code&gt; ：内置编码器,该类遵守了 &lt;code&gt;SDWebImageCoder&lt;/code&gt;协议，但并没有遵守 &lt;code&gt;SDWebImageProgressiveCoder&lt;/code&gt;协议，说明该类仅针对git图片的编解码，并不支持git图片的逐行解码功能。
     
     </summary>
     
