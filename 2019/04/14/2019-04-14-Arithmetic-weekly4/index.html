@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>算法：实现一个函数，把字符串中的每个空格替换成&quot;%20&quot; | 所念皆星辰</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="算法：实现一个函数，把字符串中的每个空格替换成&quot;%20&quot; | 所念皆星辰">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="算法：实现一个函数，把字符串中的每个空格替换成&quot;%20&quot; | 所念皆星辰">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    
+    <meta name="author" content="Wheat">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="所念皆星辰" href="/atom.xml">
+    
+
+    <link rel="canonical" href="https://qinguohua.fun/2019/04/14/2019-04-14-Arithmetic-weekly4/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url()">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 所念皆星辰 的主页"><img src="/images/avatar.png" width="80" alt="所念皆星辰 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 所念皆星辰">所念皆星辰</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">踏实、低调、前行。</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">简单的一个技术博客，用来作为学习笔记和日常记录使用。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/books">读书</a></li>
+            
+              <li class="navigation__item"><a href="/essays">随笔</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/guohuaCabin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- jianshu -->
+  
+
+<!-- cnblogs -->
+  
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-04-14T03:46:09.000Z" class="post-list__meta--date date">2019-04-14</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">算法：实现一个函数，把字符串中的每个空格替换成&quot;%20&quot;</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="题：实现一个函数，把字符串中的每个空格替换成”-20”。例如：”We-are-family-”-则输出-“We-20are-20family-”。"><a href="#题：实现一个函数，把字符串中的每个空格替换成”-20”。例如：”We-are-family-”-则输出-“We-20are-20family-”。" class="headerlink" title="题：实现一个函数，把字符串中的每个空格替换成”%20”。例如：”We are family.”,则输出 “We%20are%20family.”。"></a>题：实现一个函数，把字符串中的每个空格替换成”%20”。例如：”We are family.”,则输出 “We%20are%20family.”。</h4><h4 id="扩展："><a href="#扩展：" class="headerlink" title="扩展："></a>扩展：</h4><p>在网络编程中，如果URL参数中含有特殊字符，如空格、’#’等，则可能导致服务器端无法获得正确的参数值。我们需要将这些特殊符号转成服务器可以识别的字符。<strong>转换的规则是在’%’后面跟上ASCII码的两位十六进制的表示</strong>。比如空格的ASCII码是32，即十六进制的0x20，因此空格被替换成’%20’；再比如’#’的ASCII码为35，即十六进制的0x23,它在URL中被替换为’%23’。</p>
+<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>这题的规则很简单，将空格替换成’%20’，那么需要考虑的就是时间复杂度的问题。</p>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><h5 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h5><p>最简单的想法是：直接遍历字符串中的字符，遇到空格便将其替换成’%20’，但有一些问题，空格的长度和’%20’的长度是不等的，那么结果是需要将每个空格后面的字符向后移动。举个例子：如果字符串的长度为n，对每个空格字符，需要移动后面的O(n)个字符，因此对于含有O(n)个空格字符的字符串而言，总的时间复杂度为：O(n^2)。</p>
+<h5 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h5><p>使用辅助空间，遍历字符串的每个字符，将其添加到辅助字符串中，添加的过程中将空格替换成’%20’。这种方法是牺牲空复杂度间换取时间复杂度。时间复杂度为：O(n)。</p>
+<h5 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h5><p>先遍历一遍字符串，找出其中的空格，确定替换后的字符转的长度。然后从字符串的后面开始复制和替换。首先准备两个指针：P1和P2。P1指向原始字符串的末尾，P2则指向替换之后的字符串的末尾。<strong>实现步骤：</strong>做好之前的准备后，向前移动指针P1，诸葛把它指向的字符复制到P2指向的位置，直到碰到第一个空格为止。时间复杂度为：O(n)。</p>
+<h4 id="代码实践："><a href="#代码实践：" class="headerlink" title="代码实践："></a>代码实践：</h4><p><strong>方法一实现：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> <span class="built_in">string</span>[<span class="number">1000</span>] = <span class="string">"We are family."</span>;</span><br><span class="line"><span class="keyword">int</span> stringlen = <span class="built_in">strlen</span>(<span class="built_in">string</span>);</span><br><span class="line"><span class="keyword">int</span> indexNum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stringlen; i++)&#123;</span><br><span class="line">	<span class="keyword">char</span> charStr = <span class="built_in">string</span>[i];</span><br><span class="line">	<span class="keyword">if</span> (charStr == <span class="string">' '</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">     <span class="comment">//将空格之后的字符向后移动</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = stringlen;j &gt; i; j--) &#123;</span><br><span class="line">			<span class="built_in">string</span>[j+<span class="number">2</span>] = <span class="built_in">string</span>[j]; </span><br><span class="line">			count++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">string</span>[++indexNum] = <span class="string">'%'</span>;</span><br><span class="line">		<span class="built_in">string</span>[++indexNum] = <span class="string">'2'</span>;</span><br><span class="line">		<span class="built_in">string</span>[++indexNum] = <span class="string">'0'</span>;</span><br><span class="line"></span><br><span class="line">		i = i+<span class="number">2</span>;  </span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		indexNum = i;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n-----one3 %s\n"</span>,<span class="built_in">string</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>方法二实现：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[] = <span class="string">"We are family."</span>;</span><br><span class="line"><span class="keyword">int</span> strLen = <span class="built_in">strlen</span>(str);</span><br><span class="line"></span><br><span class="line"><span class="comment">//这段代码是用来计算辅助字符串的长度的;</span></span><br><span class="line"><span class="keyword">char</span> replaceStr[] = <span class="string">"%20"</span>;</span><br><span class="line"><span class="comment">//统计空格的数目</span></span><br><span class="line"><span class="keyword">int</span> bankNumber = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strLen; i++)&#123;</span><br><span class="line">	<span class="keyword">char</span> charStr = str[i];</span><br><span class="line">	<span class="keyword">if</span> (charStr == <span class="string">' '</span>) &#123;</span><br><span class="line">		bankNumber++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> replacelen = bankNumber * (<span class="built_in">strlen</span>(replaceStr)<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">int</span> repStrNewlen = strLen + replacelen; </span><br><span class="line"></span><br><span class="line"><span class="comment">//根据计算的字符串长度，创建辅助字符串</span></span><br><span class="line"><span class="keyword">char</span> newStr[repStrNewlen] ;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将str中的字符复制到辅助字符串中，并将空格替换为'%20'</span></span><br><span class="line"><span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (strLen &gt; <span class="number">0</span> &amp;&amp; num &lt;= strLen) &#123;</span><br><span class="line">	<span class="keyword">char</span> charS = str[num];</span><br><span class="line">	<span class="keyword">if</span> (charS == <span class="string">' '</span>) &#123;</span><br><span class="line">		newStr[index++] = <span class="string">'%'</span>;</span><br><span class="line">		newStr[index++] = <span class="string">'2'</span>;</span><br><span class="line">		newStr[index++] = <span class="string">'0'</span>;</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		newStr[index++] = charS;		</span><br><span class="line">	&#125;</span><br><span class="line">	++num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"--------one2Result == %s"</span>,newStr);</span><br></pre></td></tr></table></figure>
+<p><strong>方法三实现：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> <span class="built_in">string</span>[] = <span class="string">"We are family."</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//统计空格的数目</span></span><br><span class="line"><span class="keyword">int</span> bankNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> replaceStr[] = <span class="string">"%20"</span>;</span><br><span class="line"><span class="keyword">int</span> stringlen = <span class="built_in">strlen</span>(<span class="built_in">string</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stringlen; i++)&#123;</span><br><span class="line">	<span class="keyword">char</span> charStr = <span class="built_in">string</span>[i];</span><br><span class="line">	<span class="keyword">if</span> (charStr == <span class="string">' '</span>) &#123;</span><br><span class="line">		bankNumber++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//替换字符增加的长度</span></span><br><span class="line"><span class="keyword">int</span> replacelen = bankNumber * (<span class="built_in">strlen</span>(replaceStr)<span class="number">-1</span>);</span><br><span class="line"><span class="comment">//替换后的字符串长度</span></span><br><span class="line"><span class="keyword">int</span> repStrNewlen = stringlen + replacelen; </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (stringlen &gt;= <span class="number">0</span> &amp;&amp; stringlen &lt; repStrNewlen) &#123;  </span><br><span class="line">	<span class="keyword">char</span> char1 = <span class="built_in">string</span>[stringlen];</span><br><span class="line">	<span class="keyword">if</span> (char1 == <span class="string">' '</span>) &#123;</span><br><span class="line">		<span class="built_in">string</span>[repStrNewlen--] = <span class="string">'0'</span>;</span><br><span class="line">		<span class="built_in">string</span>[repStrNewlen--] = <span class="string">'2'</span>;</span><br><span class="line">		<span class="built_in">string</span>[repStrNewlen--] = <span class="string">'%'</span>;</span><br><span class="line">		bankNumber--;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">string</span>[repStrNewlen--] = char1;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	--stringlen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"result==%s \n"</span>,<span class="built_in">string</span>);</span><br></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2019/04/20/2019-04-20-Arithmetic-weekly5/" title="算法：从尾到头打印链表">算法：从尾到头打印链表</a></h2>
+                <p class="excerpt">
+                
+                从尾到头打印链表题：输入一个链表的头结点，从尾到头反过来打印出每个结点的值。链表结点定义如下：12345struct ListNode&amp;#123;   int   m_nKey;  ListNode* m_pNext;&amp;#125;
+思路：我们首先想到的是链表的翻转，这也是我们的第一思路。但链表的翻转
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2019-04-20T12:46:09.000Z" class="post-list__meta--date date">2019-04-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>
+</span><a class="btn-border-small" href="/2019/04/20/2019-04-20-Arithmetic-weekly5/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2019/04/12/2019-04-12-Arithmetic-weekly3/" title="算法：判断数组中是否含有某个整数">算法：判断数组中是否含有某个整数</a></h2>
+                <p class="excerpt">
+                
+                题：在一个二维数组中，每一行都按照从左到右递增的顺序排列，每一列都按照从上到下递增的顺序排列。判断数组中是否含有某个整数。分析：二维数组。而且数组的排列顺序也给了规定：每一行都按照从左到右递增的顺序排列，每一列都按照从上到下递增的顺序排列。
+思路:二分查找方法，以及利用二维数组的排列顺序规则进行查找
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2019-04-12T08:00:18.000Z" class="post-list__meta--date date">2019-04-12</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>
+</span><a class="btn-border-small" href="/2019/04/12/2019-04-12-Arithmetic-weekly3/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

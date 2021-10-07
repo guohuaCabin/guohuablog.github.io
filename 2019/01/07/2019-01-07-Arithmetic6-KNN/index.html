@@ -1,510 +1,262 @@
 <!DOCTYPE html>
-<html lang="zh-CN" color-mode="light">
-
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="keywords" content="undefined" />
-  <meta name="author" content="Wheat" />
-  <meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。" />
-  
-  
-  <title>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-      K最近邻算法 
-      
-      
-      |
+    <title>K最近邻算法 | 所念皆星辰</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="K最近邻算法 | 所念皆星辰">
+    <meta name="twitter:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="K最近邻算法 | 所念皆星辰">
+    <meta property="og:description" content="灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。">
+
     
-     所念皆星辰
-  </title>
+    <meta name="author" content="Wheat">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
-  
-    <link rel="apple-touch-icon" href="/images/avatar.png">
-    <link rel="icon" href="/images/avatar.png">
-  
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
 
-  <!-- Raleway-Font -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="所念皆星辰" href="/atom.xml">
+    
 
-  <!-- hexo site css -->
-  <link rel="stylesheet" href="/css/color-scheme.css">
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/iconfont/iconfont.css">
-<link rel="stylesheet" href="/css/github-markdown.css">
-<link rel="stylesheet" href="/css/highlight.css">
-<link rel="stylesheet" href="/css/comments.css">
+    <link rel="canonical" href="https://qinguohua.fun/2019/01/07/2019-01-07-Arithmetic6-KNN/"/>
 
-  <!-- jquery3.3.1 -->
-  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-
-  <!-- fancybox -->
-  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
-  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
-  <script src="/js/fancybox.js"></script>
-
-  
-
-  <script>
-    var html = document.documentElement
-    const colorMode = localStorage.getItem('color-mode')
-    if (colorMode) {
-      document.documentElement.setAttribute('color-mode', colorMode)
-    }
-  </script>
-
+    
+      
 </head>
 
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
 
-  <body>
-    <div id="app">
-      <div class="header">
-  <div class="avatar">
-    <a href="/">
-      <!-- 头像取消懒加载，添加no-lazy -->
-      
-        <img src="/images/avatar.png" alt="">
-      
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url()">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 所念皆星辰 的主页"><img src="/images/avatar.png" width="80" alt="所念皆星辰 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 所念皆星辰">所念皆星辰</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">踏实、低调、前行。</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">简单的一个技术博客，用来作为学习笔记和日常记录使用。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/books">读书</a></li>
+            
+              <li class="navigation__item"><a href="/essays">随笔</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/guohuaCabin" title="wheat的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
     </a>
-    <div class="nickname"><a href="/">所念皆星辰</a></div>
-  </div>
-  <div class="navbar">
-    <ul>
-      
-        <li class="nav-item" data-path="/">
-          <a href="/">Home</a>
-        </li>
-      
-        <li class="nav-item" data-path="/archives/">
-          <a href="/archives/">Archives</a>
-        </li>
-      
-        <li class="nav-item" data-path="/categories/">
-          <a href="/categories/">Categories</a>
-        </li>
-      
-        <li class="nav-item" data-path="/tags/">
-          <a href="/tags/">Tags</a>
-        </li>
-      
-        <li class="nav-item" data-path="/about/">
-          <a href="/about/">About</a>
-        </li>
-      
-    </ul>
-  </div>
-</div>
-
-<script src="/js/activeNav.js"></script>
+  </li>
 
 
-      <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
-
-<!-- LaTex Display -->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
-<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  }
-};
-</script>
-
-
-
+<!-- jianshu -->
   
 
+<!-- cnblogs -->
   
 
-  
-
-  
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">K最近邻算法</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime" title="更新时间"></i>
-          2019-01-07 21:38:58
-        </span>
+<!-- Stack Overflow -->
         
-              <span class="post-categories">
-                <i class="iconfont icon-bookmark" title="分类"></i>
-                
-                <span class="span--category">
-                  <a href="/categories/Algorithm/" title="Algorithm">
-                    <b>#</b> Algorithm
-                  </a>
-                </span>
-                
-              </span>
-          
-              <span class="post-tags">
-                <i class="iconfont icon-tags" title="标签"></i>
-                
-                <span class="span--tag">
-                  <a href="/tags/Algorithm/" title="Algorithm">
-                    <b>#</b> Algorithm
-                  </a>
-                </span>
-                
-              </span>
-          
-      </div>
-      <div class="markdown-body">
-        
-      </div>
-      
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-              <a href="/2019/01/06/2019-01-06-Arithmetic5-Dijkstra/" target="_self">
-                <i class="iconfont icon-chevronleft"></i>
-                <span>上一页</span>
-              </a>
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime" title="更新时间"></i>
-              2019-01-07 21:38:58
-            </span>
-            
-                  <span class="post-categories">
-                    <i class="iconfont icon-bookmark" title="分类"></i>
-                    
-                    <span class="span--category">
-                      <a href="/categories/Algorithm/" title="Algorithm">
-                        <b>#</b> Algorithm
-                      </a>
-                    </span>
-                    
-                  </span>
-              
-                  <span class="post-tags">
-                    <i class="iconfont icon-tags" title="标签"></i>
-                    
-                    <span class="span--tag">
-                      <a href="/tags/Algorithm/" title="Algorithm">
-                        <b>#</b> Algorithm
-                      </a>
-                    </span>
-                    
-                  </span>
-              
-          </div>
-          <div class="post-foot-prev">
-            
-              <a href="/2019/04/04/2019-04-04-Arithmetic-weekly1/" target="_self">
-                <span>下一页</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
           </div>
         </div>
-      
+
+      </div>
+
     </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-01-07T13:38:58.000Z" class="post-list__meta--date date">2019-01-07</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">K最近邻算法</h1>
+  </header>
+
+  <section class="post">
+    
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2019/04/04/2019-04-04-Arithmetic-weekly1/" title="算法：找出有序数组中和等于指定数的两个数">算法：找出有序数组中和等于指定数的两个数</a></h2>
+                <p class="excerpt">
+                
+                题：找出有序数组中和等于指定数的两个数分析：数组是有序的；数组中可能存在两个数相加的和等于给定的值，找出这两个数，如果没有提示。
+思路：首先想到的必须遍历数组，这点是毋庸置疑的。这时需要考虑的就是怎样遍历数组以及时间复杂度问题。
+方案：1、双重遍历最简单也是最笨重的想法是双重遍历：将每个数与另外的数
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2019-04-04T02:27:55.000Z" class="post-list__meta--date date">2019-04-04</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>
+</span><a class="btn-border-small" href="/2019/04/04/2019-04-04-Arithmetic-weekly1/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2019/01/06/2019-01-06-Arithmetic5-Dijkstra/" title="迪克特斯拉算法">迪克特斯拉算法</a></h2>
+                <p class="excerpt">
+                
+                
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2019-01-06T14:38:27.000Z" class="post-list__meta--date date">2019-01-06</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Algorithm/">Algorithm</a>
+</span><a class="btn-border-small" href="/2019/01/06/2019-01-06-Arithmetic5-Dijkstra/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <br><footer class="footer">
+    <span class="footer__copyright">听过无数道理，还是过不好这一生。那就随着心意任性地走吧，走累的时候再安营扎寨，或者永远也不。本人邮箱：wheatden@guohuaden.com
+    </span>
+   
+</footer>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        </div>
+    </div>
+
     
 
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'GTM-NHB73SK', 'auto');
+	ga('send', 'pageview');
+</script>
+
     
-      <div class="comments-container">
-        
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ae05530a6a007cdb8063cf611691cc3e";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
 
 
-
-
-      </div>
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
     
-  </div>
-
-
-        <div class="footer">
-  <div class="social">
-    <ul>
-      
-        <li>
-          <a title="github" href="https://github.com/guohuaCabin">
-            <i class="iconfont icon-github"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a title="email" href="">
-            <i class="iconfont icon-envelope"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a title="rss" href="/atom.xml">
-            <i class="iconfont icon-rss"></i>
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-  
-    <div class="footer-more">
-      
-        Copyright © Oranges 2021
-        
-    </div>
-  
-    <div class="footer-more">
-      
-        灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。
-        
-    </div>
-  
-</div>
-
-      </div>
-
-      <div class="tools-bar">
-        <div class="back-to-top tools-bar-item hidden">
-  <a href="javascript: void(0)">
-    <i class="iconfont icon-chevronup"></i>
-  </a>
-</div>
-
-<script src="/js/backtotop.js"></script>
-
-
-        
-  <div class="search-icon tools-bar-item" id="search-icon">
-    <a href="javascript: void(0)">
-      <i class="iconfont icon-search"></i>
-    </a>
-  </div>
-
-  <div class="search-overlay hidden">
-    <div class="search-content" tabindex="0">
-      <div class="search-title">
-        <span class="search-icon-input">
-          <a href="javascript: void(0)">
-            <i class="iconfont icon-search"></i>
-          </a>
-        </span>
-        
-          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
-        
-        <span class="search-close-icon" id="search-close-icon">
-          <a href="javascript: void(0)">
-            <i class="iconfont icon-close"></i>
-          </a>
-        </span>
-      </div>
-      <div class="search-result" id="search-result"></div>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-    var inputArea = document.querySelector("#search-input")
-    var searchOverlayArea = document.querySelector(".search-overlay")
-
-    inputArea.onclick = function() {
-      getSearchFile()
-      this.onclick = null
-    }
-
-    inputArea.onkeydown = function() {
-      if(event.keyCode == 13)
-        return false
-    }
-
-    function openOrHideSearchContent() {
-      let isHidden = searchOverlayArea.classList.contains('hidden')
-      if (isHidden) {
-        searchOverlayArea.classList.remove('hidden')
-        document.body.classList.add('hidden')
-        // inputArea.focus()
-      } else {
-        searchOverlayArea.classList.add('hidden')
-        document.body.classList.remove('hidden')
-      }
-    }
-
-    function blurSearchContent(e) {
-      if (e.target === searchOverlayArea) {
-        openOrHideSearchContent()
-      }
-    }
-
-    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
-    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
-    searchOverlayArea.addEventListener("click", blurSearchContent, false)
-
-    var searchFunc = function (path, search_id, content_id) {
-      'use strict';
-      var $input = document.getElementById(search_id);
-      var $resultContent = document.getElementById(content_id);
-      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
-      $.ajax({
-        // 0x01. load xml file
-        url: path,
-        dataType: "xml",
-        success: function (xmlResponse) {
-          // 0x02. parse xml file
-          var datas = $("entry", xmlResponse).map(function () {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          $resultContent.innerHTML = "";
-
-          $input.addEventListener('input', function () {
-            // 0x03. parse query to keywords list
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length <= 0) {
-              return;
-            }
-            // 0x04. perform local searching
-            datas.forEach(function (data) {
-              var isMatch = true;
-              var content_index = [];
-              if (!data.title || data.title.trim() === '') {
-                data.title = "Untitled";
-              }
-              var orig_data_title = data.title.trim();
-              var data_title = orig_data_title.toLowerCase();
-              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
-              var data_content = orig_data_content.toLowerCase();
-              var data_url = data.url;
-              var index_title = -1;
-              var index_content = -1;
-              var first_occur = -1;
-              // only match artiles with not empty contents
-              if (data_content !== '') {
-                keywords.forEach(function (keyword, i) {
-                  index_title = data_title.indexOf(keyword);
-                  index_content = data_content.indexOf(keyword);
-
-                  if (index_title < 0 && index_content < 0) {
-                    isMatch = false;
-                  } else {
-                    if (index_content < 0) {
-                      index_content = 0;
-                    }
-                    if (i == 0) {
-                      first_occur = index_content;
-                    }
-                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
-                  }
-                });
-              } else {
-                isMatch = false;
-              }
-              // 0x05. show search results
-              if (isMatch) {
-                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
-                var content = orig_data_content;
-                if (first_occur >= 0) {
-                  // cut out 100 characters
-                  var start = first_occur - 20;
-                  var end = first_occur + 80;
-
-                  if (start < 0) {
-                    start = 0;
-                  }
-
-                  if (start == 0) {
-                    end = 100;
-                  }
-
-                  if (end > content.length) {
-                    end = content.length;
-                  }
-
-                  var match_content = content.substr(start, end);
-
-                  // highlight all keywords
-                  keywords.forEach(function (keyword) {
-                    var regS = new RegExp(keyword, "gi");
-                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
-                  });
-
-                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
-                }
-                str += "</li>";
-              }
-            });
-            str += "</ul>";
-            if (str.indexOf('<li>') === -1) {
-              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
-            }
-            $resultContent.innerHTML = str;
-          });
-        },
-        error: function(xhr, status, error) {
-          $resultContent.innerHTML = ""
-          if (xhr.status === 404) {
-            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
-          } else {
-            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
-          }
-        }
-      });
-      $(document).on('click', '#search-close-icon', function() {
-        $('#search-input').val('');
-        $('#search-result').html('');
-      });
-    }
-
-    var getSearchFile = function() {
-        var path = "/search.xml";
-        searchFunc(path, 'search-input', 'search-result');
-    }
-  </script>
-
-
-
-
-        
-  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
-    <a href="javascript: void(0)">
-      <i id="theme-icon" class="iconfont icon-moon"></i>
-    </a>
-  </div>
-
-  <script src="/js/colorscheme.js"></script>
-
-
-
-
-        
-  
-    <div class="share-icon tools-bar-item">
-      <a href="javascript: void(0)" id="share-icon">
-        <i class="iconfont iconshare"></i>
-      </a>
-      <div class="share-content hidden">
-        
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + K%E6%9C%80%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95 + '&url=' + https%3A%2F%2Fqinguohua.fun%2F2019%2F01%2F07%2F2019-01-07-Arithmetic6-KNN%2F + '" target="_blank" title="Twitter">
-            <i class="iconfont icon-twitter"></i>
-          </a>
-        
-        
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://qinguohua.fun/2019/01/07/2019-01-07-Arithmetic6-KNN/" target="_blank" title="Facebook">
-            <i class="iconfont icon-facebooksquare"></i>
-          </a>
-        
-      </div>
-    </div>
-  
-  <script src="/js/shares.js"></script>
-
-
-      </div>
-    </div>
-  </body>
+    </script>
+    
+</body>
 </html>
