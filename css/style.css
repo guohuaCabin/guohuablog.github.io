@@ -65,6 +65,7 @@ div {
       padding: 0;
       margin: 0;
       height: 0;
+      color: #D2D2D2;
       overflow: hidden; }
     #header .site-name #logo {
       font: bold 38px/1.12 "Times New Roman", Georgia, Times, sans-serif;
@@ -73,7 +74,7 @@ div {
         color: #C8C8C8; }
     #header .site-name .description {
       margin: .2em 0 0;
-      color: #fff; }
+      color: #D2D2D2; }
   #header #nav-menu {
     margin: 10px 0 -1px;
     padding: 0;
