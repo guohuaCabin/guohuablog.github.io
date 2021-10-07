@@ -35,7 +35,7 @@ body {
   padding-top: 20px; }
 
 a, button.submit {
-  color: #D2D2D2;
+  color: #fff;
   text-decoration: none;
   -webkit-transition: all .1s ease-in;
   -moz-transition: all .1s ease-in;
@@ -90,8 +90,8 @@ div {
       #header #nav-menu a:hover {
         border-bottom-color: #696969; }
       #header #nav-menu a.current {
-        border: 1px solid #C8C8C8;
-        border-bottom-color: #fff; }
+        border: 1px solid #2C2D2D;
+        border-bottom-color: #D2D2D2; }
 
 #sidebar {
   border-left: 1px solid #ddd;
