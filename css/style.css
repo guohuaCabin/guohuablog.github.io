@@ -18,8 +18,8 @@ html, button, input, select, textarea,
   font-family: "PingFangSC-Regular", Helvetica, "Helvetica Neue", "Segoe UI", "Hiragino Sans GB", "Source Han Sans CN", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", sans-serif !important; }
 
 body {
-  background-color: #FFF;
-  color: #444;
+  background-color: #1B1B1E;
+  color: #fff;
   font-family: "TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,7 +35,7 @@ body {
   padding-top: 20px; }
 
 a, button.submit {
-  color: #6E7173;
+  color: #D2D2D2;
   text-decoration: none;
   -webkit-transition: all .1s ease-in;
   -moz-transition: all .1s ease-in;
@@ -57,7 +57,7 @@ div {
 #header {
   padding: 58px 0 0;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #2C2D2D;
   position: relative; }
   #header .site-name {
     margin-bottom: 40px; }
@@ -68,12 +68,12 @@ div {
       overflow: hidden; }
     #header .site-name #logo {
       font: bold 38px/1.12 "Times New Roman", Georgia, Times, sans-serif;
-      color: #555; }
+      color: #E6E6E6; }
       #header .site-name #logo span, #header .site-name #logo:hover {
-        color: #777; }
+        color: #C8C8C8; }
     #header .site-name .description {
       margin: .2em 0 0;
-      color: #999; }
+      color: #fff; }
   #header #nav-menu {
     margin: 10px 0 -1px;
     padding: 0;
@@ -84,13 +84,13 @@ div {
       display: inline-block;
       padding: 3px 20px 3px;
       line-height: 30px;
-      color: #444;
+      color: #fff;
       font-size: 13px;
       border: 1px solid transparent; }
       #header #nav-menu a:hover {
-        border-bottom-color: #444; }
+        border-bottom-color: #696969; }
       #header #nav-menu a.current {
-        border: 1px solid #ddd;
+        border: 1px solid #C8C8C8;
         border-bottom-color: #fff; }
 
 #sidebar {
