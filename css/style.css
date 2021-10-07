@@ -165,15 +165,15 @@ div {
   padding: 25px 0 15px; }
   .post .post-title {
     margin: 0;
-    color: #555;
+    color: #4067B4;
     text-align: left;
     font: bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif; }
     .post .post-title a {
-      color: #555; }
+      color: #4067B4; }
   .post .post-meta {
     padding: 0;
     margin: 15px 0 0;
-    color: #6E7173;
+    color: #D2D2D2;
     float: left;
     display: inline;
     text-indent: .15em; }
