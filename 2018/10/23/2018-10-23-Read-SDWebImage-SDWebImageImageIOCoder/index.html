@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="undefined" />
+  <meta name="author" content="Wheat" />
+  <meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。" />
+  
+  
+  <title>
+    
+      读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder） 
+      
+      
+      |
+    
+     所念皆星辰
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/color-scheme.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<link rel="stylesheet" href="/css/comments.css">
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  <script src="/js/fancybox.js"></script>
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Oranges</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+<script src="/js/activeNav.js"></script>
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="更新时间"></i>
+          2018-10-23 21:57:30
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="标签"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/SDWebImage/" title="SDWebImage">
+                    <b>#</b> SDWebImage
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        </p>
+<h3 id="私有静态常量"><a href="#私有静态常量" class="headerlink" title="私有静态常量"></a>私有静态常量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//每像素字节数为4</span><br><span class="line">static const size_t kBytesPerPixel = 4;</span><br><span class="line">//每位字节数为8</span><br><span class="line">static const size_t kBitsPerComponent = 8;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">  *设置标志“SDWebImageScaleDownLargeImages”时，解码图像的最大大小（以MB为单位）</span><br><span class="line">  * iPad1和iPhone 3GS的建议值：60。</span><br><span class="line">  * iPad2和iPhone 4的建议值：120。</span><br><span class="line">  * iPhone 3G和iPod 2及早期设备的建议值：30。</span><br><span class="line"> */</span><br><span class="line">static const CGFloat kDestImageSizeMB = 60.0f;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> *当设置标志“SDWebImageScaleDownLargeImages”时，定义用于解码图像的图块的最大大小（以MB为单位）</span><br><span class="line"> * iPad1和iPhone 3GS的建议值：20。</span><br><span class="line"> * iPad2和iPhone 4的建议值：40。</span><br><span class="line"> * iPhone 3G和iPod 2及早期设备的建议值：10。</span><br><span class="line">*/</span><br><span class="line">static const CGFloat kSourceImageTileSizeMB = 20.0f;</span><br><span class="line"></span><br><span class="line">//定义 1M = 1024.0f * 1024.0f</span><br><span class="line">static const CGFloat kBytesPerMB = 1024.0f * 1024.0f;</span><br><span class="line"></span><br><span class="line">//定义1MB的像素数是1MB的Bytes数量除以1像素的Bytes数</span><br><span class="line">static const CGFloat kPixelsPerMB = kBytesPerMB / kBytesPerPixel;</span><br><span class="line">//定义解码完的图像的最大像素总数数是解码完的图像最size乘以1MB的像素数</span><br><span class="line">static const CGFloat kDestTotalPixels = kDestImageSizeMB * kPixelsPerMB;</span><br><span class="line"></span><br><span class="line">//定义用于解码的图像的最大像素总数是解码的图像的size乘以1MB的像素数</span><br><span class="line">static const CGFloat kTileTotalPixels = kSourceImageTileSizeMB * kPixelsPerMB;</span><br><span class="line"></span><br><span class="line">//定义重叠像素大小为2像素</span><br><span class="line">static const CGFloat kDestSeemOverlap = 2.0f;</span><br></pre></td></tr></table></figure>
+<h3 id="私有变量"><a href="#私有变量" class="headerlink" title="私有变量"></a>私有变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">        //定义了两个变量来保存图像的宽和高</span><br><span class="line">        size_t _width, _height;</span><br><span class="line">#if SD_UIKIT || SD_WATCH</span><br><span class="line">        //定义变量记录图片方向</span><br><span class="line">        UIImageOrientation _orientation;</span><br><span class="line">#endif</span><br><span class="line">        //定义变量记录图片源</span><br><span class="line">        CGImageSourceRef _imageSource;</span><br></pre></td></tr></table></figure>
+<h3 id="life-cycle"><a href="#life-cycle" class="headerlink" title="life cycle"></a>life cycle</h3><p>单例方法和dealloc方法</p>
+<p>C 语言不能够调用OC中的retain与release，一般的C 语言接口都提供了release函数（比如CGContextRelease(context c)）来管理内存。ARC不会自动调用这些C接口的函数，所以这还是需要我们自己来进行管理的.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (void)dealloc &#123;</span><br><span class="line">    //如果CGImageSourceRef类型的_imageSource存在，在dealloc方法中手动释放掉（CGXXX 和CFXXX方法，ARC并不会自动释放，需要手动去释放掉）</span><br><span class="line">    </span><br><span class="line">    if (_imageSource) &#123;</span><br><span class="line">        CFRelease(_imageSource);</span><br><span class="line">        _imageSource = NULL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//单例方法</span><br><span class="line">+ (instancetype)sharedCoder &#123;</span><br><span class="line">    static SDWebImageImageIOCoder *coder;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        coder = [[SDWebImageImageIOCoder alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    return coder;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h3><h4 id="SDWebImageCoder协议方法"><a href="#SDWebImageCoder协议方法" class="headerlink" title="SDWebImageCoder协议方法"></a><code>SDWebImageCoder</code>协议方法</h4><p>判断是否支持图片数据的解码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)canDecodeFromData:(nullable NSData *)data &#123;</span><br><span class="line">    //通过NSData中的扩展方法：sd_imageFormatForImageData 获取图片的格式</span><br><span class="line">    switch ([NSData sd_imageFormatForImageData:data]) &#123;</span><br><span class="line">        case SDImageFormatWebP:</span><br><span class="line">            // 不支持WebP格式图片解码</span><br><span class="line">            return NO;</span><br><span class="line">        case SDImageFormatHEIC:</span><br><span class="line">            // 检查是否支持HEIC格式图片解码</span><br><span class="line">            return [[self class] canDecodeFromHEICFormat];</span><br><span class="line">        default:</span><br><span class="line">            return YES;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过图片数据（ImageData）解码获取图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (UIImage *)decodedImageWithData:(NSData *)data &#123;</span><br><span class="line">    //如果data为空，返回nil</span><br><span class="line">    if (!data) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //将imagedata转为图片</span><br><span class="line">    UIImage *image = [[UIImage alloc] initWithData:data];</span><br><span class="line">    //设置图片的格式</span><br><span class="line">    image.sd_imageFormat = [NSData sd_imageFormatForImageData:data];</span><br><span class="line">    </span><br><span class="line">    return image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用原始图片和图片数据解压缩图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">使用原始图片和图片数据解压缩图片。</span><br><span class="line"></span><br><span class="line"> @param image 需要压缩的原图片</span><br><span class="line"> @param data 指向原始图像数据的指针。 指针本身是非空的，但图像数据可以为空。 如果需要，此数据将设置为缓存。 如果您不需要同时修改数据，请忽略此参数。</span><br><span class="line"> @param optionsDict 一个包含任何解压缩选项的字典。 通过&#123;SDWebImageCoderScaleDownLargeImagesKey：@（YES）&#125;缩小大图像</span><br><span class="line"> @return 解压缩后的图片</span><br><span class="line"> */</span><br><span class="line">- (UIImage *)decompressedImageWithImage:(UIImage *)image</span><br><span class="line">                                   data:(NSData *__autoreleasing  _Nullable *)data</span><br><span class="line">                                options:(nullable NSDictionary&lt;NSString*, NSObject*&gt;*)optionsDict &#123;</span><br><span class="line">                                </span><br><span class="line">//如果是mac，直接返回图片</span><br><span class="line">#if SD_MAC</span><br><span class="line">    return image;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">//如果是iOS 、osTV、osWatch</span><br><span class="line">#if SD_UIKIT || SD_WATCH</span><br><span class="line">    // 创建变量保存，默认是不缩小</span><br><span class="line">    BOOL shouldScaleDown = NO;</span><br><span class="line">    </span><br><span class="line">    // 如果传入选项字典参数</span><br><span class="line">    if (optionsDict != nil) &#123;</span><br><span class="line">        //创建临时变量保存选项值</span><br><span class="line">        NSNumber *scaleDownLargeImagesOption = nil;</span><br><span class="line">        //SDWebImageCoderScaleDownLargeImagesKey对应的value类型为NSNumber，则保存value</span><br><span class="line">        if ([optionsDict[SDWebImageCoderScaleDownLargeImagesKey] isKindOfClass:[NSNumber class]]) &#123;</span><br><span class="line">            scaleDownLargeImagesOption = (NSNumber *)optionsDict[SDWebImageCoderScaleDownLargeImagesKey];</span><br><span class="line">        &#125;</span><br><span class="line">        //如果选项值不为nil，转换成BOOL类型，并保存</span><br><span class="line">        if (scaleDownLargeImagesOption != nil) &#123;</span><br><span class="line">            shouldScaleDown = [scaleDownLargeImagesOption boolValue];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果不需要缩小图片，直接执行解压图片操作</span><br><span class="line">    if (!shouldScaleDown) &#123;</span><br><span class="line">        return [self sd_decompressedImageWithImage:image];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        如果需要缩小图片，则执行图片的解压和缩小操作</span><br><span class="line">        UIImage *scaledDownImage = [self sd_decompressedAndScaledDownImageWithImage:image];</span><br><span class="line">        </span><br><span class="line">         // 如果解压和缩小成功，仍处理数据指针，调用压缩方法</span><br><span class="line">        if (scaledDownImage &amp;&amp; !CGSizeEqualToSize(scaledDownImage.size, image.size)) &#123;</span><br><span class="line">            //根据图片数据指针得到图片的格式</span><br><span class="line">            SDImageFormat format = [NSData sd_imageFormatForImageData:*data];</span><br><span class="line">            //通过缩小的图片和图片格式编码获取imagedata</span><br><span class="line">            NSData *imageData = [self encodedDataWithImage:scaledDownImage format:format];</span><br><span class="line">            if (imageData) &#123;</span><br><span class="line">                // 通过参数回传处理后的图像数据</span><br><span class="line">                *data = imageData;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 返回处理后的图片</span><br><span class="line">        return scaledDownImage;</span><br><span class="line">    &#125;</span><br><span class="line">#endif</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="SDWebImageProgressiveCoder-协议方法"><a href="#SDWebImageProgressiveCoder-协议方法" class="headerlink" title="SDWebImageProgressiveCoder 协议方法"></a><code>SDWebImageProgressiveCoder</code> 协议方法</h4><p>判断是否支持增量解码某个data数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)canIncrementallyDecodeFromData:(NSData *)data &#123;</span><br><span class="line">    //获取图片的格式</span><br><span class="line">    switch ([NSData sd_imageFormatForImageData:data]) &#123;</span><br><span class="line">        case SDImageFormatWebP:</span><br><span class="line">            // 不支持WebP逐行解码</span><br><span class="line">            return NO;</span><br><span class="line">        case SDImageFormatHEIC:</span><br><span class="line">            // 检查HEIC解码兼容性</span><br><span class="line">            return [[self class] canDecodeFromHEICFormat];</span><br><span class="line">        default:</span><br><span class="line">            // 其他类型就返回YES</span><br><span class="line">            return YES;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将图片数据增量解码为图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">- (UIImage *)incrementallyDecodedImageWithData:(NSData *)data finished:(BOOL)finished &#123;</span><br><span class="line">    判断增量图片源是否存在，如果不存在，创建一个新的</span><br><span class="line">    if (!_imageSource) &#123;</span><br><span class="line">        _imageSource = CGImageSourceCreateIncremental(NULL);</span><br><span class="line">    &#125;</span><br><span class="line">    UIImage *image;</span><br><span class="line">    </span><br><span class="line">    //更新数据源，这里必须传递所有数据，而不仅仅是新字节</span><br><span class="line">    CGImageSourceUpdateData(_imageSource, (__bridge CFDataRef)data, finished);</span><br><span class="line">    </span><br><span class="line">    // 获取到图像的宽、高和方向</span><br><span class="line">    if (_width + _height == 0) &#123;</span><br><span class="line">        CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(_imageSource, 0, NULL);</span><br><span class="line">        if (properties) &#123;</span><br><span class="line">            NSInteger orientationValue = 1;</span><br><span class="line">            CFTypeRef val = CFDictionaryGetValue(properties, kCGImagePropertyPixelHeight);</span><br><span class="line">            if (val) CFNumberGetValue(val, kCFNumberLongType, &amp;_height);</span><br><span class="line">            val = CFDictionaryGetValue(properties, kCGImagePropertyPixelWidth);</span><br><span class="line">            if (val) CFNumberGetValue(val, kCFNumberLongType, &amp;_width);</span><br><span class="line">            val = CFDictionaryGetValue(properties, kCGImagePropertyOrientation);</span><br><span class="line">            if (val) CFNumberGetValue(val, kCFNumberNSIntegerType, &amp;orientationValue);</span><br><span class="line">            CFRelease(properties);</span><br><span class="line">            </span><br><span class="line">            //当我们绘制到Core Graphics时，我们会丢失方向信息，这意味着initWithCGIImage生成的图像有时会导致错误定向。 （与didCompleteWithError中的initWithData生成的图像不同。）因此将其保存在此处并稍后传递。</span><br><span class="line">#if SD_UIKIT || SD_WATCH</span><br><span class="line">            _orientation = [SDWebImageCoderHelper imageOrientationFromEXIFOrientation:orientationValue];</span><br><span class="line">#endif</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (_width + _height &gt; 0) &#123;</span><br><span class="line">        // 创建位图对象</span><br><span class="line">        CGImageRef partialImageRef = CGImageSourceCreateImageAtIndex(_imageSource, 0, NULL);</span><br><span class="line">        </span><br><span class="line">        //如果存在，则根据该位图生成图片</span><br><span class="line">        if (partialImageRef) &#123;</span><br><span class="line">#if SD_UIKIT || SD_WATCH</span><br><span class="line">            image = [[UIImage alloc] initWithCGImage:partialImageRef scale:1 orientation:_orientation];</span><br><span class="line">#elif SD_MAC</span><br><span class="line">            image = [[UIImage alloc] initWithCGImage:partialImageRef size:NSZeroSize];</span><br><span class="line">#endif</span><br><span class="line">            // 位图对象的引用计数-1</span><br><span class="line">            CGImageRelease(partialImageRef);</span><br><span class="line">            image.sd_imageFormat = [NSData sd_imageFormatForImageData:data];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     // 如果加载完成就释放掉位图对象，并置空</span><br><span class="line">    if (finished) &#123;</span><br><span class="line">        if (_imageSource) &#123;</span><br><span class="line">            CFRelease(_imageSource);</span><br><span class="line">            _imageSource = NULL;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //返回该图片</span><br><span class="line">    return image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="私有方法中的：解压图片-和-解压并按比例缩小图片"><a href="#私有方法中的：解压图片-和-解压并按比例缩小图片" class="headerlink" title="私有方法中的：解压图片 和 解压并按比例缩小图片"></a>私有方法中的：解压图片 和 解压并按比例缩小图片</h4><p>解压图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#if SD_UIKIT || SD_WATCH</span><br><span class="line">- (nullable UIImage *)sd_decompressedImageWithImage:(nullable UIImage *)image &#123;</span><br><span class="line"></span><br><span class="line">    //如果图片不需要解码，直接返回image</span><br><span class="line">    if (![[self class] shouldDecodeImage:image]) &#123;</span><br><span class="line">        return image;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //自动释放位图上下文和所有变量以帮助系统在存在内存警告时释放内存。</span><br><span class="line">    //在iOS7上，别忘了调用[[SDImageCache sharedImageCache] clearMemory];</span><br><span class="line">    </span><br><span class="line">    // 建立自动释放池，以帮助系统在收到内存警告时释放内存。</span><br><span class="line">    @autoreleasepool&#123;</span><br><span class="line">        </span><br><span class="line">        //获取图片对象的位图图片</span><br><span class="line">        CGImageRef imageRef = image.CGImage;</span><br><span class="line">        // 获取图片对象的色彩空间</span><br><span class="line">        CGColorSpaceRef colorspaceRef = SDCGColorSpaceGetDeviceRGB();</span><br><span class="line">        BOOL hasAlpha = SDCGImageRefContainsAlpha(imageRef);</span><br><span class="line">        //  iOS 显示 Alpha（透明）信息  (BRGA8888/BGRX8888)</span><br><span class="line">        CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host;</span><br><span class="line">        bitmapInfo |= hasAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNoneSkipFirst;</span><br><span class="line">        </span><br><span class="line">        size_t width = CGImageGetWidth(imageRef);</span><br><span class="line">        size_t height = CGImageGetHeight(imageRef);</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        // CGBitmapContextCreate不支持kCGImageAlphaNone。由于此处的原始图像没有alpha信息，因此使用kCGImageAlphaNoneSkipLast创建没有alpha信息的位图图形上下文。</span><br><span class="line">        //创建位图图形上下文</span><br><span class="line">        CGContextRef context = CGBitmapContextCreate(NULL,</span><br><span class="line">                                                     width,</span><br><span class="line">                                                     height,</span><br><span class="line">                                                     kBitsPerComponent,</span><br><span class="line">                                                     0,</span><br><span class="line">                                                     colorspaceRef,</span><br><span class="line">                                                     bitmapInfo);</span><br><span class="line">        //如果创建失败，直接返回image</span><br><span class="line">        if (context == NULL) &#123;</span><br><span class="line">            return image;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 将图像绘制到上下文中并检索没有alpha的新位图图像</span><br><span class="line">        CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);</span><br><span class="line">        // 生成位图图像</span><br><span class="line">        CGImageRef imageRefWithoutAlpha = CGBitmapContextCreateImage(context);</span><br><span class="line">        // 根据位图图像生成图片对象</span><br><span class="line">        UIImage *imageWithoutAlpha = [[UIImage alloc] initWithCGImage:imageRefWithoutAlpha scale:image.scale orientation:image.imageOrientation];</span><br><span class="line">        //释放掉上下文</span><br><span class="line">        CGContextRelease(context);</span><br><span class="line">        //释放掉位图图片</span><br><span class="line">        CGImageRelease(imageRefWithoutAlpha);</span><br><span class="line">        </span><br><span class="line">        //返回位图图片</span><br><span class="line">        return imageWithoutAlpha;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>//解压并按比例缩小图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><span class="line">- (nullable UIImage *)sd_decompressedAndScaledDownImageWithImage:(nullable UIImage *)image &#123;</span><br><span class="line">    //如果图片不需要解码，直接返回image</span><br><span class="line">    if (![[self class] shouldDecodeImage:image]) &#123;</span><br><span class="line">        return image;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //如果图片不需要缩小，直接执行解压图片操作</span><br><span class="line">    if (![[self class] shouldScaleDownImage:image]) &#123;</span><br><span class="line">        return [self sd_decompressedImageWithImage:image];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 创建图像上下文</span><br><span class="line">    CGContextRef destContext;</span><br><span class="line">    </span><br><span class="line">    //自动释放位图上下文和所有变量以帮助系统在存在内存警告时释放内存。</span><br><span class="line">    //在iOS7上，别忘了调用[[SDImageCache sharedImageCache] clearMemory];</span><br><span class="line">    </span><br><span class="line">    // 建立自动释放池，以帮助系统在收到内存警告时释放内存</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        //获取图片对象的位图图片</span><br><span class="line">        CGImageRef sourceImageRef = image.CGImage;</span><br><span class="line">        </span><br><span class="line">        // 获取图像的总像素数</span><br><span class="line">        CGSize sourceResolution = CGSizeZero;</span><br><span class="line">        sourceResolution.width = CGImageGetWidth(sourceImageRef);</span><br><span class="line">        sourceResolution.height = CGImageGetHeight(sourceImageRef);</span><br><span class="line">        float sourceTotalPixels = sourceResolution.width * sourceResolution.height;</span><br><span class="line">        </span><br><span class="line">        // 计算缩小比例</span><br><span class="line">        float imageScale = kDestTotalPixels / sourceTotalPixels;</span><br><span class="line">        // 计算缩小后的尺寸</span><br><span class="line">        CGSize destResolution = CGSizeZero;</span><br><span class="line">        destResolution.width = (int)(sourceResolution.width*imageScale);</span><br><span class="line">        destResolution.height = (int)(sourceResolution.height*imageScale);</span><br><span class="line">        </span><br><span class="line">        // 获取色彩空间</span><br><span class="line">        CGColorSpaceRef colorspaceRef = SDCGColorSpaceGetDeviceRGB();</span><br><span class="line">        BOOL hasAlpha = SDCGImageRefContainsAlpha(sourceImageRef);</span><br><span class="line">        // iOS 显示 Alpha（透明）信息 (BGRA8888/BGRX8888)</span><br><span class="line">        CGBitmapInfo bitmapInfo = kCGBitmapByteOrder32Host;</span><br><span class="line">        bitmapInfo |= hasAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNoneSkipFirst;</span><br><span class="line">        </span><br><span class="line">        // CGBitmapContextCreate不支持kCGImageAlphaNone。由于此处的原始图像没有alpha信息，因此使用kCGImageAlphaNoneSkipLast创建没有alpha信息的位图图形上下文。</span><br><span class="line">        //创建位图图形上下文</span><br><span class="line">        destContext = CGBitmapContextCreate(NULL,</span><br><span class="line">                                            destResolution.width,</span><br><span class="line">                                            destResolution.height,</span><br><span class="line">                                            kBitsPerComponent,</span><br><span class="line">                                            0,</span><br><span class="line">                                            colorspaceRef,</span><br><span class="line">                                            bitmapInfo);</span><br><span class="line">        </span><br><span class="line">        //如果创建失败，直接返回image</span><br><span class="line">        if (destContext == NULL) &#123;</span><br><span class="line">            return image;</span><br><span class="line">        &#125;</span><br><span class="line">        // 设置图像上下文的绘图质量</span><br><span class="line">        CGContextSetInterpolationQuality(destContext, kCGInterpolationHigh);</span><br><span class="line">        </span><br><span class="line">        //现在定义用于从输入图像到输出图像的增量blit的矩形的大小。由于iOS从磁盘检索图像数据的方式，我们使用的源块宽度等于源图像的宽度。 iOS必须以全宽“波段”从磁盘解码图像，即使当前图形上下文被剪切为该波段内的子图形也是如此。 因此，我们通过将我们的图块大小设置为输入图像的整个宽度来充分利用由解码操作产生的所有像素数据。</span><br><span class="line">        </span><br><span class="line">        // 创建临时变量保存来源块大小</span><br><span class="line">        CGRect sourceTile = CGRectZero;</span><br><span class="line">        // 来源块的宽度就是原图的宽度</span><br><span class="line">        sourceTile.size.width = sourceResolution.width;</span><br><span class="line">        </span><br><span class="line">        // 源图块高度是动态的。 由于我们以MB为单位指定了源块的大小，因此请查看输入图像宽度可以为多少像素行。</span><br><span class="line">        // 计算来源块的高度</span><br><span class="line">        sourceTile.size.height = (int)(kTileTotalPixels / sourceTile.size.width );</span><br><span class="line">        // 设置来源块的X坐标</span><br><span class="line">        sourceTile.origin.x = 0.0f;</span><br><span class="line">        </span><br><span class="line">        //输出图块与输入图块的比例相同，但缩放为图像比例。</span><br><span class="line">        // 创建历史变量保存目标块大小</span><br><span class="line">        CGRect destTile;</span><br><span class="line">        </span><br><span class="line">        // 目标块的宽是缩放后的宽</span><br><span class="line">        destTile.size.width = destResolution.width;</span><br><span class="line">        </span><br><span class="line">        // 目标块的宽是来源块的高乘以缩放比</span><br><span class="line">        destTile.size.height = sourceTile.size.height * imageScale;</span><br><span class="line">        </span><br><span class="line">        // 设置目标块的X坐标</span><br><span class="line">        destTile.origin.x = 0.0f;</span><br><span class="line">        </span><br><span class="line">        //来源块与目标似乎重叠成比例。 这是我们组装输出图像时每个图块重叠的像素数量。</span><br><span class="line">        // 计算来源块与目标块的重复区域</span><br><span class="line">        float sourceSeemOverlap = (int)((kDestSeemOverlap/destResolution.height)*sourceResolution.height);</span><br><span class="line">        </span><br><span class="line">        // 生成变量保存来源块图像位图</span><br><span class="line">        CGImageRef sourceTileImageRef;</span><br><span class="line">        </span><br><span class="line">        // 计算组装输出图像所需的读/写操作次数。</span><br><span class="line">        // 计算需要绘制的次数</span><br><span class="line">        int iterations = (int)( sourceResolution.height / sourceTile.size.height );</span><br><span class="line">        </span><br><span class="line">        // 如果图块高度未均匀划分图像高度，请添加另一个迭代以考虑剩余像素。</span><br><span class="line">        // 计算剩余像素的高度</span><br><span class="line">        int remainder = (int)sourceResolution.height % (int)sourceTile.size.height;</span><br><span class="line">        </span><br><span class="line">        // 如果有剩余像素就将绘制次数加1</span><br><span class="line">        if(remainder) &#123;</span><br><span class="line">            iterations++;</span><br><span class="line">        &#125;</span><br><span class="line">        // 添加似乎与切片重叠，但保存原始切片高度以进行y坐标计算。</span><br><span class="line">         // 创建变量保存来源块的高度，用来计算纵坐标的移动</span><br><span class="line">        float sourceTileHeightMinusOverlap = sourceTile.size.height;</span><br><span class="line">        </span><br><span class="line">        // 来源块高度加上要重复覆盖的高度</span><br><span class="line">        sourceTile.size.height += sourceSeemOverlap;</span><br><span class="line">        </span><br><span class="line">        // 目标块高度加上重叠的像素数</span><br><span class="line">        destTile.size.height += kDestSeemOverlap;</span><br><span class="line">        </span><br><span class="line">        // 开启循环绘制图像</span><br><span class="line">        for( int y = 0; y &lt; iterations; ++y ) &#123;</span><br><span class="line">            // 建立自动释放池，以帮助系统在收到内存警告时释放内存。</span><br><span class="line">            @autoreleasepool &#123;</span><br><span class="line">                // 计算来源块的纵坐标：来源块的高度乘以当前循环次数，然后加上重复覆盖的高度</span><br><span class="line">                sourceTile.origin.y = y * sourceTileHeightMinusOverlap + sourceSeemOverlap;</span><br><span class="line">                </span><br><span class="line">                 // 计算目标块的纵坐标：目标图像的高度减去要绘制的来源块的高度乘以压缩比，再减去重叠高度</span><br><span class="line">                // 这个地方，来源块的纵坐标是递增的，目标块的纵坐标是递减的，这是因为为UIKit的坐标系和CGContext是镜像关系</span><br><span class="line">                destTile.origin.y = destResolution.height - (( y + 1 ) * sourceTileHeightMinusOverlap * imageScale + kDestSeemOverlap);</span><br><span class="line">                </span><br><span class="line">                // 按照计算好的尺寸绘制来源块的位图</span><br><span class="line">                sourceTileImageRef = CGImageCreateWithImageInRect( sourceImageRef, sourceTile );</span><br><span class="line">                </span><br><span class="line">                 // 如果是最后一块要绘制，并且这一块是剩余的像素</span><br><span class="line">                if( y == iterations - 1 &amp;&amp; remainder ) &#123;</span><br><span class="line">                </span><br><span class="line">                    // 因为剩余像素的高度是不固定的，所以重新计算目标块的纵坐标</span><br><span class="line">                    float dify = destTile.size.height;</span><br><span class="line">                    destTile.size.height = CGImageGetHeight( sourceTileImageRef ) * imageScale;</span><br><span class="line">                    dify -= destTile.size.height;</span><br><span class="line">                    destTile.origin.y += dify;</span><br><span class="line">                &#125;</span><br><span class="line">                // 将来源块位图按照计算好的尺寸绘制到目标图像上下文中</span><br><span class="line">                CGContextDrawImage( destContext, destTile, sourceTileImageRef );</span><br><span class="line">                </span><br><span class="line">                 // 释放来源块位图</span><br><span class="line">                CGImageRelease( sourceTileImageRef );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 根据目标图像上下文生成目标图像位图</span><br><span class="line">        CGImageRef destImageRef = CGBitmapContextCreateImage(destContext);</span><br><span class="line">        </span><br><span class="line">        // 释放目标图像上下文</span><br><span class="line">        CGContextRelease(destContext);</span><br><span class="line">        </span><br><span class="line">        // 如果生成位图失败就直接返回图片对象</span><br><span class="line">        if (destImageRef == NULL) &#123;</span><br><span class="line">            return image;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">         // 生成目标图片对象</span><br><span class="line">        UIImage *destImage = [[UIImage alloc] initWithCGImage:destImageRef scale:image.scale orientation:image.imageOrientation];</span><br><span class="line">        </span><br><span class="line">         // 释放目标图像位图</span><br><span class="line">        CGImageRelease(destImageRef);</span><br><span class="line">        </span><br><span class="line">        // 如果生成图片对象失败就直接返回图片对象</span><br><span class="line">        if (destImage == nil) &#123;</span><br><span class="line">            return image;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 返回目标图片对象</span><br><span class="line">        return destImage;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>判断某个图片格式是否支持编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//如果是WebP格式，则不支持编码；HEIC格式：根据canEncodeToHEICFormat方法判断是否支持编码；其他格式都支持编码</span><br><span class="line">- (BOOL)canEncodeToFormat:(SDImageFormat)format &#123;</span><br><span class="line">    switch (format) &#123;</span><br><span class="line">        case SDImageFormatWebP:</span><br><span class="line">            // 不支持WebP格式编码</span><br><span class="line">            return NO;</span><br><span class="line">        case SDImageFormatHEIC:</span><br><span class="line">            // 检查HEIC编码兼容性</span><br><span class="line">            return [[self class] canEncodeToHEICFormat];</span><br><span class="line">        default:</span><br><span class="line">            return YES;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将图片根据给定的格式解码成图片数据（imageData）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">- (NSData *)encodedDataWithImage:(UIImage *)image format:(SDImageFormat)format &#123;</span><br><span class="line">    //如果图片不存在，返回nil</span><br><span class="line">    if (!image) &#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //如果格式类型未识别，判断图片是否含有Alpha通道，如果有则定义为PNG格式，否则定义为JPEG格式</span><br><span class="line">    if (format == SDImageFormatUndefined) &#123;</span><br><span class="line">        BOOL hasAlpha = SDCGImageRefContainsAlpha(image.CGImage);</span><br><span class="line">        if (hasAlpha) &#123;</span><br><span class="line">            format = SDImageFormatPNG;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            format = SDImageFormatJPEG;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSMutableData *imageData = [NSMutableData data];</span><br><span class="line">    CFStringRef imageUTType = [NSData sd_UTTypeFromSDImageFormat:format];</span><br><span class="line">    </span><br><span class="line">    // 根据imageData 和 CFStringRef 创建 CGImageDestinationRef对象，如果创建失败，返回nil</span><br><span class="line">    CGImageDestinationRef imageDestination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)imageData, imageUTType, 1, NULL);</span><br><span class="line">    if (!imageDestination) &#123;</span><br><span class="line">        // Handle failure.</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //创建字典对象保存编码参数</span><br><span class="line">    NSMutableDictionary *properties = [NSMutableDictionary dictionary];</span><br><span class="line">#if SD_UIKIT || SD_WATCH</span><br><span class="line">    //// 获取图片的方向</span><br><span class="line">    NSInteger exifOrientation = [SDWebImageCoderHelper exifOrientationFromImageOrientation:image.imageOrientation];</span><br><span class="line">    //设置方向参数</span><br><span class="line">    [properties setValue:@(exifOrientation) forKey:(__bridge NSString *)kCGImagePropertyOrientation];</span><br><span class="line">#endif</span><br><span class="line">    </span><br><span class="line">    // 添加图片位图对象到创建的CGImageDestinationRef对象中</span><br><span class="line">    CGImageDestinationAddImage(imageDestination, image.CGImage, (__bridge CFDictionaryRef)properties);</span><br><span class="line">    </span><br><span class="line">    // 如果编码失败就返回空</span><br><span class="line">    if (CGImageDestinationFinalize(imageDestination) == NO) &#123;</span><br><span class="line">        // Handle failure.</span><br><span class="line">        imageData = nil;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //释放掉imageDestination对象</span><br><span class="line">    CFRelease(imageDestination);</span><br><span class="line">    </span><br><span class="line">    //返回</span><br><span class="line">    return [imageData copy];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="私有方法（辅助方法）"><a href="#私有方法（辅助方法）" class="headerlink" title="私有方法（辅助方法）"></a>私有方法（辅助方法）</h3><ol>
+<li>是否需要解压图片<br>（如果图片为动图或不存在，不解压图片，否则解压图片）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+ (BOOL)shouldDecodeImage:(nullable UIImage *)image &#123;</span><br><span class="line">    //如果图片为空，返回NO</span><br><span class="line">    if (image == nil) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 如果图片为动图，返回NO</span><br><span class="line">    if (image.images != nil) &#123;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    否则返回YES</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>是否支持<code>HEIC</code>格式类型的图片解码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">+ (BOOL)canDecodeFromHEICFormat &#123;</span><br><span class="line">    //临时静态变量 canDecode 为 NO</span><br><span class="line">    static BOOL canDecode = NO;</span><br><span class="line">    </span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">    </span><br><span class="line">//忽略-Wunguarded-availability警告   </span><br><span class="line">#pragma clang diagnostic push</span><br><span class="line">#pragma clang diagnostic ignored &quot;-Wunguarded-availability&quot;</span><br><span class="line"></span><br><span class="line">//如果是iWatch 或者 SIMULATOR ，则不支持</span><br><span class="line">#if TARGET_OS_SIMULATOR || SD_WATCH  //iWatch</span><br><span class="line">        canDecode = NO;</span><br><span class="line">        </span><br><span class="line">#elif SD_MAC  //mac</span><br><span class="line">        </span><br><span class="line">        //获取进程信息对象</span><br><span class="line">        NSProcessInfo *processInfo = [NSProcessInfo processInfo];</span><br><span class="line">        if ([processInfo respondsToSelector:@selector(operatingSystemVersion)]) &#123;</span><br><span class="line">            //通过进程信息对象获取操作系统版本。判断macOS系统版本10.13+，则支持HEIC类型图像的解码</span><br><span class="line">            canDecode = processInfo.operatingSystemVersion.minorVersion &gt;= 13;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            canDecode = NO;</span><br><span class="line">        &#125;</span><br><span class="line">#elif SD_UIKIT //iOS 和 tvOS</span><br><span class="line">        //获取进程信息对象</span><br><span class="line">        NSProcessInfo *processInfo = [NSProcessInfo processInfo];</span><br><span class="line">        if ([processInfo respondsToSelector:@selector(operatingSystemVersion)]) &#123;</span><br><span class="line">            //通过进程信息对象获取操作系统版本。判断操作系统版本是iOS 11+就支持HEIC类型图像的解码</span><br><span class="line">            canDecode = processInfo.operatingSystemVersion.majorVersion &gt;= 11;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            canDecode = NO;</span><br><span class="line">        &#125;</span><br><span class="line">#endif</span><br><span class="line">#pragma clang diagnostic pop</span><br><span class="line">    &#125;);</span><br><span class="line">    return canDecode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>是否支持<code>HEIC</code>格式类型的图片编码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">+ (BOOL)canEncodeToHEICFormat &#123;</span><br><span class="line">    //临时静态变量 canDecode 为 NO</span><br><span class="line">    static BOOL canEncode = NO;</span><br><span class="line">    </span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        NSMutableData *imageData = [NSMutableData data];</span><br><span class="line">        CFStringRef imageUTType = [NSData sd_UTTypeFromSDImageFormat:SDImageFormatHEIC];</span><br><span class="line">        </span><br><span class="line">        // 创建一个CGImageDestinationRef对象，如果该对象可以创建成功，则需要编码，否则不需要</span><br><span class="line">        CGImageDestinationRef imageDestination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)imageData, imageUTType, 1, NULL);</span><br><span class="line">        if (!imageDestination) &#123;</span><br><span class="line">            // Can&apos;t encode to HEIC</span><br><span class="line">            canEncode = NO;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // Can encode to HEIC</span><br><span class="line">            CFRelease(imageDestination);</span><br><span class="line">            canEncode = YES;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    return canEncode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>是否应该缩小图片</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#if SD_UIKIT || SD_WATCH</span><br><span class="line">+ (BOOL)shouldScaleDownImage:(nonnull UIImage *)image &#123;</span><br><span class="line">    BOOL shouldScaleDown = YES;</span><br><span class="line">    </span><br><span class="line">    //获取图片的位图图像</span><br><span class="line">    CGImageRef sourceImageRef = image.CGImage;</span><br><span class="line">    </span><br><span class="line">    //获取到位图图像的宽和高</span><br><span class="line">    CGSize sourceResolution = CGSizeZero;</span><br><span class="line">    sourceResolution.width = CGImageGetWidth(sourceImageRef);</span><br><span class="line">    sourceResolution.height = CGImageGetHeight(sourceImageRef);</span><br><span class="line">    </span><br><span class="line">    //计算图片的总像素数</span><br><span class="line">    float sourceTotalPixels = sourceResolution.width * sourceResolution.height;</span><br><span class="line">    </span><br><span class="line">    //图片的压缩比： 最大像素数 / 图片的总像素数</span><br><span class="line">    float imageScale = kDestTotalPixels / sourceTotalPixels;</span><br><span class="line">    </span><br><span class="line">    //如果压缩比小于1，返回YES，否则返回NO</span><br><span class="line">    if (imageScale &lt; 1) &#123;</span><br><span class="line">        shouldScaleDown = YES;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        shouldScaleDown = NO;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return shouldScaleDown;</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="更新时间"></i>
+              2018-10-23 21:57:30
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="标签"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/SDWebImage/" title="SDWebImage">
+                        <b>#</b> SDWebImage
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#私有静态常量"><span class="toc-text">私有静态常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#私有变量"><span class="toc-text">私有变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#life-cycle"><span class="toc-text">life cycle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解码"><span class="toc-text">解码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SDWebImageCoder协议方法"><span class="toc-text">SDWebImageCoder协议方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SDWebImageProgressiveCoder-协议方法"><span class="toc-text">SDWebImageProgressiveCoder 协议方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#私有方法中的：解压图片-和-解压并按比例缩小图片"><span class="toc-text">私有方法中的：解压图片 和 解压并按比例缩小图片</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编码"><span class="toc-text">编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#私有方法（辅助方法）"><span class="toc-text">私有方法（辅助方法）</span></a></li></ol>
+    </div>
+  </div>
+
+  <script src="/js/catalog.js"></script>
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" href="https://github.com/guohuaCabin">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="email" href="">
+            <i class="iconfont icon-envelope"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        Copyright © Oranges 2021
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+<script src="/js/backtotop.js"></script>
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  <script src="/js/colorscheme.js"></script>
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E8%AF%BB%20SDWebImage%20%E5%85%AD%20%EF%BC%88%E7%BC%96%E7%A0%81%E5%99%A8%E5%9B%9B%EF%BC%9ASDWebImageImageIOCoder%EF%BC%89 + '&url=' + https%3A%2F%2Fqinguohua.fun%2F2018%2F10%2F23%2F2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://qinguohua.fun/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  <script src="/js/shares.js"></script>
+
+
+      </div>
+    </div>
+  </body>
+</html>
