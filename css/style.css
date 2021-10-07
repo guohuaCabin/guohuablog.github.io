@@ -57,7 +57,7 @@ div {
 #header {
   padding: 58px 0 0;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #2C2D2D;
   position: relative; }
   #header .site-name {
     margin-bottom: 40px; }
@@ -68,12 +68,12 @@ div {
       overflow: hidden; }
     #header .site-name #logo {
       font: bold 38px/1.12 "Times New Roman", Georgia, Times, sans-serif;
-      color: #555; }
+      color: #E6E6E6; }
       #header .site-name #logo span, #header .site-name #logo:hover {
-        color: #777; }
+        color: #C8C8C8; }
     #header .site-name .description {
       margin: .2em 0 0;
-      color: #999; }
+      color: #fff; }
   #header #nav-menu {
     margin: 10px 0 -1px;
     padding: 0;
