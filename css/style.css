@@ -159,17 +159,17 @@ div {
   margin-top: 1.1em;
   font-size: 20px;
   font-weight: normal;
-  color: #4067B4; }
+  color: #92B4F2; }
 
 .post {
   padding: 25px 0 15px; }
   .post .post-title {
     margin: 0;
-    color: #4067B4;
+    color: #92B4F2;
     text-align: left;
     font: bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif; }
     .post .post-title a {
-      color: #4067B4; }
+      color: #C46644; }
   .post .post-meta {
     padding: 0;
     margin: 15px 0 0;
