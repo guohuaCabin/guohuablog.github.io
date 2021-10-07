@@ -84,14 +84,14 @@ div {
       display: inline-block;
       padding: 3px 20px 3px;
       line-height: 30px;
-      color: #fff;
+      color: #D2D2D2;
       font-size: 13px;
       border: 1px solid transparent; }
       #header #nav-menu a:hover {
         border-bottom-color: #696969; }
       #header #nav-menu a.current {
         border: 1px solid #2C2D2D;
-        border-bottom-color: #D2D2D2; }
+        border-bottom-color: #2C2D2D; }
 
 #sidebar {
   border-left: 1px solid #ddd;
