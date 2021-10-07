@@ -165,7 +165,7 @@ div {
   padding: 25px 0 15px; }
   .post .post-title {
     margin: 0;
-    color: #92B4F2;
+    color: #D2D2D2;
     text-align: left;
     font: bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif; }
     .post .post-title a {
@@ -201,7 +201,7 @@ div {
       content: "\f0e5";
       padding-right: 0.3em; }
     .post .ds-thread-count:hover {
-      color: #fff; }
+      color: #D2D2D2; }
   .post .disqus-comment-count {
     padding: 0;
     margin: 15px 0 0;
@@ -214,7 +214,7 @@ div {
       content: "\f0e5";
       padding-right: 0.3em; }
     .post .disqus-comment-count:hover {
-      color: #fff; }
+      color: #D2D2D2; }
   .post .post-content {
     clear: left;
     font-size: 15px;
@@ -256,7 +256,7 @@ div {
     .post .post-content hr {
       margin: 2.4em auto;
       border: none;
-      border-top: 1px solid #272823;
+      border-top: 1px solid #C46644;
       position: relative; }
     .post .post-content img {
       max-width: 100%;
@@ -272,7 +272,7 @@ div {
         display: inline-block;
         margin: 0 5px;
         padding: 0px 5px;
-        background: #353535;
+        background: #C46644;
         font-family: Menlo, Consolas, monospace !important; }
       .post .post-content ul a, .post .post-content ol a {
         color: #92B4F2;
