@@ -192,7 +192,7 @@ div {
   .post .ds-thread-count {
     padding: 0;
     margin: 15px 0 0;
-    color: #6E7173;
+    color: #D2D2D2;
     float: right;
     display: inline;
     text-indent: .15em; }
@@ -201,11 +201,11 @@ div {
       content: "\f0e5";
       padding-right: 0.3em; }
     .post .ds-thread-count:hover {
-      color: #444; }
+      color: #fff; }
   .post .disqus-comment-count {
     padding: 0;
     margin: 15px 0 0;
-    color: #6E7173;
+    color: #D2D2D2;
     float: right;
     display: inline;
     text-indent: .15em; }
@@ -214,19 +214,19 @@ div {
       content: "\f0e5";
       padding-right: 0.3em; }
     .post .disqus-comment-count:hover {
-      color: #444; }
+      color: #fff; }
   .post .post-content {
     clear: left;
     font-size: 15px;
     line-height: 1.77;
-    color: #444;
+    color: #D2D2D2;
     padding-top: 15px;
     text-align: justify;
     text-justify: distribute;
     word-break: normal; }
     .post .post-content h2 {
       margin: 1.4em 0 1.1em;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #D2D2D2;
       overflow: hidden; }
     .post .post-content h3 {
       margin: 1.4em 0 1.1em; }
@@ -238,16 +238,16 @@ div {
         display: inline-block;
         margin: 0 5px;
         padding: 0 5px;
-        background: #f7f8f8;
+        background: #D2D2D2;
         font-family: Menlo, Consolas, monospace !important; }
       .post .post-content p a {
-        color: #01579f;
+        color: #92B4F2;
         padding-bottom: 2px;
         word-break: normal; }
         .post .post-content p a:hover {
           text-decoration: underline; }
     .post .post-content .caption {
-      color: #444;
+      color: #D2D2D2;
       display: block;
       font-size: 0.9em;
       margin-top: 0.1em;
@@ -256,7 +256,7 @@ div {
     .post .post-content hr {
       margin: 2.4em auto;
       border: none;
-      border-top: 1px solid #eee;
+      border-top: 1px solid #272823;
       position: relative; }
     .post .post-content img {
       max-width: 100%;
@@ -272,10 +272,10 @@ div {
         display: inline-block;
         margin: 0 5px;
         padding: 0px 5px;
-        background: #f7f8f8;
+        background: #353535;
         font-family: Menlo, Consolas, monospace !important; }
       .post .post-content ul a, .post .post-content ol a {
-        color: #01579f;
+        color: #92B4F2;
         padding-bottom: 2px;
         word-break: normal; }
         .post .post-content ul a:hover, .post .post-content ol a:hover {
@@ -290,7 +290,7 @@ div {
         padding-right: 0.3em; }
 
 .page-navigator {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #D2D2D2;
   list-style: none;
   margin-top: 25px;
   padding: 25px 0 0;
@@ -304,7 +304,7 @@ div {
     height: 25px;
     line-height: 25px;
     padding: 5px 9px;
-    border: 1px solid #DDD;
+    border: 1px solid #2C2D2D;
     text-align: center; }
     .page-navigator a:hover, .page-navigator span:hover {
       background: #F8F8F8;
