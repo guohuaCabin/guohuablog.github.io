@@ -1,26 +1,508 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。"><title>所念皆星辰 | 踏实、低调、前行。</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create','GTM-NHB73SK','auto');ga('send','pageview');
-</script><script>var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = 'https://hm.baidu.com/hm.js?' + 'ae05530a6a007cdb8063cf611691cc3e';
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-  })();
-</script><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">所念皆星辰</h1><a id="logo" href="/.">所念皆星辰</a><p class="description">踏实、低调、前行。</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/">读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</a></h1><div class="post-meta">2018-10-23</div><div class="post-content"><p><code>SDWebImage</code> 内部实现了一个图片解码/编码的图片编码器，用于图片的编解码、压缩。其中涉及到编解码管理（<code>SDWebImageCodersManager</code>）、编解码协议（<code>SDWebImageCoder</code>）、PNG/JPEG/TIFF编解码，解压缩，显示大图（<code>SDWebImageImageIOCoder</code>）、GIF编解码（<code>SDWebImageGIFCoder</code>）、WebP编解码（<code>SDWebImageWebPCoder</code>）以及辅助类（<code>SDWebImageCoderHelper</code>）</p>
-<p><code>SDWebImageImageIOCoder</code> ：内置编码器，支持PNG，JPEG，TIFF，支持逐行解码。该类遵守 <code>SDWebImageProgressiveCoder</code>协议。该协议也遵守<code>SDWebImageCoder</code>协议，所以这个类要实现这两个协议的方法。</p>
-<p>  GIF<br>  还支持静态GIF（意思是只处理第一帧）。<br>  要获得完整的GIF支持，我们建议使用<code>FLAnimatedImage</code>或性能较差的<code>SDWebImageGIFCoder</code></p>
-<p>  HEIC<br>  该编码器还支持HEIC格式，因为ImageIO本身支持它。但这取决于系统功能，因此无法在所有设备上运行。</div><p class="readmore"><a href="/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/">读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</a></h1><div class="post-meta">2018-10-18</div><div class="post-content"><p><code>SDWebImage</code> 内部实现了一个图片解码/编码的图片编解码器，用于图片的编解码、压缩。其中涉及到编解码管理（<code>SDWebImageCodersManager</code>）、编解码协议（<code>SDWebImageCoder</code>）、PNG/JPEG/TIFF编解码，解压缩，显示大图（<code>SDWebImageImageIOCoder</code>）、GIF编解码（<code>SDWebImageGIFCoder</code>）、WebP编解码（<code>SDWebImageWebPCoder</code>）以及辅助类（<code>SDWebImageCoderHelper</code>）</p>
-<h3 id="编解码管理（-SDWebImageCodersManager-）"><a href="#编解码管理（-SDWebImageCodersManager-）" class="headerlink" title="编解码管理（ SDWebImageCodersManager ）"></a>编解码管理（ <code>SDWebImageCodersManager</code> ）</h3><p>编解码管理器，整体编解码器的入口，该类遵守了 <code>SDWebImageCoder</code> 协议，说明这个类可以提供基本的编解码功能 。编解码器数组是一个优先级队列，也意味着处理多个图片编解码任务时新添加的编解码器将具有最高优先级（即被先调用）</div><p class="readmore"><a href="/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/">读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</a></h1><div class="post-meta">2018-10-15</div><div class="post-content"><p><code>SDWebImage</code> 内部实现了一个图片解码/编码的图片编码器，用于图片的编解码、压缩。其中涉及到编解码管理（<code>SDWebImageCodersManager</code>）、编解码协议（<code>SDWebImageCoder</code>）、PNG/JPEG/TIFF编解码，解压缩，显示大图（<code>SDWebImageImageIOCoder</code>）、GIF编解码（<code>SDWebImageGIFCoder</code>）、WebP编解码（<code>SDWebImageWebPCoder</code>）以及辅助类（<code>SDWebImageCoderHelper</code>）</p>
-<p>本篇只做 <code>SDWebImageCoderHelper</code> 类的分析。该类作为辅助类，主要实现了两个功能：动图处理 和 图片方向处理。每个功能有两种方法，均为互逆方法。</p></div><p class="readmore"><a href="/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/13/2018-10-13-Read-SDWebImage-SDWebImageCoder/">读 SDWebImage 六 （编码器一：SDWebImageCoder）</a></h1><div class="post-meta">2018-10-13</div><div class="post-content"><p><code>SDWebImage</code> 内部实现了一个图片解码/编码的图片编码器，用于图片的编解码、压缩。其中涉及到编解码管理（<code>SDWebImageCodersManager</code>）、编解码协议（<code>SDWebImageCoder</code>）、PNG/JPEG/TIFF编解码，解压缩，显示大图（<code>SDWebImageImageIOCoder</code>）、GIF编解码（<code>SDWebImageGIFCoder</code>）、WebP编解码（<code>SDWebImageWebPCoder</code>）以及辅助类（<code>SDWebImageCoderHelper</code>）</p>
-<p>本篇只做 <code>SDWebImageCoder</code> 的分析。 <code>SDWebImageCoder</code> 是编解码协议，包含两个协议：<code>SDWebImageCoder</code> 和 <code>SDWebImageProgressiveCoder</code>，两个协议定义了图片编解码类的接口。</p></div><p class="readmore"><a href="/2018/10/13/2018-10-13-Read-SDWebImage-SDWebImageCoder/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/11/2018-10-11-Read-SDWebImage-SDWebImageDownloaderOperation/">读 SDWebImage 五 （SDWebImageDownloaderOperation）</a></h1><div class="post-meta">2018-10-11</div><div class="post-content"><p><code>SDWebImage</code> 的图片下载是由 <code>SDWebImageDownloader</code> 类实现的，该类是一个异步下载管理器。主要工作是下载相关配置项的管理，包括下载队列的先后顺序、最大下载任务数量控制、下载队列中的任务创建、取消、暂停等任务管理，以及其他的 <code>HTTPS</code> 和 <code>HTTP Header</code> 的设置。</p></div><p class="readmore"><a href="/2018/10/11/2018-10-11-Read-SDWebImage-SDWebImageDownloaderOperation/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/04/2018-10-04-Read-SDWebImage-SDWebImageDownloader/">读 SDWebImage 四 (SDWebImageDownloader)</a></h1><div class="post-meta">2018-10-04</div><div class="post-content"><p><code>SDWebImage</code> 的图片下载是由 <code>SDWebImageDownloader</code> 这个类实现的，该类是一个异步下载管理器。主要工作是下载相关配置项的管理，包括下载队列的先后顺序、最大下载任务数量控制、下载队列中的任务创建、取消、暂停等任务管理，以及其他的 <code>HTTPS</code> 和 <code>HTTP Header</code> 的设置。而真正实现图片下载的是 <code>SDWebImageDownloaderOperation</code>类。该类的 <code>Operation</code> 操作依赖系统提供的NSURLConnection类来实现图片的下载。</p></div><p class="readmore"><a href="/2018/10/04/2018-10-04-Read-SDWebImage-SDWebImageDownloader/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/02/2018-10-02-Read-SDWebImage-SDImageCache/">读 SDWebImage 三 (SDImageCache)</a></h1><div class="post-meta">2018-10-02</div><div class="post-content"><h3 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h3><p><code>SDImageCache</code> 是 <code>SDWebImage</code> 处理图片缓存的类。图片的存储是针对内存和磁盘有一点区别：内存中直接存储图片，磁盘中存中 <code>imagedata</code><br>在 <code>SDWebImageManager</code> 中使用的存储图片、判断图片是否已存储在磁盘/内存等方法均是调用该类中的方法。<code>SDWebImage</code> 设计时做了很好的分工，以至于去分析代码都带有一种享受感。</p></div><p class="readmore"><a href="/2018/10/02/2018-10-02-Read-SDWebImage-SDImageCache/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/10/01/2018-10-01-Read-SDWebImage-SDWebImageManager/">读SDWebImage 二 (SDWebImageManager)</a></h1><div class="post-meta">2018-10-01</div><div class="post-content"><h2 id="1、整体框架"><a href="#1、整体框架" class="headerlink" title="1、整体框架"></a>1、整体框架</h2><p>看下整体的框架图：<br><img src="http://blog.guohuaden.com/SDWebImageClassDiagram.png" alt="SDWebImage框架"><br>从图中可以更清晰的看出，<code>SDWebImage</code>库是围绕<code>SDWebImageManager</code>、<code>SDWebImageCache</code>、<code>SDWebImageDownloader</code>三个类展开的，而这三个类又是以<code>SDWebImageManager</code>作为核心类。</p></div><p class="readmore"><a href="/2018/10/01/2018-10-01-Read-SDWebImage-SDWebImageManager/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/09/29/2018-09-29-Read-SDWebImage-note1/">读 SDWebImage 一 使用分析</a></h1><div class="post-meta">2018-09-29</div><div class="post-content"><p>SDWebImage整体的框架：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">SDWebImage</span><br><span class="line">    -</span><br><span class="line">    |--SDWebImageCompat :一些兼容性相关的宏定义 </span><br><span class="line">    |--SDWebImageOperation :只有一个 cancel 方法的 protocal</span><br><span class="line">    |</span><br><span class="line">    |--Downloader :下载模块</span><br><span class="line">    |   |-- SDWebImageDownloader</span><br><span class="line">    |   |-- SDWebImageDownloaderOperation</span><br><span class="line">    |   </span><br><span class="line">    |--Cache :内存和硬盘缓存模块</span><br><span class="line">    |   |-- SDImageCache</span><br><span class="line">    |</span><br><span class="line">    |--Utils :</span><br><span class="line">    |   |-- SDWebImageManager 将缓存和下载模块结合起来使用</span><br><span class="line">    |   |-- SDWebImagePrefetcher 预下载图片</span><br><span class="line">    |   |-- SDWebImageDecoder</span><br><span class="line">    |</span><br><span class="line">    |--Categories : UIKit 相关的Category,方便使用,还支持 MKAnnotationView</span><br><span class="line">        |-- MKAnnotationView+WebCache</span><br><span class="line">        |-- UIButton+WebCache</span><br><span class="line">        |-- UIImageView+WebCache</span><br><span class="line">    -</span><br><span class="line">    ... ...</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/09/29/2018-09-29-Read-SDWebImage-note1/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/06/30/2018-06-30-copyAndMutableCopy/">copy 和 mutableCopy</a></h1><div class="post-meta">2018-06-30</div><div class="post-content"><p>今天来谈下深浅拷贝【copy 和 mutableCopy】</p>
-<p>想写这篇文章，是因为看到了一个有意思的文章，对于其中的一些观点不太认同，所以想简单分析一下深浅拷贝</p>
-<p>先看一段代码，稍后会对代码进行分析</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-(void)testOne</span><br><span class="line">&#123;</span><br><span class="line">    NSArray *test = @[@1,@2,@3];</span><br><span class="line">    NSLog(@&quot;test-&gt;%p\n&quot;,test);</span><br><span class="line">    NSArray *testCopy = [test copy];</span><br><span class="line">    NSLog(@&quot;testCopy-&gt;%p\n&quot;,testCopy);</span><br><span class="line">    NSArray *testMutableCopy = [test mutableCopy];</span><br><span class="line">    NSLog(@&quot;testMutableCopy-&gt;%p\n&quot;,testMutableCopy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/06/30/2018-06-30-copyAndMutableCopy/">阅读全文</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页</a></nav><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-</script><script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVN/">SVN</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/欠下的时光/">欠下的时光</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/读SDWebImage手札/">读SDWebImage手札</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目总结/">项目总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/bridge和Core-Foundation/" style="font-size: 15px;">bridge和Core Foundation</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/毛玻璃效果/" style="font-size: 15px;">毛玻璃效果</a> <a href="/tags/block-weak/" style="font-size: 15px;">block,weak</a> <a href="/tags/加解密/" style="font-size: 15px;">加解密</a> <a href="/tags/模拟器错误/" style="font-size: 15px;">模拟器错误</a> <a href="/tags/毛玻璃效果，虚化效果/" style="font-size: 15px;">毛玻璃效果，虚化效果</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/关于app支持64bit-iOS/" style="font-size: 15px;">关于app支持64bit,iOS</a> <a href="/tags/WKWebView/" style="font-size: 15px;">WKWebView</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/WebView/" style="font-size: 15px;">WebView</a> <a href="/tags/欠下的时光/" style="font-size: 15px;">欠下的时光</a> <a href="/tags/常用的标记/" style="font-size: 15px;">常用的标记</a> <a href="/tags/文件加密/" style="font-size: 15px;">文件加密</a> <a href="/tags/统计代码量/" style="font-size: 15px;">统计代码量</a> <a href="/tags/自定义的搜索框/" style="font-size: 15px;">自定义的搜索框</a> <a href="/tags/copy-mutableCopy/" style="font-size: 15px;">copy, mutableCopy</a> <a href="/tags/SDWebImage/" style="font-size: 15px;">SDWebImage</a> <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/watchdog/" style="font-size: 15px;">watchdog</a> <a href="/tags/iOS代码规范/" style="font-size: 15px;">iOS代码规范</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/01/30/2021-01-30-iOS-Code-Standards/">iOS 代码规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/30/2019-01-30-Binary-Tree/">二叉树遍历（Binary Tree）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/07/2020-07-07-watchdog/">watchdog</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/20/2019-04-20-Arithmetic-weekly5/">算法：从尾到头打印链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/14/2019-04-14-Arithmetic-weekly4/">算法：实现一个函数，把字符串中的每个空格替换成"%20"</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/12/2019-04-12-Arithmetic-weekly3/">算法：判断数组中是否含有某个整数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/11/2019-04-11-Arithmetic-weekly2/">算法：找出数组中重复的数字</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/04/2019-04-04-Arithmetic-weekly1/">算法：找出有序数组中和等于指定数的两个数</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/07/2019-01-07-Arithmetic6-KNN/">K最近邻算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/06/2019-01-06-Arithmetic5-Dijkstra/">迪克特斯拉算法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://onevcat.com/" title="王巍" target="_blank">王巍</a><ul></ul><a href="http://blog.cnbang.net/" title="bang`s blog" target="_blank">bang`s blog</a><ul></ul><a href="https://tech.meituan.com/" title="美团技术团队" target="_blank">美团技术团队</a><ul></ul><a href="https://draveness.me/index" title="面向信仰编程" target="_blank">面向信仰编程</a><ul></ul><a href="https://nshipster.com/" title="NSHipster" target="_blank">NSHipster</a><ul></ul><a href="https://tech.glowing.com/cn/" title="Glow 技术团队博客" target="_blank">Glow 技术团队博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2021 <a href="/." rel="nofollow">所念皆星辰</a><p>灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人</p></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="undefined" />
+  <meta name="author" content="Wheat" />
+  <meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。" />
+  
+    <meta name="robots" content="noindex" />
+  
+  
+  <title>
+    
+     所念皆星辰
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/avatar.png">
+    <link rel="icon" href="/images/avatar.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/color-scheme.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<link rel="stylesheet" href="/css/comments.css">
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  <script src="/js/fancybox.js"></script>
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">所念皆星辰</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">Categories</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+<script src="/js/activeNav.js"></script>
+
+
+      <div class="flex-container">
+        <div class="container index">
+  <div class="post-list">
+    <!-- 遍历渲染文章 -->
+    
+      <div class="post-item" title="读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）">
+        <div class="time-m-d">2018-10-23</div>
+        <div class="title">
+          <a href="/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/">
+            
+              
+                <span>读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="读 SDWebImage 六 （编码器三：SDWebImageCodersManager）">
+        <div class="time-m-d">2018-10-18</div>
+        <div class="title">
+          <a href="/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/">
+            
+              
+                <span>读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）">
+        <div class="time-m-d">2018-10-15</div>
+        <div class="title">
+          <a href="/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/">
+            
+              
+                <span>读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="读 SDWebImage 六 （编码器一：SDWebImageCoder）">
+        <div class="time-m-d">2018-10-13</div>
+        <div class="title">
+          <a href="/2018/10/13/2018-10-13-Read-SDWebImage-SDWebImageCoder/">
+            
+              
+                <span>读 SDWebImage 六 （编码器一：SDWebImageCoder）</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="读 SDWebImage 五 （SDWebImageDownloaderOperation）">
+        <div class="time-m-d">2018-10-11</div>
+        <div class="title">
+          <a href="/2018/10/11/2018-10-11-Read-SDWebImage-SDWebImageDownloaderOperation/">
+            
+              
+                <span>读 SDWebImage 五 （SDWebImageDownloaderOperation）</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="读 SDWebImage 四 (SDWebImageDownloader)">
+        <div class="time-m-d">2018-10-04</div>
+        <div class="title">
+          <a href="/2018/10/04/2018-10-04-Read-SDWebImage-SDWebImageDownloader/">
+            
+              
+                <span>读 SDWebImage 四 (SDWebImageDownloader)</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="读 SDWebImage 三 (SDImageCache)">
+        <div class="time-m-d">2018-10-02</div>
+        <div class="title">
+          <a href="/2018/10/02/2018-10-02-Read-SDWebImage-SDImageCache/">
+            
+              
+                <span>读 SDWebImage 三 (SDImageCache)</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="读SDWebImage 二 (SDWebImageManager)">
+        <div class="time-m-d">2018-10-01</div>
+        <div class="title">
+          <a href="/2018/10/01/2018-10-01-Read-SDWebImage-SDWebImageManager/">
+            
+              
+                <span>读SDWebImage 二 (SDWebImageManager)</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="读 SDWebImage 一 使用分析">
+        <div class="time-m-d">2018-09-29</div>
+        <div class="title">
+          <a href="/2018/09/29/2018-09-29-Read-SDWebImage-note1/">
+            
+              
+                <span>读 SDWebImage 一 使用分析</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="copy 和 mutableCopy">
+        <div class="time-m-d">2018-06-30</div>
+        <div class="title">
+          <a href="/2018/06/30/2018-06-30-copyAndMutableCopy/">
+            
+              
+                <span>copy 和 mutableCopy</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+  </div>
+  <nav class="post-navigation">
+    
+      <a href="/page/2/"><i class="iconfont icon-angleleft"></i></a>
+    
+    <span class="page-num">3 / 6</span>    
+      <a href="/page/4/"><i class="iconfont icon-angleright"></i></a>
+    
+  </nav>
+</div>
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" href="https://github.com/guohuaCabin">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="email" href="">
+            <i class="iconfont icon-envelope"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        Copyright © Oranges 2021
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+<script src="/js/backtotop.js"></script>
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  <script src="/js/colorscheme.js"></script>
+
+
+
+
+        
+  
+  <script src="/js/shares.js"></script>
+
+
+      </div>
+    </div>
+  </body>
+</html>
