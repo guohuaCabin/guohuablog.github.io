@@ -138,8 +138,8 @@ MathJax = {
                 <i class="iconfont icon-bookmark" title="分类"></i>
                 
                 <span class="span--category">
-                  <a href="/categories/iOS/" title="iOS">
-                    <b>#</b> iOS
+                  <a href="/categories/Objective-C/" title="Objective-C">
+                    <b>#</b> Objective-C
                   </a>
                 </span>
                 
@@ -149,8 +149,8 @@ MathJax = {
                 <i class="iconfont icon-tags" title="标签"></i>
                 
                 <span class="span--tag">
-                  <a href="/tags/毛玻璃效果/" title="毛玻璃效果">
-                    <b>#</b> 毛玻璃效果
+                  <a href="/tags/objc/" title="objc">
+                    <b>#</b> objc
                   </a>
                 </span>
                 
@@ -163,10 +163,8 @@ MathJax = {
 <p>　　其实细看下来，Apple对这种特效封装的很好，所以我们使用起来的并不需要什么步骤。不得不佩服Apple的强大啊。</p>
 <p>1、关于<code>UIBlurEffect</code>类</p>
 <p>我们首先看UIBlurEffect类，Apple文档中只给出了一个方法：</p>
-<p>`</p>
-<ul>
-<li>(UIBlurEffect *)effectWithStyle:(UIBlurEffectStyle)style;<br>`<br>我们实现也是这样：</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (UIBlurEffect *)effectWithStyle:(UIBlurEffectStyle)style;</span><br></pre></td></tr></table></figure>
+<p>我们实现也是这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *   模糊效果的三种风格</span><br><span class="line"> *</span><br><span class="line"> *  @param UIBlurEffectStyle</span><br><span class="line">   UIBlurEffectStyleExtraLight,//额外亮度，（高亮风格）</span><br><span class="line">   UIBlurEffectStyleLight,//亮风格</span><br><span class="line">   UIBlurEffectStyleDark//暗风格</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">//实现模糊效果</span><br><span class="line">UIBlurEffect *blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];</span><br></pre></td></tr></table></figure>
 <p> 2、关于<code>UIVibrancyEffect</code>类</p>
 <p>文档中给出的也是一个方法：</p>
@@ -220,8 +218,8 @@ MathJax = {
                     <i class="iconfont icon-bookmark" title="分类"></i>
                     
                     <span class="span--category">
-                      <a href="/categories/iOS/" title="iOS">
-                        <b>#</b> iOS
+                      <a href="/categories/Objective-C/" title="Objective-C">
+                        <b>#</b> Objective-C
                       </a>
                     </span>
                     
@@ -231,8 +229,8 @@ MathJax = {
                     <i class="iconfont icon-tags" title="标签"></i>
                     
                     <span class="span--tag">
-                      <a href="/tags/毛玻璃效果/" title="毛玻璃效果">
-                        <b>#</b> 毛玻璃效果
+                      <a href="/tags/objc/" title="objc">
+                        <b>#</b> objc
                       </a>
                     </span>
                     

@@ -3,124 +3,20 @@
 
 
     
-    
-    
-    
-    
   <url>
-    <loc>https://qinguohua.fun/2016/12/15/2016-12-15-SVN-error/</loc>
-    <lastmod>2021-10-06T16:24:05.571Z</lastmod>
+    <loc>https://qinguohua.fun/2021/01/30/2021-01-30-iOS-Code-Standards/</loc>
+    <lastmod>2021-10-09T15:43:19.627Z</lastmod>
     <data>
         <display>
-        <title>SVN提交错误："XXX" is scheduled for addition, but is missing</title>
-        <pubTime>2016-12-15T03:18:00.000Z</pubTime>
+        <title>iOS 代码规范</title>
+        <pubTime>2021-01-30T11:39:50.000Z</pubTime>
         
-        <tag>SVN</tag>
+        <tag>code standards,objc</tag>
          
          
            
              
-              <breadCrumb title="SVN" url="https://qinguohua.fun/categories/SVN/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/02/2018-10-02-Read-SDWebImage-SDImageCache/</loc>
-    <lastmod>2021-10-06T16:22:04.375Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 三 (SDImageCache)</title>
-        <pubTime>2018-10-02T02:38:36.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/04/2018-10-04-Read-SDWebImage-SDWebImageDownloader/</loc>
-    <lastmod>2021-10-06T16:21:41.518Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 四 (SDWebImageDownloader)</title>
-        <pubTime>2018-10-04T11:38:50.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2016/08/16/2016-08-16-project-summary-one/</loc>
-    <lastmod>2021-10-06T16:19:44.817Z</lastmod>
-    <data>
-        <display>
-        <title>iOS之项目总结－：项目中遇到的各种的问题和解决方法</title>
-        <pubTime>2016-08-16T10:28:00.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="项目总结" url="https://qinguohua.fun/categories/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2016/10/06/2016-10-06-DES-encryption/</loc>
-    <lastmod>2021-10-06T16:15:26.238Z</lastmod>
-    <data>
-        <display>
-        <title>Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</title>
-        <pubTime>2016-10-06T14:14:00.000Z</pubTime>
-        
-        <tag>加解密</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2019/04/11/2019-04-11-Arithmetic-weekly2/</loc>
-    <lastmod>2021-10-06T16:10:54.358Z</lastmod>
-    <data>
-        <display>
-        <title>算法：找出数组中重复的数字</title>
-        <pubTime>2019-04-11T03:58:52.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
           
         </display>
     </data>
@@ -129,198 +25,18 @@
     
   <url>
     <loc>https://qinguohua.fun/2020/07/07/2020-07-07-watchdog/</loc>
-    <lastmod>2021-07-07T14:50:46.746Z</lastmod>
+    <lastmod>2021-10-09T15:42:17.961Z</lastmod>
     <data>
         <display>
         <title>watchdog</title>
         <pubTime>2020-07-07T14:44:50.000Z</pubTime>
         
-        <tag>watchdog</tag>
+        <tag>watchdog,crash</tag>
          
          
            
              
               <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2021/01/30/2021-01-30-iOS-Code-Standards/</loc>
-    <lastmod>2021-01-30T11:43:44.902Z</lastmod>
-    <data>
-        <display>
-        <title>iOS 代码规范</title>
-        <pubTime>2021-01-30T11:39:50.000Z</pubTime>
-        
-        <tag>iOS代码规范</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2016/09/23/2016-09-23-BlurEffect/</loc>
-    <lastmod>2021-01-30T11:34:15.041Z</lastmod>
-    <data>
-        <display>
-        <title>iOS模糊效果(毛玻璃效果)的实现</title>
-        <pubTime>2016-09-23T02:42:42.000Z</pubTime>
-        
-        <tag>毛玻璃效果</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2019/04/12/2019-04-12-Arithmetic-weekly3/</loc>
-    <lastmod>2021-01-30T11:33:59.589Z</lastmod>
-    <data>
-        <display>
-        <title>算法：判断数组中是否含有某个整数</title>
-        <pubTime>2019-04-12T08:00:18.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2019/04/04/2019-04-04-Arithmetic-weekly1/</loc>
-    <lastmod>2021-01-30T11:33:27.952Z</lastmod>
-    <data>
-        <display>
-        <title>算法：找出有序数组中和等于指定数的两个数</title>
-        <pubTime>2019-04-04T02:27:55.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/11/28/2018-11-28-Arithmetic-basics/</loc>
-    <lastmod>2021-01-30T11:33:17.807Z</lastmod>
-    <data>
-        <display>
-        <title>基础算法一：排序</title>
-        <pubTime>2018-11-28T12:14:26.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/12/31/2018-12-31-Arithmetic-Basice-SelectSort/</loc>
-    <lastmod>2021-01-30T11:33:16.518Z</lastmod>
-    <data>
-        <display>
-        <title>基础算法：选择排序</title>
-        <pubTime>2018-12-31T12:52:49.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/12/30/2018-12-30-Arithmetic-Basice-InsertSort/</loc>
-    <lastmod>2021-01-30T11:33:15.386Z</lastmod>
-    <data>
-        <display>
-        <title>基础算法：插入排序</title>
-        <pubTime>2018-12-30T13:10:56.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/11/29/2018-11-29-Arithmetic-Basice-ExchangeSort/</loc>
-    <lastmod>2021-01-30T11:33:13.863Z</lastmod>
-    <data>
-        <display>
-        <title>基础算法：交换排序</title>
-        <pubTime>2018-11-29T12:54:23.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2019/04/14/2019-04-14-Arithmetic-weekly4/</loc>
-    <lastmod>2021-01-30T11:32:43.424Z</lastmod>
-    <data>
-        <display>
-        <title>算法：实现一个函数，把字符串中的每个空格替换成"%20"</title>
-        <pubTime>2019-04-14T03:46:09.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
           
         </display>
     </data>
@@ -329,133 +45,13 @@
     
   <url>
     <loc>https://qinguohua.fun/2019/04/20/2019-04-20-Arithmetic-weekly5/</loc>
-    <lastmod>2021-01-30T11:32:07.794Z</lastmod>
+    <lastmod>2021-10-09T15:40:47.309Z</lastmod>
     <data>
         <display>
         <title>算法：从尾到头打印链表</title>
         <pubTime>2019-04-20T12:46:09.000Z</pubTime>
         
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/12/01/2018-12-01-Arithmetic2-RecursionAndFor/</loc>
-    <lastmod>2021-01-30T11:31:48.417Z</lastmod>
-    <data>
-        <display>
-        <title>递归和for循环</title>
-        <pubTime>2018-12-01T13:05:51.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2019/01/03/2019-01-03-Arithmetic3-DynamicProgramming/</loc>
-    <lastmod>2021-01-30T11:31:39.321Z</lastmod>
-    <data>
-        <display>
-        <title>动态规划</title>
-        <pubTime>2019-01-03T13:32:21.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2019/01/05/2019-01-05-Arithmetic4-DFS/</loc>
-    <lastmod>2021-01-30T11:31:33.122Z</lastmod>
-    <data>
-        <display>
-        <title>深度优先搜索（DFS）</title>
-        <pubTime>2019-01-05T13:37:34.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2019/01/06/2019-01-06-Arithmetic5-Dijkstra/</loc>
-    <lastmod>2021-01-30T11:31:14.694Z</lastmod>
-    <data>
-        <display>
-        <title>迪克特斯拉算法</title>
-        <pubTime>2019-01-06T14:38:27.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2019/01/07/2019-01-07-Arithmetic6-KNN/</loc>
-    <lastmod>2021-01-30T11:31:08.514Z</lastmod>
-    <data>
-        <display>
-        <title>K最近邻算法</title>
-        <pubTime>2019-01-07T13:38:58.000Z</pubTime>
-        
-        <tag>Algorithm</tag>
-         
-         
-           
-             
-              <breadCrumb title="Algorithm" url="https://qinguohua.fun/categories/Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2021/01/30/2019-01-30-Binary-Tree/</loc>
-    <lastmod>2021-01-30T11:27:22.162Z</lastmod>
-    <data>
-        <display>
-        <title>二叉树遍历（Binary Tree）</title>
-        <pubTime>2021-01-30T11:14:01.000Z</pubTime>
-        
-        <tag>算法</tag>
+        <tag>algorithm training</tag>
          
          
            
@@ -468,19 +64,499 @@
 
     
   <url>
+    <loc>https://qinguohua.fun/2019/04/14/2019-04-14-Arithmetic-weekly4/</loc>
+    <lastmod>2021-10-09T15:40:41.154Z</lastmod>
+    <data>
+        <display>
+        <title>算法：实现一个函数，把字符串中的每个空格替换成"%20"</title>
+        <pubTime>2019-04-14T03:46:09.000Z</pubTime>
+        
+        <tag>algorithm training</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2019/04/12/2019-04-12-Arithmetic-weekly3/</loc>
+    <lastmod>2021-10-09T15:40:33.392Z</lastmod>
+    <data>
+        <display>
+        <title>算法：判断数组中是否含有某个整数</title>
+        <pubTime>2019-04-12T08:00:18.000Z</pubTime>
+        
+        <tag>algorithm training</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2019/04/11/2019-04-11-Arithmetic-weekly2/</loc>
+    <lastmod>2021-10-09T15:40:27.273Z</lastmod>
+    <data>
+        <display>
+        <title>算法：找出数组中重复的数字</title>
+        <pubTime>2019-04-11T03:58:52.000Z</pubTime>
+        
+        <tag>algorithm training</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2019/04/04/2019-04-04-Arithmetic-weekly1/</loc>
+    <lastmod>2021-10-09T15:40:21.747Z</lastmod>
+    <data>
+        <display>
+        <title>算法：找出有序数组中和等于指定数的两个数</title>
+        <pubTime>2019-04-04T02:27:55.000Z</pubTime>
+        
+        <tag>algorithm training</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2021/01/30/2019-01-30-Binary-Tree/</loc>
+    <lastmod>2021-10-09T15:39:07.025Z</lastmod>
+    <data>
+        <display>
+        <title>二叉树遍历（Binary Tree）</title>
+        <pubTime>2021-01-30T11:14:01.000Z</pubTime>
+        
+        <tag>algorithm,二叉树遍历,binary tree</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2019/01/07/2019-01-07-Arithmetic6-KNN/</loc>
+    <lastmod>2021-10-09T15:38:44.635Z</lastmod>
+    <data>
+        <display>
+        <title>K最近邻算法</title>
+        <pubTime>2019-01-07T13:38:58.000Z</pubTime>
+        
+        <tag>algorithm,K最近邻算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2019/01/06/2019-01-06-Arithmetic5-Dijkstra/</loc>
+    <lastmod>2021-10-09T15:38:34.185Z</lastmod>
+    <data>
+        <display>
+        <title>迪克特斯拉算法</title>
+        <pubTime>2019-01-06T14:38:27.000Z</pubTime>
+        
+        <tag>algorithm,迪克特斯拉算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2019/01/05/2019-01-05-Arithmetic4-DFS/</loc>
+    <lastmod>2021-10-09T15:38:12.460Z</lastmod>
+    <data>
+        <display>
+        <title>深度优先搜索（DFS）</title>
+        <pubTime>2019-01-05T13:37:34.000Z</pubTime>
+        
+        <tag>algorithm,dfs,深度优先搜索</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2019/01/03/2019-01-03-Arithmetic3-DynamicProgramming/</loc>
+    <lastmod>2021-10-09T15:37:40.160Z</lastmod>
+    <data>
+        <display>
+        <title>动态规划</title>
+        <pubTime>2019-01-03T13:32:21.000Z</pubTime>
+        
+        <tag>algorithm,动态规划</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/12/31/2018-12-31-Arithmetic-Basice-SelectSort/</loc>
+    <lastmod>2021-10-09T15:37:28.831Z</lastmod>
+    <data>
+        <display>
+        <title>基础算法：选择排序</title>
+        <pubTime>2018-12-31T12:52:49.000Z</pubTime>
+        
+        <tag>algorithm,sort</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/12/30/2018-12-30-Arithmetic-Basice-InsertSort/</loc>
+    <lastmod>2021-10-09T15:37:23.090Z</lastmod>
+    <data>
+        <display>
+        <title>基础算法：插入排序</title>
+        <pubTime>2018-12-30T13:10:56.000Z</pubTime>
+        
+        <tag>algorithm,sort</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/12/01/2018-12-01-Arithmetic2-RecursionAndFor/</loc>
+    <lastmod>2021-10-09T15:37:15.007Z</lastmod>
+    <data>
+        <display>
+        <title>递归和for循环</title>
+        <pubTime>2018-12-01T13:05:51.000Z</pubTime>
+        
+        <tag>algorithm,sort</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/11/29/2018-11-29-Arithmetic-Basice-ExchangeSort/</loc>
+    <lastmod>2021-10-09T15:37:07.738Z</lastmod>
+    <data>
+        <display>
+        <title>基础算法：交换排序</title>
+        <pubTime>2018-11-29T12:54:23.000Z</pubTime>
+        
+        <tag>algorithm,sort</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/11/28/2018-11-28-Arithmetic-basics/</loc>
+    <lastmod>2021-10-09T15:36:58.828Z</lastmod>
+    <data>
+        <display>
+        <title>基础算法一：排序</title>
+        <pubTime>2018-11-28T12:14:26.000Z</pubTime>
+        
+        <tag>algorithm,sort</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/</loc>
+    <lastmod>2021-10-09T15:36:28.091Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 七 （SDWebImageTransition）</title>
+        <pubTime>2018-10-30T13:32:19.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/</loc>
+    <lastmod>2021-10-09T15:36:21.070Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （SDWebImagePrefetcher）</title>
+        <pubTime>2018-10-27T14:32:36.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/</loc>
+    <lastmod>2021-10-09T15:36:15.074Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六（编码器五：SDWebImageGIFCoder）</title>
+        <pubTime>2018-10-24T14:31:13.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/</loc>
+    <lastmod>2021-10-09T15:36:08.290Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</title>
+        <pubTime>2018-10-23T13:57:30.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/</loc>
+    <lastmod>2021-10-09T15:35:53.843Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</title>
+        <pubTime>2018-10-18T12:48:55.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/</loc>
+    <lastmod>2021-10-09T15:35:47.036Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</title>
+        <pubTime>2018-10-15T13:52:22.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/13/2018-10-13-Read-SDWebImage-SDWebImageCoder/</loc>
+    <lastmod>2021-10-09T15:35:41.005Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器一：SDWebImageCoder）</title>
+        <pubTime>2018-10-13T13:15:04.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/11/2018-10-11-Read-SDWebImage-SDWebImageDownloaderOperation/</loc>
+    <lastmod>2021-10-09T15:35:34.899Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 五 （SDWebImageDownloaderOperation）</title>
+        <pubTime>2018-10-11T09:58:01.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/04/2018-10-04-Read-SDWebImage-SDWebImageDownloader/</loc>
+    <lastmod>2021-10-09T15:35:26.598Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 四 (SDWebImageDownloader)</title>
+        <pubTime>2018-10-04T11:38:50.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/02/2018-10-02-Read-SDWebImage-SDImageCache/</loc>
+    <lastmod>2021-10-09T15:35:17.043Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 三 (SDImageCache)</title>
+        <pubTime>2018-10-02T02:38:36.000Z</pubTime>
+        
+        <tag>sdwebimage,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://qinguohua.fun/2018/10/01/2018-10-01-Read-SDWebImage-SDWebImageManager/</loc>
-    <lastmod>2020-05-05T13:48:25.849Z</lastmod>
+    <lastmod>2021-10-09T15:35:05.213Z</lastmod>
     <data>
         <display>
         <title>读SDWebImage 二 (SDWebImageManager)</title>
         <pubTime>2018-10-01T01:38:06.000Z</pubTime>
         
-        <tag>SDWebImage</tag>
+        <tag>sdwebimage,objc</tag>
          
          
            
              
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
           
         </display>
     </data>
@@ -488,19 +564,19 @@
 
     
   <url>
-    <loc>https://qinguohua.fun/2016/11/29/2016-11-29-Swift-BlurEffect/</loc>
-    <lastmod>2020-05-05T13:38:02.620Z</lastmod>
+    <loc>https://qinguohua.fun/2018/09/29/2018-09-29-Read-SDWebImage-note1/</loc>
+    <lastmod>2021-10-09T15:33:57.721Z</lastmod>
     <data>
         <display>
-        <title>Swift之模糊效果（毛玻璃效果，虚化效果）的实现</title>
-        <pubTime>2016-11-29T06:19:25.000Z</pubTime>
+        <title>读 SDWebImage 一 使用分析</title>
+        <pubTime>2018-09-29T06:32:04.000Z</pubTime>
         
-        <tag>毛玻璃效果，虚化效果</tag>
+        <tag>sdwebimage,objc</tag>
          
          
            
              
-              <breadCrumb title="Swift" url="https://qinguohua.fun/categories/Swift/"/>
+              <breadCrumb title="SDWebImage手札,Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD-Objective-C/"/>
           
         </display>
     </data>
@@ -508,19 +584,19 @@
 
     
   <url>
-    <loc>https://qinguohua.fun/2017/01/15/2017-01-15-support-64bit/</loc>
-    <lastmod>2020-05-05T13:37:22.419Z</lastmod>
+    <loc>https://qinguohua.fun/2018/06/30/2018-06-30-copyAndMutableCopy/</loc>
+    <lastmod>2021-10-09T15:33:20.639Z</lastmod>
     <data>
         <display>
-        <title>关于app支持64bit</title>
-        <pubTime>2017-01-15T07:18:34.000Z</pubTime>
+        <title>copy 和 mutableCopy</title>
+        <pubTime>2018-06-30T06:16:37.000Z</pubTime>
         
-        <tag>关于app支持64bit,iOS</tag>
+        <tag>copy, mutableCopy,objc</tag>
          
          
            
              
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
           
         </display>
     </data>
@@ -529,13 +605,13 @@
     
   <url>
     <loc>https://qinguohua.fun/2017/10/05/2017-10-05-project-summary-Three/</loc>
-    <lastmod>2020-05-05T13:34:28.220Z</lastmod>
+    <lastmod>2021-10-09T15:33:06.477Z</lastmod>
     <data>
         <display>
         <title>iOS之项目总结三：项目开发中遇到的一些问题及解决方案</title>
         <pubTime>2017-10-05T03:19:10.000Z</pubTime>
         
-        <tag>iOS</tag>
+        <tag>objc</tag>
          
          
            
@@ -548,8 +624,68 @@
 
     
   <url>
+    <loc>https://qinguohua.fun/2017/10/03/2017-10-03-WKWebView-issue/</loc>
+    <lastmod>2021-10-09T15:32:46.528Z</lastmod>
+    <data>
+        <display>
+        <title>WKWebView使用遇到的问题</title>
+        <pubTime>2017-10-03T02:30:40.000Z</pubTime>
+        
+        <tag>wkwebview,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/05/20/2017-05-20-GH-SearchView/</loc>
+    <lastmod>2021-10-09T15:32:15.399Z</lastmod>
+    <data>
+        <display>
+        <title>一个自定义的搜索框：GH_SearchView</title>
+        <pubTime>2017-05-20T05:46:13.000Z</pubTime>
+        
+        <tag>objc,自定义搜索框</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/04/30/2017-04-30-get-keyboard-height/</loc>
+    <lastmod>2021-10-09T15:31:44.180Z</lastmod>
+    <data>
+        <display>
+        <title>利用通知(`NSNotificationCenter`)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</title>
+        <pubTime>2017-04-30T02:42:19.000Z</pubTime>
+        
+        <tag>objc,keyboard</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://qinguohua.fun/2017/04/29/2017-04-29-Project-code-number/</loc>
-    <lastmod>2020-05-05T13:31:58.381Z</lastmod>
+    <lastmod>2021-10-09T15:31:09.214Z</lastmod>
     <data>
         <display>
         <title>统计项目代码量</title>
@@ -568,139 +704,99 @@
 
     
   <url>
-    <loc>https://qinguohua.fun/2017/04/22/2017-04-22-MARK-TODO-FIXME/</loc>
-    <lastmod>2020-05-05T13:31:32.596Z</lastmod>
-    <data>
-        <display>
-        <title>Xcode中常用的标记(MARK、TODO、FIXME)</title>
-        <pubTime>2017-04-22T05:55:39.000Z</pubTime>
-        
-        <tag>常用的标记</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2017/05/20/2017-05-20-GH-SearchView/</loc>
-    <lastmod>2020-05-05T13:30:56.517Z</lastmod>
-    <data>
-        <display>
-        <title>一个自定义的搜索框：GH_SearchView</title>
-        <pubTime>2017-05-20T05:46:13.000Z</pubTime>
-        
-        <tag>自定义的搜索框</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/06/30/2018-06-30-copyAndMutableCopy/</loc>
-    <lastmod>2020-05-05T13:29:10.955Z</lastmod>
-    <data>
-        <display>
-        <title>copy 和 mutableCopy</title>
-        <pubTime>2018-06-30T06:16:37.000Z</pubTime>
-        
-        <tag>copy, mutableCopy</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2017/02/16/2017-02-16-Build-Active-Architecture-Only-Query/</loc>
-    <lastmod>2020-05-05T13:27:52.243Z</lastmod>
-    <data>
-        <display>
-        <title>对于Xcode中 Build Active Architecture Only 的认识</title>
-        <pubTime>2017-02-16T07:11:12.000Z</pubTime>
-        
-        <tag>Xcode</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2017/03/14/%202017-03-14-bridge-understand/</loc>
-    <lastmod>2020-05-05T13:24:41.529Z</lastmod>
-    <data>
-        <display>
-        <title>__bridge 和 Core Foundation</title>
-        <pubTime>2017-03-14T02:25:36.000Z</pubTime>
-        
-        <tag>bridge和Core Foundation</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2016/09/27/2016-09-27-block-and-weak/</loc>
-    <lastmod>2020-05-05T13:22:28.628Z</lastmod>
-    <data>
-        <display>
-        <title>block 和 weak的了解</title>
-        <pubTime>2016-09-27T01:45:07.000Z</pubTime>
-        
-        <tag>block,weak</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://qinguohua.fun/2017/04/27/2017-04-27-fileEncryptionAndDecryption/</loc>
-    <lastmod>2019-04-09T07:58:00.480Z</lastmod>
+    <lastmod>2021-10-09T15:30:48.446Z</lastmod>
     <data>
         <display>
         <title>iOS中关于图片、PDF等文件加密</title>
         <pubTime>2017-04-27T03:20:25.000Z</pubTime>
         
-        <tag>文件加密</tag>
+        <tag>文件加密,objc</tag>
          
          
            
              
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/04/22/2017-04-22-MARK-TODO-FIXME/</loc>
+    <lastmod>2021-10-09T15:30:02.240Z</lastmod>
+    <data>
+        <display>
+        <title>Xcode中常用的标记(MARK、TODO、FIXME)</title>
+        <pubTime>2017-04-22T05:55:39.000Z</pubTime>
+        
+        <tag>tag,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/03/12/2017-03-12-I-am-not-familiar-with-this-world/</loc>
+    <lastmod>2021-10-09T15:29:23.166Z</lastmod>
+    <data>
+        <display>
+        <title>我和这个世界不熟 --北岛</title>
+        <pubTime>2017-03-12T01:04:32.000Z</pubTime>
+        
+        <tag>我和这个世界不熟,诗集</tag>
+         
+         
+           
+             
+              <breadCrumb title="随笔" url="https://qinguohua.fun/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/04/21/2017-04-21-borrow-me/</loc>
+    <lastmod>2021-10-09T15:29:11.884Z</lastmod>
+    <data>
+        <display>
+        <title>借我</title>
+        <pubTime>2017-04-21T01:44:16.000Z</pubTime>
+        
+        <tag>借我,诗集</tag>
+         
+         
+           
+             
+              <breadCrumb title="随笔" url="https://qinguohua.fun/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/03/10/2017-03-10-Repeat-ButtonClick/</loc>
+    <lastmod>2021-10-09T15:27:32.609Z</lastmod>
+    <data>
+        <display>
+        <title>iOS之防止用户重复点击Button（按钮）问题</title>
+        <pubTime>2017-03-10T06:46:31.000Z</pubTime>
+        
+        <tag>uibutton,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
           
         </display>
     </data>
@@ -709,253 +805,13 @@
     
   <url>
     <loc>https://qinguohua.fun/2017/03/06/2017-03-06-json-dataNull/</loc>
-    <lastmod>2019-04-09T07:56:16.100Z</lastmod>
+    <lastmod>2021-10-09T15:26:59.558Z</lastmod>
     <data>
         <display>
         <title>服务器返回的json数据中含有null的处理方法</title>
         <pubTime>2017-03-06T05:33:53.000Z</pubTime>
         
-        <tag>iOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2017/02/11/2017-02-11-WKWebView/</loc>
-    <lastmod>2019-04-09T07:53:07.940Z</lastmod>
-    <data>
-        <display>
-        <title>聊一聊WKWebView</title>
-        <pubTime>2017-02-11T02:33:52.000Z</pubTime>
-        
-        <tag>WKWebView</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/</loc>
-    <lastmod>2018-11-02T08:04:38.550Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （SDWebImagePrefetcher）</title>
-        <pubTime>2018-10-27T14:32:36.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/</loc>
-    <lastmod>2018-11-02T08:04:14.440Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 七 （SDWebImageTransition）</title>
-        <pubTime>2018-10-30T13:32:19.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/</loc>
-    <lastmod>2018-10-30T07:54:59.410Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六（编码器五：SDWebImageGIFCoder）</title>
-        <pubTime>2018-10-24T14:31:13.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/</loc>
-    <lastmod>2018-10-30T02:50:13.630Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</title>
-        <pubTime>2018-10-23T13:57:30.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/</loc>
-    <lastmod>2018-10-29T09:59:10.280Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</title>
-        <pubTime>2018-10-18T12:48:55.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/13/2018-10-13-Read-SDWebImage-SDWebImageCoder/</loc>
-    <lastmod>2018-10-26T03:07:23.440Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （编码器一：SDWebImageCoder）</title>
-        <pubTime>2018-10-13T13:15:04.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/</loc>
-    <lastmod>2018-10-26T02:52:32.450Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</title>
-        <pubTime>2018-10-15T13:52:22.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/11/2018-10-11-Read-SDWebImage-SDWebImageDownloaderOperation/</loc>
-    <lastmod>2018-10-25T11:23:12.180Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 五 （SDWebImageDownloaderOperation）</title>
-        <pubTime>2018-10-11T09:58:01.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/09/29/2018-09-29-Read-SDWebImage-note1/</loc>
-    <lastmod>2018-10-25T11:22:24.730Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 一 使用分析</title>
-        <pubTime>2018-09-29T06:32:04.000Z</pubTime>
-        
-        <tag>SDWebImage</tag>
-         
-         
-           
-             
-              <breadCrumb title="读SDWebImage手札" url="https://qinguohua.fun/categories/%E8%AF%BBSDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2016/11/14/2016-11-14-Xcode-error-Code%20Sign%20Error/</loc>
-    <lastmod>2018-10-24T11:06:20.610Z</lastmod>
-    <data>
-        <display>
-        <title>iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)</title>
-        <pubTime>2016-11-14T12:01:31.000Z</pubTime>
-        
-        <tag>模拟器错误</tag>
-         
-         
-           
-             
-              <breadCrumb title="Xcode" url="https://qinguohua.fun/categories/Xcode/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2017/10/03/2017-10-03-WKWebView-issue/</loc>
-    <lastmod>2018-10-24T11:06:00.680Z</lastmod>
-    <data>
-        <display>
-        <title>WKWebView使用遇到的问题</title>
-        <pubTime>2017-10-03T02:30:40.000Z</pubTime>
-        
-        <tag>WKWebView</tag>
+        <tag>null,objc</tag>
          
          
            
@@ -969,13 +825,73 @@
     
   <url>
     <loc>https://qinguohua.fun/2017/02/27/2017-02-27-WebView-ErrorOpen/</loc>
-    <lastmod>2018-10-24T11:05:51.960Z</lastmod>
+    <lastmod>2021-10-09T15:26:34.615Z</lastmod>
     <data>
         <display>
         <title>WebView 打不开问题 (转码问题)</title>
         <pubTime>2017-02-27T01:56:54.000Z</pubTime>
         
-        <tag>WebView</tag>
+        <tag>webView,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/02/16/2017-02-16-Build-Active-Architecture-Only-Query/</loc>
+    <lastmod>2021-10-09T15:26:15.053Z</lastmod>
+    <data>
+        <display>
+        <title>对于Xcode中 Build Active Architecture Only 的认识</title>
+        <pubTime>2017-02-16T07:11:12.000Z</pubTime>
+        
+        <tag>xcode,architecture</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/02/11/2017-02-11-WKWebView/</loc>
+    <lastmod>2021-10-09T15:24:27.170Z</lastmod>
+    <data>
+        <display>
+        <title>聊一聊WKWebView</title>
+        <pubTime>2017-02-11T02:33:52.000Z</pubTime>
+        
+        <tag>wkwebview,objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2017/01/15/2017-01-15-support-64bit/</loc>
+    <lastmod>2021-10-09T15:24:01.242Z</lastmod>
+    <data>
+        <display>
+        <title>关于app支持64bit</title>
+        <pubTime>2017-01-15T07:18:34.000Z</pubTime>
+        
+        <tag>64bit,iOS</tag>
          
          
            
@@ -989,13 +905,173 @@
     
   <url>
     <loc>https://qinguohua.fun/2017/01/11/2017-01-11-project-summary-two/</loc>
-    <lastmod>2018-10-24T11:04:17.150Z</lastmod>
+    <lastmod>2021-10-09T15:23:09.445Z</lastmod>
     <data>
         <display>
         <title>iOS之项目总结二：关于项目中一些功能的改进建议（从一个维护者的角度）</title>
         <pubTime>2017-01-11T15:38:00.000Z</pubTime>
         
-        <tag>iOS</tag>
+        <tag>objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="项目总结" url="https://qinguohua.fun/categories/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2016/12/15/2016-12-15-SVN-error/</loc>
+    <lastmod>2021-10-09T15:19:53.992Z</lastmod>
+    <data>
+        <display>
+        <title>SVN提交错误："XXX" is scheduled for addition, but is missing</title>
+        <pubTime>2016-12-15T03:18:00.000Z</pubTime>
+        
+        <tag>svn</tag>
+         
+         
+           
+             
+              <breadCrumb title="SVN" url="https://qinguohua.fun/categories/SVN/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2016/11/29/2016-11-29-Swift-BlurEffect/</loc>
+    <lastmod>2021-10-09T15:19:43.247Z</lastmod>
+    <data>
+        <display>
+        <title>Swift之模糊效果（毛玻璃效果，虚化效果）的实现</title>
+        <pubTime>2016-11-29T06:19:25.000Z</pubTime>
+        
+        <tag>swift</tag>
+         
+         
+           
+             
+              <breadCrumb title="Swift" url="https://qinguohua.fun/categories/Swift/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2016/11/14/2016-11-14-Xcode-error-Code%20Sign%20Error/</loc>
+    <lastmod>2021-10-09T15:01:39.742Z</lastmod>
+    <data>
+        <display>
+        <title>iOS之使用模拟器错误 (Code Sign Error:resource fork, Finder information, or similar detritus not allowed)</title>
+        <pubTime>2016-11-14T12:01:31.000Z</pubTime>
+        
+        <tag>simulator</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2016/11/13/2016-11-13-Project-Logout/</loc>
+    <lastmod>2021-10-09T15:00:31.035Z</lastmod>
+    <data>
+        <display>
+        <title>iOS之退出app(项目)的几种方法</title>
+        <pubTime>2016-11-13T03:01:32.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2016/10/06/2016-10-06-DES-encryption/</loc>
+    <lastmod>2021-10-09T15:00:13.802Z</lastmod>
+    <data>
+        <display>
+        <title>Base64加密和DES加密、以及JAVA和iOS中DES加密统一性问题</title>
+        <pubTime>2016-10-06T14:14:00.000Z</pubTime>
+        
+        <tag>des,base64</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2016/09/27/2016-09-27-block-and-weak/</loc>
+    <lastmod>2021-10-09T14:58:46.300Z</lastmod>
+    <data>
+        <display>
+        <title>block 和 weak的了解</title>
+        <pubTime>2016-09-27T01:45:07.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2016/09/23/2016-09-23-BlurEffect/</loc>
+    <lastmod>2021-10-09T14:58:32.756Z</lastmod>
+    <data>
+        <display>
+        <title>iOS模糊效果(毛玻璃效果)的实现</title>
+        <pubTime>2016-09-23T02:42:42.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2016/08/16/2016-08-16-project-summary-one/</loc>
+    <lastmod>2021-10-09T14:56:28.817Z</lastmod>
+    <data>
+        <display>
+        <title>iOS之项目总结－：项目中遇到的各种的问题和解决方法</title>
+        <pubTime>2016-08-16T10:28:00.000Z</pubTime>
+        
+        <tag>objc</tag>
          
          
            
@@ -1009,13 +1085,13 @@
     
   <url>
     <loc>https://qinguohua.fun/2018/06/03/%202018-06-03-Project-summary-Four/</loc>
-    <lastmod>2018-10-24T11:03:47.550Z</lastmod>
+    <lastmod>2021-10-09T14:56:08.034Z</lastmod>
     <data>
         <display>
         <title>项目总结四</title>
         <pubTime>2018-06-03T04:01:57.000Z</pubTime>
         
-        <tag>iOS</tag>
+        <tag>objc</tag>
          
          
            
@@ -1028,102 +1104,26 @@
 
     
   <url>
-    <loc>https://qinguohua.fun/2017/04/30/2017-04-30-get-keyboard-height/</loc>
-    <lastmod>2018-10-24T06:08:38.320Z</lastmod>
+    <loc>https://qinguohua.fun/2017/03/14/%202017-03-14-bridge-understand/</loc>
+    <lastmod>2021-10-09T14:54:40.979Z</lastmod>
     <data>
         <display>
-        <title>利用通知(`NSNotificationCenter`)获取键盘的高度,以及显示和隐藏键盘时修改界面的注意事项</title>
-        <pubTime>2017-04-30T02:42:19.000Z</pubTime>
+        <title>__bridge 和 Core Foundation</title>
+        <pubTime>2017-03-14T02:25:36.000Z</pubTime>
         
-        <tag>iOS</tag>
+        <tag>objc</tag>
          
          
            
              
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
           
         </display>
     </data>
     </url>
 
     
-  <url>
-    <loc>https://qinguohua.fun/2017/03/10/2017-03-10-Repeat-ButtonClick/</loc>
-    <lastmod>2018-08-21T04:58:27.560Z</lastmod>
-    <data>
-        <display>
-        <title>iOS之防止用户重复点击Button（按钮）问题</title>
-        <pubTime>2017-03-10T06:46:31.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>https://qinguohua.fun/2017/04/21/2017-04-21-borrow-me/</loc>
-    <lastmod>2018-08-21T04:58:00.720Z</lastmod>
-    <data>
-        <display>
-        <title>借我</title>
-        <pubTime>2017-04-21T01:44:16.000Z</pubTime>
-        
-        <tag>欠下的时光</tag>
-         
-         
-           
-             
-              <breadCrumb title="欠下的时光" url="https://qinguohua.fun/categories/%E6%AC%A0%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>https://qinguohua.fun/2017/03/12/2017-03-12-I-am-not-familiar-with-this-world/</loc>
-    <lastmod>2018-08-21T04:57:46.900Z</lastmod>
-    <data>
-        <display>
-        <title>我和这个世界不熟 --北岛</title>
-        <pubTime>2017-03-12T01:04:32.000Z</pubTime>
-        
-        <tag>欠下的时光</tag>
-         
-         
-           
-             
-              <breadCrumb title="欠下的时光" url="https://qinguohua.fun/categories/%E6%AC%A0%E4%B8%8B%E7%9A%84%E6%97%B6%E5%85%89/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>https://qinguohua.fun/2016/11/13/2016-11-13-Project-Logout/</loc>
-    <lastmod>2018-08-21T04:57:39.090Z</lastmod>
-    <data>
-        <display>
-        <title>iOS之退出app(项目)的几种方法</title>
-        <pubTime>2016-11-13T03:01:32.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-         
-           
-             
-              <breadCrumb title="iOS" url="https://qinguohua.fun/categories/iOS/"/>
-          
-        </display>
-    </data>
-    </url>
-
 </urlset>

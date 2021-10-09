@@ -149,8 +149,8 @@ MathJax = {
                 <i class="iconfont icon-tags" title="标签"></i>
                 
                 <span class="span--tag">
-                  <a href="/tags/iOS/" title="iOS">
-                    <b>#</b> iOS
+                  <a href="/tags/objc/" title="objc">
+                    <b>#</b> objc
                   </a>
                 </span>
                 
@@ -167,12 +167,10 @@ MathJax = {
 <h3 id="2、很多界面共用一个界面时：使用枚举做类型判断"><a href="#2、很多界面共用一个界面时：使用枚举做类型判断" class="headerlink" title="2、很多界面共用一个界面时：使用枚举做类型判断"></a>2、很多界面共用一个界面时：使用枚举做类型判断</h3><p>老的项目中会出现很多这样的现象：很多界面重复使用一个界面，这样就自然而然的需要在不同的界面跳转到复用的界面时去做判断。而奇怪的地方在于：判断的依据是<code>self.title</code>。那么就会出现这样一种现象：在跳转界面后会有一大段<code>if</code>去判断字符串是否等于<code>self.title</code> 。</p>
 <p><strong>如果我们做一些改变：使用枚举来做界面类型的判断，使用<code>switch case</code>语句做判断执行代码。这样会不会更优美，简洁一些。</strong></p>
 <h3 id="3、关于老项目中iOS10以上的情况下，导航栏中按钮不显示问题"><a href="#3、关于老项目中iOS10以上的情况下，导航栏中按钮不显示问题" class="headerlink" title="3、关于老项目中iOS10以上的情况下，导航栏中按钮不显示问题"></a>3、关于老项目中iOS10以上的情况下，导航栏中按钮不显示问题</h3><p>如果你的<code>viewController</code>都继承于基类，那么在基类中添加这样一段代码（这也是目前我发现的最省事的方法）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewWillAppear:(BOOL)animated &#123; </span><br><span class="line">    [super viewWillAppear:animated];</span><br><span class="line">    [self.navigationController setNavigationBarHidden:YES animated:NO];</span><br><span class="line">    [self.navigationController setNavigationBarHidden:NO animated:NO];</span><br><span class="line">&#125;</span><br><span class="line">- (void)viewWillDisappear:(BOOL)animated &#123;</span><br><span class="line">    [super viewWillDisappear:animated];</span><br><span class="line">    [self.navigationController setNavigationBarHidden:YES animated:NO];</span><br><span class="line">    [self.navigationController setNavigationBarHidden:NO animated:NO];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewWillAppear:(BOOL)animated &#123; </span><br><span class="line">  [super viewWillAppear:animated];</span><br><span class="line">  [self.navigationController setNavigationBarHidden:YES animated:NO];</span><br><span class="line">  [self.navigationController setNavigationBarHidden:NO animated:NO];</span><br><span class="line">  &#125;</span><br><span class="line">- (void)viewWillDisappear:(BOOL)animated &#123;</span><br><span class="line">  [super viewWillDisappear:animated];</span><br><span class="line">  [self.navigationController setNavigationBarHidden:YES animated:NO];</span><br><span class="line">  [self.navigationController setNavigationBarHidden:NO animated:NO];</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="4、事件方法要每个界面区分开"><a href="#4、事件方法要每个界面区分开" class="headerlink" title="4、事件方法要每个界面区分开"></a>4、事件方法要每个界面区分开</h3><p>老项目中会有这种情况：在本界面 command点击一个<code>button</code>执行事件方法或者手势事件方法时，会莫名其妙的跳转到另外一个界面。<br>我们在开发时最好给不同界面<code>button</code>的<code>clicked</code>事件命名是区分开来，例如：界面名 + <code>ButtonClicked</code></p>
-<h3 id="5、对象为空现象"><a href="#5、对象为空现象" class="headerlink" title="5、对象为空现象"></a>5、对象为空现象</h3><p>在开发中如果存在<code>image</code>为空，或者必须显示的<code>String</code>为空现象，<br>记得在代码中作判断，图片可以直接设置默认图片，字符串也可以设置默认字符串<br>这一点可以学一下SDWebImage库中对于网络请求图片不存在的处理方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//给一张默认图片，先使用默认图片，当图片加载完成后再替换</span><br><span class="line">[self.image1 sd_setImageWithURL:imagePath1 placeholderImage:[UIImage imageNamed:@&quot;default&quot;]];</span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UIImage *image = [UIImage imageNamed:@&quot;image&quot;];</span><br><span class="line">UIImage *defaultImage = [UIImage imageNamed:@&quot;defaultImage&quot;];</span><br><span class="line">UIImageView *imageView = [[UIImageView alloc]initWithImage:image==nil ?  image:defaultImage];</span><br></pre></td></tr></table></figure>
+<h3 id="5、对象为空现象"><a href="#5、对象为空现象" class="headerlink" title="5、对象为空现象"></a>5、对象为空现象</h3><p>在开发中如果存在<code>image</code>为空，或者必须显示的<code>String</code>为空现象，<br>记得在代码中作判断，图片可以直接设置默认图片，字符串也可以设置默认字符串<br>这一点可以学一下SDWebImage库中对于网络请求图片不存在的处理方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//给一张默认图片，先使用默认图片，当图片加载完成后再替换</span><br><span class="line">[self.image1 sd_setImageWithURL:imagePath1 placeholderImage:[UIImage imageNamed:@&quot;default&quot;]];</span><br></pre></td></tr></table></figure></p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UIImage *image = [UIImage imageNamed:@&quot;image&quot;];</span><br><span class="line">UIImage *defaultImage = [UIImage imageNamed:@&quot;defaultImage&quot;];</span><br><span class="line">UIImageView *imageView = [[UIImageView alloc]initWithImage:image==nil ?  image:defaultImage];</span><br></pre></td></tr></table></figure></p>
 <p>字符串当然也是类似，其实看似有些费事甚至有的显得多余的写法，会使以后的维护变得更加的如意。</p>
 <h3 id="6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。"><a href="#6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。" class="headerlink" title="6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。"></a>6、一个界面多网络请求问题，而且需要多个请求都完成后，对界面有一些操作。</h3><p>这是一个老的话题了，我之所以重新提及这个话题，原因是我从一些文章中发现了一个从来没使用过的方法，这个下面会提到，现在就让我们列举出来比较常用的方法。就以一个界面两个网络请求为例 A和B.</p>
 <p><strong>（1）两个请求互套)(也是最笨的方法)</strong><br>     具体是这样的，我在A请求成功后，再请求B。当然如果请求多的话，这个肯定是作废的。</p>
@@ -222,8 +220,8 @@ MathJax = {
                     <i class="iconfont icon-tags" title="标签"></i>
                     
                     <span class="span--tag">
-                      <a href="/tags/iOS/" title="iOS">
-                        <b>#</b> iOS
+                      <a href="/tags/objc/" title="objc">
+                        <b>#</b> objc
                       </a>
                     </span>
                     
