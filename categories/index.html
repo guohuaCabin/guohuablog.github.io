@@ -13,7 +13,7 @@
     
       Category 
       
-       : 欠下的时光
+      
       |
     
      所念皆星辰
@@ -99,38 +99,38 @@
 
 
       <div class="flex-container">
-        <!-- 标签详情页，展示某个标签下的文章列表，url形式：https://yoursite/tags/某个标签/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<div class="container category-details">
-  <div class="content-title">
-    <h2>
-      <span>欠下的时光</span>
-    </h2>
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+  <!-- 分类页 url形式：https://yoursite/categories/ -->
+  <div class="container category-index">
+    <div>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读SDWebImage手札/">读SDWebImage手札</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/项目总结/">项目总结</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/欠下的时光/">欠下的时光</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Xcode/">Xcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Swift/">Swift</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVN/">SVN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">1</span></li></ul>
+    </div>
   </div>
   
-    <div class="post-list">
-      <div class="post-item" title="借我">
-        <span class="time-m-d">2017-04-21</span>
-        <a href="/2017/04/21/2017-04-21-borrow-me/">
-          <span>借我</span>
-        </a>
-      </div>
-    </div>
+
   
-    <div class="post-list">
-      <div class="post-item" title="我和这个世界不熟 --北岛">
-        <span class="time-m-d">2017-03-12</span>
-        <a href="/2017/03/12/2017-03-12-I-am-not-familiar-with-this-world/">
-          <span>我和这个世界不熟 --北岛</span>
-        </a>
-      </div>
-    </div>
+
   
-  <nav class="post-navigation">
-    
-    <span class="page-num">1 / 1</span>    
-  </nav>
-</div>
+
+  
 
         <div class="footer">
   <div class="social">
@@ -389,6 +389,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + categories + '&url=' + https%3A%2F%2Fqinguohua.fun%2Fcategories%2Findex.html + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://qinguohua.fun/categories/index.html" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   <script src="/js/shares.js"></script>
 
