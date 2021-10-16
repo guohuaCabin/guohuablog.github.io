@@ -4,6 +4,306 @@
 
     
   <url>
+    <loc>https://qinguohua.fun/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/</loc>
+    <lastmod>2021-10-16T15:04:42.746Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 七 （SDWebImageTransition）</title>
+        <pubTime>2018-10-30T13:32:19.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/</loc>
+    <lastmod>2021-10-16T15:04:33.254Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （SDWebImagePrefetcher）</title>
+        <pubTime>2018-10-27T14:32:36.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/</loc>
+    <lastmod>2021-10-16T15:04:24.155Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六（编码器五：SDWebImageGIFCoder）</title>
+        <pubTime>2018-10-24T14:31:13.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/</loc>
+    <lastmod>2021-10-16T15:04:16.924Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</title>
+        <pubTime>2018-10-23T13:57:30.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/</loc>
+    <lastmod>2021-10-16T15:04:09.629Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</title>
+        <pubTime>2018-10-18T12:48:55.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/</loc>
+    <lastmod>2021-10-16T15:03:58.699Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</title>
+        <pubTime>2018-10-15T13:52:22.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/13/2018-10-13-Read-SDWebImage-SDWebImageCoder/</loc>
+    <lastmod>2021-10-16T15:03:50.486Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 六 （编码器一：SDWebImageCoder）</title>
+        <pubTime>2018-10-13T13:15:04.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/11/2018-10-11-Read-SDWebImage-SDWebImageDownloaderOperation/</loc>
+    <lastmod>2021-10-16T15:03:40.867Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 五 （SDWebImageDownloaderOperation）</title>
+        <pubTime>2018-10-11T09:58:01.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/04/2018-10-04-Read-SDWebImage-SDWebImageDownloader/</loc>
+    <lastmod>2021-10-16T15:03:30.598Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 四 (SDWebImageDownloader)</title>
+        <pubTime>2018-10-04T11:38:50.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/02/2018-10-02-Read-SDWebImage-SDImageCache/</loc>
+    <lastmod>2021-10-16T15:03:17.908Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 三 (SDImageCache)</title>
+        <pubTime>2018-10-02T02:38:36.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/10/01/2018-10-01-Read-SDWebImage-SDWebImageManager/</loc>
+    <lastmod>2021-10-16T15:03:04.171Z</lastmod>
+    <data>
+        <display>
+        <title>读SDWebImage 二 (SDWebImageManager)</title>
+        <pubTime>2018-10-01T01:38:06.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://qinguohua.fun/2018/09/29/2018-09-29-Read-SDWebImage-note1/</loc>
+    <lastmod>2021-10-16T15:02:55.052Z</lastmod>
+    <data>
+        <display>
+        <title>读 SDWebImage 一 使用分析</title>
+        <pubTime>2018-09-29T06:32:04.000Z</pubTime>
+        
+        <tag>objc</tag>
+         
+        <tag>sdwebimage</tag>
+         
+         
+           
+             
+              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
+          
+             
+              <breadCrumb title="SDWebImage" url="https://qinguohua.fun/categories/Objective-C/SDWebImage/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://qinguohua.fun/2020/03/23/2020-03-23-python-tips/</loc>
     <lastmod>2021-10-16T15:00:26.661Z</lastmod>
     <data>
@@ -392,81 +692,6 @@
 
     
   <url>
-    <loc>https://qinguohua.fun/2018/10/24/2018-10-24-Read-SDWebImage-SDWebImageGIFCoder/</loc>
-    <lastmod>2021-10-16T14:46:27.584Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六（编码器五：SDWebImageGIFCoder）</title>
-        <pubTime>2018-10-24T14:31:13.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/23/2018-10-23-Read-SDWebImage-SDWebImageImageIOCoder/</loc>
-    <lastmod>2021-10-16T14:46:27.584Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （编码器四：SDWebImageImageIOCoder）</title>
-        <pubTime>2018-10-23T13:57:30.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/30/2018-10-30-Read-SDWebImage-SDWebImageTransition/</loc>
-    <lastmod>2021-10-16T14:46:27.584Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 七 （SDWebImageTransition）</title>
-        <pubTime>2018-10-30T13:32:19.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://qinguohua.fun/2018/11/28/2018-11-28-Arithmetic-basics/</loc>
     <lastmod>2021-10-16T14:46:27.584Z</lastmod>
     <data>
@@ -482,206 +707,6 @@
            
              
               <breadCrumb title="算法" url="https://qinguohua.fun/categories/%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/27/2018-10-27-Read-SDWebImage-SDWebImagePrefetcher/</loc>
-    <lastmod>2021-10-16T14:46:27.584Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （SDWebImagePrefetcher）</title>
-        <pubTime>2018-10-27T14:32:36.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/13/2018-10-13-Read-SDWebImage-SDWebImageCoder/</loc>
-    <lastmod>2021-10-16T14:46:27.583Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （编码器一：SDWebImageCoder）</title>
-        <pubTime>2018-10-13T13:15:04.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/15/2018-10-15-Read-SDWebImage-SDWebImageCoderHelper/</loc>
-    <lastmod>2021-10-16T14:46:27.583Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage  六 （编码器二：SDWebImageCoderHelper  以及动图处理使用到的 SDWebImageFrame）</title>
-        <pubTime>2018-10-15T13:52:22.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/18/2018-10-18-Read-SDWebImage-SDWebImageCodersManager/</loc>
-    <lastmod>2021-10-16T14:46:27.583Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 六 （编码器三：SDWebImageCodersManager）</title>
-        <pubTime>2018-10-18T12:48:55.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/11/2018-10-11-Read-SDWebImage-SDWebImageDownloaderOperation/</loc>
-    <lastmod>2021-10-16T14:46:27.583Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 五 （SDWebImageDownloaderOperation）</title>
-        <pubTime>2018-10-11T09:58:01.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/01/2018-10-01-Read-SDWebImage-SDWebImageManager/</loc>
-    <lastmod>2021-10-16T14:46:27.582Z</lastmod>
-    <data>
-        <display>
-        <title>读SDWebImage 二 (SDWebImageManager)</title>
-        <pubTime>2018-10-01T01:38:06.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/04/2018-10-04-Read-SDWebImage-SDWebImageDownloader/</loc>
-    <lastmod>2021-10-16T14:46:27.582Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 四 (SDWebImageDownloader)</title>
-        <pubTime>2018-10-04T11:38:50.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/10/02/2018-10-02-Read-SDWebImage-SDImageCache/</loc>
-    <lastmod>2021-10-16T14:46:27.582Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 三 (SDImageCache)</title>
-        <pubTime>2018-10-02T02:38:36.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
           
         </display>
     </data>
@@ -726,31 +751,6 @@
            
              
               <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/Objective-C/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://qinguohua.fun/2018/09/29/2018-09-29-Read-SDWebImage-note1/</loc>
-    <lastmod>2021-10-16T14:46:27.581Z</lastmod>
-    <data>
-        <display>
-        <title>读 SDWebImage 一 使用分析</title>
-        <pubTime>2018-09-29T06:32:04.000Z</pubTime>
-        
-        <tag>objc</tag>
-         
-        <tag>sdwebimage</tag>
-         
-         
-           
-             
-              <breadCrumb title="SDWebImage手札" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/"/>
-          
-             
-              <breadCrumb title="Objective-C" url="https://qinguohua.fun/categories/SDWebImage%E6%89%8B%E6%9C%AD/Objective-C/"/>
           
         </display>
     </data>
