@@ -11,7 +11,7 @@
   
   <title>
     
-      2020-03-23-python-tips 
+      Python的小Tips 
       
       
       |
@@ -127,7 +127,7 @@ MathJax = {
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">2020-03-23-python-tips</div>
+      <div class="post-title">Python的小Tips</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime" title="更新时间"></i>
@@ -158,7 +158,15 @@ MathJax = {
           
       </div>
       <div class="markdown-body">
-        
+        <h3 id="1-默认值在-定义作用域里的函数定义中求值"><a href="#1-默认值在-定义作用域里的函数定义中求值" class="headerlink" title="1. 默认值在 定义作用域里的函数定义中求值"></a>1. 默认值在 <strong>定义</strong>作用域里的函数定义中求值</h3><h4 id="1-1-默认值为不可变对象时，只计算一次"><a href="#1-1-默认值为不可变对象时，只计算一次" class="headerlink" title="1.1 默认值为不可变对象时，只计算一次"></a>1.1 默认值为不可变对象时，只计算一次</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">6</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ff</span><span class="params">(age = i)</span>:</span></span><br><span class="line">	print(age)</span><br><span class="line">	</span><br><span class="line">i = <span class="number">12</span></span><br><span class="line">ff()</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-2-默认值为列表、字典或类实例等可变对象时，会产生与该规则不同的结果"><a href="#1-2-默认值为列表、字典或类实例等可变对象时，会产生与该规则不同的结果" class="headerlink" title="1.2 默认值为列表、字典或类实例等可变对象时，会产生与该规则不同的结果"></a>1.2 默认值为列表、字典或类实例等可变对象时，会产生与该规则不同的结果</h4><p>例如,下面的函数会累积后续调用时传递的参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">6</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ff</span><span class="params">(age,ages=[])</span>:</span></span><br><span class="line">	ages.append(age)</span><br><span class="line">	<span class="keyword">return</span> ages</span><br><span class="line">	</span><br><span class="line">print(ff(<span class="number">10</span>))</span><br><span class="line">print(ff(<span class="number">20</span>))</span><br><span class="line">print(ff(<span class="number">30</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">[<span class="number">10</span>]</span><br><span class="line">[<span class="number">10</span>, <span class="number">20</span>]</span><br><span class="line">[<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>]</span><br></pre></td></tr></table></figure>
+<p>如果不想再后续调用之间共享默认值时，可以用如下方式编写函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ff</span><span class="params">(age,ages=None)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> ages <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">		ages = []</span><br><span class="line">	ages.append(age)</span><br><span class="line">	<span class="keyword">return</span> ages</span><br><span class="line">	</span><br><span class="line">print(ff(<span class="number">10</span>))</span><br><span class="line">print(ff(<span class="number">20</span>))</span><br><span class="line">print(ff(<span class="number">30</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">[<span class="number">10</span>]</span><br><span class="line">[<span class="number">20</span>]</span><br><span class="line">[<span class="number">30</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="2-解包实参列表"><a href="#2-解包实参列表" class="headerlink" title="2. 解包实参列表"></a>2. 解包实参列表</h3><p>函数调用要求独立的位置参数，但实参在列表或元组里时，要执行相反的操作。</p>
+<p>例如，内置的range()函数要求独立的 start 和 stop 实参，如果这些参数不是独立的，则要在调用函数时，用 <code>*</code> 操作符把实参从列表或元组解包出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">print(list(range(<span class="number">3</span>,<span class="number">6</span>)))</span><br><span class="line">args = [<span class="number">3</span>,<span class="number">6</span>]</span><br><span class="line">print(list(range(*args)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
       </div>
       
         <div class="prev-or-next">
@@ -211,6 +219,19 @@ MathJax = {
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-默认值在-定义作用域里的函数定义中求值"><span class="toc-text">1. 默认值在 定义作用域里的函数定义中求值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-默认值为不可变对象时，只计算一次"><span class="toc-text">1.1 默认值为不可变对象时，只计算一次</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-默认值为列表、字典或类实例等可变对象时，会产生与该规则不同的结果"><span class="toc-text">1.2 默认值为列表、字典或类实例等可变对象时，会产生与该规则不同的结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-解包实参列表"><span class="toc-text">2. 解包实参列表</span></a></li></ol>
+    </div>
+  </div>
+
+  <script src="/js/catalog.js"></script>
+
+
 
     
       <div class="comments-container">
@@ -489,7 +510,7 @@ MathJax = {
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + 2020-03-23-python-tips + '&url=' + https%3A%2F%2Fqinguohua.fun%2F2020%2F03%2F23%2F2020-03-23-python-tips%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Python%E7%9A%84%E5%B0%8FTips + '&url=' + https%3A%2F%2Fqinguohua.fun%2F2020%2F03%2F23%2F2020-03-23-python-tips%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         
