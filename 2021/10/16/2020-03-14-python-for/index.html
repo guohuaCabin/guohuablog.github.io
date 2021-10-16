@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="undefined" />
+  <meta name="author" content="GUOHUA" />
+  <meta name="description" content="简单的一个技术博客，用来作为学习笔记和日常记录使用。" />
+  
+  
+  <title>
+    
+     所念皆星辰
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/avatar.png">
+    <link rel="icon" href="/images/avatar.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/color-scheme.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<link rel="stylesheet" href="/css/comments.css">
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  <script src="/js/fancybox.js"></script>
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">所念皆星辰</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">Categories</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+<script src="/js/activeNav.js"></script>
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title"></div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="更新时间"></i>
+          2021-10-16 22:46:27
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">layout: post</span><br><span class="line">title: 循环的技巧</span><br><span class="line">date: 2020-03-14 22:25:36</span><br><span class="line">tags: [python,for]</span><br><span class="line">categories: Python</span><br></pre></td></tr></table></figure>
+<h3 id="循环的技巧"><a href="#循环的技巧" class="headerlink" title="循环的技巧"></a>循环的技巧</h3><p>Python 的 for 语句与 C语言中的不同，它是不支持<strong>迭代算术递增数值</strong>这种方式的，但Python迭代列表或者字符串等任意序列，元素的迭代顺序与在序列中出现的顺序一致。</p>
+<p>比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">names = [<span class="string">'Python'</span>,<span class="string">'dart'</span>,<span class="string">'Swift'</span>,<span class="string">'Objective-C'</span>]</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names:</span><br><span class="line">  print(name,len(name))</span><br><span class="line">  </span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">Python <span class="number">6</span></span><br><span class="line">dart <span class="number">4</span></span><br><span class="line">Swift <span class="number">5</span></span><br><span class="line">Objective-C <span class="number">11</span></span><br></pre></td></tr></table></figure>
+<p>在遍历的同时修改序列内容，通常是开发中的大忌，所以执行这种操作时，需要创建一个新的序列或者遍历序列的副本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">names = [<span class="string">'Python'</span>,<span class="string">'dart'</span>,<span class="string">'Swift'</span>,<span class="string">'Objective-C'</span>]</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> names.copy():</span><br><span class="line">  <span class="keyword">if</span> name == <span class="string">'dart'</span>:</span><br><span class="line">    names.remove(name)</span><br><span class="line">print(names)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">[<span class="string">'Python'</span>, <span class="string">'Swift'</span>, <span class="string">'Objective-C'</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="range-搭配-len"><a href="#range-搭配-len" class="headerlink" title="range() 搭配 len()"></a>range() 搭配 len()</h4><p>内置函数range()常用于遍历数字序列。</p>
+<p>如果希望以<strong>迭代算术递增数值</strong> 这种方式做迭代，通常是以range() + len() 这种方式实现，当然也是对便捷的。</p>
+<p>例如，希望获取某个值的下标，可以这样实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(names)):</span><br><span class="line">  <span class="keyword">if</span> names[i] == <span class="string">'Swift'</span>:</span><br><span class="line">    print(i)</span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>当然也可以将下标和值仪器打印，像这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(names)):</span><br><span class="line">  print(i,names[i])</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line"><span class="number">0</span> Python</span><br><span class="line"><span class="number">1</span> dart</span><br><span class="line"><span class="number">2</span> Swift</span><br><span class="line"><span class="number">3</span> Objective-C</span><br></pre></td></tr></table></figure>
+<p>但这种实现方式，通常使用<code>enumerate()</code> 函数会更加便捷一些。</p>
+<h4 id="enumerate-函数"><a href="#enumerate-函数" class="headerlink" title="enumerate()函数"></a>enumerate()函数</h4><p>enumerate()函数返回的是一个枚举对象，该枚举对象里是一个个的元组：(index下标, 值)。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i,v <span class="keyword">in</span> enumerate(names):</span><br><span class="line">  print(i,v)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line"><span class="number">0</span> Python</span><br><span class="line"><span class="number">1</span> dart</span><br><span class="line"><span class="number">2</span> Swift</span><br><span class="line"><span class="number">3</span> Objective-C</span><br></pre></td></tr></table></figure>
+<h4 id="reversed-函数"><a href="#reversed-函数" class="headerlink" title="reversed()函数"></a>reversed()函数</h4><p>reversed()函数是将序列翻转。</p>
+<p>假如想将一个list倒序输出的话，可以这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> reversed(names):</span><br><span class="line">  print(name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">Objective-C</span><br><span class="line">Swift</span><br><span class="line">dart</span><br><span class="line">Python</span><br></pre></td></tr></table></figure>
+<p>当然也可以配合range()函数做一些事情，例如将10以内的奇数倒序输出，像这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> reversed(range(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>)):</span><br><span class="line">  print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted()函数"></a>sorted()函数</h4><p>如果想按指定顺序循环序列，就可以使用sorted()来完成。像这样，在不改动原序列的基础上，返回一个重新的序列：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">languages = [<span class="string">'Python'</span>,<span class="string">'dart'</span>,<span class="string">'flutter'</span>,<span class="string">'shell'</span>,<span class="string">'ruby'</span>,<span class="string">'Python'</span>,<span class="string">'Objective-C'</span>,<span class="string">'Swift'</span>,<span class="string">'Objective-C'</span>]</span><br><span class="line"><span class="keyword">for</span> language <span class="keyword">in</span> sorted(languages):</span><br><span class="line">  print(language)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">Objective-C</span><br><span class="line">Objective-C</span><br><span class="line">Python</span><br><span class="line">Python</span><br><span class="line">Swift</span><br><span class="line">dart</span><br><span class="line">flutter</span><br><span class="line">ruby</span><br><span class="line">shell</span><br></pre></td></tr></table></figure>
+<h4 id="set-函数"><a href="#set-函数" class="headerlink" title="set()函数"></a>set()函数</h4><p>set()函数可以去除序列中重复的元素。</p>
+<p>如果想’将一个序列中的重复元素去掉，并排序的话，使用set() 和 sorted()函数结合是一个不错的选择，像这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> language <span class="keyword">in</span> sorted(set(languages)):</span><br><span class="line">  print(language)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">Objective-C</span><br><span class="line">Python</span><br><span class="line">Swift</span><br><span class="line">dart</span><br><span class="line">flutter</span><br><span class="line">ruby</span><br><span class="line">shell</span><br></pre></td></tr></table></figure>
+<h4 id="zip-函数"><a href="#zip-函数" class="headerlink" title="zip()函数"></a>zip()函数</h4><p>同时循环两个或多个序列时，用zip()函数可以将其内的元素一一匹配：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">qustions = [<span class="string">'你是什么语言？'</span>,<span class="string">'很厉害吗？'</span>,<span class="string">'有什么用处？'</span>]</span><br><span class="line">answers = [<span class="string">'Python'</span>,<span class="string">'超厉害'</span>,<span class="string">'我是一门开源性，面向对象的语言，，功能十分强大，有很多内置库，内置工具，而且是语法表达优美，可移植，可扩展'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> q,a <span class="keyword">in</span> zip(qustions,answers):</span><br><span class="line">  print(q,a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">你是什么语言？ Python</span><br><span class="line">很厉害吗？ 超厉害</span><br><span class="line">有什么用处？ 我是一门开源性，面向对象的语言，，功能十分强大，有很多内置库，内置工具，而且是语法表达优美，可移植，可扩展</span><br></pre></td></tr></table></figure>
+<p>如果两个数组的大小不对等，zip()函数仍然能做到一一匹配，并将不能匹配到的元素丢弃掉，而不是抛出异常，这是一个很好的处理方式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">qustions = [<span class="string">'你是什么语言？'</span>,<span class="string">'很厉害吗？'</span>,<span class="string">'有什么用处？'</span>,<span class="string">'其他语言能替代你吗？'</span>,<span class="string">'你真厉害！'</span>]</span><br><span class="line">answers = [<span class="string">'Python'</span>,<span class="string">'超厉害'</span>,<span class="string">'我是一门开源性，面向对象的语言，，功能十分强大，有很多内置库，内置工具，而且是语法表达优美，可移植，可扩展'</span>,<span class="string">'不能'</span>]</span><br><span class="line"><span class="keyword">for</span> q,a <span class="keyword">in</span> zip(qustions,answers):</span><br><span class="line">  print(q,a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> result:</span><br><span class="line">你是什么语言？ Python</span><br><span class="line">很厉害吗？ 超厉害</span><br><span class="line">有什么用处？ 我是一门开源性，面向对象的语言，，功能十分强大，有很多内置库，内置工具，而且是语法表达优美，可移植，可扩展</span><br><span class="line">其他语言能替代你吗？ 不能</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/10/16/2020-03-23-python-tips/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="更新时间"></i>
+              2021-10-16 22:46:27
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#循环的技巧"><span class="toc-text">循环的技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#range-搭配-len"><span class="toc-text">range() 搭配 len()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#enumerate-函数"><span class="toc-text">enumerate()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#reversed-函数"><span class="toc-text">reversed()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sorted-函数"><span class="toc-text">sorted()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set-函数"><span class="toc-text">set()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zip-函数"><span class="toc-text">zip()函数</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+  <script src="/js/catalog.js"></script>
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" href="https://github.com/guohuaCabin">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="email" href="qinguohua@qinguohua.fun">
+            <i class="iconfont icon-envelope"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        Copyright © Oranges 2021
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        灾难总是接踵而至，这正是世间的常理。只要找个理由，就会有谁来救你吗？要是死了，就只是说明我不过是如此程度的男人。
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+<script src="/js/backtotop.js"></script>
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  <script src="/js/colorscheme.js"></script>
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' +  + '&url=' + https%3A%2F%2Fqinguohua.fun%2F2021%2F10%2F16%2F2020-03-14-python-for%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://qinguohua.fun/2021/10/16/2020-03-14-python-for/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  <script src="/js/shares.js"></script>
+
+
+      </div>
+    </div>
+  </body>
+</html>
